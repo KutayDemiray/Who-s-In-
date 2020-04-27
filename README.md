@@ -11,3 +11,5 @@
  Ceyda Şahin         - 21903448
  
  Yağız Yaşar         - 21902951
+
+ Cagatay Safak       - 21902730
