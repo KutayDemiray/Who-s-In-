@@ -9,7 +9,7 @@ The information and code in this repository are submitted in partial fulfillment
 ## Project Description
  "Who's In?" is a mobile application aiming to provide easy means of finding users for activities such as sports events, tournaments and club meetings.
 _Include a concise description of your project here. Be sure to include the proposed users, the architecture (eg. desktop, web, mobile, embedded, etc.) & screenshots when available._
-   
+
 ## Project Status
 + **Group/project Selection:** completed (18.02.2020)
 + **Requirements:** completed (15.03.2020)
@@ -24,10 +24,10 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - Gökberk Keskinkılıç - 21801666
 
-- Cemhan Kaan Özaltan - 21902695
+- [Cemhan Kaan Özaltan - 21902695](group/CemhanKaanOzaltan_log.md)
 
 - Ceyda Şahin         - 21903448
- 
+
 - [Yağız Yaşar         - 21902951](group/YagizYasar_log.md)
 
 - Cagatay Safak       - 21902730
@@ -36,4 +36,3 @@ _Include a concise description of your project here. Be sure to include the prop
 ****
 **Instructor:** David Davenport   **TA:**  Bayram Berdiyev
 ****
-
