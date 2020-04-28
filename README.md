@@ -28,7 +28,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - Ceyda Şahin         - 21903448
  
-- Yağız Yaşar         - 21902951
+- [Yağız Yaşar         - 21902951](group/YagizYasar_log.md)
 
 - Cagatay Safak       - 21902730
 
