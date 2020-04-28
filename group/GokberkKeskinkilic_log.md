@@ -15,4 +15,4 @@ During our meeting for GUI presentation, I have written the part for profile tab
 ### ~ [23.04.2020] ~ 
 After our group meeting, I have googled for about 2-3 hours to find out how to use android studio. Since it is a little bit complicated than developing desktop programmes, I have tried to discover how it actually works to plan our group project. Watched tutorials on YouTube. 
 
-***
+****
