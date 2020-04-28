@@ -7,9 +7,12 @@ On this page I will keep a weekly record of what I have done for the CS102 group
 
 
 ### ~ [25.02.2020] ~ 
-After having completed the slides together with all group members, we presented our project's draft with Ceyda.
+After having completed the slides together with all group members, we made our project's first presentation with Ceyda.
 
-### ~ [03.30.2020] ~
+### ~ [07.03.2020] ~
+During our meeting for detailed project report we have brainstormed together to develop our app. I have written the conclusion part for the report. 
+
+### ~ [30.03.2020] ~
 During our meeting for GUI presentation, I have written the part for profile tab and homepage for report.
 
 ### ~ [23.04.2020] ~ 
