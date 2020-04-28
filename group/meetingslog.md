@@ -4,6 +4,15 @@ Below is a record of our project group meetings. This page will be submitted tog
 Other than the meetings below, we also talked about our project in/after labs
 
 ****
+### Unofficial Meeting ~ (13.02.2020 ~1 hour)
+****
+**Present:** Kutay Demiray, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Çağatay Şafak  _**Absent:**_ Yağız Yaşar, Gülin Yılmaz, Ceyda Şahin
+
+**Discussion:**
+Some of us had no class in the morning so we decided to meet and brainstorm for possible project ideas. Others had class so they couldn't attend. After an hour or so of discussion we noticed that it's hard to find and join
+GE250/251 activities, so we marked down a list/interactive map for GE250/251 as a possible project.
+ 
+****
 ### Meeting ~ (22.02.2020, ~2 hours)
 ****
 **Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Gülin Yılmaz, Ceyda Şahin   _**Absent:**_  Çağatay Şafak
@@ -26,8 +35,8 @@ the app in Photoshop to include in the presentation.
 **Discussion:**
 Most people said our project was too broad and should be narrowed down in the feedback, so after some discussion we decided to focus on finding people for events and other activities, and ditched the
 other features we had planned earlier. We brainstormed some feature ideas and settled on adding a map/GPS feature (for finding event locations easily), user accounts (with only some simple features
-like a nickname, profile picture and a small bio, our main aim was to prevent spam/bot accounts so we made registration mandatory for using the app) and an event list that allows searching and sorting. 
-
+like a nickname, profile picture and a small bio, our main aim was to prevent spam/bot accounts so we made registration mandatory for using the app) and an event list that allows searching and sorting.
+After that, Kaan wrote the introduction part of the project. Gökberk wrote the conclusion. Rest of us worked on the main paragraphs.
 ****
 ### Online Meeting ~ (25.03.2020, ~30 minutes)
 ****
