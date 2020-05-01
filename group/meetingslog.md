@@ -51,7 +51,7 @@ Some people had to leave, so we decided to meet again in a few days.
 ****
 ### Online Meeting ~ (30.03.2020, ~3 hours)
 ****
-**Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Gülin Yılmaz, Ceyda Şahin _**Absent:**_ Çağatay Şafak
+**Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Gülin Yılmaz, Ceyda Şahin, Çağatay Şafak
 
 **Discussion:**
 We already had some ideas from the previous meeting. Yağız made the storyboard for our app. Kutay created a rough design for the main "Events" screen, including buttons for event categories and and featured events.
@@ -61,13 +61,31 @@ Gülin and Kaan wrote some descriptions to include in our UI Design Report. Kuta
 ****
 ### Online Meeting ~ (23.04.2020, ~3 hours)
 ****
-**Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Gülin Yılmaz, Ceyda Şahin  _**Absent:**_ Çağatay Şafak
+**Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Gülin Yılmaz, Ceyda Şahin, Çağatay Şafak
 
 **Discussion:**
-We met again to discuss our detailed design. However, the meeting was not very productive because Android classes and design is vastly different than what we are used to doing in computers. We decided to learn
+Before the meeting, we met with Çağatay briefly. He told us that he couldn't attend the actual meeting due to other assignments, so he showed what he had been working on on Android Studio, then left.
+
+We met with the others to discuss our detailed design. However, the meeting was not very productive because Android classes and design is vastly different than what we are used to doing in computers. We decided to learn
 more about Android and Android Studio, and ask for help from our TA and instructor.
 
 **ToDo:** Meet again later after getting help from TA and instructors and learning more about Android app design
+
+****
+### Short Online Meeting ~ (01.05.2020, ~20 minutes)
+****
+**Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Çağatay Şafak _**Absent:**_ Ceyda Şahin, Gülin Yılmaz
+
+**Discussion:**
+This meeting was an unofficial one and on a short notice so not everyone could attend. After speaking with our instructor about how to proceed with development, we met again briefly to share tasks. We decided that the
+development would continue on three branches: One group will work on a console based model and backend in general, one group will work on the external looks and graphics, and finally another group will work on implementing the
+work of previous two groups into an Android app. After some discussion, we shared the tasks as following:
+
+Back-end: Kutay, Yağız and Cemhan
+Front-end: Gökberk and Çağatay
+Graphical design: Ceyda and Gülin
+
+We decided that these subgroups would further share the work among themselves.
 
 ****
 ****
