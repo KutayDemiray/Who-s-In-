@@ -7,6 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.whosin.data.Fragments.HomeFragment;
+import com.example.whosin.data.Fragments.NearbyFragment;
+import com.example.whosin.data.Fragments.NotificationsFragment;
+import com.example.whosin.data.Fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

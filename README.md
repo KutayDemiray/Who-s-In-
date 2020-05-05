@@ -22,7 +22,7 @@ _Include a concise description of your project here. Be sure to include the prop
 #### Group Members
 - [Kutay Demiray       - 21901815](group/kutayDemiray_log.md)
 
-- Gökberk Keskinkılıç - 21801666
+- [Gökberk Keskinkılıç - 21801666](group/GokberkKeskinkilic_log.md)
 
 - [Cemhan Kaan Özaltan - 21902695](group/CemhanKaanOzaltan_log.md)
 
