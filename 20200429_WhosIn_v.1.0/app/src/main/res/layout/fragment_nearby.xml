@@ -17,21 +17,19 @@
         android:text="This Service Is Not\n Available Yet"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="wrap_content"
-        android:layout_height="126dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="131dp"
-        android:layout_marginLeft="131dp"
-        android:layout_marginEnd="122dp"
-        android:layout_marginRight="122dp"
-        android:layout_marginBottom="288dp"
-        android:text="Keep Supporting Us..."
-        android:textSize="31dp" />
+        android:layout_height="wrap_content" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
