@@ -1,0 +1,86 @@
+User will log in to app. In homepage, user will be able to join an event from the event list or create a new event. In the event list, after opening an event's page, user will see certain properties such as
+name, organizer, duration, time, capacity, current participants, location, event's public status, event code, and a short description. In sports events, there will be the sport type and number and size of teams (if there's more
+than two teams, it will count as a tournament). Board game events will include the game type, from which users will pick one of the popular games or the "other" category. User's profile will include nickname, a profile picture,
+a short bio, past events, and a friends list (only visible to the users themselves). At the bottom, there will be notifications when an user is invited to an event or when others join.
+
+Nouns: User, homepage, event, event list, sports event, board game event, notifications,
+Classes: User, Event, EventList, SportsEvent, BoardGameEvent, Notification
+
+***User***
+
+// properties
+nickname
+name
+profile picture
+bio
+past events
+friends list
+
+// methods
+sendFriendRequest( User u )
+sendJoinRequest( Event e )
+
+
+***Event***
+
+// constants
+int PUBLIC_EVENT = 0
+int INVITE_ONLY_EVENT = 1
+int REQUEST_EVENT = 2
+int PRIVATE_EVENT = 3
+
+// properties
+String title
+String type
+String subtype
+User organizer
+Time duration
+Date date
+Strings description
+int capacity
+User[] participants
+Location location
+int accessStatus
+
+// methods
+invite( User u )
+cancel()
+
+
+***SportsEvent*** extends Event
+
+// constants
+String[] types = { "Football" , "Basketball" , "Volleyball" , "Tennis" , "Video Games" }
+
+// properties
+Team[] teams;
+
+// methods
+switchTeam( Team t )
+
+
+***BoardGameEvent*** extends Event
+
+// constants
+String[] games = { "Party Games" , "Roleplay Games" , "Playing Cards" }
+
+
+***EventList*** extends Event
+
+// properties
+ArrayList<Event> events;
+
+// methods
+search() -> multiple variants
+sort() -> multiple variants
+
+
+***Notification***
+
+// properties
+int type
+
+
+
+
+
