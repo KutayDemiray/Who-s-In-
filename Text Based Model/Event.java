@@ -12,7 +12,7 @@ public class Event {
   private User organizer;
   private Time duration;
   private Date date;
-  private Strings description;
+  private String description;
   private int capacity;
   private ArrayList<User> participants;
   private Location location;
@@ -26,6 +26,7 @@ public class Event {
     this.capacity = capacity;
     this.location = location;
     this.accessStatus = accessStatus;
+    participants = new ArrayList<>();
     addUser( organiser );
   }
 
@@ -34,7 +35,7 @@ public class Event {
    * Adds the given user to the participants list
    * @param u the user to add
    */
-  addUser( User u ) {
+  public void addUser( User u ) {
     participants.add(u);
   }
 
