@@ -1,7 +1,7 @@
 /**
  * Board game event
  * @authors Cemhan Kaan Özaltan
- * @version 6.5.2020
+ * @version 5.6.2020
  */
 public class BoardGameEvent extends Event {
 
@@ -16,8 +16,8 @@ public class BoardGameEvent extends Event {
    int gameType;
 
    // constructors
-   public BoardGameEvent( String title, User organizer, int capacity, int accessStatus, int gameType ) {
-      super( title, organizer, capacity, accessStatus );
+   public BoardGameEvent( String title, User organizer, Time duration, int capacity, Location location , int accessStatus, int gameType ) {
+      super( title, organizer, duration, capacity, location accessStatus );
       this.gameType = gameType;
    }
 
@@ -28,9 +28,5 @@ public class BoardGameEvent extends Event {
 
    public void setGameType( int gameType ) {
       this.gameType = gameType;
-   }
-
-   public String toString() {
-      return getTitle() + getGameType() + ", " + ", " + getCapacity() + ", ";
    }
 }

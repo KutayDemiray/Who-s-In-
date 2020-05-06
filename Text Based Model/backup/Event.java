@@ -6,28 +6,27 @@ import java.awt.*;
  * @authors Cemhan Kaan Özaltan
  * @version 5.5.2020
  */
-public abstract class Event {
+public class Event {
 
    // properties
-   private String[] privacySettings = { "Public Event", "Invite Only", "Private Event" };
+   private String[] privacySettings = { "Public Event", "Invite Only", "Private Event" }
    private String title;
    private User organizer;
-   //private Time duration;
-   //private Date date;
+   private Time duration;
+   private Date date;
    private String description;
    private int capacity;
    private ArrayList<User> participants;
-   //private Location location;
+   private Location location;
    private int accessStatus;
 
    // constructors
-   public Event( String title, User organizer, int capacity, int accessStatus ) {
+   public Event( String title, User organizer, Time duration, int capacity, Location location , int accessStatus ) {
       this.title = title;
       this.organizer = organizer;
-      //this.duration = duration;
-      //this.date = date;
+      this.duration = duration;
       this.capacity = capacity;
-      //this.location = location;
+      this.location = location;
       this.accessStatus = accessStatus;
       participants = new ArrayList<>();
       addUser( organizer );
@@ -40,6 +39,8 @@ public abstract class Event {
     */
    public void addUser( User u ) {
       participants.add(u);
+      setChanged();
+      notifyObservers();
    }
 
    /**
@@ -61,6 +62,12 @@ public abstract class Event {
       // create notification for user u, check if accepted
    }
 
+   /**
+    * Cancels the event
+    */
+   public void cancel() {
+      this = null;
+   }
 
    /**
     * Returns the string equivalent of the privacy setting
@@ -81,21 +88,21 @@ public abstract class Event {
       this.title = title;
    }
 
-//   public Time getDuration() {
-//      return duration;
-//   }
-//
-//   public void setDuration( Time duration ) {
-//      this.duration = duration;
-//   }
+   public Time getDuration() {
+      return duration;
+   }
 
-//   public Date getDate() {
-//      return date;
-//   }
-//
-//   public void setDate( Date date ) {
-//      this.date = date;
-//   }
+   public void setDuration( Time duration ) {
+      this.duration = duration;
+   }
+
+   public Date getDate() {
+      return date;
+   }
+
+   public void setDate( Date date ) {
+      this.date = date;
+   }
 
    public String getDescription() {
       return description;
@@ -112,17 +119,12 @@ public abstract class Event {
    public void setCapacity( int capacity ) {
       this.capacity = capacity;
    }
-   
-   public User getOrganizer() {
-      return organizer;
+
+   public Location getLocation() {
+      return location;
    }
 
-//   public Location getLocation() {
-//      return location;
-//   }
-
-//   public void setLocation( Location location ) {
-//      this.location = location;
-//   }
-
- }
+   public void setLocation( Location location ) {
+      this.location = location;
+   }
+}

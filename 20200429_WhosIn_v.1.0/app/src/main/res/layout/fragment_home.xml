@@ -157,11 +157,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginBottom="63dp"
-        android:text="Create an Event"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="62dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Create an Event" />
 
     <TextView
         android:id="@+id/textView3"

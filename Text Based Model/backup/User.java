@@ -16,7 +16,6 @@ public class User {
    private ArrayList<Event> pastEvents;
    //    private String profilePictureURL;
    private ArrayList<User> friendsList;
-
    public User(String name, String nickname) {
       this.name = nickname;
       this.nickname = nickname;
@@ -33,8 +32,6 @@ public class User {
 
    public String getBio() { return bio; }
 
-   // public String getFriendsList() { }
-
 //    public String getProfilePictureURL() { return profilePictureURL; }
 
 /*   public void setProfilePictureURL( String profilePictureURL) {
@@ -42,8 +39,6 @@ public class User {
  *  }
  */
    public void setBio( String bio) { this.bio = bio; }
-
-   public void addFriend( User u){
 
 
 }

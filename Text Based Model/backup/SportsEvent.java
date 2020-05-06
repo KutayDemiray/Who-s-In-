@@ -1,4 +1,4 @@
-package com.example.whosin.data.model;
+
 
 /**
  * Sports event class, includes sports types
@@ -16,13 +16,22 @@ public class SportsEvent extends Event {
     final static int OTHER_SPORTS_EVENT = 4;
 
     // properties
-    int type;
+    private int type;
 
     // constructor
-    public SportsEvent( String title, User organiser, Time duration, int capacity, Location location, int accessStatus ) {
+    public SportsEvent( String title, User organiser, Time duration, int capacity, Location location, int accessStatus, int type ) {
         super( title, organiser, duration, capacity, location, accessStatus );
-
+		this.type = type;
     }
-
+	
+	// methods
+	
+	String getType() {
+		return types[ type ];
+	}
+	
+	void setType( int type ) {
+		this.type = type;
+	}
 
 }
