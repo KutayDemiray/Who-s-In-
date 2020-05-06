@@ -1,10 +1,12 @@
+import java.util.*;
+
 /**
  * EventList
  * @author Cemhan Kaan Özaltan, Kutay Demiray
  * @version 6.5.2020
  */
 
-public class EventList {
+public class EventList implements Iterable {
 
    // properties
    private ArrayList<Event> list;
@@ -19,7 +21,7 @@ public class EventList {
       this.list = list;
    }
 
-   // methods
+   // methods   
    public void addEvent( Event e ) {
       list.add( e );
    }
@@ -39,5 +41,9 @@ public class EventList {
 
    public void sort() {
 
+   }
+   
+   public Iterator iterator() {
+      return list.iterator();
    }
 }

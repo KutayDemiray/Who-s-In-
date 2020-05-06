@@ -19,19 +19,19 @@ public class SportsEvent extends Event {
     private int type;
 
     // constructor
-    public SportsEvent( String title, User organiser, Time duration, int capacity, Location location, int accessStatus, int type ) {
-        super( title, organiser, duration, capacity, location, accessStatus );
-		this.type = type;
+    public SportsEvent( String title, User organiser, int capacity, int accessStatus, int type ) {
+        super( title, organiser, capacity, accessStatus );
+        this.type = type;
     }
-	
-	// methods
-	
-	String getType() {
-		return types[ type ];
-	}
-	
-	void setType( int type ) {
-		this.type = type;
-	}
+ 
+    // methods
+ 
+    String getType() {
+       return types[ type ];
+    }
+ 
+    void setType( int type ) {
+       this.type = type;
+    }
 
 }
