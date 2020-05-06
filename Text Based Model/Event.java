@@ -6,7 +6,7 @@ import java.awt.*;
  * @authors Cemhan Kaan Özaltan
  * @version 5.5.2020
  */
-public class Event {
+public abstract class Event {
 
    // properties
    private String[] privacySettings = { "Public Event", "Invite Only", "Private Event" }
@@ -21,10 +21,11 @@ public class Event {
    private int accessStatus;
 
    // constructors
-   public Event( String title, User organizer, Time duration, int capacity, Location location , int accessStatus ) {
+   public Event( String title, User organizer, Time duration, Date date, int capacity, Location location , int accessStatus ) {
       this.title = title;
       this.organizer = organizer;
       this.duration = duration;
+      this.date = date;
       this.capacity = capacity;
       this.location = location;
       this.accessStatus = accessStatus;
@@ -39,8 +40,6 @@ public class Event {
     */
    public void addUser( User u ) {
       participants.add(u);
-      setChanged();
-      notifyObservers();
    }
 
    /**
@@ -127,4 +126,6 @@ public class Event {
    public void setLocation( Location location ) {
       this.location = location;
    }
-}
+
+   public String toString();
+ }
