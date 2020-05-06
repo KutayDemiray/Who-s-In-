@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:background="#8fc7ff"
+    android:background="@drawable/welcomepage"
     tools:context=".StartActivity">
 
     <ImageView
@@ -15,7 +15,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="100dp"
         android:scaleType="centerInside"
-        android:src="@drawable/logo" />
+        android:src="@drawable/fulleyes" />
 
     <Button
         android:id="@+id/buttonLoginStart"

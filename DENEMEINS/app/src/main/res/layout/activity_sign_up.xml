@@ -8,13 +8,13 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="#8fc7ff"
+    android:background="@drawable/welcomepage"
     tools:context=".SignUpActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/fulleyes" />
 
     <TextView
         android:layout_width="match_parent"
