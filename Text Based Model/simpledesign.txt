@@ -19,7 +19,7 @@ friends list
 // methods
 get and set methods
 
-***Event***
+***Event*** KAAN
 
 // constants
 int PUBLIC_EVENT = 0
@@ -41,11 +41,12 @@ Location location
 int accessStatus
 
 // methods
-invite( User u )
-cancel()
+void invite( User u)
+void cancel()
 get and set methods
+void addParticipant( User u) 
 
-***SportsEvent*** extends Event
+***SportsEvent*** extends Event KUTAY
 
 // constants
 String[] types = { "Football" , "Basketball" , "Volleyball" , "Tennis" , "Video Games" }
@@ -57,62 +58,63 @@ Team[] teams;
 switchTeam( Team t )
 
 
-***BoardGameEvent*** extends Event
+***BoardGameEvent*** extends Event KAAN
 
 // constants
 String[] games = { "Party Games" , "Roleplay Games" , "Playing Cards" }
 
 
-***EventList*** extends Event
+
+
+***EventList*** extends Event KUTAY
 
 // properties
-ArrayList<Event> events;
+ArrayList<Event> events = new ArrayList<Event>();
 
 // methods
-search() -> multiple variants
-sort() -> multiple variants
+addEvent()
+search( @param) -> multiple variants
+sort( @param) -> multiple variants
 
 
-***Notification***
-
-// properties
-int type
 
 
-***Friend Request***
+
+***Notification*** Abstract Class
 
 // properties
 User sender;
 User receiver;
 
-//methods
-void send()
-void accept()
-void decline()
-boolean isAccepted()
-
-***Join Request***
-
-// properties
-User possibleParticipant;
-Event event;
-
 // methods
 void send()
 void accept()
 void decline()
 boolean isAccepted()
 
-***Invite***
+
+***Friend Request*** extends Notification YAĞIZ
+
+// properties
+
+
+//methods
+@Override toString
+
+***Join Request*** extends Notification YAĞIZ
+
+// properties
+Event e
+
+// methods
+@Override toString
+
+***Invite*** extends Notification YAĞIZ
 // properties
 Event event
-User invitedUser
 
 // methods
-void send()
-void accept()
-void decline()
-boolean isAccepted()
+@Override toString
 
 
 
