@@ -6,7 +6,7 @@ import java.awt.*;
  * @authors Cemhan Kaan Özaltan
  * @version 5.5.2020
  */
-public class Event extends Observable {
+public class Event {
 
    // properties
    private String[] privacySettings = { "Public Event", "Invite Only", "Private Event" }
@@ -69,14 +69,15 @@ public class Event extends Observable {
       this = null;
    }
 
+   /**
+    * Returns the string equivalent of the privacy setting
+    */
    public String getPrivacySetting() {
-      return accessStatus;
+      return privacySettings[ accessStatus ];
    }
 
    public void setPrivacySetting( int accessStatus ) {
       this.accessStatus = accessStatus;
-      setChanged();
-      notifyObservers();
    }
 
    public String getTitle() {
@@ -85,8 +86,6 @@ public class Event extends Observable {
 
    public void setTitle( String title ) {
       this.title = title;
-      setChanged();
-      notifyObservers();
    }
 
    public Time getDuration() {
@@ -95,8 +94,6 @@ public class Event extends Observable {
 
    public void setDuration( Time duration ) {
       this.duration = duration;
-      setChanged();
-      notifyObservers();
    }
 
    public Date getDate() {
@@ -105,8 +102,6 @@ public class Event extends Observable {
 
    public void setDate( Date date ) {
       this.date = date;
-      setChanged();
-      notifyObservers();
    }
 
    public String getDescription() {
@@ -115,8 +110,6 @@ public class Event extends Observable {
 
    public void setDescription( String description ) {
       this.description = description;
-      setChanged();
-      notifyObservers();
    }
 
    public int getCapacity() {
@@ -125,8 +118,6 @@ public class Event extends Observable {
 
    public void setCapacity( int capacity ) {
       this.capacity = capacity;
-      setChanged();
-      notifyObservers();
    }
 
    public Location getLocation() {
@@ -135,7 +126,5 @@ public class Event extends Observable {
 
    public void setLocation( Location location ) {
       this.location = location;
-      setChanged();
-      notifyObservers();
    }
 }
