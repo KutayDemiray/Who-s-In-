@@ -1,6 +1,6 @@
 package com.example.whosin.data;
 
-import com.example.whosin.data.model.LoggedInUser;
+import com.example.whosin.data.model.User;
 
 import java.io.IOException;
 
@@ -9,12 +9,12 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public Result<User> login(String username, String password) {
 
         try {
-            // TODO: handle loggedInUser authentication
-            LoggedInUser fakeUser =
-                    new LoggedInUser(
+            // TODO: handle user authentication
+            User fakeUser =
+                    new User(
                             java.util.UUID.randomUUID().toString(),
                             "Jane Doe");
             return new Result.Success<>(fakeUser);

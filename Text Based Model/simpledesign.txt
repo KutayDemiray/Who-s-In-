@@ -17,9 +17,7 @@ past events
 friends list
 
 // methods
-sendFriendRequest( User u )
-sendJoinRequest( Event e )
-
+get and set methods
 
 ***Event***
 
@@ -45,7 +43,7 @@ int accessStatus
 // methods
 invite( User u )
 cancel()
-
+get and set methods
 
 ***SportsEvent*** extends Event
 
@@ -79,6 +77,42 @@ sort() -> multiple variants
 
 // properties
 int type
+
+
+***Friend Request***
+
+// properties
+User sender;
+User receiver;
+
+//methods
+void send()
+void accept()
+void decline()
+boolean isAccepted()
+
+***Join Request***
+
+// properties
+User possibleParticipant;
+Event event;
+
+// methods
+void send()
+void accept()
+void decline()
+boolean isAccepted()
+
+***Invite***
+// properties
+Event event
+User invitedUser
+
+// methods
+void send()
+void accept()
+void decline()
+boolean isAccepted()
 
 
 
