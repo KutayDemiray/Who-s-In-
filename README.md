@@ -30,7 +30,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - [Yağız Yaşar         - 21902951](group/YagizYasar_log.md)
 
-- Cagatay Safak       - 21902730
+- [Cagatay Safak       - 21902730](group/CagataySafak_log.md)
 
 - Gülin Yılmaz        - 21903057
 
