@@ -5,8 +5,14 @@
  */
 public class BoardGameEvent extends Event {
 
+   // constants
+   static String[] gameTypes = { "Party Game", "Card Game", "Roleplay Game" };
+   
+   final int PARTY_GAME_EVENT = 0;
+   final int CARD_GAME_EVENT = 1;
+   final int ROLEPLAY_GAME_EVENT = 2;
+
    // properties
-   String[] gameTypes = { "Party Game", "Card Game", "Roleplay Game" };
    int gameType;
 
    // constructors
