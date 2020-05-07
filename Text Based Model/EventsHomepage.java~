@@ -5,32 +5,24 @@ import java.util.*;
  */
 public class EventsHomepage {
    
+   // properties
+   ;
    
    public static void main( String[] args ) {
-      
       EventList events = new EventList();
       Scanner scan = new Scanner( System.in );
       String name, nickname;
-      User current, bilkentEsports, bilkentYES, bilkentRavens;
+      User current;
       int option;
          
-      bilkentEsports = new User( "Denizhan Soyda?", "DS" );
-      bilkentYES = new User( "Arda Tavusbay", "bilkent cs slave" );
-      bilkentRavens = new User( "John Doe", "DOE" );
-       
-      events.addEvent( new SportsEvent( "Bilkent Esports 75th League of Legends Tournament", bilkentEsports, 80, Event.REQUEST_ONLY_EVENT, SportsEvent.VIDEO_GAMES_EVENT ) );
-      events.addEvent( new MeetingEvent( "YES Talks: Volvo CEO", bilkentYES, 200, Event.PUBLIC_EVENT ) );
-      events.addEvent( new SportsEvent( "Bilkent 2v2 CS:GO Tournament", bilkentEsports, 32, Event.PRIVATE_EVENT, SportsEvent.VIDEO_GAMES_EVENT ) );
-      events.addEvent( new BoardGameEvent( "Dungeons & Dragons Night", bilkentRavens, 5, Event.INVITE_ONLY_EVENT, BoardGameEvent.ROLEPLAY_GAME_EVENT ) );
-      
-      
+         
       System.out.println( "Welcome to Who's In, world's leading event organizing program!\nPlease sign up" );
       System.out.print( "Name: " );
       name = scan.nextLine();
       System.out.println();
       System.out.print( "Nickname: " );
       nickname = scan.nextLine();
-      
+
       current = new User( name, nickname );
       System.out.println( "Logged in as user " + current.getNickname() );
       
@@ -69,7 +61,7 @@ public class EventsHomepage {
             scan.nextLine();
             System.out.println();
             System.out.print( "Event subtype: ");
-            for ( String s : SportsEvent.gameTypes ) {
+            for ( String s : SportsEvent.types ) {
                System.out.print( s + " " );
             }
             System.out.println();
@@ -93,7 +85,7 @@ public class EventsHomepage {
          else if ( option == 3 ) {
             System.out.print( "Which one:" );
             String searchParam = scan.nextLine();
-            EventList tmp = new EventList( events.searchByKeywords( searchParam ) );
+            EventList tmp = new EventList( events.search( searchParam ) );
             
             
             Iterator iterator = tmp.iterator();

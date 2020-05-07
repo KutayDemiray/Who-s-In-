@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <drjava version="drjava-20190813-220051">
-  <project autorefresh="false" build="build/" main="" root="" work="">
+  <project autorefresh="false" build="build/" root="" work="">
     <createjar file=""/>
     <source>
-      <file active="true" name="EventsHomepage.java" package="" timestamp="07-May-2020 00:23:00">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
-      </file>
-      <file name="FriendRequest.java" package="" timestamp="06-May-2020 23:30:45">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
-      </file>
-      <file name="SportsEvent.java" package="" timestamp="06-May-2020 23:31:37">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
-      </file>
-      <file name="BoardGameEvent.java" package="" timestamp="06-May-2020 23:34:03">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
-      </file>
-      <file name="Event.java" package="" timestamp="07-May-2020 00:04:02">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
+      <file active="true" name="EventsHomepage.java" package="" timestamp="07-May-2020 13:54:44">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
       </file>
       <file name="User.java" package="" timestamp="07-May-2020 00:08:36">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
       </file>
-      <file name="MeetingEvent.java" package="" timestamp="07-May-2020 00:09:50">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
+      <file name="EventList.java" package="" timestamp="07-May-2020 13:40:33">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
       </file>
-      <file name="EventList.java" package="" timestamp="07-May-2020 00:19:13">
-        <select from="1052" to="1052"/>
-        <scroll column="244" row="0"/>
+      <file name="FriendRequest.java" package="" timestamp="07-May-2020 13:55:25">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
+      </file>
+      <file name="Event.java" package="" timestamp="07-May-2020 14:02:05">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
+      </file>
+      <file name="MeetingEvent.java" package="" timestamp="07-May-2020 14:03:04">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
+      </file>
+      <file name="BoardGameEvent.java" package="" timestamp="07-May-2020 14:04:19">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
+      </file>
+      <file name="SportsEvent.java" package="" timestamp="07-May-2020 14:05:04">
+        <select from="3036" to="3036"/>
+        <scroll column="117" row="0"/>
       </file>
     </source>
     <included/>
