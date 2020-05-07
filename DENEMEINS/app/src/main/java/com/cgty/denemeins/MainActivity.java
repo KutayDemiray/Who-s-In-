@@ -48,8 +48,11 @@ public class MainActivity extends AppCompatActivity
 
 package com.cgty.denemeins;
 
+        import android.content.Intent;
         import android.os.Bundle;
         import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
 
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +67,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button settingsButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener( navListener);
+
     }
+
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
