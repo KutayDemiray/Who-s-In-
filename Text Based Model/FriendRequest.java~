@@ -2,11 +2,16 @@
 
 /**
  * Class to handle friend requests as objects
- * @author Kutay Demiray
+ * @author Yağız Yaşar
  * @version 1.0
  */
-public class FriendRequest {
+public abstract class Notification {
 
-    // is this class necessary?
+    //properties
+    User sender;
+    User reciever;
+
+    //constructor
+    pubilc Notification
 
 }

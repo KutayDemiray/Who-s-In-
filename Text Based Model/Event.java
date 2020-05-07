@@ -63,8 +63,8 @@ public abstract class Event {
     * Invites the given user to the event
     * @param u the user to invite
     */
-   public void invite( User u ) {
-      // create notification for user u, check if accepted
+   public void invite( User receiver ) {
+      
    }
 
 
@@ -122,6 +122,7 @@ public abstract class Event {
    public User getOrganizer() {
       return organizer;
    }
+   
 
 //   public Location getLocation() {
 //      return location;
