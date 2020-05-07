@@ -114,7 +114,7 @@
         android:text="EDIT PROFILE" />
 
     <Button
-        android:id="@+id/button_settings"
+        android:id="@+id/sign_out"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_above="@+id/nickname"
