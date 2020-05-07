@@ -78,7 +78,7 @@ public class EventList implements Iterable {
    
    
    
-   // sort methods
+   // sort methods (using Comparator seems like the best idea for now)
    
    /**
     * Sorts 
