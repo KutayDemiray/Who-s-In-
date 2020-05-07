@@ -1,0 +1,17 @@
+
+
+/**
+ * Class to handle friend requests as objects
+ * @author Yağız Yaşar
+ * @version 1.0
+ */
+public abstract class Notification {
+
+    //properties
+    User sender;
+    User reciever;
+
+    //constructor
+    pubilc Notification
+
+}

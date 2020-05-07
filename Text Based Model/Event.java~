@@ -1,21 +1,15 @@
 import java.util.*;
+import java.awt.*;
 
 /**
  * Event
- * @authors Cemhan Kaan Özaltan, Kutay Demiray
+ * @authors Cemhan Kaan Özaltan
  * @version 5.5.2020
  */
 public abstract class Event {
-   
-   // constants
-   String[] privacySettings = { "Public Event", "Invite Only", "Request Only", "Private Event" };
-   
-   final static int PUBLIC_EVENT = 0;
-   final static int INVITE_ONLY_EVENT = 1;
-   final static int REQUEST_ONLY_EVENT = 2;
-   final static int PRIVATE_EVENT = 3;
-   
+
    // properties
+   private String[] privacySettings = { "Public Event", "Invite Only", "Private Event" };
    private String title;
    private User organizer;
    //private Time duration;
@@ -63,8 +57,8 @@ public abstract class Event {
     * Invites the given user to the event
     * @param u the user to invite
     */
-   public void invite( User receiver ) {
-      
+   public void invite( User u ) {
+      // create notification for user u, check if accepted
    }
 
 
@@ -122,7 +116,6 @@ public abstract class Event {
    public User getOrganizer() {
       return organizer;
    }
-   
 
 //   public Location getLocation() {
 //      return location;

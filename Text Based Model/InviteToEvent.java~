@@ -1,0 +1,22 @@
+/**
+ * Class to handle friend requests as objects
+ * @author Yağız Yaşar
+ * @version 1.0
+ */
+public class InviteToEvent extends Notification {
+
+    //properties
+    Event e;
+
+    //constructor
+   public InviteToEvent( User receiver, Event e){
+      super( e.getOrganizer(), receiver );
+      this.e = e;
+   }
+   
+   //methods
+   public String toString() {
+      return sender.getName() + "'s join request to " + e.getTitle() + " is sent.";
+   }
+}
+   

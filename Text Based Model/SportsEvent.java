@@ -7,7 +7,7 @@
 public class SportsEvent extends Event {
 
     // constants
-    final static String[] types = { "Football" , "Basketball" , "Volleyball" , "Video Games" , "Other"};
+    final static String[] gameTypes = { "Football" , "Basketball" , "Volleyball" , "Video Game" , "Other"};
 
     final static int FOOTBALL_EVENT = 0;
     final static int BASKETBALL_EVENT = 1;
@@ -16,22 +16,25 @@ public class SportsEvent extends Event {
     final static int OTHER_SPORTS_EVENT = 4;
 
     // properties
-    private int type;
+    private int gameType;
 
     // constructor
-    public SportsEvent( String title, User organiser, int capacity, int accessStatus, int type ) {
-        super( title, organiser, capacity, accessStatus );
-        this.type = type;
+    public SportsEvent( String title, User organizer, int capacity, int accessStatus, int gameType ) {
+        super( title, organizer, capacity, accessStatus );
+        this.gameType = gameType;
     }
  
     // methods
  
-    String getType() {
-       return types[ type ];
+    public String getGameType() {
+       return gameTypes[ gameType ];
     }
  
-    void setType( int type ) {
-       this.type = type;
+    public void setGameType( int gameType ) {
+       this.gameType = gameType;
     }
-
+    
+    public String toString() {
+       return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizer().getNickname() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
+    }
 }

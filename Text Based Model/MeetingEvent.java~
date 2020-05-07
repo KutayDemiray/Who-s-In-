@@ -1,7 +1,7 @@
 public class MeetingEvent extends Event {
    
    public String toString() {
-      return "Meeting Event Title: " + getTitle() + ", Organizer: " + getOrganizer() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting();
+      return getTitle() + ", " + getOrganizer() + ", " + getCapacity();
    }
    
    public MeetingEvent( String title, User organizer, int capacity, int accessStatus ) {
