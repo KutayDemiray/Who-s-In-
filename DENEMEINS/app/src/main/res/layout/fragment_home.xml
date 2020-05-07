@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@android:color/holo_blue_light"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
     >
 
     <TextView
@@ -13,24 +13,24 @@ android:background="@android:color/holo_blue_light"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="313dp"
-        android:layout_marginRight="313dp"
-        android:layout_marginBottom="121dp"
+        android:layout_marginEnd="321dp"
+        android:layout_marginRight="321dp"
+        android:layout_marginBottom="125dp"
         android:text="Sports"
         android:textSize="18dp" />
 
     <TextView
-    android:id="@+id/textView5"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginEnd="45dp"
-    android:layout_marginRight="45dp"
-    android:layout_marginBottom="125dp"
-    android:text="Other"
-    android:textSize="18dp"/>
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="125dp"
+        android:text="Other"
+        android:textSize="18dp"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -39,9 +39,9 @@ android:background="@android:color/holo_blue_light"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="204dp"
-        android:layout_marginRight="204dp"
-        android:layout_marginBottom="119dp"
+        android:layout_marginEnd="205dp"
+        android:layout_marginRight="205dp"
+        android:layout_marginBottom="125dp"
         android:text="Gatherings"
         android:textSize="18dp" />
 
@@ -54,130 +54,126 @@ android:background="@android:color/holo_blue_light"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="148dp"
         android:background="@drawable/other"
-        app:srcCompat="@drawable/ic_add_box_black_24dp" />
+        app:srcCompat="@drawable/ic_add_box_black_24dp"/>
 
     <ImageButton
-    android:id="@+id/imageButton3"
-    android:layout_width="75dp"
-    android:layout_height="75dp"
-    android:layout_alignParentBottom="true"
-    android:layout_marginEnd="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginBottom="150dp"
-    android:layout_toStartOf="@+id/imageButton4"
-    android:layout_toLeftOf="@+id/imageButton4"
-    app:srcCompat="@drawable/ic_games" />
+        android:id="@+id/imageButton3"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="150dp"
+        android:layout_toStartOf="@+id/imageButton4"
+        android:layout_toLeftOf="@+id/imageButton4"
+        app:srcCompat="@drawable/ic_games" />
 
-<ImageButton
-    android:id="@+id/imageButton2"
-    android:layout_width="75dp"
-    android:layout_height="75dp"
-    android:layout_alignParentBottom="true"
-    android:layout_marginEnd="15dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginBottom="150dp"
-    android:layout_toStartOf="@+id/imageButton3"
-    android:layout_toLeftOf="@+id/imageButton3"
-    app:srcCompat="@drawable/ic_group" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="150dp"
+        android:layout_toStartOf="@+id/imageButton3"
+        android:layout_toLeftOf="@+id/imageButton3"
+        app:srcCompat="@drawable/ic_group" />
 
     <TextView
-        android:layout_width="307dp"
-        android:layout_height="134dp"
-        android:layout_above="@+id/imageButton2"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="49dp"
-        android:layout_marginRight="49dp"
-        android:layout_marginBottom="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="250dp"
         android:text="ESN Bilkent Culture Night\n
         Event: French Night\n
         Place: 78th Dormitories\n
         DateTime: 14.02.2020\n
                          ooo"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/null"
-        android:layout_marginBottom="137dp">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="444dp">
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="325dp"
+        android:layout_width="341dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton2"
-        android:layout_below="@+id/null"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="-45dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
-        android:layout_marginBottom="277dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="440dp"
         android:hint="#events" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/null"
-        android:layout_alignTop="@+id/null"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="-261dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginRight="105dp"
-        android:layout_marginBottom="234dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginLeft="126dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginRight="127dp"
+        android:layout_marginBottom="410dp"
         android:text="Featured Events"
         android:textSize="20sp" />
 
     <ImageButton
-    android:id="@+id/imageButton"
-    android:layout_width="75dp"
-    android:layout_height="75dp"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginStart="34dp"
-    android:layout_marginLeft="34dp"
-    android:layout_marginEnd="17dp"
-    android:layout_marginRight="17dp"
-    android:layout_marginBottom="150dp"
-    android:layout_toStartOf="@+id/imageButton2"
-    android:layout_toLeftOf="@+id/imageButton2"
-    app:srcCompat="@drawable/ic_sports" />
+        android:id="@+id/imageButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="150dp"
+        android:layout_toStartOf="@+id/imageButton2"
+        android:layout_toLeftOf="@+id/imageButton2"
+        app:srcCompat="@drawable/ic_sports" />
 
-<Button
-    android:id="@+id/button"
-    android:layout_width="340dp"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginEnd="29dp"
-    android:layout_marginRight="29dp"
-    android:layout_marginBottom="63dp"
-    android:text="Create an Event"
-    android:backgroundTint="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginBottom="63dp"
+        android:text="Create an Event"
+        android:backgroundTint="@color/colorPrimaryDark"/>
 
-<TextView
-    android:id="@+id/textView3"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginEnd="110dp"
-    android:layout_marginRight="110dp"
-    android:layout_marginBottom="122dp"
-    android:text="Tabletop"
-    android:textSize="18dp"/>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="110dp"
+        android:layout_marginRight="110dp"
+        android:layout_marginBottom="122dp"
+        android:text="Tabletop"
+        android:textSize="18dp"/>
 
 </RelativeLayout>
