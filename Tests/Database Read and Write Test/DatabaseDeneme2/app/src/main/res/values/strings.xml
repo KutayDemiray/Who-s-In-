@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Database Deneme 2</string>
+
+    <array name="mainTypes">
+        <item>Meeting</item>
+        <item>Sports</item>
+        <item>Tabletop Games</item>
+    </array>
+
+    <array name="subType">
+        <item>Football</item>
+        <item>Basketball</item>
+        <item>Video games</item>
+        <item>Card Games</item>
+        <item>Board Games</item>
+    </array>
+</resources>
