@@ -1,5 +1,8 @@
 package com.cgty.denemeins;
 
+/**
+ * @author Çağatay Şafak
+ */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
