@@ -22,7 +22,11 @@ lab meeting with our TA on next week so I could have a better idea about the sub
 We gave our TA the design file we had prepared last week, he said he'd take a look and give feedback in a few days. Meanwhile, we continued working on the classes. I implemented a simple SportsEvent on my own, Cemhan and Yağız
 did the same for other few classes as well. I worked with Cemhan on the "EventList" class because it had most of the functionality. We discussed and wrote some of the class together, but I made some changes on my own after that.
 I found the "Comparator" interface which seemed like the best candidate for sorting by title, date etc. I also thought about making EventList have a linked list so only a fixed number of events could be displayed on screen and
-after that the user could go to the next page (node in the linked list), though I have not discussed this with others yet. 
+after that the user could go to the next page (node in the linked list), though I have not discussed this with others yet.
+
+At the weekend, I started learning more about Firebase's Realtime Database, and made a simple app that can read and write data in the database. Even though this was a very simple app, it was still somewhat difficult and
+took some time to get it right, so I suppose implementing these functions in the actual app will likely be way harder, but at least we now know how to do it. I uploaded this app into our GitHub repo as well, so that others
+can learn how it works without watching tons of low quality Youtube tutorials as I did myself.
 
 
 ****
