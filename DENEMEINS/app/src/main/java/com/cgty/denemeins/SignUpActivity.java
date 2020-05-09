@@ -1,5 +1,7 @@
 package com.cgty.denemeins;
-
+/**
+ * @author Çağatay Şafak
+ */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 

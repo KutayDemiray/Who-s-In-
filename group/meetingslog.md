@@ -81,11 +81,21 @@ This meeting was an unofficial one and on a short notice so not everyone could a
 development would continue on three branches: One group will work on a console based model and backend in general, one group will work on the external looks and graphics, and finally another group will work on implementing the
 work of previous two groups into an Android app. After some discussion, we shared the tasks as following:
 
-Back-end: Kutay, Yağız and Cemhan
+Back-end (Model classes and non-GUI design in general): Kutay, Yağız and Cemhan
 Front-end: Gökberk and Çağatay
 Graphical design: Ceyda and Gülin
 
 We decided that these subgroups would further share the work among themselves.
+
+****
+### Lab Meeting ~ (05.05.2020, ~3 hours)
+****
+**Present:** Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan, Gökberk Keskinkılıç, Ceyda Şahin, Gülin Yılmaz _**Absent:**_ Çağatay Şafak
+
+**Discussion:**
+We met in the morning before meeting with our TA and started working on our tasks. Kutay, Cemhan and Yağız met and discussed how model classes would work. ____ Gökberk, Ceyda and Gülin ____
+Then we met with our TA to talk about our progress. We shared our concerns about the quality of our current model design with him and he said he would take a look at it himself and give feedback to us later. Other than that,
+we explained what we had been doing on our own.
 
 ****
 ****

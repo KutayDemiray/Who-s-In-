@@ -4,7 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@android:color/holo_blue_bright">
+=======
+    android:background="@color/blue"
+    >
+>>>>>>> 2f09f14bad5ee08a4046662a22fad36d53e6adf8
 
     <TextView
         android:id="@+id/textView4"
@@ -150,7 +155,7 @@
         app:srcCompat="@drawable/ic_sports" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createEvent"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
