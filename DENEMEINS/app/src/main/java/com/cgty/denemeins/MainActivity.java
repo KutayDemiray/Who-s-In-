@@ -16,28 +16,36 @@ package com.cgty.denemeins;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private Button settingsButton;
+    //    private BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener( navListener);
-
+        
+//        bottomNavigationView = findViewById(R.id.bottomNav);
+//        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
     }
 
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener()
+    {
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
+        {
             Fragment selectedFragment = null;
 
-            switch ( menuItem.getItemId()){
+            switch ( menuItem.getItemId())
+            {
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment();
                     break;
