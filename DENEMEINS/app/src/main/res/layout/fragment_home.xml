@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
+    android:background="@color/blue"
     >
 
     <TextView
@@ -55,8 +55,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="148dp"
-        android:background="@drawable/other"
-        app:srcCompat="@drawable/ic_add_box_black_24dp"/>
+        android:src="@drawable/ic_add_box_black_24dp"/>
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -151,7 +150,7 @@
         app:srcCompat="@drawable/ic_sports" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createEvent"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

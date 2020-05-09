@@ -23,6 +23,9 @@ package com.cgty.denemeins;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
 
+/**
+ * @author Çağatay Şafak
+ */
 public class LoginActivity extends AppCompatActivity
 {
     EditText editTextEMail, editTextPassword;

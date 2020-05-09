@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@color/blue"
     >
 
     <Button
@@ -21,7 +21,7 @@
         android:layout_marginEnd="53dp"
         android:layout_marginRight="53dp"
         android:layout_marginBottom="40dp"
-        android:text="Scoreboard" />
+        android:text="SCOREBOARD" />
 
     <Button
         android:id="@+id/pastActivities"
@@ -37,18 +37,18 @@
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
         android:layout_marginBottom="28dp"
-        android:text="Past Activities" />
+        android:text="PAST ACTIVITIES" />
 
 
     <TextView
-        android:layout_width="231dp"
-        android:layout_height="558dp"
+        android:layout_width="372dp"
+        android:layout_height="577dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="85dp"
-        android:layout_marginRight="85dp"
-        android:layout_marginBottom="77dp" />
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="78dp" />
 
     <ImageView
         android:id="@+id/profilePicture"
@@ -70,15 +70,15 @@
 
     <TextView
         android:id="@+id/nickname"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="216dp"
+        android:layout_height="87dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="37dp"
-        android:layout_marginBottom="405dp"
-        android:text="nickname"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp"
+        android:layout_marginBottom="374dp"
+        android:text="pilser86"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
     <Button
@@ -95,7 +95,7 @@
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
         android:layout_marginBottom="24dp"
-        android:text="My Friends" />
+        android:text="MY FRIENDS" />
 
     <Button
         android:id="@+id/editProfile"
@@ -111,18 +111,18 @@
         android:layout_marginEnd="59dp"
         android:layout_marginRight="59dp"
         android:layout_marginBottom="25dp"
-        android:text="Edit Profile" />
+        android:text="EDIT PROFILE" />
 
     <Button
-        android:id="@+id/settings"
+        android:id="@+id/sign_out"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_above="@+id/nickname"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginBottom="96dp"
         android:text="S" />
 
     <com.google.android.material.textfield.TextInputLayout

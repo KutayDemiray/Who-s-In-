@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
+    android:background="@color/blue"
     >
 
     <TextView
@@ -12,9 +12,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="234dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="147dp"
         android:text="     ygzysr added you back as a friend\n
     balbaros sent you friend request\n
     ceyduh gave you 2 stars you\n
@@ -27,23 +27,23 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="149dp"
-        android:layout_marginRight="149dp"
-        android:layout_marginBottom="330dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="268dp"
         android:text="Friends"
         android:textSize="30sp" />
 
     <TextView
-        android:layout_width="385dp"
-        android:layout_height="93dp"
+        android:layout_width="380dp"
+        android:layout_height="127dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="379dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="345dp"
         android:text="    gokiberk invited you to a sports activity\n
-   cgtysfk invited you to play android studio\n
+   cgtysafak invited you to play android studio\n
    cemooo invited you to play csgo"
         android:textSize="18dp" />
 

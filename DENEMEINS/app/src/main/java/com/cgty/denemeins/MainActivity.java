@@ -1,18 +1,26 @@
 /**
+ * @author Gökberk Keskinkılıç
+ */
 package com.cgty.denemeins;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.Button;
 
-import android.os.Bundle;
-import android.view.MenuItem;
+        import androidx.annotation.NonNull;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.fragment.app.Fragment;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity
 {
-//    private BottomNavigationView bottomNavigationView;
+
+    private Button settingsButton;
+    //    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,65 +28,24 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener( navListener);
+        
 //        bottomNavigationView = findViewById(R.id.bottomNav);
 //        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod= new BottomNavigationView.OnNavigationItemSelectedListener()
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener()
     {
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item)
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
         {
-            switch( item.getItemId())
-            {
-                case R.id.navHome;
-
-
-
-            }
-
-            return false;
-        }
-    };
-
-}
-
- */
-
-
-package com.cgty.denemeins;
-
-        import android.os.Bundle;
-        import android.view.MenuItem;
-
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.fragment.app.Fragment;
-
-import com.cgty.denemeins.HomeFragment;
-import com.cgty.denemeins.NearbyFragment;
-import com.cgty.denemeins.NotificationsFragment;
-import com.cgty.denemeins.ProfileFragment;
-import com.cgty.denemeins.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener( navListener);
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment selectedFragment = null;
 
-            switch ( menuItem.getItemId()){
+            switch ( menuItem.getItemId())
+            {
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment();
                     break;

@@ -1,5 +1,7 @@
 package com.cgty.denemeins;
-
+/**
+ * @author Gökberk Keskinkılıç
+ */
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
