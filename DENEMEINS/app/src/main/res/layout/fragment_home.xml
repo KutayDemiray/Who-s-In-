@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
-    >
+    android:background="@android:color/holo_blue_bright">
 
     <TextView
         android:id="@+id/textView4"
@@ -30,7 +30,7 @@
         android:layout_marginRight="45dp"
         android:layout_marginBottom="125dp"
         android:text="Other"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -43,7 +43,7 @@
         android:layout_marginRight="205dp"
         android:layout_marginBottom="125dp"
         android:text="Gatherings"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -55,8 +55,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="148dp"
-        android:background="@drawable/other"
-        app:srcCompat="@drawable/ic_add_box_black_24dp"/>
+        android:src="@drawable/ic_add_box_black_24dp"/>
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -174,6 +173,6 @@
         android:layout_marginRight="110dp"
         android:layout_marginBottom="122dp"
         android:text="Tabletop"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
 </RelativeLayout>

@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity
                             else
                             {
                                 pdLogin.dismiss();
-                                Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Error! Wrong username or password.", Toast.LENGTH_LONG).show();
                             }
                         }
                     });

@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener( navListener);
-        
+
 //        bottomNavigationView = findViewById(R.id.bottomNav);
 //        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
     }
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
                     selectedFragment = new NotificationsFragment();
                     break;
                 case R.id.nav_profile:
-                    selectedFragment = new ProfileFragment();
+                    selectedFragment = new ProfileFragment();                                                          //part3 ekle (cagatay)
                     break;
             }
 
