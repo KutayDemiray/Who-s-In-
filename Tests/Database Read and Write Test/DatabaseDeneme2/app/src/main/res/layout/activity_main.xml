@@ -64,8 +64,8 @@
 
     <ListView
         android:id="@+id/listViewEvents"
-        android:layout_width="409dp"
-        android:layout_height="443dp"
+        android:layout_width="410dp"
+        android:layout_height="408dp"
         android:layout_marginTop="1dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonAddEvent"
         tools:layout_editor_absoluteX="1dp" />

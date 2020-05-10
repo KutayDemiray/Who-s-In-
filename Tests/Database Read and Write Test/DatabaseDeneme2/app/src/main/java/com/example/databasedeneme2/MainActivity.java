@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         String eventSubtype = spinnerEventSubtype.getSelectedItem().toString();
         int participants = Integer.parseInt( editTextParticipants.getText().toString() );
 
-        if (TextUtils.isEmpty( title ) || TextUtils.isEmpty( eventType) || TextUtils.isEmpty( eventSubtype ) || TextUtils.isEmpty( editTextParticipants.getText().toString() ) ) {
+        if ( TextUtils.isEmpty( title ) || TextUtils.isEmpty( eventType ) || TextUtils.isEmpty( eventSubtype ) || TextUtils.isEmpty( editTextParticipants.getText().toString() ) ) {
             Toast.makeText( this, "Please fill all fields", Toast.LENGTH_LONG).show();
         }
         else {
