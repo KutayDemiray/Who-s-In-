@@ -172,7 +172,6 @@
     <ImageButton
         android:id="@+id/buttonSports"
         style="?android:attr/borderlessButtonStyle"
-<<<<<<< HEAD
         android:layout_width="92dp"
         android:layout_height="66dp"
         android:layout_marginStart="51dp"
@@ -180,20 +179,6 @@
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
         android:layout_marginBottom="55dp"
-=======
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/buttonCreateEvent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="60dp"
-        android:layout_toStartOf="@+id/buttonGatherings"
-        android:layout_toLeftOf="@+id/buttonGatherings"
->>>>>>> 35f29dfd22ac795e7a75fa12eccee80cf138253c
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         android:tint="@color/white"
