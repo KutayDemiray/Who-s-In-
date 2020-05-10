@@ -101,7 +101,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/buttonGatherings"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -118,7 +118,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textOther"
         app:layout_constraintRight_toLeftOf="@+id/textOther"
         app:layout_constraintTop_toBottomOf="@+id/buttonTabletop"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"/>
 
     <ImageButton
         android:id="@+id/buttonOther"
@@ -134,7 +134,7 @@
         android:tint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageButton
         android:id="@+id/buttonTabletop"
@@ -149,7 +149,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
         app:layout_constraintEnd_toStartOf="@+id/buttonOther"
         app:layout_constraintRight_toLeftOf="@+id/buttonOther"
-        app:srcCompat="@drawable/tabletop" />
+        app:srcCompat="@drawable/tabletop"/>
 
     <ImageButton
         android:id="@+id/buttonGatherings"
@@ -165,7 +165,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
         app:layout_constraintEnd_toStartOf="@+id/buttonTabletop"
         app:layout_constraintRight_toLeftOf="@+id/buttonTabletop"
-        app:srcCompat="@drawable/forma1" />
+        app:srcCompat="@drawable/forma1"/>
 
     <ImageButton
         android:id="@+id/buttonSports"
@@ -185,7 +185,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/buttonGatherings"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/sports" />
+        app:srcCompat="@drawable/sports"/>
 
     <Button
         android:id="@+id/buttonCreateEvent"
@@ -207,7 +207,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
