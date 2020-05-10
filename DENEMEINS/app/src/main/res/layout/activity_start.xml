@@ -25,7 +25,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/button_background"
-        android:text="LOGIN"
+        android:text="LOG IN"
         android:textColor="@color/colorPrimary" />
 
     <Button

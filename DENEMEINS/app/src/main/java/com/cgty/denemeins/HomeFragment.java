@@ -21,7 +21,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button createEvent = (Button) view.findViewById(R.id.createEvent);
+        Button createEvent = (Button) view.findViewById(R.id.buttonCreateEvent);
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
