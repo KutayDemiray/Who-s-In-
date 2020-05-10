@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@color/darkBlue">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:id="@+id/homeSearchToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground">
+            android:background="@color/darkBlue">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -42,8 +42,10 @@
         android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonGatherings"
         android:layout_below="@+id/homeSearchBar"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="101dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -54,13 +56,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginLeft="67dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginRight="58dp"
-        android:layout_marginBottom="183dp"
-        android:layout_toStartOf="@+id/textGatherings"
-        android:layout_toLeftOf="@+id/textGatherings"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginBottom="185dp"
         android:text="Sports"
         android:textSize="12dp" />
 
@@ -80,13 +78,17 @@
     <TextView
         android:id="@+id/textGatherings"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginBottom="183dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="172dp"
         android:layout_toStartOf="@+id/textView3"
         android:layout_toLeftOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textSports"
+        android:layout_toRightOf="@+id/textSports"
         android:text="Gatherings"
         android:textSize="12dp" />
 
@@ -95,9 +97,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_marginBottom="182dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:layout_marginBottom="183dp"
         android:layout_toStartOf="@+id/textOther"
         android:layout_toLeftOf="@+id/textOther"
         android:text="Tabletop"
@@ -105,57 +107,66 @@
 
     <ImageButton
         android:id="@+id/buttonOther"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="71dp"
+        android:layout_height="63dp"
         android:layout_above="@+id/buttonCreateEvent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:layout_marginBottom="46dp"
-        android:src="@drawable/ic_add_box_black_24dp" />
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="52dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add"
+        android:tint="@color/white" />
 
     <ImageButton
         android:id="@+id/buttonTabletop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="78dp"
+        android:layout_height="69dp"
         android:layout_above="@+id/buttonCreateEvent"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="47dp"
         android:layout_toStartOf="@+id/buttonOther"
         android:layout_toLeftOf="@+id/buttonOther"
-        android:background="@color/blue"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/tabletop" />
 
     <ImageButton
         android:id="@+id/buttonGatherings"
-        android:layout_width="57dp"
-        android:layout_height="50dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="76dp"
+        android:layout_height="64dp"
         android:layout_above="@+id/buttonCreateEvent"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="56dp"
         android:layout_toStartOf="@+id/buttonTabletop"
         android:layout_toLeftOf="@+id/buttonTabletop"
-        android:background="@color/blue"
-        app:srcCompat="@drawable/ic_group" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/forma1" />
 
     <ImageButton
         android:id="@+id/buttonSports"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_above="@+id/buttonCreateEvent"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="53dp"
         android:layout_marginLeft="53dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
         android:layout_marginBottom="55dp"
-        android:layout_toStartOf="@+id/buttonGatherings"
-        android:layout_toLeftOf="@+id/buttonGatherings"
-        app:srcCompat="@drawable/ic_basketball234" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/sports" />
 
     <Button
         android:id="@+id/buttonCreateEvent"
@@ -166,17 +177,16 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="55dp"
         android:background="@color/orange"
         android:gravity="center"
         android:text="Create an Event"
         android:textColor="#fff"
         android:textSize="25dp" />
-
 
 
 </RelativeLayout>
