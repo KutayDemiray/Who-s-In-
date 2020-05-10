@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@color/darkBlue">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/homeSearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/homeSearchBar"
-        android:background="?android:attr/windowBackground">
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/homeSearchToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground">
+            android:background="@color/darkBlue">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -39,143 +42,171 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homeRecyclerViewSearch"
+        android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/homeSearchBar">
+        app:layout_constraintBottom_toTopOf="@+id/buttonGatherings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeSearchBar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/textSports"
-        android:layout_width="46dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginLeft="67dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginRight="58dp"
-        android:layout_marginBottom="183dp"
-        android:layout_toStartOf="@+id/textGatherings"
-        android:layout_toLeftOf="@+id/textGatherings"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="8dp"
         android:text="Sports"
-        android:textSize="12dp" />
+        android:fontFamily="@font/regular"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toStartOf="@+id/textGatherings"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSports"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textOther"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
-        android:layout_marginBottom="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:fontFamily="@font/regular"
         android:text="Other"
-        android:textSize="12dp" />
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOther"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textGatherings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginBottom="183dp"
-        android:layout_toStartOf="@+id/textView3"
-        android:layout_toLeftOf="@+id/textView3"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:fontFamily="@font/regular"
         android:text="Gatherings"
-        android:textSize="12dp" />
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGatherings"
+        app:layout_constraintVertical_bias="0.0"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_marginBottom="182dp"
-        android:layout_toStartOf="@+id/textOther"
-        android:layout_toLeftOf="@+id/textOther"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:fontFamily="@font/regular"
         android:text="Tabletop"
-        android:textSize="12dp" />
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toStartOf="@+id/textOther"
+        app:layout_constraintRight_toLeftOf="@+id/textOther"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTabletop"
+        app:layout_constraintVertical_bias="0.0"/>
 
     <ImageButton
         android:id="@+id/buttonOther"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/buttonCreateEvent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:layout_marginBottom="46dp"
-        android:src="@drawable/ic_add_box_black_24dp" />
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="54dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <ImageButton
         android:id="@+id/buttonTabletop"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/buttonCreateEvent"
-        android:layout_marginEnd="38dp"
-        android:layout_marginRight="38dp"
-        android:layout_marginBottom="48dp"
-        android:layout_toStartOf="@+id/buttonOther"
-        android:layout_toLeftOf="@+id/buttonOther"
-        android:background="@color/blue"
-        app:srcCompat="@drawable/tabletop" />
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginBottom="54dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonOther"
+        app:layout_constraintRight_toLeftOf="@+id/buttonOther"
+        app:srcCompat="@drawable/tabletop"/>
 
     <ImageButton
         android:id="@+id/buttonGatherings"
-        android:layout_width="57dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/buttonCreateEvent"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginBottom="48dp"
-        android:layout_toStartOf="@+id/buttonTabletop"
-        android:layout_toLeftOf="@+id/buttonTabletop"
-        android:background="@color/blue"
-        app:srcCompat="@drawable/ic_group" />
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_marginRight="-6dp"
+        android:layout_marginBottom="54dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonTabletop"
+        app:layout_constraintRight_toLeftOf="@+id/buttonTabletop"
+        app:srcCompat="@drawable/forma1"/>
 
     <ImageButton
         android:id="@+id/buttonSports"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_above="@+id/buttonCreateEvent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
         android:layout_marginBottom="55dp"
-        android:layout_toStartOf="@+id/buttonGatherings"
-        android:layout_toLeftOf="@+id/buttonGatherings"
-        app:srcCompat="@drawable/ic_basketball234" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonGatherings"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/buttonGatherings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/sports"/>
 
     <Button
         android:id="@+id/buttonCreateEvent"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="60dp"
-        android:background="@color/orange"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="55dp"
+
+        android:background="@drawable/mybutton"
         android:gravity="center"
         android:text="Create an Event"
+        android:fontFamily="@font/bold"
         android:textColor="#fff"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
