@@ -10,12 +10,26 @@
         <item>Tabletop Games</item>
     </array>
 
-    <array name="subType">
+    <array name="subTypesSports">
         <item>Football</item>
         <item>Basketball</item>
-        <item>Video games</item>
-        <item>Card Games</item>
+        <item>Volleyball</item>
+        <item>Video Games</item>
+        <item>Others</item>
+    </array>
+
+    <array name="subTypesTabletop">
         <item>Board Games</item>
+        <item>Card Games</item>
+        <item>Roleplay Games</item>
+        <item>Party Games</item>
+    </array>
+
+    <array name="privacySettings">
+        <item>Public</item>
+        <!-- TODO: Implement other settings later --> <!--<item>Invite Only</item>
+        <item>Request Only</item>
+        <item>Private</item> -->
     </array>
     <string name="title_activity_maps">Map</string>
 </resources>
