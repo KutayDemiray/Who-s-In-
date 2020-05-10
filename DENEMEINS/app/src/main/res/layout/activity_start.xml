@@ -25,6 +25,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/button_background"
+        android:fontFamily="@font/bold"
         android:text="LOG IN"
         android:textColor="@color/colorPrimary" />
 
@@ -37,6 +38,7 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/button_background"
         android:text="SIGN UP"
+        android:fontFamily="@font/bold"
         android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
