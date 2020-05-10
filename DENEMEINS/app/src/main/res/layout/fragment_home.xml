@@ -39,11 +39,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homeRecyclerView"
+        android:id="@+id/homeRecyclerViewSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/homeSearchBar"
-        android:layout_marginTop="0dp">
+        android:layout_below="@+id/homeSearchBar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
