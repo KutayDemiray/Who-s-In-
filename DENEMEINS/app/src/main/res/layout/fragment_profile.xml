@@ -1,135 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
-    >
+    android:background="@color/blue">
 
     <Button
         android:id="@+id/scoreboard"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginLeft="58dp"
         android:layout_marginEnd="53dp"
         android:layout_marginRight="53dp"
         android:layout_marginBottom="40dp"
-        android:text="SCOREBOARD" />
+        android:fontFamily="@font/bold"
+        android:text="SCOREBOARD"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/mybutton_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/pastActivities"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/scoreboard"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
-        android:layout_marginBottom="28dp"
-        android:text="PAST ACTIVITIES" />
-
-
-    <TextView
-        android:layout_width="372dp"
-        android:layout_height="577dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginBottom="78dp" />
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/bold"
+        android:text="PAST ACTIVITIES"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/mybutton_white"
+        app:layout_constraintBottom_toTopOf="@+id/scoreboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/profilePicture"
         android:layout_width="112dp"
         android:layout_height="116dp"
-        android:layout_above="@+id/editProfile"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="243dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginRight="22dp"
         android:layout_marginBottom="26dp"
-        android:layout_toStartOf="@+id/nickname"
-        android:layout_toLeftOf="@+id/nickname"
-        tools:srcCompat="@drawable/pp" />
+        app:layout_constraintBottom_toTopOf="@+id/editProfile"
+        app:layout_constraintEnd_toStartOf="@+id/nickname"
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/nickname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.763"
+        tools:srcCompat="@drawable/ic_eyes" />
 
     <TextView
         android:id="@+id/nickname"
         android:layout_width="216dp"
         android:layout_height="87dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="54dp"
-        android:layout_marginRight="54dp"
-        android:layout_marginBottom="374dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:fontFamily="@font/bold"
         android:text="pilser86"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="0.339" />
 
     <Button
         android:id="@+id/myFriends"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/pastActivities"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
         android:layout_marginBottom="24dp"
-        android:text="MY FRIENDS" />
+        android:fontFamily="@font/bold"
+        android:text="MY FRIENDS"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/mybutton_white"
+        app:layout_constraintBottom_toTopOf="@+id/pastActivities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/editProfile"
-        android:layout_width="296dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/myFriends"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
         android:layout_marginEnd="59dp"
         android:layout_marginRight="59dp"
-        android:layout_marginBottom="25dp"
-        android:text="EDIT PROFILE" />
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/bold"
+        android:text="EDIT PROFILE"
+        android:background="@drawable/mybutton_white"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/myFriends"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/sign_out"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_above="@+id/nickname"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_marginEnd="11dp"
         android:layout_marginRight="11dp"
         android:layout_marginBottom="96dp"
-        android:text="S" />
+        android:text="S"
+        app:layout_constraintBottom_toTopOf="@+id/nickname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </com.google.android.material.textfield.TextInputLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
