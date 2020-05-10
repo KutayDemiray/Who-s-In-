@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="#fff"
-        android:text="Login"
+        android:text="Log In"
         android:textSize="25sp"
         android:gravity="center"/>
 
@@ -58,7 +58,7 @@
         android:layout_marginRight="120dp"
         android:background="@drawable/button_background"
         android:gravity="center"
-        android:text="LOGIN"
+        android:text="LOG IN"
         android:textColor="#fff" />
 
     <TextView

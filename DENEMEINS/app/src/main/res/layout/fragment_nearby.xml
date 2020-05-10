@@ -8,10 +8,6 @@
     android:background="@color/blue"
     >
 
-<<<<<<< HEAD
-
-
-
 =======
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"

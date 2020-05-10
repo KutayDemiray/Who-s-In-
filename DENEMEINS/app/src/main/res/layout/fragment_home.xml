@@ -39,142 +39,144 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/homeSearchBar"
-        android:id="@+id/homeRecyclerView">
+        android:layout_marginTop="0dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:id="@+id/textSports"
+        android:layout_width="46dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="321dp"
-        android:layout_marginRight="321dp"
-        android:layout_marginBottom="125dp"
-        android:text="Sports"
-        android:textSize="18dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="45dp"
-        android:layout_marginRight="45dp"
-        android:layout_marginBottom="125dp"
-        android:text="Other"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="205dp"
-        android:layout_marginRight="205dp"
-        android:layout_marginBottom="125dp"
-        android:text="Gatherings"
-        android:textSize="18sp" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="148dp"
-        android:src="@drawable/ic_add_box_black_24dp"/>
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="150dp"
-        android:layout_toStartOf="@+id/imageButton4"
-        android:layout_toLeftOf="@+id/imageButton4"
-        app:srcCompat="@drawable/ic_games" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="150dp"
-        android:layout_toStartOf="@+id/imageButton3"
-        android:layout_toLeftOf="@+id/imageButton3"
-        app:srcCompat="@drawable/ic_group" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
-        android:layout_marginBottom="150dp"
-        android:layout_toStartOf="@+id/imageButton2"
-        android:layout_toLeftOf="@+id/imageButton2"
-        app:srcCompat="@drawable/ic_sports" />
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginRight="58dp"
+        android:layout_marginBottom="183dp"
+        android:layout_toStartOf="@+id/textGatherings"
+        android:layout_toLeftOf="@+id/textGatherings"
+        android:text="Sports"
+        android:textSize="12dp" />
 
-    <Button
-        android:id="@+id/createEvent"
-        android:layout_width="340dp"
+    <TextView
+        android:id="@+id/textOther"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginBottom="63dp"
-        android:text="Create an Event"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginBottom="180dp"
+        android:text="Other"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/textGatherings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="183dp"
+        android:layout_toStartOf="@+id/textView3"
+        android:layout_toLeftOf="@+id/textView3"
+        android:text="Gatherings"
+        android:textSize="12dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginBottom="182dp"
+        android:layout_toStartOf="@+id/textOther"
+        android:layout_toLeftOf="@+id/textOther"
+        android:text="Tabletop"
+        android:textSize="12dp" />
+
+    <ImageButton
+        android:id="@+id/buttonOther"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/buttonCreateEvent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_marginBottom="46dp"
+        android:src="@drawable/ic_add_box_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/buttonTabletop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/buttonCreateEvent"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginBottom="48dp"
+        android:layout_toStartOf="@+id/buttonOther"
+        android:layout_toLeftOf="@+id/buttonOther"
+        android:background="@color/blue"
+        app:srcCompat="@drawable/tabletop" />
+
+    <ImageButton
+        android:id="@+id/buttonGatherings"
+        android:layout_width="57dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/buttonCreateEvent"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="48dp"
+        android:layout_toStartOf="@+id/buttonTabletop"
+        android:layout_toLeftOf="@+id/buttonTabletop"
+        android:background="@color/blue"
+        app:srcCompat="@drawable/ic_group" />
+
+    <ImageButton
+        android:id="@+id/buttonSports"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_above="@+id/buttonCreateEvent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="53dp"
+        android:layout_marginLeft="53dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginBottom="55dp"
+        android:layout_toStartOf="@+id/buttonGatherings"
+        android:layout_toLeftOf="@+id/buttonGatherings"
+        app:srcCompat="@drawable/ic_basketball234" />
+
+    <Button
+        android:id="@+id/buttonCreateEvent"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="110dp"
-        android:layout_marginRight="110dp"
-        android:layout_marginBottom="122dp"
-        android:text="Tabletop"
-        android:textSize="18sp"/>
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/orange"
+        android:gravity="center"
+        android:text="Create an Event"
+        android:textColor="#fff"
+        android:textSize="25dp" />
+
+
 
 </RelativeLayout>

@@ -1,7 +1,4 @@
 package com.cgty.denemeins;
-/**
- * @author Gökberk Keskinkılıç
- */
 
 import androidx.appcompat.app.AppCompatActivity;
 
