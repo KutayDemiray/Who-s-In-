@@ -8,11 +8,6 @@
     android:background="@color/blue"
     >
 
-<<<<<<< HEAD
-
-
-
-=======
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="wrap_content"
@@ -44,5 +39,5 @@
         android:layout_marginEnd="79dp"
         android:layout_marginRight="79dp"
         android:layout_marginBottom="118dp" />
->>>>>>> 2f09f14bad5ee08a4046662a22fad36d53e6adf8
+
 </RelativeLayout>
