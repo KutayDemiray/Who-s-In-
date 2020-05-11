@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkBlue"
     tools:context=".CreateEvent">
+
 
     <EditText
         android:id="@+id/editTextTitle"
@@ -13,8 +15,10 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Title"
+        android:textSize="18sp"
+        android:fontFamily="@font/bold"
+        android:theme="@style/MyEditTextTheme"
         android:inputType="textPersonName"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toBottomOf="@+id/textViewPageTitle"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -23,8 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/bold"
         android:text="  Create New Event"
-        android:textSize="20sp"
+        android:textColor="@color/blue"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
@@ -33,10 +39,14 @@
         android:id="@+id/editTextLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
+        android:fontFamily="@font/bold"
         android:hint="Location"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:theme="@style/MyEditTextTheme"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -47,7 +57,10 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Capacity"
+        android:theme="@style/MyEditTextTheme"
+        android:fontFamily="@font/bold"
         android:inputType="number"
+        android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/editTextLocation"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -57,6 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:entries="@array/mainTypes"
+
+        android:fontFamily="@font/bold"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -82,19 +97,23 @@
 
     <Button
         android:id="@+id/buttonAddEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="301dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="88dp"
         android:text="Add Event"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/white"
+        android:background="@drawable/mybutton_borders"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="55dp" />
 
     <Spinner
         android:id="@+id/spinnerPrivacy"
         android:layout_width="match_parent"
-        android:layout_height="24dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:entries="@array/privacySettings"
+        android:fontFamily="@font/bold"
         app:layout_constraintTop_toBottomOf="@+id/spinnerMainType"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -105,7 +124,10 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Date"
+        android:theme="@style/MyEditTextTheme"
+        android:fontFamily="@font/bold"
         android:inputType="date"
+        android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/editTextCapacity"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -116,6 +138,9 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Description"
+        android:theme="@style/MyEditTextTheme"
+        android:textSize="18sp"
+        android:fontFamily="@font/bold"
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
         tools:layout_editor_absoluteX="0dp" />

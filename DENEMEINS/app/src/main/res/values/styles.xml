@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/darkBlue</item>
         <item name="colorPrimaryDark">@color/darkBlue</item>
         <item name="colorAccent">@color/darkBlue</item>
+
+        <item name="android:textColorHint">@color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,5 +18,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyEditTextTheme">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
 
 </resources>
