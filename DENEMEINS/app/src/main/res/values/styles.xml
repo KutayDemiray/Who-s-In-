@@ -5,7 +5,13 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/darkBlue</item>
+<<<<<<< HEAD
         <item name="colorAccent">@color/blue</item>
+=======
+        <item name="colorAccent">@color/darkBlue</item>
+
+        <item name="android:textColorHint">@color/white</item>
+>>>>>>> fe8a1dc37ca097d2d23e8a802764803d7025439a
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,5 +22,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyEditTextTheme">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
 
 </resources>
