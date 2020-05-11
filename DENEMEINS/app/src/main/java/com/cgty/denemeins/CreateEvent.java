@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,7 +27,7 @@ import java.util.Date;
  * @author Kutay Demiray
  * @version 1.0
  */
-public class CreateEvent extends AppCompatActivity {
+public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     // database reference
     DatabaseReference eventsReference = FirebaseDatabase.getInstance().getReference("Events" );
@@ -54,11 +55,32 @@ public class CreateEvent extends AppCompatActivity {
         spinnerTabletopType = findViewById( R.id.spinnerTabletopType );
         spinnerPrivacy = findViewById( R.id.spinnerPrivacy );
         buttonAddEvent = findViewById( R.id.buttonAddEvent );
+        //ceydas 11.05.20
+        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(
+                this,
+                R.array.mainTypes,
+                R.layout.colored_spinner_layout);
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+
+        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
+                this,
+                R.array.privacySettings,
+                R.layout.colored_spinner_layout);
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+
+        spinnerMainType.setAdapter(adapter1);
+        spinnerMainType.setOnItemSelectedListener(this);
+
+        spinnerPrivacy.setAdapter(adapter2);
+        spinnerPrivacy.setOnItemSelectedListener(this);
+
 
         initializeInputs();
 
         // set main type spinner listener so that only relevant subtype spinner is revealed
         spinnerMainType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // TODO
+
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if ( spinnerMainType.getSelectedItem().toString().equals( "Meeting") ) {
@@ -76,7 +98,7 @@ public class CreateEvent extends AppCompatActivity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
@@ -193,5 +215,14 @@ public class CreateEvent extends AppCompatActivity {
         spinnerSportsType.setSelection(0);
         spinnerTabletopType.setSelection(0);
         spinnerPrivacy.setSelection(0);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView , View view, int i, long l) {
+        Toast.makeText(this, adapterView.getSelectedItem().toString() , Toast.LENGTH_SHORT).show();
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
