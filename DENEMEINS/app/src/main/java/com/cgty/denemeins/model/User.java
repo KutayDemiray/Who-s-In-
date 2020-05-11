@@ -1,4 +1,4 @@
-package com.cgty.denemeins.model;
+package com.cgty.denemeins.Model;
 
 public class User
 {
