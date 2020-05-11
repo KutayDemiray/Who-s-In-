@@ -81,7 +81,7 @@ public class CreateEvent extends AppCompatActivity {
         });
 
         // set button click listener
-        buttonAddEvent.setOnClickListener(new View.OnClickListener() {
+        buttonAddEvent.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 addEvent();

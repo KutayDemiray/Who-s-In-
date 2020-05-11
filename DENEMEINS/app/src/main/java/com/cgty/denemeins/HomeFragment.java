@@ -1,6 +1,6 @@
 package com.cgty.denemeins;
 /**
- * @author Gökberk Keskinkılıç
+ * @authors Gökberk Keskinkılıç, Cagatay Safak
  */
 
 import android.content.Intent;
@@ -13,8 +13,18 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment
+{
+    //properties
+    private RecyclerView recyclerView;
+
+    public HomeFragment()
+    {
+        //required empty public constructor.
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
