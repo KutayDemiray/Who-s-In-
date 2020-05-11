@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="You are new to [Who's In?] Sign Up!"
+        android:text="You still don't know Who's In?\nSign up now!"
         android:fontFamily="@font/regular"
         android:textColor="@color/white"
         android:textSize="18sp"
