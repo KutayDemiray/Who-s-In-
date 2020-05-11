@@ -25,16 +25,16 @@
             android:text="username"
             android:maxLines="1"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/textViewNameSurnameElement"
-            android:text="Name Surname"
+            android:id="@+id/textViewAgeElement"
+            android:text="Age"
             android:maxLines="1"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -4,7 +4,7 @@ public class User
 {
     private String id;
     private String username;
-    private String nameSurname;
+    private String age;
     private String ppURL;
     private String bio;
 
@@ -13,11 +13,11 @@ public class User
 
     }
 
-    public User( String id, String username, String nameSurname, String ppURL, String bio)
+    public User( String id, String username, String age, String ppURL, String bio)
     {
         this.id = id;
         this.username = username;
-        this.nameSurname = nameSurname;
+        this.age = age;
         this.ppURL = ppURL;
         this.bio = bio;
     }
@@ -42,14 +42,14 @@ public class User
         this.username = username;
     }
 
-    public String getNameSurname()
+    public String getAge()
     {
-        return nameSurname;
+        return age;
     }
 
-    public void setNameSurname(String nameSurname)
+    public void setAge(String age)
     {
-        this.nameSurname = nameSurname;
+        this.age = age;
     }
 
     public String getPpURL() {
