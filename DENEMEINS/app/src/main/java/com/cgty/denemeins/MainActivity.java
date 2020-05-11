@@ -16,6 +16,10 @@ package com.cgty.denemeins;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * @author Gökberk Keskinkılıç
+ */
+
 public class MainActivity extends AppCompatActivity
 {
 

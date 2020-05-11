@@ -80,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity
                     Toast.makeText(SignUpActivity.this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
 
                 else if( strPassword.length() < 5)
-                    Toast.makeText(SignUpActivity.this, "Password must be at least 6 characterss long.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT).show();
 
                 else
                     signUp( strUsername, strAge, strEmail, strPassword);

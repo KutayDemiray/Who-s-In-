@@ -3,15 +3,18 @@ package com.cgty.denemeins;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.cgty.denemeins.model.Event;
+import com.cgty.denemeins.Model.Event;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -84,8 +87,45 @@ public class CreateEvent extends AppCompatActivity {
         buttonAddEvent.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                addEvent();
-                initializeInputs();
+
+                String strTitle = editTextTitle.getText().toString();
+                String strLocation = editTextLocation.getText().toString();
+                String strCapacity = editTextCapacity.getText().toString();  //maybe int...? String is easier anyways
+                String strDate = editTextDate.getText().toString();
+
+                if ( TextUtils.isEmpty(strTitle) || TextUtils.isEmpty(strLocation) || TextUtils.isEmpty(strCapacity) || TextUtils.isEmpty(strDate)) {
+                    Toast.makeText(CreateEvent.this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
+                }
+
+                else if ( strCapacity.equals( "1")){
+                    Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
+                }
+
+                else if ( ( strCapacity.equals( "42")) && ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum") ) ){
+                    addEvent();
+                    initializeInputs();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! THE BEST COMBINATION :) ", Toast.LENGTH_LONG).show();
+                }
+
+                else if ( strCapacity.equals( "42")){
+                    addEvent();
+                    initializeInputs();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nKONYA IS THE MEANING OF THE LIFE :) ", Toast.LENGTH_LONG).show();
+                }
+
+                else if ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum")){
+                    addEvent();
+                    initializeInputs();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nJourney to the Center of the Earth, HUH? :) ", Toast.LENGTH_LONG).show();
+                }
+
+                else{
+                    addEvent();
+                    initializeInputs();
+                    Toast.makeText(CreateEvent.this, "You have created an event successfully.", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
 
@@ -110,7 +150,7 @@ public class CreateEvent extends AppCompatActivity {
         String mainType = spinnerMainType.getSelectedItem().toString();
 
         // format date
-        SimpleDateFormat dateFormat = new SimpleDateFormat( "dd/MM/YYYY");
+        SimpleDateFormat dateFormat = new SimpleDateFormat( "DD/MM/YYYY");
         Date date = new Date();
         try {
             date = dateFormat.parse( editTextDate.getText().toString() );

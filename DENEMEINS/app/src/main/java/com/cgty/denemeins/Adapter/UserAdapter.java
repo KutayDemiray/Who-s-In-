@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cgty.denemeins.ProfileFragment;
-import com.cgty.denemeins.model.User;
+import com.cgty.denemeins.Model.User;
 import com.cgty.denemeins.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -60,7 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
 
         holder.addFriend.setVisibility(View.VISIBLE);
         holder.username.setText(user.getUsername());
-        holder.nameSurname.setText(user.getNameSurname());
+        holder.age.setText(user.getAge());
         Glide.with(mContext).load(user.getPpURL()).into(holder.pp);
         follows(user.getId(), holder.addFriend);
 
@@ -78,15 +78,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
                 editor.putString("profileid", user.getId());
                 editor.apply();
 
-                ( (FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                ( (FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();   //fragment to fragment (cagatay)
             }
         });
 
-        holder.addFriend.setOnClickListener(new View.OnClickListener() {
+        holder.addFriend.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v)
             {
-                if (holder.addFriend.getText("   Follow   "))
+                if ( holder.addFriend.getText().toString().equals("   Follow   "))
                 {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid()).child("following").child(user.getId()).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId()).child("followers").child(firebaseUser.getUid()).setValue(true);
@@ -110,7 +111,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
     {
         public ImageView pp;
         public TextView username;
-        public TextView nameSurname;
+        public TextView age;
         public Button addFriend;
 
         public ViewHolder(@NonNull View itemView)
@@ -119,7 +120,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
 
             pp = itemView.findViewById(R.id.profilePictureElement);
             username = itemView.findViewById(R.id.textViewUsernameElement);
-            nameSurname = itemView.findViewById(R.id.textViewNameSurnameElement);
+            age = itemView.findViewById(R.id.textViewAgeElement);
             addFriend = itemView.findViewById(R.id.buttonAddFriendElement);
         }
     }
@@ -135,7 +136,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
                 if (dataSnapshot.child(userID).exists())
-                    button.setText("   Followed   ");                  //3 bosluk koymayinca cirkin gozukuyor button (cagatay)
+                    button.setText("   Followed   ");                  //3 bosluk koymayinca cirkin gozukuyor button (cagatay) (bunu degistirmeyin!!!!!!!!)
                 else
                     button.setText("   Follow   ");                    //3 bosluk koymayinca cirkin gozukuyor button (cagatay) (bunu degistirmeyin!!!!!!!!)
             }
