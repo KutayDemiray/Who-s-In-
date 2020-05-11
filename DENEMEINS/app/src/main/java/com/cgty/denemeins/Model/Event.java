@@ -1,4 +1,4 @@
-package com.cgty.denemeins.model;
+package com.cgty.denemeins.Model;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

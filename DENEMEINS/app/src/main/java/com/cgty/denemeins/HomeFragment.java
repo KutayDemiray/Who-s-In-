@@ -1,7 +1,4 @@
 package com.cgty.denemeins;
-/**
- * @author Gökberk Keskinkılıç
- */
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +10,10 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+/**
+ * @author Gökberk Keskinkılıç
+ */
 
 public class HomeFragment extends Fragment {
     @Nullable
