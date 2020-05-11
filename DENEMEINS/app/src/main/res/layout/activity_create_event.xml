@@ -99,13 +99,17 @@
         android:id="@+id/buttonAddEvent"
         android:layout_width="301dp"
         android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="88dp"
-        android:text="Add Event"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/white"
         android:background="@drawable/mybutton_borders"
+        android:fontFamily="@font/bold"
+        android:text="Add Event"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="55dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPrivacy"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
         android:id="@+id/spinnerPrivacy"
