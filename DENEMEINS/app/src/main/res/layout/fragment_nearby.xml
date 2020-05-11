@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/blue">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -21,21 +22,39 @@
             android:layout_height="wrap_content"
             android:background="@color/darkBlue">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search_dark" />
+            <RelativeLayout
 
-            <EditText
-                android:id="@+id/nearbySearchEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@android:color/transparent"
-                android:hint="Search..." />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search_dark" />
+
+                <EditText
+                    android:id="@+id/nearbySearchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Search Users..." />
+
+                <Button
+                    android:background="@drawable/mybutton"
+                    android:id="@+id/nearbyButtonEvents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:text="EVENTS"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -51,13 +70,6 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="404dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
