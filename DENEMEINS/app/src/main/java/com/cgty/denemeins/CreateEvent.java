@@ -1,9 +1,6 @@
 package com.cgty.denemeins;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,13 +11,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cgty.denemeins.Model.Event;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -111,18 +109,21 @@ public class CreateEvent extends AppCompatActivity {
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nKONYA IS THE MEANING OF THE LIFE :) ", Toast.LENGTH_LONG).show();
+                    finish();
                 }
 
                 else if ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum")){
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nJourney to the Center of the Earth, HUH? :) ", Toast.LENGTH_LONG).show();
+                    finish();
                 }
 
                 else{
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "You have created an event successfully.", Toast.LENGTH_SHORT).show();
+                    finish();
 
                 }
 
@@ -173,7 +174,6 @@ public class CreateEvent extends AppCompatActivity {
         Event event = new Event( eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting );
 
         ref.child("Events").child( eventId ).setValue( event );
-
     }
 
     /**
