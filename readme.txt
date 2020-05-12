@@ -10,3 +10,6 @@ database. Barebones GUI structure for many screens of the app exist, but they wi
 Kutay Demiray:
 Made the event creation page, contributed in design of most model classes, especially event related ones (though subclasses Kutay had done such as MeetingEvent or SportsEvent were not
 implemented for now and instead Event, which would be abstract in the final product, was used for all event types temporarily).
+
+Gökberk Keskinkılıç:
+Implemented the core structure of the android application, such as button and fragment navigations. Added sign out feature. 
