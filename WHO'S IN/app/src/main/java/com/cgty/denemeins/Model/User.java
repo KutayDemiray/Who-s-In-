@@ -1,5 +1,10 @@
 package com.cgty.denemeins.Model;
 
+/**
+ * User model class
+ * @author Cagatay Safak
+ * @version 1.0
+ */
 public class User
 {
     private String id;
