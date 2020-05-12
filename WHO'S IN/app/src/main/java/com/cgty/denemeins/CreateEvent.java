@@ -141,6 +141,13 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                     finish();
                 }
 
+                else if ( strLocation.equalsIgnoreCase("quiquendone") ){
+                    addEvent();
+                    initializeInputs();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nIS THAT DR. OX? ", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
                 else{
                     addEvent();
                     initializeInputs();
