@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_goz"/>
+        android:icon="@drawable/gozlerim"/>
 
     <item
         android:id="@+id/nav_nearby"
-        android:icon="@drawable/ic_compass"/>
+        android:icon="@drawable/compass"/>
 
     <item
         android:id="@+id/nav_notifications"
-        android:icon="@drawable/ic_notifications"/>
+        android:icon="@drawable/zil"/>
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_profile"/>
+        android:icon="@drawable/profile"/>
 
 </menu>
