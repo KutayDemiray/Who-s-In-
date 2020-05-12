@@ -28,5 +28,11 @@ At the weekend, I started learning more about Firebase's Realtime Database, and 
 took some time to get it right, so I suppose implementing these functions in the actual app will likely be way harder, but at least we now know how to do it. I uploaded this app into our GitHub repo as well, so that others
 can learn how it works without watching tons of low quality Youtube tutorials as I did myself.
 
+This week was busy in general and I had multiple assignments in other courses, so development was slower.
+
+### ~ 11.05.2020 - 17.05.2020 ~
+Development is still slow due to other assignments, but at least I've made some progress. I implemented the create event feature I had designed earlier into the actual app, and I'll get around to implementing the event
+list sometime this week as well. 
+
 
 ****
