@@ -21,6 +21,9 @@ Cemhan Kaan Özaltan:
 Created the model classes such as Event and BoardGameEvent and contributed to the rest of the classes such as EventList. Some of the model classes are not currently used and the Event
 class is being used for all event types for now despite initially being abstract and branching to several subclasses.
 
+Ceyda Şahin:
+UI design & xml & Adobe Photoshop, XD
+
 Gülin Yılmaz:
 Contributed in the UI design with Ceyda. Wrote xml codes for some AdobeXD projects to use them in the Android Studio. 
 
