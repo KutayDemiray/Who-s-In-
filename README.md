@@ -26,7 +26,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - [Cemhan Kaan Özaltan - 21902695](group/CemhanKaanOzaltan_log.md)
 
-- Ceyda Şahin         - 21903448
+- [Ceyda Şahin         - 21903448](group/CeydaSahin_log.md)
 
 - [Yağız Yaşar         - 21902951](group/YagizYasar_log.md)
 
