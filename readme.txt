@@ -8,5 +8,7 @@ Users can sign up, sign in and follow others (though any functionality related t
 database. Barebones GUI structure for many screens of the app exist, but they will be improved upon later.
 
 Kutay Demiray:
-Made the event creation page, contributed in design of most model classes, especially event related ones (though subclasses Kutay had done such as MeetingEvent or SportsEvent were not
-implemented for now and instead Event, which would be abstract in the final product, was used for all event types temporarily).
+Made the event creation page, contributed in design of most model classes, especially event related ones (though subclasses Kutay had done such as MeetingEvent or SportsEvent were not implemented for now and instead Event, which would be abstract in the final product, was used for all event types temporarily).
+
+Yağız Yaşar:
+Contributed in some of the model classes and to understand the database implementing into code better, made Notification and its subclasses, which won't be implemented in the code because we use database instead, in Text Based Model. 
