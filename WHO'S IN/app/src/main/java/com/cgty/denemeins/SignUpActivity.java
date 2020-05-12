@@ -1,6 +1,9 @@
 package com.cgty.denemeins;
+
 /**
- * @author Çağatay Şafak
+ * Login Activity class
+ * @author Cagatay Safak
+ * @version 1.0
  */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

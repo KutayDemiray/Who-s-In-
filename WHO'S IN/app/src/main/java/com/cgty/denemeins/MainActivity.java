@@ -17,9 +17,10 @@ package com.cgty.denemeins;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
- * @author Gökberk Keskinkılıç
+ * Main Activity class which has Home, Nearby, Notifications and Profile Fragments.
+ * @author Cagatay Safak
+ * @version 1.0
  */
-
 public class MainActivity extends AppCompatActivity
 {
 

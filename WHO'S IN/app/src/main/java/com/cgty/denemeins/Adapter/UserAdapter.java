@@ -27,6 +27,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+/**
+ * User Adapter class. Used in User Search in Nearby Fragment.
+ * @author Cagatay Safak
+ * @version 1.0
+ */
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
 {
     //properties

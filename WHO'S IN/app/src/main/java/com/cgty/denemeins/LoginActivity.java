@@ -24,7 +24,9 @@ package com.cgty.denemeins;
         import com.google.firebase.database.ValueEventListener;
 
 /**
- * @author Çağatay Şafak
+ * Login Activity class
+ * @author Cagatay Safak
+ * @version 1.0
  */
 public class LoginActivity extends AppCompatActivity
 {
