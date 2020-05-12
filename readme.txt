@@ -11,13 +11,11 @@ Kutay Demiray:
 Made the event creation page, contributed in design of most model classes, especially event related ones like EventList
 (though some subclasses Kutay had done such as MeetingEvent or SportsEvent were not implemented for now and instead Event, which would be abstract in the final product, was used for all event types temporarily).
 
-
 Gökberk Keskinkılıç:
 Implemented the core structure of android app, such as button and fragment navigation. Created first xml files for basic UI of the app. Added sign out feature.
 
 Yağız Yaşar:
 Contributed in some of the model classes and to understand the database implementing into code better, made Notification and its subclasses, which won't be implemented in the code because we use database instead, in Text Based Model.
-
 
 Cemhan Kaan Özaltan:
 Created the model classes such as Event and BoardGameEvent and contributed to the rest of the classes such as EventList. Some of the model classes are not currently used and the Event
@@ -26,3 +24,6 @@ class is being used for all event types for now despite initially being abstract
 Gülin Yılmaz:
 Contributed in the UI design with Ceyda. Wrote xml codes for some AdobeXD projects to use them in the Android Studio. 
 
+Cagatay Safak:
+Created the project, made the Firebase Authentication, Storage and Realtime Database. Made the log in and signup system.
+Designed the Nearby Activity and added a user search function. Made user following system. Created Adapters to search users.
