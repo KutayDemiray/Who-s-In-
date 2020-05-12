@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         spinnerPrivacy = findViewById( R.id.spinnerPrivacy );
         buttonAddEvent = findViewById( R.id.buttonAddEvent );
         //ceydas 11.05.20
+
         ArrayAdapter adapter1 = ArrayAdapter.createFromResource(
                 this,
                 R.array.mainTypes,
@@ -72,11 +74,31 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 R.layout.colored_spinner_layout);
         adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
 
+        ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
+                this,
+                R.array.subTypesSports,
+                R.layout.colored_spinner_layout);
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+
+        ArrayAdapter adapter4 = ArrayAdapter.createFromResource(
+                this,
+                R.array.subTypesTabletop,
+                R.layout.colored_spinner_layout);
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+
         spinnerMainType.setAdapter(adapter1);
         spinnerMainType.setOnItemSelectedListener(this);
 
         spinnerPrivacy.setAdapter(adapter2);
         spinnerPrivacy.setOnItemSelectedListener(this);
+
+        spinnerSportsType.setAdapter(adapter3);
+        spinnerSportsType.setOnItemSelectedListener(this);
+
+        spinnerTabletopType.setAdapter(adapter4);
+        spinnerTabletopType.setOnItemSelectedListener(this);
+
+
 
 
         initializeInputs();
