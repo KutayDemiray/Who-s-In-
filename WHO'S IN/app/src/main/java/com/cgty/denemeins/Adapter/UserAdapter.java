@@ -141,9 +141,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
                 if (dataSnapshot.child(userID).exists())
-                    button.setText("   Followed   ");                  //3 bosluk koymayinca cirkin gozukuyor button (cagatay) (bunu degistirmeyin!!!!!!!!)
+                    button.setText("   Followed   ");                  //3 bosluk koymayinca button cirkin gozukuyor (cagatay) (bunu degistirmeyin!!!!!!!!)
                 else
-                    button.setText("   Follow   ");                    //3 bosluk koymayinca cirkin gozukuyor button (cagatay) (bunu degistirmeyin!!!!!!!!)
+                    button.setText("   Follow   ");                    //3 bosluk koymayinca button cirkin gozukuyor (cagatay) (bunu degistirmeyin!!!!!!!!)
             }
 
             @Override

@@ -1,6 +1,7 @@
 package com.cgty.denemeins;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -106,16 +110,19 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         // set button click listener
         buttonAddEvent.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                //cagatay
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                String currentDate = sdf.format(new Date());
 
                 String strTitle = editTextTitle.getText().toString();
                 String strLocation = editTextLocation.getText().toString();
                 String strCapacity = editTextCapacity.getText().toString();  //maybe int...? String is easier anyways
                 String strDate = editTextDate.getText().toString();
 
-                if ( TextUtils.isEmpty(strTitle) || TextUtils.isEmpty(strLocation) || TextUtils.isEmpty(strCapacity) || TextUtils.isEmpty(strDate)) {
+                if ( TextUtils.isEmpty(strTitle) || TextUtils.isEmpty(strLocation) || TextUtils.isEmpty(strCapacity) || TextUtils.isEmpty(strDate))
                     Toast.makeText(CreateEvent.this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
-                }
 
                 else if ( strCapacity.equals( "1")){
                     Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
