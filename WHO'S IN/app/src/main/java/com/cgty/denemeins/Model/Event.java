@@ -56,6 +56,7 @@ public class Event {
         this.location = location;
         this.privacySetting = privacySetting;
         participants = new ArrayList<>();
+        addParticipant( this, getOrganizerId() );
     }
 
     // methods
