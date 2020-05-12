@@ -11,6 +11,9 @@ Kutay Demiray:
 Made the event creation page, contributed in design of most model classes, especially event related ones (though subclasses Kutay had done such as MeetingEvent or SportsEvent were not
 implemented for now and instead Event, which would be abstract in the final product, was used for all event types temporarily).
 
+Gökberk Keskinkılıç:
+Implemented the core structure of the android application, such as button and fragment navigations. Added sign out feature.
+
 Cemhan Kaan Özaltan:
-Created the model classes such as Event and BoardGameEvent and contributed to the rest of the model classes such as EventList. Some of the model classes are not currently used and the Event
-class is being used for all event types for now despite initially being abstract and branching to several subclasses.
+Created the model classes such as Event and BoardGameEvent and contributed to the rest of the model classes such as EventList. Some of the model classes are not currently used and the
+Event class is being used for all event types for now despite initially being abstract and branching to several subclasses.
