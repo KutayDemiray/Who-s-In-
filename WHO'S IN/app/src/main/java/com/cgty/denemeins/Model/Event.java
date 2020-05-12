@@ -22,7 +22,7 @@ public class Event {
     private int capacity;
     private String mainType;
     private String subType;
-    private ArrayList<String> participants = new ArrayList<>();
+    private ArrayList<String> participants;
     private String location;
     private String privacySetting;
 
@@ -55,6 +55,7 @@ public class Event {
         this.subType = subType;
         this.location = location;
         this.privacySetting = privacySetting;
+        participants = new ArrayList<>();
     }
 
     // methods
