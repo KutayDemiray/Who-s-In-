@@ -14,7 +14,7 @@
     android:layout_alignParentBottom="true"
     app:menu="@menu/bottom_navigation"
     app:itemIconTint="@color/darkBlue"
-    app:itemIconSize="55dp"
+    app:itemIconSize="65dp"
     android:background="@color/white"/>
 
     <FrameLayout
