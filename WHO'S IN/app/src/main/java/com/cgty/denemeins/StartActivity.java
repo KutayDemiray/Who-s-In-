@@ -1,8 +1,5 @@
 package com.cgty.denemeins;
 
-/**
- * @author Çağatay Şafak
- */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +11,9 @@ import android.widget.EditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * @author Çağatay Şafak
+ */
 public class StartActivity extends AppCompatActivity
 {
     Button buttonStartLogin;

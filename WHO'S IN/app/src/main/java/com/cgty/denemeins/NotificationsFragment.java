@@ -1,4 +1,5 @@
 package com.cgty.denemeins;
+
 /**
  * @author Gökberk Keskinkılıç
  */

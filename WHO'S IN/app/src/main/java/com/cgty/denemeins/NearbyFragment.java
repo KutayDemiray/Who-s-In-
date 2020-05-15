@@ -1,7 +1,4 @@
 package com.cgty.denemeins;
-/**
- * @author Gökberk Keskinkılıç, Cagatay Safak
- */
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Gökberk Keskinkılıç, Cagatay Safak
+ */
 public class NearbyFragment extends Fragment
 {
 
