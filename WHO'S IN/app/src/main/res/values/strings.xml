@@ -32,4 +32,5 @@
         <item>Private</item> -->
     </array>
     <string name="title_activity_maps">Map</string>
+    <string name="notifications">Notifications</string>
 </resources>

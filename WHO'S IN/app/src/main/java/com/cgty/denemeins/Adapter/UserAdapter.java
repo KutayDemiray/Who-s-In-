@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -152,5 +153,24 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
 
             }
         });
+    }
+
+
+    /**
+     * Adding notification feature to follow
+     * @author Yağız Yaşar
+     * @param userId
+     */
+    private void addNotifications( String userId) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userId);
+
+            HashMap<String, Object> hashMap = new HashMap();
+            hashMap.put( "userId", firebaseUser.getUid() );
+            hashMap.put( "text", " started following you." );
+            hashMap.put( "eventId", "");
+            hashMap.put( "isEvent", false);
+
+        reference.push().setValue( hashMap);
+
     }
 }

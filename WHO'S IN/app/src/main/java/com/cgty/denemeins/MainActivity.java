@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
                     selectedFragment = new NotificationsFragment();
                     break;
                 case R.id.nav_profile:
-                    selectedFragment = new ProfileFragment();                                                          //part3 ekle (cagatay)
+                    selectedFragment = new ProfileFragment();
                     break;
             }
 
