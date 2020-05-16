@@ -1,62 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    >
+    tools:context="NotificationsFragment">
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="391dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginRight="-1dp"
-        android:layout_marginBottom="147dp"
-        android:text="     ygzysr added you back as a friend\n
-    balbaros sent you friend request\n
-    ceyduh gave you 2 stars you\n
-    gulooo gave you 10 stars"
-        android:textSize="18dp" />
-
-    <TextView
+        android:id="@+id/textNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
-        android:layout_marginBottom="268dp"
-        android:text="Friends"
-        android:textSize="30sp" />
+        android:text="@string/notifications"
+        android:textColor="@color/darkBlue"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:layout_width="380dp"
-        android:layout_height="127dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="345dp"
-        android:text="    gokiberk invited you to a sports activity\n
-   cgtysafak invited you to play android studio\n
-   cemooo invited you to play csgo"
-        android:textSize="18dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="158dp"
-        android:layout_marginRight="158dp"
-        android:layout_marginBottom="483dp"
-        android:text="Events"
-        android:textSize="30dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textNotifications" />
 
 </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
