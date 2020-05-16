@@ -1,20 +1,24 @@
 package com.cgty.denemeins;
 
-
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Create event page (View + Controller)
+ * Create event page
  * @author Kutay Demiray
  * @version 1.0
  */
@@ -39,7 +43,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference("Users");
     // views
     TextView textViewPageTitle;
-    EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextDescription;
+    EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextTime, editTextDescription;
     Spinner spinnerMainType, spinnerSportsType, spinnerTabletopType, spinnerPrivacy;
     Button buttonAddEvent;
 
@@ -54,6 +58,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         editTextLocation = findViewById( R.id.editTextLocation );
         editTextCapacity = findViewById( R.id.editTextCapacity);
         editTextDate = findViewById( R.id.editTextDate );
+        editTextTime = findViewById( R.id.editTextTime );
         editTextDescription = findViewById( R.id.editTextDescription );
         spinnerMainType = findViewById( R.id.spinnerMainType );
         spinnerSportsType = findViewById( R.id.spinnerSportsType );
@@ -102,6 +107,60 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
 
         initializeInputs();
+
+        // set calendar popup to select date
+        editTextDate.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog;
+                int day, month, year;
+
+                // get and store today's date in int variables
+                final Calendar calendar = Calendar.getInstance();
+                day = calendar.get( Calendar.DAY_OF_MONTH );
+                month = calendar.get( Calendar.MONTH );
+                year = calendar.get( Calendar.YEAR );
+
+                // date picker dialog
+
+                // initialize datePickerDialog with today's date
+                datePickerDialog = new DatePickerDialog(CreateEvent.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                editTextDate.setText( dayOfMonth + "/" + (month + 1) + "/" + year );
+                            }
+                        }, year, month, day );
+                datePickerDialog.show();
+
+            }
+        });
+
+        // set hour spinner popup to select the time
+        editTextTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog;
+                int hour, minute;
+
+                // get and store the hour and minute at the moment
+                final Calendar calendar = Calendar.getInstance();
+                hour = calendar.get( Calendar.HOUR_OF_DAY );
+                minute = calendar.get( Calendar.MINUTE );
+
+                // time picker dialog
+
+                // initialize timePickerDialog with current time
+                timePickerDialog = new TimePickerDialog(CreateEvent.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        editTextTime.setText( hourOfDay + ":" + minute );
+                    }
+                }, hour, minute, true );
+                timePickerDialog.show();
+
+            }
+        });
 
         // set main type spinner listener so that only relevant subtype spinner is revealed
         spinnerMainType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // TODO

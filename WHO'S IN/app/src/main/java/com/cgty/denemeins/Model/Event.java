@@ -35,7 +35,7 @@ public class Event {
 
     /**
      * Regular constructor to use in parts of program code
-     * @param eventId Event's ID (get an unique one from database, don't create one yourself)
+     * @param eventId Event's ID (IMPORTANT: get an unique one from database by pushing a new node, don't create your id by yourself)
      * @param title Event Title
      * @param organizerId Organizer's User ID
      * @param date Date

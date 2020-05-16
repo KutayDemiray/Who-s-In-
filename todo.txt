@@ -1,0 +1,3 @@
+-Make sure that the EditText for date works properly. Currently, users can input
+multiple "/"s between the numbers and these numbers aren't checked for validity
+(month can be greater than 12, for example)
