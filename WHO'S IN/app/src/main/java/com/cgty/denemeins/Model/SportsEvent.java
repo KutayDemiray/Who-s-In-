@@ -1,7 +1,5 @@
 package com.cgty.denemeins.Model;
 
-import java.util.Date;
-
 /**
  * Sports event class, includes sports types
  * @author Kutay Demiray
@@ -20,15 +18,11 @@ public class SportsEvent extends Event {
     // properties
     private int gameType;
 
-    public SportsEvent() {
-    }
-
-    public SportsEvent(String eventId, String title, String organizerId, Date date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType) {
-        super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
+    // constructor
+    public SportsEvent( String title, User organizer, int capacity, int accessStatus, int gameType ) {
+        super( title, organizer, capacity, accessStatus );
         this.gameType = gameType;
     }
-
-    // constructor
 
     // methods
 
@@ -41,7 +35,7 @@ public class SportsEvent extends Event {
     }
 
     public String toString() {
-        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
+        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId().getNickname() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
     }
 
 }
