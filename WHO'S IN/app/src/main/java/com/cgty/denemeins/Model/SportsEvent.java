@@ -19,10 +19,12 @@ public class SportsEvent extends Event {
     private int gameType;
 
     // constructor
+    /**
     public SportsEvent( String title, User organizer, int capacity, int accessStatus, int gameType ) {
         super( title, organizer, capacity, accessStatus );
         this.gameType = gameType;
     }
+     */
 
     // methods
 
@@ -34,8 +36,9 @@ public class SportsEvent extends Event {
         this.gameType = gameType;
     }
 
+    /**
     public String toString() {
-        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId().getNickname() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
+        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId().getUsername() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
     }
-
+    */
 }
