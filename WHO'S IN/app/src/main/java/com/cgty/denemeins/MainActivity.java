@@ -3,7 +3,7 @@
  */
 package com.cgty.denemeins;
 
-        import android.content.Intent;
+import android.content.Intent;
         import android.os.Bundle;
         import android.view.MenuItem;
         import android.view.View;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
                     selectedFragment = new NotificationsFragment();
                     break;
                 case R.id.nav_profile:
-                    selectedFragment = new ProfileFragment();                                                          //part3 ekle (cagatay)
+                    selectedFragment = new ProfileFragment();
                     break;
             }
 

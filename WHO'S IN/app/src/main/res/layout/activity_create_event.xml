@@ -69,7 +69,7 @@
         android:spinnerMode="dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:entries="@array/mainTypes"
 
         android:fontFamily="@font/bold"
@@ -99,28 +99,25 @@
     <Button
         android:id="@+id/buttonAddEvent"
         android:layout_width="301dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="88dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/mybutton_borders"
         android:fontFamily="@font/bold"
         android:text="Add Event"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPrivacy"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerPrivacy"
         android:spinnerMode="dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
         android:entries="@array/privacySettings"
         android:fontFamily="@font/bold"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerMainType"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSportsType"
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
@@ -129,25 +126,38 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Date"
-        android:theme="@style/MyEditTextTheme"
+        android:focusable="false"
         android:fontFamily="@font/bold"
-        android:inputType="date"
+        android:hint="Date"
         android:textSize="18sp"
+        android:theme="@style/MyEditTextTheme"
         app:layout_constraintTop_toBottomOf="@+id/editTextCapacity"
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:fontFamily="@font/bold"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        android:theme="@style/MyEditTextTheme"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTime"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Description"
-        android:theme="@style/MyEditTextTheme"
-        android:textSize="18sp"
-        android:fontFamily="@font/bold"
+        android:hint="Time"
+        android:focusable="false"
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
         tools:layout_editor_absoluteX="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

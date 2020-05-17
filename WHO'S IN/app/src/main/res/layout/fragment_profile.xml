@@ -12,14 +12,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
-        android:layout_marginLeft="58dp"
         android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/mybutton_white"
         android:fontFamily="@font/bold"
         android:text="SCOREBOARD"
         android:textColor="@color/colorPrimary"
-        android:background="@drawable/mybutton_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,97 +29,78 @@
         android:id="@+id/pastActivities"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/mybutton_white"
         android:fontFamily="@font/bold"
         android:text="PAST ACTIVITIES"
         android:textColor="@color/colorPrimary"
-        android:background="@drawable/mybutton_white"
         app:layout_constraintBottom_toTopOf="@+id/scoreboard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/scoreboard"
+        app:layout_constraintStart_toStartOf="@+id/scoreboard" />
 
     <ImageView
         android:id="@+id/profilePicture"
         android:layout_width="112dp"
         android:layout_height="116dp"
-        android:layout_marginTop="88dp"
+        app:layout_constraintBottom_toBottomOf="@+id/nickname"
         app:layout_constraintEnd_toStartOf="@+id/nickname"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/nickname"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         tools:srcCompat="@drawable/ic_eyes" />
 
     <TextView
         android:id="@+id/nickname"
         android:layout_width="216dp"
         android:layout_height="87dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
         android:fontFamily="@font/bold"
         android:text="pilser86"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_out" />
 
     <Button
         android:id="@+id/myFriends"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginRight="55dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/mybutton_white"
         android:fontFamily="@font/bold"
         android:text="MY FRIENDS"
         android:textColor="@color/colorPrimary"
-        android:background="@drawable/mybutton_white"
         app:layout_constraintBottom_toTopOf="@+id/pastActivities"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/pastActivities"
+        app:layout_constraintStart_toStartOf="@+id/pastActivities" />
 
     <Button
         android:id="@+id/editProfile"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/mybutton_white"
         android:fontFamily="@font/bold"
         android:text="EDIT PROFILE"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/myFriends"
+        app:layout_constraintEnd_toEndOf="@+id/myFriends"
+        app:layout_constraintStart_toStartOf="@+id/myFriends" />
 
     <Button
         android:id="@+id/sign_out"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="56dp"
         android:text="S"
         app:layout_constraintBottom_toTopOf="@+id/nickname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -134,10 +113,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="226dp">
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/nickname"
+        tools:layout_editor_absoluteX="1dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

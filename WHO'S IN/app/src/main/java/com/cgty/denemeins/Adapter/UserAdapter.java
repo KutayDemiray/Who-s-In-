@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -96,6 +97,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
                 {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid()).child("following").child(user.getId()).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId()).child("followers").child(firebaseUser.getUid()).setValue(true);
+                    addNotifications( user.getId() );
                 }
                 else
                 {
@@ -129,7 +131,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
             addFriend = itemView.findViewById(R.id.buttonAddFriendElement);
         }
     }
-
+    /**
+     * Returns current date (as in calendar) in DD/MM/YYYY format as String
+     * @param userID for a final String which declares ID of the user, button for a final Button which declares the Follow / Unfollow button.
+     */
     private void follows(final String userID, final Button button)
     {
         DatabaseReference followPath;
@@ -152,5 +157,24 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
 
             }
         });
+    }
+
+
+    /**
+     * Adding notification feature to follow
+     * @author Yağız Yaşar
+     * @param userId
+     */
+    private void addNotifications( String userId) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userId);
+
+            HashMap<String, Object> hashMap = new HashMap();
+            hashMap.put( "userId", firebaseUser.getUid() );
+            hashMap.put( "text", " started following you." );
+            hashMap.put( "eventId", "");
+            hashMap.put( "isEvent", false);
+
+        reference.push().setValue( hashMap);
+
     }
 }

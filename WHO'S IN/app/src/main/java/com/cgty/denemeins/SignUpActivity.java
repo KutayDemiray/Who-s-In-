@@ -1,10 +1,5 @@
 package com.cgty.denemeins;
 
-/**
- * Login Activity class
- * @author Cagatay Safak
- * @version 1.0
- */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,6 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+/**
+ * Login Activity class
+ * @author Cagatay Safak
+ * @version 1.0
+ */
 public class SignUpActivity extends AppCompatActivity
 {
     //variables

@@ -1,25 +1,30 @@
 package com.cgty.denemeins;
 
-
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cgty.denemeins.Model.Event;
+import com.cgty.denemeins.Model.EventDate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,18 +33,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Create event page (View + Controller)
+ * Create event page
+ * TODO create event under SportsEvent, MeetingEvent or TabletopEvent node depending on spinner output
  * @author Kutay Demiray
  * @version 1.0
  */
-public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    // database reference
-    DatabaseReference eventsReference = FirebaseDatabase.getInstance().getReference("Events" );
-    DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference("Users");
     // views
     TextView textViewPageTitle;
-    EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextDescription;
+    EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextTime, editTextDescription;
     Spinner spinnerMainType, spinnerSportsType, spinnerTabletopType, spinnerPrivacy;
     Button buttonAddEvent;
 
@@ -54,6 +57,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         editTextLocation = findViewById( R.id.editTextLocation );
         editTextCapacity = findViewById( R.id.editTextCapacity);
         editTextDate = findViewById( R.id.editTextDate );
+        editTextTime = findViewById( R.id.editTextTime );
         editTextDescription = findViewById( R.id.editTextDescription );
         spinnerMainType = findViewById( R.id.spinnerMainType );
         spinnerSportsType = findViewById( R.id.spinnerSportsType );
@@ -98,14 +102,64 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         spinnerTabletopType.setAdapter(adapter4);
         spinnerTabletopType.setOnItemSelectedListener(this);
 
-
-
-
         initializeInputs();
 
-        // set main type spinner listener so that only relevant subtype spinner is revealed
-        spinnerMainType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // TODO
+        // set calendar popup to select date
+        editTextDate.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog;
+                int day, month, year;
 
+                // get and store today's date in int variables
+                final Calendar calendar = Calendar.getInstance();
+                day = calendar.get( Calendar.DAY_OF_MONTH );
+                month = calendar.get( Calendar.MONTH );
+                year = calendar.get( Calendar.YEAR );
+
+                // date picker dialog
+
+                // initialize datePickerDialog with today's date
+                datePickerDialog = new DatePickerDialog(CreateEvent.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                editTextDate.setText( String.format( "%02d/%02d/%04d", dayOfMonth, month, year ) );
+                            }
+                        }, year, month, day );
+                datePickerDialog.show();
+
+            }
+        });
+
+        // set hour spinner popup to select the time
+        editTextTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog;
+                int hour, minute;
+
+                // get and store the hour and minute at the moment
+                final Calendar calendar = Calendar.getInstance();
+                hour = calendar.get( Calendar.HOUR_OF_DAY );
+                minute = calendar.get( Calendar.MINUTE );
+
+                // time picker dialog
+
+                // initialize timePickerDialog with current time
+                timePickerDialog = new TimePickerDialog(CreateEvent.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        editTextTime.setText( String.format( "%02d:%02d", hourOfDay, minute) );
+                    }
+                }, hour, minute, true );
+                timePickerDialog.show();
+
+            }
+        });
+
+        // add main type spinner a listener so that only relevant subtype spinner is revealed
+        spinnerMainType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -124,9 +178,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected( AdapterView<?> adapterView ) {}
         });
 
         // set button click listener
@@ -149,7 +201,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 else if ( strCapacity.equals( "1")){
                     Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
                 }
-
+                // TODO else if selected date is past, raise toast with error message
                 else if ( ( strCapacity.equals( "42")) && ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum") ) ){
                     addEvent();
                     initializeInputs();
@@ -205,16 +257,10 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         String location = editTextLocation.getText().toString().trim();
         int capacity = Integer.parseInt( editTextCapacity.getText().toString() );
         String privacySetting = spinnerPrivacy.getSelectedItem().toString();
-        String subType = ""; // if event main type is not meeting, it will be changed accordingly later
+        String subType = ""; // TODO
         String mainType = spinnerMainType.getSelectedItem().toString();
 
-        // format date
-        SimpleDateFormat dateFormat = new SimpleDateFormat( "DD/MM/YYYY");
-        Date date = new Date();
-        try {
-            date = dateFormat.parse( editTextDate.getText().toString() );
-        }
-        catch ( Exception ParseException ) {}
+        EventDate date = new EventDate( editTextDate.getText().toString(), editTextTime.getText().toString() );
 
         String description = editTextDescription.getText().toString();
 
@@ -226,7 +272,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             subType = spinnerTabletopType.getSelectedItem().toString();
         }
         else if ( spinnerMainType.getSelectedItem().toString().equals( "Meeting") ) {
-            subType = "";
+            subType = ""; // TODO
         }
 
         Event event = new Event( eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting );
@@ -242,9 +288,10 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         editTextLocation.setText("");
         editTextCapacity.setText("");
 
-        // set default date as today's date
-        Date date = new Date();
-        editTextDate.setText( date.getDate() + "/" + ( date.getMonth() + 1 ) + "/" + ( date.getYear() + 1900 ) );
+        // set default date and time as current
+        EventDate date = EventDate.getInstance();
+        editTextDate.setText( date.getCalendarDate() );
+        editTextTime.setText( date.getTimeOfDay() );
 
         editTextDescription.setText("");
         spinnerMainType.setSelection(0);
