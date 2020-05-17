@@ -16,6 +16,7 @@ public class Notification {
    private String userId;
    private int    notificationType;
 
+
    public Notification(String id, String text, String eventId, String userId, int notificationType) {
       this.id = id;
       this.text = text;
