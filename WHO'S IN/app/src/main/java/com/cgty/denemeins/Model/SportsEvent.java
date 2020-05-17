@@ -41,8 +41,6 @@ public class SportsEvent extends Event {
      * @param privacySetting
      * @param gameType
      */
-
-
     public SportsEvent(String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType) {
         super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
 
@@ -59,12 +57,9 @@ public class SportsEvent extends Event {
         this.gameType = gameType;
     }
 
+    /**
     public String toString() {
-
-        return "Board Game Event Title: " + getTitle() + ", Organizer: "  + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
-        // TODO: Organizer nickname getter method
-
-        
-    }
+        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId().getNickname() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
+    }*/
 
 }
