@@ -1,7 +1,6 @@
 package com.cgty.denemeins.Adapter;
 
 import com.bumptech.glide.Glide;
-import com.cgty.denemeins.Model.Event;
 import com.cgty.denemeins.Model.User;
 import com.cgty.denemeins.ProfileFragment;
 import com.cgty.denemeins.R;
@@ -25,6 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import static com.cgty.denemeins.R.id.notificationText;
+
+/**
+ * A class for notification adapter
+ * @author Yağız Yaşar
+ * @version 17.5.20
+ */
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
    private Context mContext;
@@ -35,17 +41,30 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
       this.mNotification = mNotification;
    }
 
+   /**
+    * Returns the number of notifications
+    */
    @Override
    public int getItemCount() {
       return mNotification.size();
    }
 
-
+   /**
+    * Creates the notification element which will be held in the notification fragment
+    * @param viewGroup - group of the view
+    * @param i - type of view
+    * @return view of notification
+    */
    public ViewHolder onCreateViewHolder( @NonNull ViewGroup viewGroup, int i) {
       View view = LayoutInflater.from(mContext).inflate(R.layout.notification_element,viewGroup, false);
       return new NotificationAdapter.ViewHolder( view);
    }
 
+   /**
+    * Sets texts and images for notification, and click listeners
+    * @param viewHolder
+    * @param i
+    */
    public void onBindViewHolder( @NonNull ViewHolder viewHolder, int i) {
 
       final Notification notification = mNotification.get(i);
@@ -80,12 +99,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
       }
 
-
-      public int getElementCount() {
-         return mNotification.size();
-      }
-
-
+   /**
+    * Helper method for onBindViewHolder that initializes some of the variables and creates
+    * event listeners for it
+    * @param imageView
+    * @param username
+    * @param userId
+    */
    private void getUserInfo(final ImageView imageView, final TextView username, String userId) {
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
       reference.addValueEventListener(new ValueEventListener() {
@@ -135,8 +155,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          super(itemView);
 
          profilePicture = itemView.findViewById(R.id.profilePictureElement);
-         username = itemView.findViewById(R.id.nickname);
-         text = itemView.findViewById(R.id.notificationText);
+         username = itemView.findViewById(R.id.notificationUsername);
+         text = itemView.findViewById(notificationText);
       }
    }
 }

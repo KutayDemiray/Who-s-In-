@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * NotificationsFragment class for the view of the fragment
+ */
 public class NotificationsFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -57,12 +60,19 @@ public class NotificationsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Reading the values and getting the references of notifications from the realtime database
+     */
     private void readNotifications() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( firebaseUser.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
+            /**
+             * Reading every notification with DataSnapshot
+             * @param dataSnapshot
+             */
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
