@@ -131,7 +131,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
             addFriend = itemView.findViewById(R.id.buttonAddFriendElement);
         }
     }
-
+    /**
+     * Returns current date (as in calendar) in DD/MM/YYYY format as String
+     * @param userID for a final String which declares ID of the user, button for a final Button which declares the Follow / Unfollow button.
+     */
     private void follows(final String userID, final Button button)
     {
         DatabaseReference followPath;

@@ -1,9 +1,5 @@
 package com.cgty.denemeins;
 
-/**
- * @authors Gökberk Keskinkılıç, Cagatay Safak
- */
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+/**
+ * @authors Gökberk Keskinkılıç, Cagatay Safak
+ */
 public class HomeFragment extends Fragment
 {
+    Button buttonCreateEvent;
+    Button buttonToSports;
+    Button buttonToGatherings;
+    Button buttonToTabletop;
+    Button buttonToOther;
 
     public HomeFragment()
     {
@@ -27,14 +31,30 @@ public class HomeFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view;
+        view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button createEvent = (Button) view.findViewById(R.id.buttonCreateEvent);
-        createEvent.setOnClickListener(new View.OnClickListener() {
+        buttonCreateEvent = (Button) view.findViewById(R.id.buttonCreateEvent);
+        buttonToSports = (Button) view.findViewById(R.id.buttonSports);
+        buttonToGatherings = (Button) view.findViewById(R.id.buttonGatherings);
+        buttonToTabletop = (Button) view.findViewById(R.id.buttonTabletop);
+        buttonToOther = (Button) view.findViewById(R.id.buttonOther);
+
+        buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent fromHomeToCreateEvent = new Intent( getActivity(), CreateEvent.class);
                 startActivity( fromHomeToCreateEvent);
+            }
+        });
+
+        buttonToSports.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent fromHomeToFeedSports = new Intent( getActivity(), FeedSports.class);
+                startActivity( fromHomeToFeedSports);
             }
         });
 
