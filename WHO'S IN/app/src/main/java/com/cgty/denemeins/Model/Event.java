@@ -164,5 +164,4 @@ public class Event {
         this.privacySetting = privacySetting;
     }
 
-
 }
