@@ -48,7 +48,6 @@ public class SportsEvent extends Event {
 
         this.gameType = gameType;
     }
-
     // methods
 
     public String getGameType() {
