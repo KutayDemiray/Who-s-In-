@@ -38,30 +38,30 @@
         app:layout_constraintEnd_toEndOf="@+id/scoreboard"
         app:layout_constraintStart_toStartOf="@+id/scoreboard" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/profilePicture"
         android:layout_width="112dp"
         android:layout_height="116dp"
         app:layout_constraintBottom_toBottomOf="@+id/nickname"
         app:layout_constraintEnd_toStartOf="@+id/nickname"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/nickname"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@drawable/ic_eyes" />
+        android:src="@drawable/eyes" />
 
     <TextView
         android:id="@+id/nickname"
         android:layout_width="216dp"
         android:layout_height="87dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="56dp"
         android:fontFamily="@font/bold"
         android:text="pilser86"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_out" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
     <Button
         android:id="@+id/myFriends"
@@ -89,28 +89,21 @@
         app:layout_constraintEnd_toEndOf="@+id/myFriends"
         app:layout_constraintStart_toStartOf="@+id/myFriends" />
 
-    <Button
-        android:id="@+id/sign_out"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="56dp"
-        android:text="S"
+    <ImageButton
+        android:id="@+id/buttonSignOut"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="54dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add"
+        android:tint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/nickname"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
@@ -120,10 +113,6 @@
         app:layout_constraintTop_toBottomOf="@+id/nickname"
         tools:layout_editor_absoluteX="1dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:hint="hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
