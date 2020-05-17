@@ -34,4 +34,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="notifications">Notifications</string>
     <string name="username">username</string>
+    <string name="textview">TextView</string>
+    <string name="event_title">Event Title</string>
 </resources>
