@@ -17,7 +17,7 @@ public class Event {
     private String eventId;
     private String title;
     private String organizerId;
-    private Date date;
+    private EventDate date;
     private String description;
     private int capacity;
     private String mainType;
@@ -38,13 +38,13 @@ public class Event {
      * @param eventId Event's ID (IMPORTANT: get an unique one from database by pushing a new node, don't create your id by yourself)
      * @param title Event Title
      * @param organizerId Organizer's User ID
-     * @param date Date
+     * @param date Event's time
      * @param description Short description of event
      * @param capacity Maximum number of participants
      * @param location Location (String for now, will be changed to a location on the map later on)
      * @param privacySetting Privacy setting (Only public is implemented for now)
      */
-    public Event( String eventId, String title, String organizerId, Date date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
+    public Event( String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
         this.eventId = eventId;
         this.title = title;
         this.organizerId = organizerId;
@@ -100,11 +100,11 @@ public class Event {
         this.organizerId = organizerId;
     }
 
-    public Date getDate() {
+    public EventDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(EventDate date) {
         this.date = date;
     }
 
