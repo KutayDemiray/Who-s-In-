@@ -19,14 +19,11 @@ import androidx.fragment.app.Fragment;
  */
 public class HomeFragment extends Fragment
 {
-
+    AppCompatButton buttonCreateEvent;
     AppCompatImageButton buttonToSports;
     AppCompatImageButton buttonToGatherings;
     AppCompatImageButton buttonToTabletop;
     AppCompatImageButton buttonToOther;
-
-
-    AppCompatButton buttonCreateEvent;
 
     public HomeFragment()
     {
@@ -41,7 +38,6 @@ public class HomeFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         buttonCreateEvent = view.findViewById(R.id.buttonCreateEvent);
-
         buttonToSports = view.findViewById(R.id.buttonSports);
         buttonToGatherings = view.findViewById(R.id.buttonGatherings);
         buttonToTabletop = view.findViewById(R.id.buttonTabletop);
@@ -54,7 +50,7 @@ public class HomeFragment extends Fragment
                 startActivity( fromHomeToCreateEvent);
             }
         });
-        
+
         buttonToSports.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -62,6 +58,26 @@ public class HomeFragment extends Fragment
             {
                 Intent fromHomeToFeedSports = new Intent( getActivity(), FeedSports.class);
                 startActivity( fromHomeToFeedSports);
+            }
+        });
+
+        buttonToGatherings.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent fromHomeToFeedGatherings = new Intent( getActivity(), FeedGatherings.class);
+                startActivity( fromHomeToFeedGatherings);
+            }
+        });
+
+        buttonToTabletop.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent fromHomeToFeedGatherings = new Intent( getActivity(), FeedGatherings.class);
+                startActivity( fromHomeToFeedGatherings);
             }
         });
 
