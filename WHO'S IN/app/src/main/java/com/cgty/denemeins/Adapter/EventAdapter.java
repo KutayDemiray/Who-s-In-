@@ -28,6 +28,15 @@ import java.util.List;
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
 
+    // inner class
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ViewHolder(@NonNull View itemView)
+        {
+            super(itemView);
+        }
+    }
+
     // properties
     private Context mContext;
     private List<Event> mEvent;
