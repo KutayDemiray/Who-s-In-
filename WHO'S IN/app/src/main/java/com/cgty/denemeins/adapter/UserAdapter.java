@@ -1,4 +1,4 @@
-package com.cgty.denemeins.Adapter;
+package com.cgty.denemeins.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.cgty.denemeins.ProfileFragment;
-import com.cgty.denemeins.Model.User;
+import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

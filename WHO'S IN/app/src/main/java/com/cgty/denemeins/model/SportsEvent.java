@@ -1,4 +1,4 @@
-package com.cgty.denemeins.Model;
+package com.cgty.denemeins.model;
 
 /**
  * Sports event class, includes sports types

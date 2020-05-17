@@ -1,6 +1,4 @@
-package com.cgty.denemeins.Model;
-
-import java.util.Date;
+package com.cgty.denemeins.model;
 
 /**
  * Board game event
