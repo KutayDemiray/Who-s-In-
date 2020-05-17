@@ -1,7 +1,7 @@
-package com.cgty.denemeins.Adapter;
+package com.cgty.denemeins.adapter;
 
 import com.bumptech.glide.Glide;
-import com.cgty.denemeins.Model.User;
+import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.ProfileFragment;
 import com.cgty.denemeins.R;
 import com.google.firebase.database.DataSnapshot;
@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.cgty.denemeins.Model.Notification;
+import com.cgty.denemeins.model.Notification;
 
 import android.content.Context;
 import android.content.SharedPreferences;

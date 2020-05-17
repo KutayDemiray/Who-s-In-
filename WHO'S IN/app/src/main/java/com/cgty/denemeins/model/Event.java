@@ -1,10 +1,14 @@
-package com.cgty.denemeins.Model;
+package com.cgty.denemeins.model;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Event model class
@@ -14,7 +18,6 @@ import java.util.Date;
 public class Event {
 
     // properties
-    private User organizer;
     private String eventId;  //
     private String title;  //
     private String organizerId;
@@ -61,6 +64,30 @@ public class Event {
     }
 
     // methods
+    /*public static User getUser( String id ) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
+        final User u = new User();
+        final String fId = id;
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User tmp;
+
+                tmp = dataSnapshot.child( fId ).getValue( User.class );
+                u.setId( tmp.getId() );
+                u.setUsername( tmp.getUsername() );
+                u.setAge( tmp.getAge() );
+                u.setPpURL( tmp.getPpURL() );
+                u.setBio( tmp.getBio() );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return u;
+    } */
 
     /**
      * Adds participant's id to participants and updates database accordingly
@@ -77,15 +104,10 @@ public class Event {
     }
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
-    public User getOrganizer()
-    {
-        return organizer;
-    }
 
     public String getEventId() {
         return eventId;
     }
-
 
     public void setEventId(String eventId) {
         this.eventId = eventId;

@@ -2,7 +2,6 @@ package com.cgty.denemeins;
 
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cgty.denemeins.Adapter.NotificationAdapter;
-import com.cgty.denemeins.Model.Notification;
+import com.cgty.denemeins.adapter.NotificationAdapter;
+import com.cgty.denemeins.model.Notification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

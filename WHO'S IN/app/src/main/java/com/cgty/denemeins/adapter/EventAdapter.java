@@ -1,4 +1,4 @@
-package com.cgty.denemeins.Adapter;
+package com.cgty.denemeins.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,9 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.cgty.denemeins.Model.Event;
-import com.cgty.denemeins.Model.User;
+import com.cgty.denemeins.model.Event;
+import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

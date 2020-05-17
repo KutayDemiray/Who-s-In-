@@ -14,6 +14,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
+import com.cgty.denemeins.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * @authors Gökberk Keskinkılıç, Cagatay Safak
  */
@@ -36,7 +39,7 @@ public class HomeFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        User u = User.getUser( FirebaseAuth.getInstance().getCurrentUser().getUid() );
         buttonCreateEvent = view.findViewById(R.id.buttonCreateEvent);
         buttonToSports = view.findViewById(R.id.buttonSports);
         buttonToGatherings = view.findViewById(R.id.buttonGatherings);

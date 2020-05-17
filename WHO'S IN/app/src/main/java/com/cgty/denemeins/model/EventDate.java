@@ -1,6 +1,4 @@
-package com.cgty.denemeins.Model;
-
-import android.widget.DatePicker;
+package com.cgty.denemeins.model;
 
 import java.util.Calendar;
 

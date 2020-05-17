@@ -17,20 +17,16 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cgty.denemeins.Model.Event;
-import com.cgty.denemeins.Model.EventDate;
+import com.cgty.denemeins.model.Event;
+import com.cgty.denemeins.model.EventDate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Create event page
