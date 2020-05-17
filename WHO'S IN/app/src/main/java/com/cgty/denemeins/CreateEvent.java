@@ -33,14 +33,12 @@ import java.util.Date;
 
 /**
  * Create event page
+ * TODO create event under SportsEvent, MeetingEvent or TabletopEvent node depending on spinner output
  * @author Kutay Demiray
  * @version 1.0
  */
-public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    // database reference
-    DatabaseReference eventsReference = FirebaseDatabase.getInstance().getReference("Events" );
-    DatabaseReference usersReference = FirebaseDatabase.getInstance().getReference("Users");
     // views
     TextView textViewPageTitle;
     EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextTime, editTextDescription;
@@ -208,7 +206,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 else if ( strCapacity.equals( "1")){
                     Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
                 }
-
+                // TODO else if selected date is past, raise toast with error message
                 else if ( ( strCapacity.equals( "42")) && ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum") ) ){
                     addEvent();
                     initializeInputs();
