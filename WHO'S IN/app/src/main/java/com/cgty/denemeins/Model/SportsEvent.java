@@ -20,8 +20,6 @@ public class SportsEvent extends Event {
 
     // constructor
 
-
-
     /**
      * Empty constructor for database use
      */

@@ -14,11 +14,12 @@ import java.util.Date;
 public class Event {
 
     // properties
-    private String eventId;
-    private String title;
+    private User organizer;
+    private String eventId;  //
+    private String title;  //
     private String organizerId;
     private EventDate date;
-    private String description;
+    private String description;  //
     private int capacity;
     private String mainType;
     private String subType;
@@ -44,7 +45,8 @@ public class Event {
      * @param location Location (String for now, will be changed to a location on the map later on)
      * @param privacySetting Privacy setting (Only public is implemented for now)
      */
-    public Event( String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
+    public Event( User organizer, String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
+        this.organizer = organizer;
         this.eventId = eventId;
         this.title = title;
         this.organizerId = organizerId;
@@ -76,9 +78,15 @@ public class Event {
     }
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
+    public User getOrganizer()
+    {
+        return organizer;
+    }
+
     public String getEventId() {
         return eventId;
     }
+
 
     public void setEventId(String eventId) {
         this.eventId = eventId;
