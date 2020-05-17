@@ -41,10 +41,13 @@ public class SportsEvent extends Event {
      * @param privacySetting
      * @param gameType
      */
+
+
     public SportsEvent(String eventId, String title, String organizerId, Date date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType) {
         super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
         this.gameType = gameType;
     }
+
 
 
     // methods
