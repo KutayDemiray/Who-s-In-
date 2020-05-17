@@ -37,7 +37,7 @@
             android:id="@+id/textViewUsernameSportsEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Organizer username"
+            android:text="Organizer: @username"
             android:maxLines="1"
             android:layout_gravity="center"
             android:textSize="18sp"
