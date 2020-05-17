@@ -11,7 +11,7 @@ public class MeetingEvent extends Event {
     public MeetingEvent() {
     }
 
-    public MeetingEvent(String eventId, String title, String organizerId, Date date, String description, int capacity, String mainType, String subType, String location, String privacySetting) {
+    public MeetingEvent(String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting) {
         super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
     }
 

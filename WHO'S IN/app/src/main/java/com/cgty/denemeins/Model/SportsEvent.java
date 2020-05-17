@@ -19,8 +19,33 @@ public class SportsEvent extends Event {
     private int gameType;
 
     // constructor
-    public SportsEvent( String title, User organizer, int capacity, int accessStatus, int gameType ) {
-        super( title, organizer, capacity, accessStatus );
+
+
+
+    /**
+     * Empty constructor for database use
+     */
+    public SportsEvent() {}
+
+    /**
+     * Regular parameter
+     * @param eventId
+     * @param title
+     * @param organizerId
+     * @param date
+     * @param description
+     * @param capacity
+     * @param mainType
+     * @param subType
+     * @param location
+     * @param privacySetting
+     * @param gameType
+     */
+
+
+    public SportsEvent(String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType) {
+        super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
+
         this.gameType = gameType;
     }
 
