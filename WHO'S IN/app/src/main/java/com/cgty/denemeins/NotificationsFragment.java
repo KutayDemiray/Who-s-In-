@@ -1,8 +1,6 @@
 package com.cgty.denemeins;
 
-/**
- * @author Yağız Yaşar
- */
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +28,8 @@ import java.util.List;
 
 /**
  * NotificationsFragment class for the view of the fragment
+ * @author Yağız Yaşar
+ * @version 15.5.20
  */
 public class NotificationsFragment extends Fragment {
 
