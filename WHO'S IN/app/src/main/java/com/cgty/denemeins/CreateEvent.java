@@ -208,7 +208,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! THE BEST COMBINATION :) ", Toast.LENGTH_LONG).show();
                 }
 
-                else if ( strCapacity.equals( "42")){
+                else if ( strCapacity.equals( "42") ) {
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nKONYA IS THE MEANING OF THE LIFE :) ", Toast.LENGTH_LONG).show();

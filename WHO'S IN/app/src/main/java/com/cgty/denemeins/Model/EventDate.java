@@ -11,8 +11,13 @@ import java.util.Calendar;
  */
 public class EventDate {
 
+    // properties
+    int year, month, day, hour, minute;
+
+
+    // constructors
     /**
-     * Creates and returns EventDate with current time
+     * Creates and returns EventDate with current time. This is also kind of a "constructor"
      * @return Current time EventDate
      */
     public static EventDate getInstance() {
@@ -32,10 +37,6 @@ public class EventDate {
         return current;
     }
 
-    // properties
-    int year, month, day, hour, minute;
-
-    // constructor
     /**
      * Empty constructor for database use
      */
@@ -64,6 +65,41 @@ public class EventDate {
     }
 
     // methods
+
+    /**
+     * Roughly calculates time from one EventDate instance to another, in a string
+     * @param earlyDate First EventDate
+     * @param lateDate Second EventDate
+     * @return Roughly the time between the two EventDates
+     */
+    public static String timeBetween( EventDate earlyDate, EventDate lateDate ) {
+
+        // if "early" date is not earlier than late date
+
+        if ( earlyDate.compareTo( lateDate ) >= 0 ) {
+            return "done";
+        }
+        // if there's more than a month, return that instead of precise time
+        else if ( ( lateDate.getMonth() > earlyDate.getMonth() && lateDate.getDay() > earlyDate.getDay() ) ) {
+            return "more than a month";
+        }
+        else {
+            int timeInMinutes = ( ( ( ( lateDate.getMonth() - earlyDate.getMonth() ) * 30 ) + lateDate.getDay() )
+                                     * 24 + lateDate.getHour() ) * 60 + lateDate.getMinute() - ( ( earlyDate.getDay() * 24
+                                     + earlyDate.getHour() ) * 60 + earlyDate.getMinute() );
+            // if time between is between a month and a day
+            if ( timeInMinutes >= 1440 ) {
+                return (timeInMinutes / (60 * 24)) + " days";
+            }
+            // if time between is less than a day
+            else {
+                return ( timeInMinutes / 60 ) + " hours " + ( timeInMinutes % 60 ) + " minutes";
+            }
+        }
+
+    }
+
+
 
     /**
      * Checks if this date is in the past
