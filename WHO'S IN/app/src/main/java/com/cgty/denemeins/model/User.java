@@ -41,12 +41,13 @@ public class User
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
         final User u = new User();
         final String fId = id;
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User tmp;
 
-                tmp = dataSnapshot.child( fId ).getValue( User.class );
+                tmp = dataSnapshot.child( fId ).getValue( User.class ); // TODO can't add data to u for some reason
+                Log.wtf( "DENEME123", tmp.toString() );
                 u.setId( tmp.getId() );
                 u.setUsername( tmp.getUsername() );
                 u.setAge( tmp.getAge() );
@@ -109,6 +110,10 @@ public class User
     public void setBio(String bio)
     {
         this.bio = bio;
+    }
+
+    public String toString() {
+        return "Title: " + getUsername() + " Age: " + getAge() + " Bio: " + getBio();
     }
 
 }
