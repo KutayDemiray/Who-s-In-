@@ -45,8 +45,7 @@ public class Event {
      * @param location Location (String for now, will be changed to a location on the map later on)
      * @param privacySetting Privacy setting (Only public is implemented for now)
      */
-    public Event( User organizer, String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
-        this.organizer = organizer;
+    public Event( String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
         this.eventId = eventId;
         this.title = title;
         this.organizerId = organizerId;
