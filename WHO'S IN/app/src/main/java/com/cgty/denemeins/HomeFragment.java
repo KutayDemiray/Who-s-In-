@@ -1,5 +1,6 @@
 package com.cgty.denemeins;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -16,29 +19,29 @@ import androidx.fragment.app.Fragment;
  */
 public class HomeFragment extends Fragment
 {
-    Button buttonCreateEvent;
-    Button buttonToSports;
-    Button buttonToGatherings;
-    Button buttonToTabletop;
-    Button buttonToOther;
+    AppCompatImageButton  buttonToSports, buttonToGatherings,
+           buttonToTabletop, buttonToOther;
+
+    AppCompatButton buttonCreateEvent;
 
     public HomeFragment()
     {
         //required empty public constructor.
     }
 
+    @SuppressLint("WrongViewCast")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        View view;
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        buttonCreateEvent = (Button) view.findViewById(R.id.buttonCreateEvent);
-        buttonToSports = (Button) view.findViewById(R.id.buttonSports);
-        buttonToGatherings = (Button) view.findViewById(R.id.buttonGatherings);
-        buttonToTabletop = (Button) view.findViewById(R.id.buttonTabletop);
-        buttonToOther = (Button) view.findViewById(R.id.buttonOther);
+        buttonCreateEvent = view.findViewById(R.id.buttonCreateEvent);
+
+        buttonToSports = view.findViewById(R.id.buttonSports);
+        buttonToGatherings = view.findViewById(R.id.buttonGatherings);
+        buttonToTabletop = view.findViewById(R.id.buttonTabletop);
+        buttonToOther =  view.findViewById(R.id.buttonOther);
 
         buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
             @Override
