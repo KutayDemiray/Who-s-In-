@@ -35,49 +35,27 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
       this.mNotification = mNotification;
    }
 
-   @NonNull
-   @Override
-   public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-      View view = LayoutInflater.from(mContext).inflate(R.layout.notification_element, viewGroup, false);
-      return new NotificationAdapter.ViewHolder(view);
-   }
-
-   @Override
-   public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-
-   }
-
    @Override
    public int getItemCount() {
       return mNotification.size();
    }
 
-   public class ViewHolder extends RecyclerView.ViewHolder {
 
-      public ImageView profilePicture;
-      public TextView username, text;
+   public ViewHolder onCreateViewHolder( @NonNull ViewGroup viewGroup, int i) {
+      View view = LayoutInflater.from(mContext).inflate(R.layout.notification_element,viewGroup, false);
+      return new NotificationAdapter.ViewHolder( view);
+   }
 
-      public ViewHolder(@NonNull View itemView) {
-         super( itemView);
+   public void onBindViewHolder( @NonNull ViewHolder viewHolder, int i) {
 
-         profilePicture = itemView.findViewById(R.id.profilePictureElement);
-         username = itemView.findViewById(R.id.nickname);
-         text = itemView.findViewById(R.id.notificationText);
-      }
+      final Notification notification = mNotification.get(i);
 
-      public ViewHolder onCreateViewHolder( @NonNull ViewGroup viewGroup, int i) {
-         View view = LayoutInflater.from(mContext).inflate(R.layout.notification_element,viewGroup, false);
-         return new NotificationAdapter.ViewHolder( view);
-      }
+      viewHolder.text.setVisibility(View.VISIBLE);
 
-      public void onBindViewHolder( @NonNull ViewHolder viewHolder, int i) {
-         final Notification notification = mNotification.get(i);
+      viewHolder.text.setText( notification.getText() );
+      getUserInfo( viewHolder.profilePicture, viewHolder.username, notification.getUserId() );
 
-         viewHolder.text.setText( notification.getText() );
-
-         getUserInfo( viewHolder.profilePicture, viewHolder.username, notification.getUserId() );
-
-         viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
+      viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
 
             @Override
               public void onClick( View view) {
@@ -102,19 +80,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
       }
 
+
       public int getElementCount() {
          return mNotification.size();
       }
-   }
 
-   private void getUserInfo(final ImageView imageView, final TextView username, String eventLeaderId) {
-      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(eventLeaderId);
+
+   private void getUserInfo(final ImageView imageView, final TextView username, String userId) {
+      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
       reference.addValueEventListener(new ValueEventListener() {
+
          @Override
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             User user = dataSnapshot.getValue( User.class);
-            Glide.with(mContext).load( user.getPpURL() ).into( imageView);
             username.setText( user.getUsername() );
+            Glide.with(mContext).load( user.getPpURL() ).into( imageView);
          }
 
          @Override
@@ -124,7 +104,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
       });
    }
 
-   /**private void getEventInfo(final TextView textView, String eventId) {
+   /*private void getEventInfo(final TextView textView, String eventId) {
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference( "Events").child( eventId);
       reference.addValueEventListener(new ValueEventListener() {
          @Override
@@ -139,4 +119,24 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          }
       });
    } */
+
+
+   /**
+    * inner class for view holder
+    * @author Yağız Yaşar
+    * @version 17.5.20
+    */
+   public class ViewHolder extends RecyclerView.ViewHolder {
+
+      public ImageView profilePicture;
+      public TextView username, text;
+
+      public ViewHolder(@NonNull View itemView) {
+         super(itemView);
+
+         profilePicture = itemView.findViewById(R.id.profilePictureElement);
+         username = itemView.findViewById(R.id.nickname);
+         text = itemView.findViewById(R.id.notificationText);
+      }
+   }
 }

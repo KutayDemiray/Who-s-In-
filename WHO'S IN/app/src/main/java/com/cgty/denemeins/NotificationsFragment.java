@@ -47,9 +47,12 @@ public class NotificationsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
         recyclerView.setLayoutManager( linearLayoutManager);
+
         notificationList = new ArrayList<>();
         notificationAdapter = new NotificationAdapter( getContext(), notificationList);
         recyclerView.setAdapter( notificationAdapter);
+
+        readNotifications();
 
         return view;
     }
@@ -62,12 +65,13 @@ public class NotificationsFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 notificationList.clear();
+
                 for ( DataSnapshot snapshot : dataSnapshot.getChildren() ) {
                     Notification notification = snapshot.getValue( Notification.class);
                     notificationList.add( notification);
                 }
-
                 Collections.reverse( notificationList);
                 notificationAdapter.notifyDataSetChanged();
             }
