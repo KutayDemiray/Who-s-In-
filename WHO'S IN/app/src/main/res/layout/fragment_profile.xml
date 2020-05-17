@@ -76,6 +76,7 @@
         app:layout_constraintEnd_toEndOf="@+id/pastActivities"
         app:layout_constraintStart_toStartOf="@+id/pastActivities" />
 
+
     <Button
         android:id="@+id/editProfile"
         android:layout_width="300dp"
@@ -87,8 +88,10 @@
         android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/myFriends"
         app:layout_constraintEnd_toEndOf="@+id/myFriends"
-        app:layout_constraintStart_toStartOf="@+id/myFriends" />
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/myFriends"
+        app:layout_constraintTop_toBottomOf="@+id/nickname"
+        app:layout_constraintVertical_bias="0.958" />
 
     <ImageButton
         android:id="@+id/buttonSignOut"
