@@ -48,7 +48,6 @@ public class SportsEvent extends Event {
 
         this.gameType = gameType;
     }
-
     // methods
 
     public String getGameType() {
@@ -59,8 +58,9 @@ public class SportsEvent extends Event {
         this.gameType = gameType;
     }
 
+    /**
     public String toString() {
-        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
-    }
+        return "Board Game Event Title: " + getTitle() + ", Organizer: " + getOrganizerId().getNickname() + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
+    }*/
 
 }
