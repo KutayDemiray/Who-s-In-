@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/darkBlue"
     tools:context="NotificationsFragment">
 
 
@@ -13,8 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/notifications"
-        android:textColor="@color/darkBlue"
-        android:textSize="26sp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         android:layout_centerHorizontal="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
