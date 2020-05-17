@@ -60,8 +60,11 @@ public class SportsEvent extends Event {
     }
 
     public String toString() {
+
         return "Board Game Event Title: " + getTitle() + ", Organizer: "  + ", Capacity: " + getCapacity() + ", Privacy: " + getPrivacySetting() + ", Game Type: " + getGameType();
-        // TODO: Organizer nickname
+        // TODO: Organizer nickname getter method
+
+        
     }
 
 }

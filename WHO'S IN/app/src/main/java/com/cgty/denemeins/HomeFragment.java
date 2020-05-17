@@ -19,14 +19,18 @@ import androidx.fragment.app.Fragment;
  */
 public class HomeFragment extends Fragment
 {
-    AppCompatImageButton  buttonToSports, buttonToGatherings,
-           buttonToTabletop, buttonToOther;
+
+    AppCompatImageButton buttonToSports;
+    AppCompatImageButton buttonToGatherings;
+    AppCompatImageButton buttonToTabletop;
+    AppCompatImageButton buttonToOther;
+
 
     AppCompatButton buttonCreateEvent;
 
     public HomeFragment()
     {
-        //required empty public constructor.
+        // required empty public constructor.
     }
 
     @SuppressLint("WrongViewCast")
@@ -50,7 +54,7 @@ public class HomeFragment extends Fragment
                 startActivity( fromHomeToCreateEvent);
             }
         });
-
+        
         buttonToSports.setOnClickListener(new View.OnClickListener()
         {
             @Override
