@@ -1,13 +1,11 @@
 package com.cgty.denemeins;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -16,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cgty.denemeins.Adapter.UserAdapter;
+import com.cgty.denemeins.adapter.UserAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +33,7 @@ public class NearbyFragment extends Fragment
 
     //properties
     private RecyclerView recyclerView;
-    private List<com.cgty.denemeins.Model.User> mUsers;
+    private List<com.cgty.denemeins.model.User> mUsers;
     private UserAdapter userAdapter;
     EditText searchBar;
 
@@ -98,7 +96,7 @@ public class NearbyFragment extends Fragment
                 mUsers.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren())
                 {
-                    com.cgty.denemeins.Model.User user = snapshot.getValue(com.cgty.denemeins.Model.User.class);
+                    com.cgty.denemeins.model.User user = snapshot.getValue(com.cgty.denemeins.model.User.class);
                     mUsers.add(user);
                 }
 
@@ -127,7 +125,7 @@ public class NearbyFragment extends Fragment
                     mUsers.clear();
                     for (DataSnapshot snapshot: dataSnapshot.getChildren())
                     {
-                        com.cgty.denemeins.Model.User user = snapshot.getValue(com.cgty.denemeins.Model.User.class);
+                        com.cgty.denemeins.model.User user = snapshot.getValue(com.cgty.denemeins.model.User.class);
                         mUsers.add(user);
 
                         userAdapter.notifyDataSetChanged();

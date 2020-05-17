@@ -1,4 +1,4 @@
-package com.cgty.denemeins.Adapter;
+package com.cgty.denemeins.adapter;
 
 import android.view.View;
 

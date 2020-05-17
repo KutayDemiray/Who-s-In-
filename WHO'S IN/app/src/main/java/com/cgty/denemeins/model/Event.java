@@ -1,10 +1,9 @@
-package com.cgty.denemeins.Model;
+package com.cgty.denemeins.model;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Event model class
@@ -14,7 +13,6 @@ import java.util.Date;
 public class Event {
 
     // properties
-    private User organizer;
     private String eventId;  //
     private String title;  //
     private String organizerId;
@@ -45,8 +43,7 @@ public class Event {
      * @param location Location (String for now, will be changed to a location on the map later on)
      * @param privacySetting Privacy setting (Only public is implemented for now)
      */
-    public Event( User organizer, String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
-        this.organizer = organizer;
+    public Event( String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting ) {
         this.eventId = eventId;
         this.title = title;
         this.organizerId = organizerId;
@@ -78,15 +75,10 @@ public class Event {
     }
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
-    public User getOrganizer()
-    {
-        return organizer;
-    }
 
     public String getEventId() {
         return eventId;
     }
-
 
     public void setEventId(String eventId) {
         this.eventId = eventId;
