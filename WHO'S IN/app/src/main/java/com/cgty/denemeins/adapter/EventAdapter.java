@@ -27,7 +27,6 @@ import java.util.List;
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
 
-
     // properties
     private Context mContext;
     private List<Event> mEvent;
