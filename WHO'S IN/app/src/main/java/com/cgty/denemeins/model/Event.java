@@ -99,7 +99,7 @@ public class Event {
         event.getParticipants().add( participantId );
 
         // update database
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("events");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events");
         reference.child( event.getEventId() ).child("participants").setValue( event.getParticipants() );
     }
 
