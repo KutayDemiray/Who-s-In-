@@ -48,7 +48,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/nickname"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/eyes" />
+        android:src="@drawable/eyes"
+        android:onClick="handleImageClick"/>
 
     <TextView
         android:id="@+id/nickname"

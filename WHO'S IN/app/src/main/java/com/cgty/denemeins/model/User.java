@@ -10,7 +10,7 @@ public class User
     private String id;
     private String username;
     private String age;
-    private String ppURL;
+    private String imageURL;
     private String bio;
 
     public User()
@@ -18,13 +18,14 @@ public class User
 
     }
 
-    public User( String id, String username, String age, String ppURL, String bio)
+    public User( String id, String username, String age, String imageURL, String bio)
     {
         this.id = id;
         this.username = username;
         this.age = age;
-        this.ppURL = ppURL;
+        this.imageURL = imageURL;
         this.bio = bio;
+
     }
 
     public String getId()
@@ -57,13 +58,13 @@ public class User
         this.age = age;
     }
 
-    public String getPpURL() {
-        return ppURL;
+    public String getImageURL() {
+        return imageURL;
     }
 
     public void setPpURL(String ppURL)
     {
-        this.ppURL = ppURL;
+        this.imageURL = ppURL;
     }
 
     public String getBio()
@@ -75,4 +76,6 @@ public class User
     {
         this.bio = bio;
     }
+
+
 }
