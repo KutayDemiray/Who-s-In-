@@ -2,7 +2,7 @@ package com.cgty.denemeins.adapter;
 
 import com.bumptech.glide.Glide;
 import com.cgty.denemeins.model.User;
-import com.cgty.denemeins.ProfileFragment;
+import com.cgty.denemeins.fragment.ProfileFragment;
 import com.cgty.denemeins.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

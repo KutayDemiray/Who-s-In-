@@ -1,4 +1,4 @@
-package com.cgty.denemeins;
+package com.cgty.denemeins.fragment;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cgty.denemeins.R;
 import com.cgty.denemeins.adapter.UserAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

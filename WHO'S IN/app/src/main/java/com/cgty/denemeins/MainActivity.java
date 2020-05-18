@@ -3,18 +3,19 @@
  */
 package com.cgty.denemeins;
 
-import android.content.Intent;
-        import android.os.Bundle;
+import android.os.Bundle;
 import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.Button;
+import android.widget.Button;
 
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.fragment.app.Fragment;
 
 
-import com.cgty.denemeins.model.User;
+import com.cgty.denemeins.fragment.HomeFragment;
+import com.cgty.denemeins.fragment.NearbyFragment;
+import com.cgty.denemeins.fragment.NotificationsFragment;
+import com.cgty.denemeins.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**

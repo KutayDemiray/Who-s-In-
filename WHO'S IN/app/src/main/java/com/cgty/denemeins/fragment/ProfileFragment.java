@@ -1,9 +1,11 @@
-package com.cgty.denemeins;
+package com.cgty.denemeins.fragment;
 
 /**
  * @author Gökberk Keskinkılıç
  */
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.LoginActivity;
+import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.User;
 
 import android.app.ProgressDialog;
@@ -231,7 +233,4 @@ public class ProfileFragment extends Fragment {
             FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
         }
     }
-
-
 }
-

@@ -1,4 +1,4 @@
-package com.cgty.denemeins;
+package com.cgty.denemeins.fragment;
 
 
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cgty.denemeins.R;
 import com.cgty.denemeins.adapter.NotificationAdapter;
 import com.cgty.denemeins.model.Notification;
 import com.google.firebase.auth.FirebaseAuth;
