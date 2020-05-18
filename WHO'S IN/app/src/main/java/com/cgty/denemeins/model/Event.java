@@ -96,9 +96,11 @@ public class Event {
         event.getParticipants().add( participantId );
 
         // update database
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" );
         reference.child( Event.getEventId() ).child("participants").setValue( Event.getParticipants() );
     }*/
+
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
 

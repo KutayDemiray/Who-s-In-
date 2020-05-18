@@ -45,7 +45,7 @@ public class EventActivity extends AppCompatActivity {
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             Event event;
 
-            event = dataSnapshot.child( eventId ).getValue( Event.class );
+            event = dataSnapshot.child( eventId ).getValue( Event.class ); // uses the eventId from intent
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );

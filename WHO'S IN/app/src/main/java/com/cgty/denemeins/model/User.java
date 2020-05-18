@@ -12,7 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * User model class
@@ -42,32 +42,55 @@ public class User
 
     }
 
+    /**
+     * Get user from database by User ID
+     * Could not implement yet (asynchronous databases do not directly allow retrieving and using data outside their listeners)
+     * Possible workaround is using a TextView and setting and getting text from that
+     * @author Cemhan Kaan Özaltan, Kutay Demiray
+     * @param id User ID
+     * @return User object
+     */
     public static User getUser( String id ) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
-        final User u = new User();
-        final String fId = id;
-        ref.addListenerForSingleValueEvent( new ValueEventListener() {
+        return null;
+    }
+    /*
+        final User user = new User();
+        readData( new FirebaseCallback() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User tmp;
+            public void onCallback( User value ) {
 
-                tmp = dataSnapshot.child( fId ).getValue( User.class ); // TODO can't add data to u for some reason
-                Log.wtf( "DENEME123", tmp.toString() );
-                u.setId( tmp.getId() );
-                u.setUsername( tmp.getUsername() );
-                u.setAge( tmp.getAge() );
-                u.setImageURL( tmp.getImageURL() );
-                u.setBio( tmp.getBio() );
+                user.setId( value.getId() );
+                user.setUsername( value.getUsername() );
+                user.setBio( value.getBio() );
+                user.setPpURL( value.getPpURL() );
+                user.setAge( value.getAge() );
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        return u;
+        }, id );
+        Log.wtf( "DENEME123", user.toString() );
+        return user;
     }
 
+    // helpers for User.getUser method
+    private interface FirebaseCallback {
+        void onCallback( User value );
+    }
+
+    private static void readData( final FirebaseCallback fbCallback, String uId ) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users" ).child( uId );
+        databaseReference.addListenerForSingleValueEvent( new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User value = dataSnapshot.getValue( User.class );
+                fbCallback.onCallback(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
+    */
+    // getters and setters
     public String getId()
     {
         return id;

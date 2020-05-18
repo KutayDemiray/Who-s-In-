@@ -3,6 +3,7 @@ package com.cgty.denemeins.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,6 @@ public class HomeFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        User u = User.getUser( FirebaseAuth.getInstance().getCurrentUser().getUid() );
         buttonCreateEvent = view.findViewById(R.id.buttonCreateEvent);
         buttonToSports = view.findViewById(R.id.buttonSports);
         buttonToGatherings = view.findViewById(R.id.buttonGatherings);
