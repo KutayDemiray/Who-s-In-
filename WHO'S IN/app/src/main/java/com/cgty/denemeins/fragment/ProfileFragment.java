@@ -131,7 +131,7 @@ public class ProfileFragment extends Fragment
             button_EditProfile.setText( "EDIT PROFILE");
         else
         {
-            followController();
+            followControl();
             button_PastActivities.setVisibility(View.GONE);
         }
 
@@ -206,7 +206,7 @@ public class ProfileFragment extends Fragment
         });
     }
 
-    private void followController()
+    private void followControl()
     {
         DatabaseReference followPath;
         followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
@@ -234,7 +234,7 @@ public class ProfileFragment extends Fragment
     {
         //gets number of followers
         DatabaseReference followerPath;
-        followerPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("followers");
+        followerPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers");
 
         followerPath.addValueEventListener(new ValueEventListener()
         {
@@ -253,14 +253,14 @@ public class ProfileFragment extends Fragment
 
         //gets number of following
         DatabaseReference followingPath;
-        followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("followers");
+        followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("following");
 
         followingPath.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                textView_Following.setText( "" + dataSnapshot.getChildrenCount() + " Following");
+                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following");
             }
 
             @Override
@@ -293,7 +293,6 @@ public class ProfileFragment extends Fragment
                 }
 
                 textView_CreatedEvents.setText( i + " Events Created");
-
             }
 
             @Override

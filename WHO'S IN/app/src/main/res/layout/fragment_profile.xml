@@ -180,7 +180,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:maxLines="1"
-                        android:text="7 Followers"
+                        android:text="781 Followers"
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -191,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:maxLines="1"
-                        android:text="4 Following"
+                        android:text="450 Following"
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -202,7 +202,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:maxLines="1"
-                        android:text="8 Events Created"
+                        android:text="86 Events Created"
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
