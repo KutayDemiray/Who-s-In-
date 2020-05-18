@@ -3,6 +3,7 @@ package com.cgty.denemeins.fragment;
 import com.bumptech.glide.Glide;
 import com.cgty.denemeins.LoginActivity;
 import com.cgty.denemeins.R;
+import com.cgty.denemeins.model.Event;
 import com.cgty.denemeins.model.User;
 
 import android.app.ProgressDialog;
@@ -70,6 +71,8 @@ public class ProfileFragment extends Fragment
     TextView textView_Age;
     TextView textView_Username;
     TextView textView_Bio;
+    TextView textView_Followers;
+    TextView textView_Following;
     FirebaseUser currentUser;
     String profileID;
 
@@ -96,24 +99,40 @@ public class ProfileFragment extends Fragment
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view;
-        view = inflater.inflate( R.layout.fragment_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        profileID = prefs.getString("profileid","none");
+        profileID = prefs.getString("profileid", "none");
 
-        mSignOut = (ImageButton) view.findViewById( R.id.buttonSignOut);
+        mSignOut = (ImageButton) view.findViewById(R.id.buttonSignOut);
         image_profile = view.findViewById(R.id.profilePicture);
 
         textView_Age = view.findViewById(R.id.textViewProfileAge);
         textView_Username = view.findViewById(R.id.textViewProfileUsername);                                          //id gonna be changed
         textView_Bio = view.findViewById(R.id.textViewProfileBio);
+        textView_Followers = view.findViewById(R.id.textViewProfileFollowersInfo);
+        textView_Following = view.findViewById(R.id.textViewProfileFollowingInfo);
 
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
         button_Followers = view.findViewById(R.id.buttonFollowers_profile);
         button_Following = view.findViewById(R.id.buttonFollowing_profile);
         button_PastActivities = view.findViewById(R.id.buttonPastActivities_profile);
+
+        //calling methods
+        userInfo();
+        getFollowInfo();
+        getNoOfEventsCreated();
+
+        if (profileID.equals(currentUser.getUid()))
+            button_EditProfile.setText( "EDIT PROFILE");
+        else
+        {
+            followController();
+            button_PastActivities.setVisibility(View.GONE);
+        }
+
 
         button_EditProfile.setOnClickListener( new View.OnClickListener()
         {
@@ -137,6 +156,16 @@ public class ProfileFragment extends Fragment
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).removeValue();
                 }
+            }
+        });
+
+        setupFireBaseListener();
+
+        mSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d( TAG, "onClick: attempting to sign out the use.");
+                FirebaseAuth.getInstance().signOut();
             }
         });
 
@@ -176,6 +205,130 @@ public class ProfileFragment extends Fragment
 
     private void followController()
     {
-        DatabaseReference followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
+        DatabaseReference followPath;
+        followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
+
+        followPath.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.child(profileID).exists())
+                    button_EditProfile.setText( "FOLLOWING");
+                else
+                    button_EditProfile.setText( "FOLLOW");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    private void getFollowInfo()
+    {
+        //gets number of followers
+        DatabaseReference followerPath;
+        followerPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("followers");
+
+        followerPath.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                textView_Followers.setText( "" + dataSnapshot.getChildrenCount() + " Followers");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+
+        //gets number of following
+        DatabaseReference followingPath;
+        followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("followers");
+
+        followingPath.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                textView_Following.setText( "" + dataSnapshot.getChildrenCount() + " Following");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    private void getNoOfEventsCreated()
+    {
+        DatabaseReference eventPath;
+        eventPath = FirebaseDatabase.getInstance().getReference().child("Events");
+
+        eventPath.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                int i;
+                i = 0;
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    Event event = snapshot.getValue(Event.class);
+
+                    if (event.getOrganizerId().equals(profileID))
+                        i++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+
+            }
+        });
+    }
+
+    private void setupFireBaseListener(){
+        Log.d( TAG, "setupFirebaseListener: setting up the auth state listener.");
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if( user != null){
+                    Log.d( TAG, "onAuthStateChanged: signed_in: " + user.getUid());
+                }
+                else{
+                    Log.d( TAG, "onAuthStateChanged: signed_out");
+                    Toast.makeText( getActivity(), "Signed out!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent( getActivity(), LoginActivity.class);
+                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity( intent);
+                }
+            }
+        };
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if( mAuthStateListener != null){
+            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        }
     }
 }

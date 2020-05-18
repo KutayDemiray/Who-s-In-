@@ -195,6 +195,18 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewProfileEventsCreatedInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:maxLines="1"
+                        android:text="8 Events Created"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp"
+                        android:textStyle="bold|italic" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -230,6 +242,7 @@
                     android:textColor="@color/white" />
 
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/buttonPastActivities_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
