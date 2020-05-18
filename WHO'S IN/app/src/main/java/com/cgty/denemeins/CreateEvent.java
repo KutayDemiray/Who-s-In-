@@ -17,16 +17,22 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cgty.denemeins.model.Event;
 import com.cgty.denemeins.model.EventDate;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Create event page
@@ -274,6 +280,8 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         Event event = new Event( eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting );
 
         ref.child("Events").child( eventId ).setValue( event );
+
+        addNotifications( getFollowers());
     }
 
     /**
@@ -304,5 +312,47 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    /**
+     * Adding notification feature to follow
+     * @author Yağız Yaşar
+     * @param followers
+     */
+    private void addNotifications( ArrayList<String> followers) {
+
+        for ( int i = 0; i < followers.size(); i++) {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(followers.get(i));
+
+            HashMap<String, Object> hashMap = new HashMap();
+            hashMap.put("userId", followers.get(i) );
+            hashMap.put("text", " created an event called " + editTextTitle.getText().toString() + "." );
+            hashMap.put("eventId", "");
+            hashMap.put("isEvent", false);
+
+            reference.push().setValue(hashMap);
+        }
+
+    }
+
+    public ArrayList<String> getFollowers() {
+        final ArrayList<String> followersIdList = new ArrayList<String>();
+        String organizerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child(organizerId).child("followers");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                followersIdList.clear();
+                for ( DataSnapshot snapshot : dataSnapshot.getChildren() ) {
+                    followersIdList.add( snapshot.getKey());
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return followersIdList;
     }
 }
