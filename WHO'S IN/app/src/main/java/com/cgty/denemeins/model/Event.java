@@ -1,7 +1,8 @@
-package com.cgty.denemeins.model;
+package com.cgty.denemeins.Model;
 
 import androidx.annotation.NonNull;
 
+import com.cgty.denemeins.model.EventDate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -94,13 +95,13 @@ public class Event {
      * @param event Event to add participant to
      * @param participantId User ID of participants
      */
-    public static void addParticipant( Event event, String participantId ) {
+    public void addParticipant( Event event, String participantId ) {
         // add participant id to local list of participants
         event.getParticipants().add( participantId );
 
         // update database
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("events");
-        reference.child( event.getEventId() ).child("participants").setValue( event.getParticipants() );
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events");
+        reference.child( Event.getEventId() ).child("participants").setValue( Event.getParticipants() );
     }
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
