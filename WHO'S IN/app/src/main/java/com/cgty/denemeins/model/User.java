@@ -52,7 +52,7 @@ public class User
                 u.setId( tmp.getId() );
                 u.setUsername( tmp.getUsername() );
                 u.setAge( tmp.getAge() );
-                u.setPpURL( tmp.getPpURL() );
+                u.setImageURL( tmp.getImageURL() );
                 u.setBio( tmp.getBio() );
             }
 
@@ -98,9 +98,9 @@ public class User
         return imageURL;
     }
 
-    public void setPpURL(String ppURL)
+    public void setImageURL(String ImageURL)
     {
-        this.imageURL = ppURL;
+        this.imageURL = imageURL;
     }
 
     public String getBio()
