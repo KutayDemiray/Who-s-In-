@@ -1,13 +1,7 @@
-package com.cgty.denemeins.Model;
+package com.cgty.denemeins.model;
 
-import androidx.annotation.NonNull;
-
-import com.cgty.denemeins.model.EventDate;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -88,7 +82,8 @@ public class Event {
             }
         });
         return u;
-    } */
+    }
+    */
 
     /**
      * Adds participant's id to participants and updates database accordingly
@@ -193,5 +188,4 @@ public class Event {
     public void setPrivacySetting(String privacySetting) {
         this.privacySetting = privacySetting;
     }
-
 }
