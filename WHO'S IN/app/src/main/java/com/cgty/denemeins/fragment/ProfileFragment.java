@@ -238,7 +238,7 @@ public class ProfileFragment extends Fragment
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                textView_Followers.setText( "" + dataSnapshot.getChildrenCount() + " Followers");
+                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers");
             }
 
             @Override
