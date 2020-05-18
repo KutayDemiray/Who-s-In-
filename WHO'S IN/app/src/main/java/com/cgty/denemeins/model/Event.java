@@ -82,7 +82,8 @@ public class Event {
             }
         });
         return u;
-    } */
+    }
+    */
 
     /**
      * Adds participant's id to participants and updates database accordingly
@@ -188,5 +189,4 @@ public class Event {
     public void setPrivacySetting(String privacySetting) {
         this.privacySetting = privacySetting;
     }
-
 }
