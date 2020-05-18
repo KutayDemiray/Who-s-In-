@@ -1,5 +1,15 @@
 package com.cgty.denemeins.model;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 /**
  * User model class
  * @author Cagatay Safak
@@ -26,6 +36,32 @@ public class User
         this.imageURL = imageURL;
         this.bio = bio;
 
+    }
+
+    public static User getUser( String id ) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
+        final User u = new User();
+        final String fId = id;
+        ref.addListenerForSingleValueEvent( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User tmp;
+
+                tmp = dataSnapshot.child( fId ).getValue( User.class ); // TODO can't add data to u for some reason
+                Log.wtf( "DENEME123", tmp.toString() );
+                u.setId( tmp.getId() );
+                u.setUsername( tmp.getUsername() );
+                u.setAge( tmp.getAge() );
+                u.setPpURL( tmp.getPpURL() );
+                u.setBio( tmp.getBio() );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return u;
     }
 
     public String getId()
@@ -77,5 +113,9 @@ public class User
         this.bio = bio;
     }
 
+
+    public String toString() {
+        return "Title: " + getUsername() + " Age: " + getAge() + " Bio: " + getBio();
+    }
 
 }

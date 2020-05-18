@@ -5,7 +5,7 @@ package com.cgty.denemeins;
 
 import android.content.Intent;
         import android.os.Bundle;
-        import android.view.MenuItem;
+import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
 
@@ -14,6 +14,7 @@ import android.content.Intent;
         import androidx.fragment.app.Fragment;
 
 
+import com.cgty.denemeins.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
@@ -40,8 +41,6 @@ public class MainActivity extends AppCompatActivity
 //        bottomNavigationView = findViewById(R.id.bottomNav);
 //        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
     }
-
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener()
     {
