@@ -73,6 +73,7 @@ public class ProfileFragment extends Fragment
     TextView textView_Bio;
     TextView textView_Followers;
     TextView textView_Following;
+    TextView textView_CreatedEvents;
     FirebaseUser currentUser;
     String profileID;
 
@@ -114,6 +115,7 @@ public class ProfileFragment extends Fragment
         textView_Bio = view.findViewById(R.id.textViewProfileBio);
         textView_Followers = view.findViewById(R.id.textViewProfileFollowersInfo);
         textView_Following = view.findViewById(R.id.textViewProfileFollowingInfo);
+        textView_CreatedEvents = view.findViewById(R.id.textViewProfileEventsCreatedInfo);
 
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
         button_Followers = view.findViewById(R.id.buttonFollowers_profile);
@@ -191,8 +193,8 @@ public class ProfileFragment extends Fragment
 
                 Glide.with(getContext()).load(user.getImageURL()).into(image_profile);
 
-                textView_Username.setText(user.getUsername());
-                textView_Age.setText(user.getAge());
+                textView_Username.setText("@" + user.getUsername());
+                textView_Age.setText("Age: " + user.getAge());
                 textView_Bio.setText(user.getBio());
             }
 
@@ -290,7 +292,7 @@ public class ProfileFragment extends Fragment
                         i++;
                 }
 
-                textView_
+                textView_CreatedEvents.setText( i + " Events Created");
 
             }
 
