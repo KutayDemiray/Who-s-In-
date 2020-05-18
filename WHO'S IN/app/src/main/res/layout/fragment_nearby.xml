@@ -12,7 +12,7 @@
         android:id="@+id/nearbySearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/darkBlue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,7 +20,8 @@
             android:id="@+id/nearbySearchToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/darkBlue">
+            android:background="@drawable/custom_search_view"
+            android:elevation="20dp">
 
             <RelativeLayout
 
