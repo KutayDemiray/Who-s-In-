@@ -43,7 +43,9 @@ public class EventActivity extends AppCompatActivity {
       ref.addValueEventListener(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            Event event = dataSnapshot.getValue( Event.class );
+            Event event;
+
+            event = dataSnapshot.child( eventId ).getValue( Event.class );
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
