@@ -48,7 +48,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="14dp"
         android:layout_below="@+id/profileBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -114,15 +114,15 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/profileBioBar"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp">
+                android:padding="10dp">
 
                 <TextView
-                    android:layout_marginTop="7dp"
                     android:id="@+id/textViewProfileBio"
-                    android:text="qw er ty ui op as df gh jk lz xc vb nm qw er ty ui op as df gh jk lz xc vb nm qw er ty ui oa sd fg hj klz xb nm"
+                    android:text="bio..."
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="italic"
@@ -131,11 +131,30 @@
                     android:maxLines="2"/>
 
             </LinearLayout>
-
+            
             <LinearLayout
+                android:id="@+id/profileMidBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="27dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:background="@drawable/button_nigga">
+
+                <ImageView
+                    android:id="@+id/ImageView_DENEME"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profileButtonsBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="55dp"
                 android:orientation="vertical">
 
                 <Button
