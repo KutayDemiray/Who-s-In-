@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="@+id/scoreboard"
         app:layout_constraintStart_toStartOf="@+id/scoreboard" />
 
-    <ImageButton
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilePicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
