@@ -11,7 +11,9 @@ import com.cgty.denemeins.model.User;
 import android.app.ProgressDialog;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,40 +55,115 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment
+{
+    //properties
+    private ImageView image_profile;
+    private ImageView image_signOut;
+    private ImageButton mSignOut;
+    Button button_EditProfile;
+    Button button_Followers;
+    Button button_Following;
+    Button button_PastActivities;
+    TextView textView_Age;
+    TextView textView_Username;
+    TextView textView_Bio;
+    FirebaseUser currentUser;
+    String profileID;
 
-    CircleImageView image_profile;
+    //goko
     TextView username;
-
     DatabaseReference reference;
-    FirebaseUser fuser;
-
     StorageReference storageReference;
     private static final int IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageTask uploadTask;
-
     private static final String TAG = "SETTINGS";
 
     //firebase
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
-    //widgets
-    private ImageButton mSignOut;
+    //constructor
+    public ProfileFragment()
+    {
+        //required empty public constructor.
+    }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        mSignOut = (ImageButton)view.findViewById( R.id.buttonSignOut);
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
+        View view;
+        view = inflater.inflate( R.layout.fragment_profile, container, false);
 
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        profileID = prefs.getString("profileid","none");
+
+        mSignOut = (ImageButton) view.findViewById( R.id.buttonSignOut);
         image_profile = view.findViewById(R.id.profilePicture);
-        username = view.findViewById(R.id.nickname);
+
+        textView_Age = view.findViewById(R.id.textViewProfileAge);
+        textView_Username = view.findViewById(R.id.textViewProfileUsername);                                          //id gonna be changed
+        textView_Bio = view.findViewById(R.id.textViewProfileBio);
+
+        button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
+        button_Followers = view.findViewById(R.id.buttonFollowers_profile);
+        button_Following = view.findViewById(R.id.buttonFollowing_profile);
+        button_PastActivities = view.findViewById(R.id.buttonPastActivities_profile);
+
+        button_EditProfile.setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick( View v)
+            {
+                String buttonText;
+                buttonText = button_EditProfile.getText().toString();
+
+                if ( buttonText.equals( "EDIT PROFILE"))
+                {
+                    //go to edit profile screen
+                }
+                else if ( buttonText.equals( "FOLLOW"))
+                {
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).setValue(true);
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).setValue(true);
+                }
+                else if ( buttonText.equals( "FOLLOWING"))
+                {
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).removeValue();
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).removeValue();
+                }
+            }
+        });
+
+        private void userInfo()
+        {
+            DatabaseReference userPath;
+            userPath = FirebaseDatabase.getInstance().getReference("Users").child(profileID);
+
+            userPath.addValueEventListener(new ValueEventListener()
+            {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError)
+                {
+
+                }
+            });
+        }
+
+        //goko
 
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
 
-        fuser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference( "Users").child(fuser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -120,6 +198,7 @@ public class ProfileFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
             }
         });
+
         return view;
     }
 
@@ -160,7 +239,7 @@ public class ProfileFragment extends Fragment {
                         Uri downloadUri = task.getResult();
                         String mUri = downloadUri.toString();
 
-                        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.getUid());
+                        reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
                         HashMap<String, Object> map = new HashMap<>();
                         map.put("imageURL", mUri);
                         reference.updateChildren(map);

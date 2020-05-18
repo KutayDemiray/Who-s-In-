@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment
 
     public HomeFragment()
     {
-        // required empty public constructor.
+        //required empty public constructor.
     }
 
     @SuppressLint("WrongViewCast")
