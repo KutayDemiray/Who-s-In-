@@ -47,7 +47,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_marginTop="14dp"
         android:layout_below="@+id/profileBar"
         android:layout_width="match_parent"
@@ -159,7 +159,7 @@
 
                 <Button
                     android:id="@+id/myFriends"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/button_background"
@@ -169,7 +169,7 @@
 
                 <Button
                     android:id="@+id/editProfile"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/button_background"
@@ -179,7 +179,7 @@
 
                 <Button
                     android:id="@+id/scoreboard"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/button_background"
@@ -189,7 +189,7 @@
 
                 <Button
                     android:id="@+id/pastActivities"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/button_background"
@@ -201,6 +201,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>
