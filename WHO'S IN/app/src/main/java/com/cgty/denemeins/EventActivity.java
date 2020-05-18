@@ -3,6 +3,7 @@ package com.cgty.denemeins;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,10 +21,14 @@ public class EventActivity extends AppCompatActivity {
             eventParticipants;
 
    Button joinButton;
+   Intent intent;
+   String eventId;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+      intent = getIntent();
+      eventId = intent.getStringExtra( "id" ); //intente oluştuğu classta extra info eklenecek
       
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_event);
@@ -38,7 +43,9 @@ public class EventActivity extends AppCompatActivity {
       ref.addValueEventListener(new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
             Event event = dataSnapshot.getValue( Event.class ); // TODO get id from intent
+
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );

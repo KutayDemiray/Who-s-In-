@@ -111,7 +111,7 @@ public class SignUpActivity extends AppCompatActivity
                             hashmap.put("username", un.toLowerCase());
                             hashmap.put("age", age);
                             hashmap.put("bio", "");
-                            hashmap.put("picurl", "https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082");
+                            hashmap.put("imageURL", "https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082");
 
                             path.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>()
                             {

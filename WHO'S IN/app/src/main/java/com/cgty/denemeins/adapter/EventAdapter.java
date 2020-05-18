@@ -51,7 +51,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         final Event event = mEvent.get( position );
         getEventInfo( holder.textViewTitle, holder.textViewOrganizer, holder.textViewType, holder.textViewDate, holder.textViewLocation, holder.textViewPrivacySetting,
                       holder.textViewParticipants, event.getEventId() );
-
     }
 
     @Override
@@ -76,7 +75,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             textViewPrivacySetting = itemView.findViewById( R.id.textViewPrivacySetting );
             textViewParticipants = itemView.findViewById( R.id.textViewParticipants );
         }
-
     }
 
     private void getEventInfo(final TextView textViewTitle, final TextView textViewOrganizer, final TextView textViewType, final TextView textViewDate,

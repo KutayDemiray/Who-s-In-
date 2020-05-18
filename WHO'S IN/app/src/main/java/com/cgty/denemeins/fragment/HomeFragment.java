@@ -1,4 +1,4 @@
-package com.cgty.denemeins;
+package com.cgty.denemeins.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,6 +15,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
+import com.cgty.denemeins.CreateEvent;
+import com.cgty.denemeins.FeedGatherings;
+import com.cgty.denemeins.FeedSports;
+import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 

@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.cgty.denemeins.ProfileFragment;
+import com.cgty.denemeins.fragment.ProfileFragment;
 import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,7 +67,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
         holder.addFriend.setVisibility(View.VISIBLE);
         holder.username.setText(user.getUsername());
         holder.age.setText(user.getAge());
-        Glide.with(mContext).load(user.getPpURL()).into(holder.pp);
+        Glide.with(mContext).load(user.getImageURL()).into(holder.pp);
         follows(user.getId(), holder.addFriend);
 
         if (user.getId().equals(firebaseUser.getUid()))
