@@ -87,7 +87,7 @@ public class EventDate {
                                      + earlyDate.getHour() ) * 60 + earlyDate.getMinute() );
             // if time between is between a month and a day
             if ( timeInMinutes >= 1440 ) {
-                return ( timeInMinutes / ( 60 * 24 ) ) + " days";
+                return  ( timeInMinutes / ( 60 * 24 ) ) + " days";
             }
             // if time between is less than a day
             else {
