@@ -126,49 +126,44 @@
             android:paddingLeft="20dp"
             android:paddingRight="4dp">
 
+            <ImageButton
+                android:id="@+id/buttonTabletop"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginBottom="45dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
+                app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
+                app:srcCompat="@drawable/tabletopt" />
+
 
         </LinearLayout>
 
 
+        <Button
+            android:id="@+id/buttonCreateEvent"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="39dp"
 
-
-
-
-    <ImageButton
-        android:id="@+id/buttonTabletop"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="92dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="45dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
-        app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
-        app:srcCompat="@drawable/tabletopt" />
-
-
-
-
-    <Button
-        android:id="@+id/buttonCreateEvent"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="75dp"
-
-        android:background="@drawable/mybutton"
-        android:fontFamily="@font/bold"
-        android:gravity="center"
-        android:text="Create an Event"
-        android:textColor="#fff"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginBottom="75dp"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="Create an Event"
+            android:textColor="#fff"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.647"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
     </RelativeLayout>
