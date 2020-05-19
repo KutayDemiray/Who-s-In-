@@ -61,13 +61,14 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment
 {
     //properties
-    private ImageView image_profile;
-    private ImageView image_signOut;
-    private ImageButton mSignOut;
+    ImageView image_profile;
+    ImageView image_signOut;
+    ImageButton mSignOut;
     Button button_EditProfile;
     Button button_Followers;
     Button button_Following;
     Button button_PastActivities;
+    Button button_ScheduledActivities;
     TextView textView_Age;
     TextView textView_Username;
     TextView textView_Bio;
@@ -120,7 +121,10 @@ public class ProfileFragment extends Fragment
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
         button_Followers = view.findViewById(R.id.buttonFollowers_profile);
         button_Following = view.findViewById(R.id.buttonFollowing_profile);
-        button_PastActivities = view.findViewById(R.id.buttonPastEvents_profile );
+
+        button_PastActivities = view.findViewById(R.id.buttonPastEvents_profile);
+        button_ScheduledActivities = view.findViewById(R.id.buttonScheduledEvents_profile);
+
 
         //calling methods
         userInfo();
@@ -559,41 +563,6 @@ public class ProfileFragment extends Fragment
         }
     }
 
-    private void setupFireBaseListener(){
-        Log.d( TAG, "setupFirebaseListener: setting up the auth state listener.");
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if( user != null){
-                    Log.d( TAG, "onAuthStateChanged: signed_in: " + user.getUid());
-                }
-                else{
-                    Log.d( TAG, "onAuthStateChanged: signed_out");
-                    Toast.makeText( getActivity(), "Signed out!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent( getActivity(), LoginActivity.class);
-                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity( intent);
-                }
-            }
-        };
-    }
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if( mAuthStateListener != null){
-            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
-        }
-    }
 }
      */
 }

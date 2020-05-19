@@ -55,7 +55,7 @@ public class Event {
         this.location = location;
         this.privacySetting = privacySetting;
         participants = new ArrayList<>();
-        //addParticipant( this, getOrganizerId() );
+        addParticipant( getEventId(), getOrganizerId() );
     }
 
     // methods
@@ -87,19 +87,33 @@ public class Event {
 
     /**
      * Adds participant's id to participants and updates database accordingly
-     * @param event Event to add participant to
-     * @param participantId User ID of participants
+     * @param eventId Event ID of the event that the participant will join
+     * @param participantId User ID of participant
      */
-    /**
-    public void addParticipant( Event event, String participantId ) {
+    public void addParticipant( String eventId, String participantId ) {
         // add participant id to local list of participants
-        event.getParticipants().add( participantId );
+        if ( !isFull() && !isParticipant( participantId) )
+            participants.add( participantId);
 
         // update database
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child(eventId);
+        reference.child( getEventId() ).child("participants").setValue( getParticipants());
+    }
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" );
-        reference.child( Event.getEventId() ).child("participants").setValue( Event.getParticipants() );
-    }*/
+    /**
+     * Removes the selected participant from the event by event ID
+     * @param eventId
+     * @param participantId
+     */
+    public void removeParticipant( String eventId, String participantId) {
+        //checking if the participant is in the event
+        if ( isParticipant(participantId)) {
+            participants.remove( participantId);
+        }
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child(eventId);
+        reference.child( getEventId() ).child("participants").setValue( getParticipants());
+    }
 
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
@@ -108,7 +122,7 @@ public class Event {
         return eventId;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId( String eventId) {
         this.eventId = eventId;
     }
 
@@ -176,6 +190,19 @@ public class Event {
         this.participants = participants;
     }
 
+    public int getNumberOfParticipants() {
+        return participants.size();
+    }
+
+    public boolean isParticipant( String userId){
+        for ( int i = 0; i < getNumberOfParticipants(); i++) {
+            if ( participants.get(i) == userId)
+                return true;
+        }
+        return false;
+
+    }
+
     public String getLocation() {
         return location;
     }
@@ -190,5 +217,9 @@ public class Event {
 
     public void setPrivacySetting(String privacySetting) {
         this.privacySetting = privacySetting;
+    }
+
+    public boolean isFull() {
+        return getNumberOfParticipants() == getCapacity();
     }
 }
