@@ -21,7 +21,6 @@ allprojects {
         google()
         jcenter()
         bottomnav { url "https://github.com/ittianyu/BottomNavigationViewEx" }
-        
     }
 }
 
