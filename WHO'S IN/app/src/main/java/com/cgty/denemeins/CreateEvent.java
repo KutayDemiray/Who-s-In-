@@ -287,7 +287,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
         ref.child("Events").child( eventId ).setValue( event );
 
-        addNotifications( eventId, organizerId);
+        addNotifications( eventId, organizerId, event.getTitle() );
 
     }
 
@@ -321,7 +321,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    private void addNotifications(final String eventId, String organizerId) {
+    private void addNotifications(final String eventId, String organizerId, final String eventTitle) {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child( organizerId).child("followers");
@@ -333,7 +333,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
                     HashMap<String, Object> hashMap = new HashMap();
                     hashMap.put("userId", firebaseUser.getUid());
-                    hashMap.put("text", " created an event called " + editTextTitle.getText().toString() + ".");
+                    hashMap.put("text", " created an event called " + eventTitle + ".");
                     hashMap.put("eventId", eventId);
                     hashMap.put("isEvent", true);
 

@@ -1,5 +1,7 @@
 package com.cgty.denemeins.model;
 
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -115,6 +117,20 @@ public class Event {
         reference.child( getEventId() ).child("participants").setValue( getParticipants());
     }
 
+    public boolean isParticipant( String userId) {
+        for ( int i = 0; i < participants.size(); i++) {
+            if ( participants.get(i) == userId)
+                return true;
+        }
+        return false;
+    }
+
+    public void printParticipants() {
+        for ( int i = 0; i < participants.size(); i++) {
+            Log.d("DENEME123", "printParticipants: " + participants.get(i));
+        }
+    }
+
 
     // getters and setters (most should never be used but they are required for adding event objects to database)
 
@@ -192,15 +208,6 @@ public class Event {
 
     public int getNumberOfParticipants() {
         return participants.size();
-    }
-
-    public boolean isParticipant( String userId){
-        for ( int i = 0; i < getNumberOfParticipants(); i++) {
-            if ( participants.get(i) == userId)
-                return true;
-        }
-        return false;
-
     }
 
     public String getLocation() {
