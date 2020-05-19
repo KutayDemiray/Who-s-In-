@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 /**
  * @author Çağatay Şafak
+ * @version 1.0
  */
 public class StartActivity extends AppCompatActivity
 {
@@ -25,14 +26,14 @@ public class StartActivity extends AppCompatActivity
         super.onStart();
 
         userStart = FirebaseAuth.getInstance().getCurrentUser();
-        if (userStart != null) {                              //if a user present on device (or database), go to main activity directly
-            startActivity(new Intent(StartActivity.this, MainActivity.class ) );
+        if ( userStart != null ) {                              //if a user present on device (or database), go to main activity directly
+            startActivity( new Intent(StartActivity.this, MainActivity.class ) );
             finish();
         }
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
@@ -42,7 +43,7 @@ public class StartActivity extends AppCompatActivity
         buttonStartLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent (StartActivity.this, LoginActivity.class ) );
+                startActivity( new Intent ( StartActivity.this, LoginActivity.class ) );
             }
         });
 

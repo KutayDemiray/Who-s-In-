@@ -22,8 +22,8 @@ public class TabletopEvent extends Event {
 
     }
 
-    public TabletopEvent(String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType) {
-        super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
+    public TabletopEvent( String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType ) {
+        super( eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting );
         this.gameType = gameType;
     }
 

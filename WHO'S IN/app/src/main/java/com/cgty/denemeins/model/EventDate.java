@@ -43,7 +43,7 @@ public class EventDate {
     /**
      * Regular constructor
      */
-    public EventDate(int year, int month, int day, int hour, int minute) {
+    public EventDate( int year, int month, int day, int hour, int minute ) {
         this.year = year;
         this.month = month;
         this.day = day;
@@ -58,8 +58,8 @@ public class EventDate {
         year = Integer.parseInt( dateString.substring( 6, 10 ) );
         month = Integer.parseInt( dateString.substring( 3, 5 ) );
         day = Integer.parseInt( dateString.substring( 0, 2 ) );
-        hour= Integer.parseInt( timeString.substring( 0, 2) );
-        minute = Integer.parseInt( timeString.substring( 3, 5) );
+        hour= Integer.parseInt( timeString.substring( 0, 2 ) );
+        minute = Integer.parseInt( timeString.substring( 3, 5 ) );
     }
 
     // methods
@@ -87,7 +87,7 @@ public class EventDate {
                                      + earlyDate.getHour() ) * 60 + earlyDate.getMinute() );
             // if time between is between a month and a day
             if ( timeInMinutes >= 1440 ) {
-                return (timeInMinutes / (60 * 24)) + " days";
+                return  ( timeInMinutes / ( 60 * 24 ) ) + " days";
             }
             // if time between is less than a day
             else {

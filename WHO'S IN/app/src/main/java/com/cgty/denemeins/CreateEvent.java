@@ -76,45 +76,45 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         ArrayAdapter adapter1 = ArrayAdapter.createFromResource(
                 this,
                 R.array.mainTypes,
-                R.layout.colored_spinner_layout);
-        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+                R.layout.colored_spinner_layout );
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout );
 
         ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
                 this,
                 R.array.privacySettings,
-                R.layout.colored_spinner_layout);
-        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+                R.layout.colored_spinner_layout );
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout );
 
         ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
                 this,
                 R.array.subTypesSports,
-                R.layout.colored_spinner_layout);
-        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+                R.layout.colored_spinner_layout );
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout );
 
         ArrayAdapter adapter4 = ArrayAdapter.createFromResource(
                 this,
                 R.array.subTypesTabletop,
-                R.layout.colored_spinner_layout);
-        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout);
+                R.layout.colored_spinner_layout );
+        adapter1.setDropDownViewResource( R.layout.spinner_dropdown_layout );
 
-        spinnerMainType.setAdapter(adapter1);
-        spinnerMainType.setOnItemSelectedListener(this);
+        spinnerMainType.setAdapter( adapter1 );
+        spinnerMainType.setOnItemSelectedListener( this );
 
-        spinnerPrivacy.setAdapter(adapter2);
-        spinnerPrivacy.setOnItemSelectedListener(this);
+        spinnerPrivacy.setAdapter( adapter2 );
+        spinnerPrivacy.setOnItemSelectedListener( this );
 
-        spinnerSportsType.setAdapter(adapter3);
-        spinnerSportsType.setOnItemSelectedListener(this);
+        spinnerSportsType.setAdapter( adapter3 );
+        spinnerSportsType.setOnItemSelectedListener( this );
 
-        spinnerTabletopType.setAdapter(adapter4);
-        spinnerTabletopType.setOnItemSelectedListener(this);
+        spinnerTabletopType.setAdapter( adapter4 );
+        spinnerTabletopType.setOnItemSelectedListener( this );
 
         initializeInputs();
 
         // set calendar popup to select date
         editTextDate.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 DatePickerDialog datePickerDialog;
                 int day, month, year;
 
@@ -140,9 +140,9 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         });
 
         // set hour spinner popup to select the time
-        editTextTime.setOnClickListener(new View.OnClickListener() {
+        editTextTime.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 TimePickerDialog timePickerDialog;
                 int hour, minute;
 
@@ -166,11 +166,11 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         });
 
         // add main type spinner a listener so that only relevant subtype spinner is revealed
-        spinnerMainType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerMainType.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if ( spinnerMainType.getSelectedItem().toString().equals( "Meeting") ) {
+            public void onItemSelected( AdapterView<?> parent, View view, int position, long id ) {
+                if ( spinnerMainType.getSelectedItem().toString().equals( "Meeting" ) ) {
                     spinnerSportsType.setVisibility( Spinner.GONE );
                     spinnerTabletopType.setVisibility( Spinner.GONE );
                 }
@@ -178,7 +178,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                     spinnerSportsType.setVisibility( Spinner.VISIBLE );
                     spinnerTabletopType.setVisibility( Spinner.GONE );
                 }
-                else if ( spinnerMainType.getSelectedItem().toString().equals( "Tabletop Games") ) {
+                else if ( spinnerMainType.getSelectedItem().toString().equals( "Tabletop Games" ) ) {
                     spinnerSportsType.setVisibility( Spinner.GONE );
                     spinnerTabletopType.setVisibility( Spinner.VISIBLE );
                 }
@@ -189,60 +189,59 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         });
 
         // set button click listener
-        buttonAddEvent.setOnClickListener(new View.OnClickListener(){
+        buttonAddEvent.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
+
                 //cagatay
-                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
-                String currentDate = sdf.format(new Date());
+                @SuppressLint( "SimpleDateFormat" ) SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z" );
+                String currentDate = sdf.format( new Date() );
 
                 String strTitle = editTextTitle.getText().toString();
                 String strLocation = editTextLocation.getText().toString();
                 String strCapacity = editTextCapacity.getText().toString();  //maybe int...? String is easier anyways
                 String strDate = editTextDate.getText().toString();
 
-                if ( TextUtils.isEmpty(strTitle) || TextUtils.isEmpty(strLocation) || TextUtils.isEmpty(strCapacity) || TextUtils.isEmpty(strDate))
-                    Toast.makeText(CreateEvent.this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
+                if ( TextUtils.isEmpty( strTitle ) || TextUtils.isEmpty( strLocation ) || TextUtils.isEmpty( strCapacity ) || TextUtils.isEmpty( strDate ) )
+                    Toast.makeText(CreateEvent.this, "Please fill out all the fields.", Toast.LENGTH_SHORT ).show();
 
-                else if ( strCapacity.equals( "1")) {
-                    Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
+                else if ( strCapacity.equals( "1" ) ) {
+                    Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT ).show();
                 }
                 // TODO else if selected date is past, raise toast with error message. still?
-                else if ( ( strCapacity.equals( "42")) && ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum") ) ){
+                else if ( ( strCapacity.equals( "42" ) ) && ( strLocation.equalsIgnoreCase("çorum" ) || strLocation.equalsIgnoreCase("corum" ) ) ) {
                     addEvent();
                     initializeInputs();
-                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! THE BEST COMBINATION :) ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! THE BEST COMBINATION :) ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
 
-                else if ( strCapacity.equals( "42") ) {
+                else if ( strCapacity.equals( "42" ) ) {
                     addEvent();
                     initializeInputs();
-                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nKONYA IS THE MEANING OF THE LIFE :) ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nKONYA IS THE MEANING OF THE LIFE :) ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
 
-                else if ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum")){
+                else if ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum" ) ) {
                     addEvent();
                     initializeInputs();
-                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nJourney to the Center of the Earth, HUH? :) ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nJourney to the Center of the Earth, HUH? :) ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
 
-                else if ( strLocation.equalsIgnoreCase("quiquendone") ){
+                else if ( strLocation.equalsIgnoreCase("quiquendone") ) {
                     addEvent();
                     initializeInputs();
-                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nIS THAT DR. OX? ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nIS THAT DR. OX? ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
 
-                else{
+                else {
                     addEvent();
                     initializeInputs();
-                    Toast.makeText(CreateEvent.this, "You have created an event successfully.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateEvent.this, "You have created an event successfully.", Toast.LENGTH_SHORT ).show();
                     finish();
-
                 }
 
             }
@@ -258,7 +257,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         // use database to get id data
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(); // create new database reference
         String organizerId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // get user id using auth tools
-        String eventId = ref.child("Events").push().getKey(); // creates new node in events and gets its unique id
+        String eventId = ref.child( "Events" ).push().getKey(); // creates new node in events and gets its unique id
 
         // fetch rest of the data from views to use in Event constructor
         String title = editTextTitle.getText().toString().trim();
@@ -276,10 +275,10 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         if ( spinnerMainType.getSelectedItem().toString().equals( "Sports" ) ) {
             subType = spinnerSportsType.getSelectedItem().toString();
         }
-        else if ( spinnerMainType.getSelectedItem().toString().equals( "Tabletop Games") ) {
+        else if ( spinnerMainType.getSelectedItem().toString().equals( "Tabletop Games" ) ) {
             subType = spinnerTabletopType.getSelectedItem().toString();
         }
-        else if ( spinnerMainType.getSelectedItem().toString().equals( "Meeting") ) {
+        else if ( spinnerMainType.getSelectedItem().toString().equals( "Meeting" ) ) {
             subType = ""; // TODO
         }
 
@@ -313,35 +312,35 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     //ceydas
-    public void onItemSelected(AdapterView<?> adapterView , View view, int i, long l) {
-        Toast.makeText(this, adapterView.getSelectedItem().toString() , Toast.LENGTH_SHORT).show();
+    public void onItemSelected( AdapterView<?> adapterView , View view, int i, long l ) {
+        Toast.makeText(this, adapterView.getSelectedItem().toString() , Toast.LENGTH_SHORT ).show();
     }
 
-    public void onNothingSelected(AdapterView<?> parent) {
+    public void onNothingSelected( AdapterView<?> parent ) {
 
     }
 
-    private void addNotifications(final String eventId, String organizerId, final String eventTitle) {
+    private void addNotifications( final String eventId, String organizerId, final String eventTitle ) {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child( organizerId).child("followers");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow" ).child( organizerId ).child( "followers" );
         reference.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 for ( DataSnapshot snapshot : dataSnapshot.getChildren() ) {
-                    DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference("Notifications").child( snapshot.getKey());
+                    DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference("Notifications" ).child( snapshot.getKey() );
 
                     HashMap<String, Object> hashMap = new HashMap();
-                    hashMap.put("userId", firebaseUser.getUid());
-                    hashMap.put("text", " created an event called " + eventTitle + ".");
-                    hashMap.put("eventId", eventId);
-                    hashMap.put("isEvent", true);
+                    hashMap.put( "userId", firebaseUser.getUid() );
+                    hashMap.put( "text", " created an event called " + eventTitle + "." );
+                    hashMap.put( "eventId", eventId );
+                    hashMap.put( "isEvent", true );
 
-                    reference2.push().setValue(hashMap);
+                    reference2.push().setValue( hashMap );
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });

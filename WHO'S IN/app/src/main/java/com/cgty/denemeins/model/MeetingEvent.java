@@ -1,5 +1,9 @@
 package com.cgty.denemeins.model;
 
+/**
+ * Meeting event
+ * @author Kutay Demiray, Cemhan Kaan Özaltan, Yağız Yaşar
+ */
 public class MeetingEvent extends Event {
 
     public String toString() {

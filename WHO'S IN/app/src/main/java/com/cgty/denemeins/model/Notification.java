@@ -7,7 +7,7 @@ package com.cgty.denemeins.model;
  */
 public class Notification {
    //constants
-   private final String[] NOTIFICATION_TYPES = { "Follower", "Event is Created"}; // TODO: More types will be added
+   private final String[] NOTIFICATION_TYPES = { "Follower", "Event is Created" }; // TODO: More types will be added
 
    //properties
    private String id;
@@ -17,7 +17,7 @@ public class Notification {
    private int    notificationType;
 
 
-   public Notification(String id, String text, String eventId, String userId, int notificationType) {
+   public Notification( String id, String text, String eventId, String userId, int notificationType ) {
       this.id = id;
       this.text = text;
       this.eventId = eventId;
@@ -32,7 +32,7 @@ public class Notification {
       return eventId;
    }
 
-   public void setEventId(String eventId) {
+   public void setEventId( String eventId ) {
       this.eventId = eventId;
    }
 
@@ -40,7 +40,7 @@ public class Notification {
       return userId;
    }
 
-   public void setUserId(String userId) {
+   public void setUserId( String userId ) {
       this.userId = userId;
    }
 
@@ -48,7 +48,7 @@ public class Notification {
       return notificationType;
    }
 
-   public void setNotificationType(int notificationType) {
+   public void setNotificationType( int notificationType ) {
       this.notificationType = notificationType;
    }
 
@@ -56,7 +56,7 @@ public class Notification {
       return id;
    }
 
-   public void setId(String id) {
+   public void setId( String id ) {
       this.id = id;
    }
 
@@ -64,7 +64,7 @@ public class Notification {
       return text;
    }
 
-   public void setText(String text) {
+   public void setText( String text ) {
       this.text = text;
    }
 
