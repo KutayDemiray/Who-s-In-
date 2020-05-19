@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate( R.layout.fragment_home, container, false );
         buttonCreateEvent = view.findViewById( R.id.buttonCreateEvent );
         buttonToSports = view.findViewById( R.id.buttonSports );
-        buttonToMeetings = view.findViewById( R.id.buttonMeetings );
+        buttonToMeetings = view.findViewById( R.id.buttonGatherings );
         buttonToTabletop = view.findViewById( R.id.buttonTabletop );
         buttonToAllTypes = view.findViewById( R.id.buttonAllTypes );
 
