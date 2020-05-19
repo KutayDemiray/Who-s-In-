@@ -98,25 +98,25 @@ public class ProfileFragment extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    public View onCreateView( @NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState )
     {
         View view;
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE );
         profileID = prefs.getString("profileid", "none");
 
-        mSignOut = (ImageButton) view.findViewById(R.id.buttonSignOut);
-        image_profile = view.findViewById(R.id.profilePicture);
+        mSignOut = (ImageButton) view.findViewById( R.id.buttonSignOut );
+        image_profile = view.findViewById( R.id.profilePicture );
 
-        textView_Age = view.findViewById(R.id.textViewProfileAge);
-        textView_Username = view.findViewById(R.id.textViewProfileUsername);                                          //id gonna be changed
-        textView_Bio = view.findViewById(R.id.textViewProfileBio);
-        textView_Followers = view.findViewById(R.id.textViewProfileFollowersInfo);
-        textView_Following = view.findViewById(R.id.textViewProfileFollowingInfo);
-        textView_CreatedEvents = view.findViewById(R.id.textViewProfileEventsCreatedInfo);
+        textView_Age = view.findViewById( R.id.textViewProfileAge );
+        textView_Username = view.findViewById( R.id.textViewProfileUsername );                                          //id gonna be changed
+        textView_Bio = view.findViewById( R.id.textViewProfileBio );
+        textView_Followers = view.findViewById( R.id.textViewProfileFollowersInfo );
+        textView_Following = view.findViewById( R.id.textViewProfileFollowingInfo );
+        textView_CreatedEvents = view.findViewById( R.id.textViewProfileEventsCreatedInfo );
 
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
         button_Followers = view.findViewById(R.id.buttonFollowers_profile);
