@@ -133,9 +133,11 @@ public class ProfileFragment extends Fragment
         reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
 
         //göko
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 User user = dataSnapshot.getValue(User.class);
                 username.setText(user.getUsername());
                 if( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082"))
@@ -145,7 +147,8 @@ public class ProfileFragment extends Fragment
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
 
             }
         });
@@ -159,28 +162,28 @@ public class ProfileFragment extends Fragment
 
         setupFireBaseListener();
 
-        mSignOut.setOnClickListener(new View.OnClickListener() {
+        mSignOut.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Log.d( TAG, "onClick: attempting to sign out the use.");
                 FirebaseAuth.getInstance().signOut();
             }
         });
-
 
         //calling methods
         userInfo();
         getFollowInfo();
         getNoOfEventsCreated();
 
-        if (profileID.equals(currentUser.getUid())) {
+        if (profileID.equals(currentUser.getUid()))
             button_EditProfile.setText("EDIT PROFILE");
-        }
-        else{
+        else
+        {
             followControl();
             button_PastActivities.setVisibility(View.GONE);
         }
-
 
         button_EditProfile.setOnClickListener( new View.OnClickListener()
         {
@@ -190,28 +193,30 @@ public class ProfileFragment extends Fragment
                 String buttonText;
                 buttonText = button_EditProfile.getText().toString();
 
-                if ( buttonText.equals( "EDIT PROFILE")) {
+                if ( buttonText.equals( "EDIT PROFILE"))
+                {
                     //go to edit profile screen
                 }
-                else if ( buttonText.equals( "FOLLOW")) {
+                else if ( buttonText.equals( "FOLLOW"))
+                {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).setValue(true);
                 }
-                else if ( buttonText.equals( "FOLLOWING")) {
+                else if ( buttonText.equals( "FOLLOWING"))
+                {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).removeValue();
                 }
             }
         });
 
-
-
         setupFireBaseListener();
 
         mSignOut.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Log.d( TAG, "onClick: attempting to sign out the use.");
                 FirebaseAuth.getInstance().signOut();
             }
@@ -237,7 +242,7 @@ public class ProfileFragment extends Fragment
      * @return String
      * @author Gökberk
      */
-    private String getFileExtension(Uri uri){
+    private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContext().getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
