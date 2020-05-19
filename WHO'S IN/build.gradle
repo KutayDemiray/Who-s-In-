@@ -20,6 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        bottomnav { url "https://github.com/ittianyu/BottomNavigationViewEx" }
         
     }
 }

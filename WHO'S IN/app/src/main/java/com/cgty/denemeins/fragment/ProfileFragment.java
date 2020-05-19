@@ -121,8 +121,10 @@ public class ProfileFragment extends Fragment
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
         button_Followers = view.findViewById(R.id.buttonFollowers_profile);
         button_Following = view.findViewById(R.id.buttonFollowing_profile);
+
         button_PastActivities = view.findViewById(R.id.buttonPastEvents_profile);
         button_ScheduledActivities = view.findViewById(R.id.buttonScheduledEvents_profile);
+
 
         //göko
         image_profile = view.findViewById(R.id.profilePicture);
@@ -164,6 +166,7 @@ public class ProfileFragment extends Fragment
                 FirebaseAuth.getInstance().signOut();
             }
         });
+
 
         //calling methods
         userInfo();

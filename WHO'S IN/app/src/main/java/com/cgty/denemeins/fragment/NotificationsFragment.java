@@ -70,6 +70,7 @@ public class NotificationsFragment extends Fragment {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( firebaseUser.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
+
             /**
              * Reading every notification with DataSnapshot
              * @param dataSnapshot

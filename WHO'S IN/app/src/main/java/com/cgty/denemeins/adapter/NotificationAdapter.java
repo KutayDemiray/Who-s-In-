@@ -1,6 +1,8 @@
 package com.cgty.denemeins.adapter;
 
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.CreateEvent;
+import com.cgty.denemeins.EventActivity;
 import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.fragment.ProfileFragment;
 import com.cgty.denemeins.R;
@@ -11,7 +13,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.cgty.denemeins.model.Notification;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,8 +87,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                   editor.putString( "eventId", notification.getEventId() );
                   editor.apply();
 
-                 // ( (FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container,
-                 //         new EventFragment() ).commit(); //TODO: Event fragment
+                  Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class);
+                  mContext.startActivity( fromNotificationToEvent);
+
+
                } else {
                SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
                editor.putString( "userId", notification.getUserId());

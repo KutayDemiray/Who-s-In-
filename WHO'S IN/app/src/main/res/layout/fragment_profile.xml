@@ -28,7 +28,6 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_centerInParent="true"
                     android:src="@drawable/eyes2" />
 
                 <ImageButton
@@ -95,23 +94,25 @@
 
                         <TextView
                             android:id="@+id/textViewProfileUsername"
+                            android:layout_width="181dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:maxLines="1"
                             android:text="\@username"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold|italic"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"/>
+                            android:textStyle="bold|italic" />
 
                         <TextView
                             android:id="@+id/textViewProfileAge"
+                            android:layout_width="86dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:maxLines="1"
                             android:text="Age: 19"
                             android:textColor="@color/white"
                             android:textSize="16sp"
-                            android:textStyle="bold|italic"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:maxLines="1"/>
+                            android:textStyle="bold|italic" />
 
                     </LinearLayout>
 
@@ -130,6 +131,7 @@
                 <TextView
                     android:id="@+id/textViewProfileBio"
                     android:text="ben sen o bdafs gasg asdgas ..."
+                    android:fontFamily="@font/regular"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="italic"
@@ -158,7 +160,7 @@
                     android:background="@drawable/button_background"
                     android:fontFamily="@font/bold"
                     android:text="EDIT PROFILE"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/ImageView_DENEME"
@@ -168,17 +170,18 @@
 
                 <!-- Follow info (inside the Middle Bar)-->
                 <LinearLayout
-                    android:paddingTop="8dp"
                     android:id="@+id/profileFollowInfoBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingTop="8dp">
 
                     <TextView
                         android:id="@+id/textViewProfileFollowersInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/regular"
                         android:maxLines="1"
                         android:text="781 Followers"
                         android:textColor="@color/blue"
@@ -190,6 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/regular"
                         android:maxLines="1"
                         android:text="450 Following"
                         android:textColor="@color/blue"
@@ -201,6 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/regular"
                         android:maxLines="1"
                         android:text="86 Events Created"
                         android:textColor="@color/blue"

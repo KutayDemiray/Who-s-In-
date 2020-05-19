@@ -2,12 +2,13 @@ package com.cgty.denemeins;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
 import com.cgty.denemeins.adapter.EventAdapter;
 import com.cgty.denemeins.model.Event;
@@ -31,48 +32,52 @@ public class FeedEvents extends AppCompatActivity {
     // constants
 
     // event types
-    private final int FEED_SPORTS = 0;
-    private final int FEED_MEETINGS = 1;
-    private final int FEED_TABLETOP = 2;
-    private final int FEED_ALL = 3;
+    private final String FEED_SPORTS = "Sports";
+    private final String FEED_MEETINGS = "Meeting";
+    private final String FEED_TABLETOP = "Tabletop Games";
+    private final String FEED_ALL = "";
 
     // properties
     private AppBarLayout feedEventsBar;
-    private Toolbar toolbarFeedEvents;
     private ImageView imageViewLogo;
     private RecyclerView feedEventsRecyclerView;
     private ArrayList<Event> mEvents;
     private EventAdapter eventAdapter;
-    private Intent intent = getIntent();
-
-    // Determines which events should be displayed. Acquired from HomeFragment
-    final int DISPLAY_EVENTS_TYPE = intent.getIntExtra( "feedEventType", FEED_ALL );
+    private Intent intent;
 
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
+
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_feed_sports );
+        setContentView( R.layout.activity_feed_events );
 
         feedEventsBar = findViewById( R.id.feedEventsBar );
-        toolbarFeedEvents = findViewById( R.id.toolbarFeedEvents );
         imageViewLogo = findViewById( R.id.imageViewLogo );
         feedEventsRecyclerView = findViewById( R.id.feedEventsRecyclerView );
+        feedEventsRecyclerView.setHasFixedSize( true );
+        feedEventsRecyclerView.setLayoutManager( new LinearLayoutManager( this ) );
 
         mEvents = new ArrayList<>();
-        eventAdapter = new EventAdapter( FeedEvents.this, mEvents );
+        eventAdapter = new EventAdapter( this, mEvents );
 
         feedEventsRecyclerView.setAdapter( eventAdapter );
 
-        readEvents();
+        // determine and display event type
+        intent = getIntent();
+        Log.d( "DENEME123", intent.toString() );
+        String type = intent.getExtras().getString( "feedEventType" ); // event type
+        Log.d( "DENEME123", type );
+
+        readEvents( type );
 
     }
 
-    private void readEvents() {
+    private void readEvents( final String DISPLAY_EVENTS_TYPE ) {
 
         DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("Events" );
 
-        eventsRef.addListenerForSingleValueEvent( new ValueEventListener() {
+        eventsRef.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
@@ -82,17 +87,20 @@ public class FeedEvents extends AppCompatActivity {
 
                     Event event = eventSnapshot.getValue( Event.class );
 
-                    boolean conditionDisplayAll = DISPLAY_EVENTS_TYPE == FEED_ALL;
-                    boolean conditionDisplayMeetings = DISPLAY_EVENTS_TYPE == FEED_MEETINGS && event.getMainType().equals( "Meeting" );
-                    boolean conditionDisplaySports = DISPLAY_EVENTS_TYPE == FEED_SPORTS && event.getMainType().equals( "Sports" );
-                    boolean conditionDisplayTabletop = DISPLAY_EVENTS_TYPE == FEED_TABLETOP && event.getMainType().equals( "Tabletop Games" );
+                    boolean conditionDisplayAll = DISPLAY_EVENTS_TYPE.equals( FEED_ALL );
+                    boolean conditionDisplayMeetings = DISPLAY_EVENTS_TYPE.equals( FEED_MEETINGS ) && event.getMainType().equals( FEED_MEETINGS );
+                    boolean conditionDisplaySports = DISPLAY_EVENTS_TYPE.equals( FEED_SPORTS ) && event.getMainType().equals( FEED_SPORTS );
+                    boolean conditionDisplayTabletop = DISPLAY_EVENTS_TYPE.equals( FEED_TABLETOP ) && event.getMainType().equals( FEED_TABLETOP );
 
-                    // display event if it matches the criteria
+                    // Display event if it matches one of the criteria (only one of them can be true at the same time)
                     if ( conditionDisplayAll || conditionDisplayMeetings || conditionDisplaySports || conditionDisplayTabletop ) {
+                        Log.d( "DENEME123", event.toString() );
                         mEvents.add(event);
                     }
 
                 }
+
+                eventAdapter.notifyDataSetChanged();
 
             }
 
