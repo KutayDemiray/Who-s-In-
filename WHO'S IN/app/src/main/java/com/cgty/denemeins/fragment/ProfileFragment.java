@@ -55,7 +55,7 @@ import static android.app.Activity.RESULT_OK;
 
 /**
  * Profile Fragment Class
- * @author Gökberk Keskinkılıç, Cagatay Safak
+ * @author Gökberk Keskinkılıç, Çağatay Şafak
  * @version 2.0
  */
 public class ProfileFragment extends Fragment
@@ -326,7 +326,7 @@ public class ProfileFragment extends Fragment
     }
 
     /**
-     * Çağatay
+     * @author Çağatay
      */
     private void userInfo()
     {
@@ -360,7 +360,7 @@ public class ProfileFragment extends Fragment
     }
 
     /**
-     * Çağatay
+     * @author Çağatay
      */
     private void followControl() {
         DatabaseReference followPath;
@@ -386,7 +386,7 @@ public class ProfileFragment extends Fragment
     }
 
     /**
-     * Çağatay
+     * @author Çağatay
      */
     private void getFollowInfo() {
         //gets number of followers
@@ -428,7 +428,7 @@ public class ProfileFragment extends Fragment
     }
 
     /**
-     * Çağatay
+     * @author Çağatay
      */
     private void getNoOfEventsCreated()
     {
@@ -463,7 +463,7 @@ public class ProfileFragment extends Fragment
     }
 
     /**
-     * Gökberk
+     * @author Gökberk
      */
     private void setupFireBaseListener() {
         Log.d( TAG, "setupFirebaseListener: setting up the auth state listener.");
