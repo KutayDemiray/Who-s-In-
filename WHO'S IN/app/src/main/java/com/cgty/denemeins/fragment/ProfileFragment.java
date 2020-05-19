@@ -321,13 +321,16 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void userInfo() {
+    private void userInfo()
+    {
         DatabaseReference userPath;
         userPath = FirebaseDatabase.getInstance().getReference("Users").child(profileID);
 
-        userPath.addValueEventListener(new ValueEventListener() {
+        userPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (getContext() == null)
                     return;
 
@@ -356,9 +359,11 @@ public class ProfileFragment extends Fragment
         DatabaseReference followPath;
         followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
 
-        followPath.addValueEventListener(new ValueEventListener() {
+        followPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (dataSnapshot.child(profileID).exists())
                     button_EditProfile.setText( "FOLLOWING");
                 else
@@ -399,7 +404,8 @@ public class ProfileFragment extends Fragment
         DatabaseReference followingPath;
         followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("following");
 
-        followingPath.addValueEventListener(new ValueEventListener() {
+        followingPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
@@ -417,13 +423,16 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getNoOfEventsCreated() {
+    private void getNoOfEventsCreated()
+    {
         DatabaseReference eventPath;
         eventPath = FirebaseDatabase.getInstance().getReference().child("Events");
 
-        eventPath.addValueEventListener(new ValueEventListener() {
+        eventPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 int i;
                 i = 0;
 
