@@ -25,37 +25,31 @@ public class StartActivity extends AppCompatActivity
         super.onStart();
 
         userStart = FirebaseAuth.getInstance().getCurrentUser();
-        if (userStart != null)                                         //if a user present on device (or database), go to main activity directly.
-        {
-            startActivity(new Intent(StartActivity.this, MainActivity.class));
+        if (userStart != null) {                              //if a user present on device (or database), go to main activity directly
+            startActivity(new Intent(StartActivity.this, MainActivity.class ) );
             finish();
         }
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        buttonStartLogin = findViewById(R.id.buttonLoginStart);
-        buttonStartSignUp = findViewById(R.id.buttonSignUpStart);
+        buttonStartLogin = findViewById( R.id.buttonLoginStart );
+        buttonStartSignUp = findViewById( R.id.buttonSignUpStart );
 
-        buttonStartLogin.setOnClickListener(new View.OnClickListener()
-        {
+        buttonStartLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent (StartActivity.this, LoginActivity.class));
+            public void onClick(View v) {
+                startActivity( new Intent (StartActivity.this, LoginActivity.class ) );
             }
         });
 
-        buttonStartSignUp.setOnClickListener(new View.OnClickListener()
-        {
+        buttonStartSignUp.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent (StartActivity.this, SignUpActivity.class));
+            public void onClick( View v ) {
+                startActivity( new Intent (StartActivity.this, SignUpActivity.class ) );
             }
         });
     }
