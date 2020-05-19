@@ -3,15 +3,11 @@ package com.cgty.denemeins;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.constraintlayout.solver.widgets.Snapshot;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.cgty.denemeins.model.Event;
@@ -62,7 +58,10 @@ public class EventActivity extends AppCompatActivity {
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
             eventDescription.setText( event.getDescription() );
-            if ( event.getParticipants().indexOf( firebaseUser.getUid()) == -1 ) {
+            if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
+               eventJoinButton.setVisibility(View.GONE);
+            }
+            else if ( event.getParticipants().indexOf( firebaseUser.getUid()) == -1 ) {
                eventJoinButton.setText("JOIN");
             } else {
                eventJoinButton.setText("LEAVE");
@@ -108,9 +107,12 @@ public class EventActivity extends AppCompatActivity {
             event.printParticipants();
 
 
-            if ( event.getParticipants().indexOf( userId) == -1 ) {
+            if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
+               eventJoinButton.setVisibility( View.GONE );
+            } else if ( event.getParticipants().indexOf( userId ) == -1 ) {
                eventJoinButton.setText("JOIN");
                event.getParticipants().add(userId);
+
             } else {
                eventJoinButton.setText("LEAVE");
                event.getParticipants().remove(userId);
