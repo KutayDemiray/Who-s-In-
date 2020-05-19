@@ -39,7 +39,6 @@ public class User
         this.age = age;
         this.picurl = picurl;
         this.bio = bio;
-
     }
 
     /**

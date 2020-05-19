@@ -208,7 +208,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 else if ( strCapacity.equals( "1")){
                     Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
                 }
-                // TODO else if selected date is past, raise toast with error message
+                // TODO else if selected date is past, raise toast with error message. still?
                 else if ( ( strCapacity.equals( "42")) && ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum") ) ){
                     addEvent();
                     initializeInputs();
