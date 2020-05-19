@@ -46,7 +46,7 @@ public class EditProfileActivity extends AppCompatActivity
 	MaterialEditText materialEditTextBio;
 	
 	FirebaseUser currentUser;
-	//private
+	private
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
