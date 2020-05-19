@@ -4,100 +4,90 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cgty.denemeins.model.Event;
-import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.cgty.denemeins.model.Event;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * Event adapter class for displaying events on screen
- * @author Kutay Demiray, Yağız Yaşar
- * @version 1.0 17.05.2020
+ * Event adapter class
+ * @author Kutay Demiray
+ * @version 1.0
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
 
     // properties
     private Context mContext;
-    private List<Event> mEvent;
+    private ArrayList<Event> mEvents;
 
-    // constructor
-    public EventAdapter( Context mContext, List<Event> mEvent ) {
+    // constructors
+    public EventAdapter(Context mContext, ArrayList<Event> mEvents) {
         this.mContext = mContext;
-        this.mEvent = mEvent;
+        this.mEvents = mEvents;
     }
 
     // methods
 
     @NonNull
     @Override
-    public EventAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate( R.layout.event_element, parent, false );
-        return new EventAdapter.ViewHolder( view );
+    public ViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType ) {
+        View view = LayoutInflater.from( mContext ).inflate( R.layout.event_element, parent, false );
+
+        return new ViewHolder( view );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EventAdapter.ViewHolder holder, int position) {
-        final Event event = mEvent.get( position );
-        getEventInfo( holder.textViewTitle, holder.textViewOrganizer, holder.textViewType, holder.textViewDate, holder.textViewLocation, holder.textViewPrivacySetting,
-                      holder.textViewParticipants, event.getEventId() );
+    public void onBindViewHolder( @NonNull ViewHolder holder, int position ) {
+        final Event event = mEvents.get( position );
+
+        holder.textViewTitleEventElement.setText( event.getTitle() );
+        holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
+        holder.textViewUsernameEventElement.setText( event.getOrganizerId() ); // TODO change this to username instead of id
+        holder.textViewLocationEventElement.setText( event.getLocation() );
+        holder.textViewDateEventElement.setText( event.getDate().toString() );
+        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + event.getCapacity() ); // TODO fix to show current/max
+        holder.textViewDescriptionEventElement.setText( event.getDescription() );
+        holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
+
     }
 
     @Override
     public int getItemCount() {
-        return mEvent.size();
+        return mEvents.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         // properties
-        public TextView textViewTitle, textViewType, textViewParticipants, textViewOrganizer,
-                 textViewDate, textViewLocation, textViewPrivacySetting;
+        public ImageView eventElementPP, imageViewJoinEventElement, imageViewDiscussEventElement;
+        public TextView textViewTitleEventElement, textViewTypeEventElement, textViewUsernameEventElement,
+                        textViewLocationEventElement, textViewDateEventElement, textViewNoOfParticipantsEventElement,
+                        textViewDescriptionEventElement, textViewPrivacySettingEventElement;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ViewHolder( @NonNull View itemView ) {
+            super( itemView );
 
-            textViewTitle = itemView.findViewById( R.id.textViewTitle );
-            textViewOrganizer = itemView.findViewById( R.id.textViewOrganizer );
-            textViewType = itemView.findViewById( R.id.textViewType );
-            textViewDate = itemView.findViewById( R.id.textViewDate );
-            textViewLocation = itemView.findViewById( R.id.textViewLocation );
-            textViewPrivacySetting = itemView.findViewById( R.id.textViewPrivacySetting );
-            textViewParticipants = itemView.findViewById( R.id.textViewParticipants );
+            eventElementPP = itemView.findViewById( R.id.eventElementPP );
+            imageViewJoinEventElement = itemView.findViewById( R.id.imageViewJoinEventElement );
+            imageViewDiscussEventElement = itemView.findViewById( R.id.imageViewDiscussEventElement );
+
+            textViewTitleEventElement = itemView.findViewById( R.id.textViewTitleEventElement );
+            textViewTypeEventElement = itemView.findViewById( R.id.textViewTypeEventElement );
+            textViewUsernameEventElement = itemView.findViewById( R.id.textViewUsernameEventElement );
+            textViewLocationEventElement = itemView.findViewById( R.id.textViewLocationEventElement );
+            textViewDateEventElement = itemView.findViewById( R.id.textViewDateEventElement );
+            textViewNoOfParticipantsEventElement = itemView.findViewById( R.id.textViewNoOfParticipantsEventElement );
+            textViewDescriptionEventElement = itemView.findViewById( R.id.textViewDescriptionEventElement );
+            textViewPrivacySettingEventElement = itemView.findViewById( R.id.textViewDescriptionEventElement );
+
         }
+
     }
 
-    private void getEventInfo(final TextView textViewTitle, final TextView textViewOrganizer, final TextView textViewType, final TextView textViewDate,
-                              final TextView textViewLocation, final TextView textViewPrivacySetting, final TextView textViewParticipants, String eventId) {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference( "Events").child( eventId );
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Event event = dataSnapshot.getValue( Event.class );
-                User organizer = dataSnapshot.child( "Users" ).child( event.getOrganizerId() ).getValue( User.class );
-                textViewTitle.setText( event.getTitle() );
-                textViewOrganizer.setText( organizer.getUsername() );
-                textViewType.setText( event.getMainType() + "-" + event.getSubType() );
-                textViewDate.setText( event.getDate().toString() );
-                textViewLocation.setText( event.getLocation() );
-                textViewPrivacySetting.setText( event.getPrivacySetting() );
-                textViewParticipants.setText( event.getParticipants().toString() );
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

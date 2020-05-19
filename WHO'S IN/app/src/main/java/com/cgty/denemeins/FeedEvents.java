@@ -2,13 +2,13 @@ package com.cgty.denemeins;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
 import com.cgty.denemeins.adapter.EventAdapter;
 import com.cgty.denemeins.model.Event;
@@ -50,14 +50,16 @@ public class FeedEvents extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState ) {
 
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_feed_sports );
+        setContentView( R.layout.activity_feed_events );
 
         feedEventsBar = findViewById( R.id.feedEventsBar );
         imageViewLogo = findViewById( R.id.imageViewLogo );
         feedEventsRecyclerView = findViewById( R.id.feedEventsRecyclerView );
+        feedEventsRecyclerView.setHasFixedSize( true );
+        feedEventsRecyclerView.setLayoutManager( new LinearLayoutManager( this ) );
 
         mEvents = new ArrayList<>();
-        eventAdapter = new EventAdapter( FeedEvents.this, mEvents );
+        eventAdapter = new EventAdapter( this, mEvents );
 
         feedEventsRecyclerView.setAdapter( eventAdapter );
 
@@ -75,7 +77,7 @@ public class FeedEvents extends AppCompatActivity {
 
         DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("Events" );
 
-        eventsRef.addListenerForSingleValueEvent( new ValueEventListener() {
+        eventsRef.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
@@ -92,10 +94,13 @@ public class FeedEvents extends AppCompatActivity {
 
                     // Display event if it matches one of the criteria (only one of them can be true at the same time)
                     if ( conditionDisplayAll || conditionDisplayMeetings || conditionDisplaySports || conditionDisplayTabletop ) {
+                        Log.d( "DENEME123", event.toString() );
                         mEvents.add(event);
                     }
 
                 }
+
+                eventAdapter.notifyDataSetChanged();
 
             }
 
