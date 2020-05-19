@@ -207,7 +207,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="86 Events Created"
+                        android:text="86 Events Created   "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />

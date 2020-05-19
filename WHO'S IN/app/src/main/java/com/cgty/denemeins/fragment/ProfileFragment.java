@@ -449,7 +449,7 @@ public class ProfileFragment extends Fragment
                         i++;
                 }
 
-                textView_CreatedEvents.setText( i + " Events Created");
+                textView_CreatedEvents.setText( i + " Events Created  ");  //2 spaces at the end for italic font
             }
 
             @Override
