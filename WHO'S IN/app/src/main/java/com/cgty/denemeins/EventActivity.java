@@ -25,7 +25,7 @@ public class EventActivity extends AppCompatActivity {
 
    Button joinButton;
    Intent intent;
-   String eventId;
+   //String eventId;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class EventActivity extends AppCompatActivity {
       DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
       final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
       intent = getIntent();
-      eventId = intent.getStringExtra( "id" ); //intente oluştuğu classta extra info eklenecek
+      final String eventId = intent.getStringExtra( "eventId" );
       
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_event);
@@ -50,14 +50,13 @@ public class EventActivity extends AppCompatActivity {
          @Override
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             Event event;
-
-            event = dataSnapshot.child( eventId ).getValue( Event.class ); // uses the eventId from intent
+            event = dataSnapshot.child( eventId).getValue( Event.class ); // uses the eventId from intent
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
             eventDescription.setText( event.getDescription() );
-            eventCapacity.setText( "Capacity: " + event.getParticipants().size() + "/" + event.getCapacity() );
-            eventParticipants.setText( event.getParticipants().toString() );
+            eventCapacity.setText( "Capacity: "  + "/" + event.getCapacity() );
+           // eventParticipants.setText( "sasd" );
          }
 
          @Override
@@ -69,15 +68,15 @@ public class EventActivity extends AppCompatActivity {
       joinButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-
+            addOrRemoveParticipant( eventId);
          }
       });
    }
 
-   private void addOrRemoveParticipant() {
+   private void addOrRemoveParticipant( final String eventId) {
 
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events").child( eventId);
-       final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+      final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
       reference.addValueEventListener(new ValueEventListener() {
          @Override

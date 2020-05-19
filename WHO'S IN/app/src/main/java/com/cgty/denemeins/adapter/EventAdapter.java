@@ -1,6 +1,8 @@
 package com.cgty.denemeins.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cgty.denemeins.EventActivity;
 import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.Event;
 
@@ -38,7 +41,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType ) {
         View view = LayoutInflater.from( mContext ).inflate( R.layout.event_element, parent, false );
-
         return new ViewHolder( view );
     }
 
@@ -55,6 +57,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.textViewDescriptionEventElement.setText( event.getDescription() );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
+                editor.putString( "eventId", event.getEventId() );
+                editor.apply();
+
+                Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class);
+                fromNotificationToEvent.putExtra( "eventId", event.getEventId());
+                mContext.startActivity( fromNotificationToEvent);
+            }
+        });
     }
 
     @Override
