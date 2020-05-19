@@ -1,5 +1,6 @@
 package com.cgty.denemeins;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -26,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
@@ -46,7 +49,9 @@ public class EditProfileActivity extends AppCompatActivity
 	MaterialEditText materialEditTextBio;
 	
 	FirebaseUser currentUser;
-	private
+	private StorageTask uploadTask;
+	private Uri image;
+	StorageReference storagePath;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -62,5 +67,7 @@ public class EditProfileActivity extends AppCompatActivity
 		materialEditTextUsername = findViewById(R.id.materialEditTextChangeUsernameEditProfile);
 		materialEditTextAge = findViewById(R.id.materialEditTextChangeAgeEditProfile);
 		materialEditTextBio = findViewById(R.id.materialEditTextChangeBioEditProfile);
+		
+		
 	}
 }
