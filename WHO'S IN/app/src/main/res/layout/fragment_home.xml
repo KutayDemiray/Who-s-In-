@@ -110,7 +110,7 @@
             android:background="@drawable/mybutton"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:text="Create an Event"
+            android:text="Create Event"
             android:textColor="@color/white"
             android:textSize="25sp"/>
 
