@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 /**
  * Event adapter class
- * @author Kutay Demiray
+ * @author Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan
  * @version 1.0
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
@@ -57,6 +57,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         final TextView organizerName = holder.textViewUsernameEventElement;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
         ref.addValueEventListener(new ValueEventListener() {
+            // gets the organiser's username from the database
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 organizerName.setText( dataSnapshot.child( event.getOrganizerId() ).getValue( User.class ).getUsername() );
@@ -70,10 +71,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         holder.textViewTitleEventElement.setText( event.getTitle() );
         holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
-        holder.textViewUsernameEventElement.setText( event.getOrganizerId() ); // TODO change this to username instead of id
         holder.textViewLocationEventElement.setText( event.getLocation() );
         holder.textViewDateEventElement.setText( event.getDate().toString() );
-        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + event.getCapacity() ); // TODO fix to show current/max
+        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + event.getNumberOfParticipants() + " / " + event.getCapacity() );
         holder.textViewDescriptionEventElement.setText( event.getDescription() );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 
