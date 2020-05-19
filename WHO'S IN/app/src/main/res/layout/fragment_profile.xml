@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="55dp"
                 android:paddingEnd="55dp"
-                android:paddingTop="30dp"
+                android:paddingTop="10dp"
                 android:orientation="vertical">
 
                 <Button
