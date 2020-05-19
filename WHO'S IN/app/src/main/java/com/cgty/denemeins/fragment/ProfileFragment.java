@@ -559,41 +559,6 @@ public class ProfileFragment extends Fragment
         }
     }
 
-    private void setupFireBaseListener(){
-        Log.d( TAG, "setupFirebaseListener: setting up the auth state listener.");
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if( user != null){
-                    Log.d( TAG, "onAuthStateChanged: signed_in: " + user.getUid());
-                }
-                else{
-                    Log.d( TAG, "onAuthStateChanged: signed_out");
-                    Toast.makeText( getActivity(), "Signed out!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent( getActivity(), LoginActivity.class);
-                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity( intent);
-                }
-            }
-        };
-    }
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if( mAuthStateListener != null){
-            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
-        }
-    }
 }
      */
 }
