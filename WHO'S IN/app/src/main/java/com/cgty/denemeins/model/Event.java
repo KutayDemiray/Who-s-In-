@@ -15,11 +15,11 @@ import java.util.ArrayList;
 public class Event {
 
     // properties
-    private String eventId;  //
-    private String title;  //
+    private String eventId;
+    private String title;
     private String organizerId;
     private EventDate date;
-    private String description;  //
+    private String description;
     private int capacity;
     private String mainType;
     private String subType;
@@ -98,8 +98,8 @@ public class Event {
             participants.add( participantId);
 
         // update database
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child(eventId);
-        reference.child( getEventId() ).child("participants").setValue( getParticipants());
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child( eventId );
+        reference.child( getEventId() ).child( "participants" ).setValue( getParticipants() );
     }
 
     /**
@@ -107,27 +107,27 @@ public class Event {
      * @param eventId
      * @param participantId
      */
-    public void removeParticipant( String eventId, String participantId) {
+    public void removeParticipant( String eventId, String participantId ) {
         //checking if the participant is in the event
-        if ( isParticipant(participantId)) {
-            participants.remove( participantId);
+        if ( isParticipant( participantId ) ) {
+            participants.remove( participantId );
         }
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child(eventId);
-        reference.child( getEventId() ).child("participants").setValue( getParticipants());
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child( eventId );
+        reference.child( getEventId() ).child( "participants" ).setValue( getParticipants() );
     }
 
-    public boolean isParticipant( String userId) {
-        for ( int i = 0; i < participants.size(); i++) {
-            if ( participants.get(i) == userId)
+    public boolean isParticipant( String userId ) {
+        for ( int i = 0; i < participants.size(); i++ ) {
+            if ( participants.get(i) == userId )
                 return true;
         }
         return false;
     }
 
     public void printParticipants() {
-        for ( int i = 0; i < participants.size(); i++) {
-            Log.d("DENEME123", "printParticipants: " + participants.get(i));
+        for ( int i = 0; i < participants.size(); i++ ) {
+            Log.d("DENEME123", "printParticipants: " + participants.get(i) );
         }
     }
 

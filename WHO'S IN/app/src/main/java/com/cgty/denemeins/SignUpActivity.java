@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 /**
  * Login Activity class
- * @author Cagatay Safak
+ * @author Çağatay Şafak
  * @version 1.0
  */
 public class SignUpActivity extends AppCompatActivity {
@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick( View v ) {
 
-                pd = new ProgressDialog( SignUpActivity.this);
+                pd = new ProgressDialog( SignUpActivity.this );
                 pd.setMessage( "Wait..." );
                 pd.show();
 
@@ -78,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if( TextUtils.isEmpty( strUsername ) || TextUtils.isEmpty( strAge ) || TextUtils.isEmpty( strEmail ) || TextUtils.isEmpty( strPassword ) )
                     Toast.makeText(SignUpActivity.this, "Please fill out all the fields.", Toast.LENGTH_SHORT ).show();
 
-                else if( strPassword.length() < 5)
+                else if( strPassword.length() < 5 )
                     Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT ).show();
 
                 else
@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void signUp(final String un, final String age, String mail, String pw) {
+    private void signUp( final String un, final String age, String mail, String pw ) {
         //code to register new user...
         auth.createUserWithEmailAndPassword( mail, pw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override

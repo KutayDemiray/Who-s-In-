@@ -3,6 +3,7 @@ package com.cgty.denemeins.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder( @NonNull ViewHolder holder, int position ) {
 
         final Event event = mEvents.get( position );
-
+        Log.d( "DENEME123", event.getEventId() );
 
         // get organizer's username from database
         final String uId = event.getOrganizerId();
@@ -78,21 +79,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         // get current and max participants from database
         final TextView participants = holder.textViewNoOfParticipantsEventElement;
         final ArrayList<String> participantList = new ArrayList<>();
-        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference( "Events" ).child( event.getEventId() );
+        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference( "Events" );
         eventRef.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
-                participantList.clear();
-
                 for ( DataSnapshot participantSnapshot : dataSnapshot.child( "participants" ).getChildren() ) {
                     String s = participantSnapshot.getValue( String.class );
                     participantList.add( s );
-
                 }
 
                 event.setParticipants( participantList );
-                participants.setText( "Capacity: " + event.getParticipants().size() + "/" + event.getCapacity() );
+                participants.setText( "Capacity: " + participantList.size() + "/" + event.getCapacity() );
             }
 
             @Override
@@ -132,7 +130,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         // properties
-        public ImageView eventElementPP, imageViewJoinEventElement, imageViewDiscussEventElement;
+        public ImageView eventElementPP, imageViewJoinEventElement;
         public TextView textViewTitleEventElement, textViewTypeEventElement, textViewUsernameEventElement,
                         textViewLocationEventElement, textViewDateEventElement, textViewNoOfParticipantsEventElement,
                         textViewDescriptionEventElement, textViewPrivacySettingEventElement;

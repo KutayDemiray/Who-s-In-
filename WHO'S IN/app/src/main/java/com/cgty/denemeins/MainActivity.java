@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected( @NonNull MenuItem menuItem ) {
             Fragment selectedFragment = null;
 
-            switch ( menuItem.getItemId()) {
+            switch ( menuItem.getItemId() ) {
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment();
                     break;

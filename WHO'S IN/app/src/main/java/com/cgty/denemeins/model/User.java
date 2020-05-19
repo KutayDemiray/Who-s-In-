@@ -16,24 +16,25 @@ import java.util.ArrayList;
 
 /**
  * User model class
- * @author Cagatay Safak
+ * @author Çağatay Şafak
  * @version 1.0
  */
-public class User
-{
+
+public class User {
+
+    // properties
     private String id;
     private String username;
     private String age;
     private String picurl;
     private String bio;
 
-    public User()
-    {
+    // constructors
+    public User() {
 
     }
 
-    public User( String id, String username, String age, String imageURL, String bio)
-    {
+    public User( String id, String username, String age, String imageURL, String bio) {
         this.id = id;
         this.username = username;
         this.age = age;
@@ -41,6 +42,7 @@ public class User
         this.bio = bio;
     }
 
+    // methods
     /**
      * Get user from database by User ID
      * Could not implement yet (asynchronous databases do not directly allow retrieving and using data outside their listeners)
@@ -90,33 +92,27 @@ public class User
 
     */
     // getters and setters
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
-    public void setId(String id)
-    {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getAge()
-    {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(String age)
-    {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -124,18 +120,15 @@ public class User
         return picurl;
     }
 
-    public void setPicurl(String picurl)
-    {
+    public void setPicurl(String picurl) {
         this.picurl = picurl;
     }
 
-    public String getBio()
-    {
+    public String getBio() {
         return bio;
     }
 
-    public void setBio(String bio)
-    {
+    public void setBio( String bio ) {
         this.bio = bio;
     }
 
@@ -143,7 +136,4 @@ public class User
     public String toString() {
         return "Title: " + getUsername() + " Age: " + getAge() + " Bio: " + getBio();
     }
-
-
-
 }

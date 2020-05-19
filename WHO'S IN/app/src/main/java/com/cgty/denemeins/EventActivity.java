@@ -25,9 +25,9 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 /**
- * Activity for specific events
- * @author Yağız Yaşar
- * @version 19.5.20
+ * Event activity
+ * @author Yağız Yaşar, Cemhan Kaan Özaltan, Kutay Demiray
+ * @version 1.0
  */
 public class EventActivity extends AppCompatActivity {
 
@@ -87,7 +87,6 @@ public class EventActivity extends AppCompatActivity {
                }
             });
 
-
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
@@ -107,6 +106,7 @@ public class EventActivity extends AppCompatActivity {
                usernameString = usernameString + s + "\n";
             }
             eventParticipants.setText( usernameString);
+
          }
 
          @Override
@@ -116,7 +116,7 @@ public class EventActivity extends AppCompatActivity {
 
       });
 
-      eventJoinButton.setOnClickListener(new View.OnClickListener() {
+      eventJoinButton.setOnClickListener( new View.OnClickListener() {
          @Override
          public void onClick( View v ) {
             addOrRemoveParticipant( eventId, firebaseUser.getUid() );

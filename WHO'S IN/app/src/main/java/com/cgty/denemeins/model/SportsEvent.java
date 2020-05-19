@@ -7,7 +7,7 @@ package com.cgty.denemeins.model;
 public class SportsEvent extends Event {
 
     // constants
-    final static String[] gameTypes = { "Football" , "Basketball" , "Volleyball" , "Video Game" , "Other"};
+    final static String[] gameTypes = { "Football" , "Basketball" , "Volleyball" , "Video Game" , "Other" };
 
     final static int FOOTBALL_EVENT = 0;
     final static int BASKETBALL_EVENT = 1;
@@ -39,8 +39,8 @@ public class SportsEvent extends Event {
      * @param privacySetting
      * @param gameType
      */
-    public SportsEvent(String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType) {
-        super(eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting);
+    public SportsEvent( String eventId, String title, String organizerId, EventDate date, String description, int capacity, String mainType, String subType, String location, String privacySetting, int gameType ) {
+        super( eventId, title, organizerId, date, description, capacity, mainType, subType, location, privacySetting );
 
         this.gameType = gameType;
     }
