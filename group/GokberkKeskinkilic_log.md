@@ -40,6 +40,6 @@ Stayed awake until first lights of the day with Çağatay to improve profile tab
 Found out that the code that I wrote, user class and database do not match. Tried to fix the problem but I couldn't. Worked with Çağatay to see what can we improve more on profile tab. 
 
 ### ~ [19.05.2020] ~
-Fianlly managed to get code work. Now user can choose an image from their device, upload it to firebase and use it as their profile picture. 
+Finally managed to get code work. Now user can choose an image from their device, upload it to firebase and use it as their profile picture. 
 
 ****
