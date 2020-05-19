@@ -38,6 +38,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/feedEventsRecyclerView"
         android:layout_width="match_parent"
+        android:background="@drawable/soft_border"
         android:layout_height="wrap_content"
         android:layout_below="@+id/feedEventsBar"/>
 
