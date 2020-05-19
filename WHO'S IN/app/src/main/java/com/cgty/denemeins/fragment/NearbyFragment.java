@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Gökberk Keskinkılıç, Cagatay Safak
+ * @author Gökberk Keskinkılıç, Çağatay Şafak
  */
 public class NearbyFragment extends Fragment
 {
