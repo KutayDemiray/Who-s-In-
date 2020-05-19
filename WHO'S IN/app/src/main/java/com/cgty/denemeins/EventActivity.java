@@ -21,6 +21,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * Event activity
+ * @author Yağız Yaşar, Cemhan Kaan Özaltan
+ * @version 1.0
+ */
+
 public class EventActivity extends AppCompatActivity {
 
    TextView eventTitle, eventType, eventDateAndLocation, eventDescription, eventCapacity,
@@ -60,7 +66,7 @@ public class EventActivity extends AppCompatActivity {
             eventDescription.setText( event.getDescription() );
 
             if ( event.getParticipants().indexOf( firebaseUser.getUid() ) == -1 ) {
-               eventJoinButton.setText("JOIN");
+               eventJoinButton.setText( "JOIN" );
             }
 
             if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
@@ -81,7 +87,7 @@ public class EventActivity extends AppCompatActivity {
 
       });
 
-      eventJoinButton.setOnClickListener(new View.OnClickListener() {
+      eventJoinButton.setOnClickListener( new View.OnClickListener() {
          @Override
          public void onClick( View v ) {
             addOrRemoveParticipant( eventId, firebaseUser.getUid() );
@@ -101,7 +107,7 @@ public class EventActivity extends AppCompatActivity {
          public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
             participants.clear();
-            for ( DataSnapshot snapshot : dataSnapshot.child( "participants").getChildren() ) {
+            for ( DataSnapshot snapshot : dataSnapshot.child( "participants" ).getChildren() ) {
                participants.add( snapshot.getValue( String.class ) );
             }
 
