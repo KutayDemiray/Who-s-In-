@@ -260,8 +260,7 @@ public class ProfileFragment extends Fragment
         pd.show();
 
         if ( imageUri != null){
-            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                    +"-"+getFileExtension(imageUri));
+            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()+ "-" + getFileExtension(imageUri));
 
             uploadTask = fileReference.getFile(imageUri);
             uploadTask.continueWith(new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {

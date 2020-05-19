@@ -84,8 +84,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
-                participantList.clear();
-
                 for ( DataSnapshot participantSnapshot : dataSnapshot.child( "participants" ).getChildren() ) {
                     String s = participantSnapshot.getValue( String.class );
                     participantList.add( s );
@@ -142,7 +140,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
             eventElementPP = itemView.findViewById( R.id.eventElementPP );
             imageViewJoinEventElement = itemView.findViewById( R.id.imageViewJoinEventElement );
-            //imageViewDiscussEventElement = itemView.findViewById( R.id.imageViewDiscussEventElement );
 
             textViewTitleEventElement = itemView.findViewById( R.id.textViewTitleEventElement );
             textViewTypeEventElement = itemView.findViewById( R.id.textViewTypeEventElement );

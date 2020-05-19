@@ -60,7 +60,8 @@ public class EventActivity extends AppCompatActivity {
             eventDescription.setText( event.getDescription() );
 
             if ( event.getParticipants().indexOf( firebaseUser.getUid() ) == -1 ) {
-               eventJoinButton.setText( "JOIN" );
+               eventJoinButton.setText("JOIN");
+            }
 
             if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
                eventJoinButton.setVisibility(View.GONE);
