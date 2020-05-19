@@ -132,7 +132,9 @@ public class ProfileFragment extends Fragment
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
         reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
 
-        //göko
+        /**
+         * @author Gökberk
+         */
         reference.addValueEventListener(new ValueEventListener()
         {
             @Override
