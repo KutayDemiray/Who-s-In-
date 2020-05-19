@@ -15,6 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cgty.denemeins.EventActivity;
 import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.Event;
+import com.cgty.denemeins.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -48,6 +54,19 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder( @NonNull ViewHolder holder, int position ) {
 
         final Event event = mEvents.get( position );
+        final TextView organizerName = holder.textViewUsernameEventElement;
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                organizerName.setText( dataSnapshot.child( event.getOrganizerId() ).getValue( User.class ).getUsername() );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         holder.textViewTitleEventElement.setText( event.getTitle() );
         holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
