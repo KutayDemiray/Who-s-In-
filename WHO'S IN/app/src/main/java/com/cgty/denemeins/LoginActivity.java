@@ -25,44 +25,41 @@ import androidx.annotation.NonNull;
 
 /**
  * Login Activity class
- * @author Cagatay Safak
+ * @author Çağatay Şafak
  * @version 1.0
  */
-public class LoginActivity extends AppCompatActivity
-{
+public class LoginActivity extends AppCompatActivity {
+
     EditText editTextEMail, editTextPassword;
     Button buttonLogin;
     TextView textViewGoSignUp;
     FirebaseAuth auth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    protected void onCreate( Bundle savedInstanceState ) {
 
-        editTextEMail = findViewById(R.id.editTextLoginEMail);
-        editTextPassword = findViewById(R.id.editTextLoginPassword);
-        buttonLogin = findViewById(R.id.buttonLoginActivity);
-        textViewGoSignUp = findViewById(R.id.textViewGoSignUp);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_login );
+
+        editTextEMail = findViewById( R.id.editTextLoginEMail );
+        editTextPassword = findViewById( R.id.editTextLoginPassword );
+        buttonLogin = findViewById( R.id.buttonLoginActivity );
+        textViewGoSignUp = findViewById( R.id.textViewGoSignUp );
         auth = FirebaseAuth.getInstance();
 
-        textViewGoSignUp.setOnClickListener(new View.OnClickListener()
-        {
+        textViewGoSignUp.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            public void onClick( View v ) {
+                startActivity( new Intent(LoginActivity.this, SignUpActivity.class ) );
             }
         });
 
-        buttonLogin.setOnClickListener(new View.OnClickListener()
-        {
+        buttonLogin.setOnClickListener( new View.OnClickListener() {
+
             @Override
-            public void onClick(View v)
-            {
-                final ProgressDialog pdLogin = new ProgressDialog( LoginActivity.this);
-                pdLogin.setMessage("Please wait to login...");
+            public void onClick( View v ) {
+                final ProgressDialog pdLogin = new ProgressDialog( LoginActivity.this );
+                pdLogin.setMessage( "Please wait to login..." );
                 pdLogin.show();
 
                 String stringEmailLogin;
@@ -71,46 +68,37 @@ public class LoginActivity extends AppCompatActivity
                 stringEmailLogin = editTextEMail.getText().toString();
                 stringPasswordLogin = editTextPassword.getText().toString();
 
-                if(TextUtils.isEmpty(stringEmailLogin) || TextUtils.isEmpty(stringPasswordLogin))
-                {
-                    Toast.makeText(LoginActivity.this, "These fields can not be empty.", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty( stringEmailLogin ) || TextUtils.isEmpty( stringPasswordLogin ) ) {
+                    Toast.makeText(LoginActivity.this, "These fields can not be empty.", Toast.LENGTH_SHORT ).show();
                 }
-                else
-                {
+                else {
                     //code to Login the user.
 
-                    auth.signInWithEmailAndPassword( stringEmailLogin, stringPasswordLogin).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>()
-                    {
+                    auth.signInWithEmailAndPassword( stringEmailLogin, stringPasswordLogin).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task)
-                        {
-                            if(task.isSuccessful())
-                            {
-                                DatabaseReference pathLogin = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getCurrentUser().getUid());
+                        public void onComplete( @NonNull Task<AuthResult> task ) {
+                            if( task.isSuccessful() ) {
+                                DatabaseReference pathLogin = FirebaseDatabase.getInstance().getReference().child( "Users" ).child( auth.getCurrentUser().getUid() );
 
-                                pathLogin.addValueEventListener(new ValueEventListener()
-                                {
+                                pathLogin.addValueEventListener( new ValueEventListener() {
                                     @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-                                    {
+                                    public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                                         pdLogin.dismiss();
 
-                                        Intent intentFromLoginToMain = new Intent( LoginActivity.this, MainActivity.class);
-                                        intentFromLoginToMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        Intent intentFromLoginToMain = new Intent( LoginActivity.this, MainActivity.class );
+                                        intentFromLoginToMain.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
                                         startActivity( intentFromLoginToMain);
                                         finish();
                                     }
                                     @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError)
-                                    {
+                                    public void onCancelled( @NonNull DatabaseError databaseError ) {
                                         pdLogin.dismiss();
                                     }
                                 });
                             }
-                            else
-                            {
+                            else {
                                 pdLogin.dismiss();
-                                Toast.makeText(LoginActivity.this, "Error! Wrong username or password.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Error! Wrong username or password.", Toast.LENGTH_LONG ).show();
                             }
                         }
                     });
