@@ -205,7 +205,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 if ( TextUtils.isEmpty(strTitle) || TextUtils.isEmpty(strLocation) || TextUtils.isEmpty(strCapacity) || TextUtils.isEmpty(strDate))
                     Toast.makeText(CreateEvent.this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
 
-                else if ( strCapacity.equals( "1")){
+                else if ( strCapacity.equals( "1")) {
                     Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT).show();
                 }
                 // TODO else if selected date is past, raise toast with error message. still?
