@@ -130,7 +130,7 @@
 
                 <TextView
                     android:id="@+id/textViewProfileBio"
-                    android:text="ben sen o bdafs gasg asdgas ..."
+                    android:text="cê tem uma cara de quem vai fuder minha vida..."
                     android:fontFamily="@font/regular"
                     android:textColor="@color/white"
                     android:textSize="18sp"
