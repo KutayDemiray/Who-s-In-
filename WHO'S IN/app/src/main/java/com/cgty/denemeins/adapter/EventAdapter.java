@@ -79,10 +79,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         // get current and max participants from database
         final TextView participants = holder.textViewNoOfParticipantsEventElement;
         final ArrayList<String> participantList = new ArrayList<>();
-        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference( "Events" );
+        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference( "Events" ).child( event.getEventId() );
         eventRef.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+
+                participantList.clear();
 
                 for ( DataSnapshot participantSnapshot : dataSnapshot.child( "participants" ).getChildren() ) {
                     String s = participantSnapshot.getValue( String.class );
@@ -90,7 +92,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
                 }
 
                 event.setParticipants( participantList );
-                participants.setText( "Capacity: " + participantList.size() + "/" + event.getCapacity() );
+                participants.setText( "Capacity: " + event.getParticipants().size() + "/" + event.getCapacity() );
             }
 
             @Override
