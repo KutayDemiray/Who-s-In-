@@ -120,7 +120,7 @@ public class ProfileFragment extends Fragment
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
         button_Followers = view.findViewById(R.id.buttonFollowers_profile);
         button_Following = view.findViewById(R.id.buttonFollowing_profile);
-        button_PastActivities = view.findViewById(R.id.buttonPastActivities_profile);
+        button_PastActivities = view.findViewById(R.id.buttonPastEvents_profile );
 
         //calling methods
         userInfo();
