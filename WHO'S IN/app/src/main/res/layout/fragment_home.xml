@@ -116,7 +116,7 @@
                 android:tint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
                 app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
-                app:srcCompat="@drawable/others" />
+                app:srcCompat="@drawable/tabletopt" />
 
 
         </LinearLayout>
@@ -138,7 +138,7 @@
                 android:layout_marginBottom="25dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitStart"
-                android:src="@drawable/tabletopt"
+                android:src="@drawable/others"
                 android:tint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
                 app:layout_constraintStart_toStartOf="@+id/buttonTabletop" />
