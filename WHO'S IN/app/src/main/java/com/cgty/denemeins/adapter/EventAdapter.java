@@ -36,7 +36,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     private ArrayList<Event> mEvents;
 
     // constructors
-    public EventAdapter(Context mContext, ArrayList<Event> mEvents) {
+    public EventAdapter( Context mContext, ArrayList<Event> mEvents ) {
         this.mContext = mContext;
         this.mEvents = mEvents;
     }
@@ -55,10 +55,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         final Event event = mEvents.get( position );
 
+
+        // get organizer's username from database
         final String uId = event.getOrganizerId();
         final TextView username = holder.textViewUsernameEventElement;
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
-        ref.addListenerForSingleValueEvent( new ValueEventListener() {
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference( "Users" );
+        userRef.addListenerForSingleValueEvent( new ValueEventListener() {
 
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
@@ -68,6 +71,32 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
             @Override
             public void onCancelled( @NonNull DatabaseError databaseError ) {
+
+            }
+        });
+
+        // get current and max participants from database
+        final TextView participants = holder.textViewNoOfParticipantsEventElement;
+        final ArrayList<String> participantList = new ArrayList<>();
+        DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference( "Events" ).child( event.getEventId() );
+        eventRef.addListenerForSingleValueEvent( new ValueEventListener() {
+            @Override
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+
+                participantList.clear();
+
+                for ( DataSnapshot participantSnapshot : dataSnapshot.child( "participants" ).getChildren() ) {
+                    String s = participantSnapshot.getValue( String.class );
+                    participantList.add( s );
+
+                }
+
+                event.setParticipants( participantList );
+                participants.setText( "Capacity: " + event.getParticipants().size() + "/" + event.getCapacity() );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -84,7 +113,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
                 editor.putString( "eventId", event.getEventId() );
                 editor.apply();
 
