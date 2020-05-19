@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../WHO'S IN.iml" filepath="$PROJECT_DIR$/../WHO'S IN.iml" group="WHO'S IN" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="WHO'S IN/app" />
     </modules>
   </component>
 </project>
