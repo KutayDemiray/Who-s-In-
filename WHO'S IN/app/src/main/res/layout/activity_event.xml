@@ -83,12 +83,14 @@
 
     <TextView
         android:id="@+id/eventDescription"
-        android:layout_width="131dp"
-        android:layout_height="48dp"
+        android:layout_width="390dp"
+        android:layout_height="152dp"
         android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/soft_border"
         android:fontFamily="@font/bold"
+        android:gravity="center"
         android:text="@string/textview"
         android:textColor="@color/blue"
         android:textSize="20sp"

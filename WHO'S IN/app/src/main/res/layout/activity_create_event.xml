@@ -111,13 +111,13 @@
 
     <Spinner
         android:id="@+id/spinnerPrivacy"
-        android:spinnerMode="dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="60dp"
         android:entries="@array/privacySettings"
         android:fontFamily="@font/bold"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerSportsType"
+        android:spinnerMode="dialog"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMainType"
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText

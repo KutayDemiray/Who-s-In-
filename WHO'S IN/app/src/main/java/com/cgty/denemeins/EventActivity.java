@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Event activity
@@ -160,9 +161,11 @@ public class EventActivity extends AppCompatActivity {
             } else if ( event.getParticipants().indexOf( userId ) == -1 ) {
                eventJoinButton.setText("JOIN");
                event.getParticipants().add( userId );
+               addJoinNotification( event.getOrganizerId(), event.getEventId(), userId, event.getTitle() );
             } else {
                eventJoinButton.setText( "LEAVE" );
                event.getParticipants().remove( userId );
+               addLeaveNotification( event.getOrganizerId(), event.getEventId(), userId, event.getTitle() );
             }
             reference.child( "participants" ).setValue( event.getParticipants() );
          }
@@ -173,6 +176,30 @@ public class EventActivity extends AppCompatActivity {
          }
       });
 
+   }
+
+   private void addJoinNotification( final String organizerId, final String eventId, final String userId, final String eventTitle) {
+      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId);
+
+      HashMap<String, Object> hashMap = new HashMap();
+      hashMap.put( "userId",  userId);
+      hashMap.put( "text", " has joined your event called " +  eventTitle );
+      hashMap.put( "eventId", eventId);
+      hashMap.put( "isEvent", true);
+
+      reference.push().setValue( hashMap);
+   }
+
+   private void addLeaveNotification( final String organizerId, final String eventId, final String userId, final String eventTitle) {
+      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId);
+
+      HashMap<String, Object> hashMap = new HashMap();
+      hashMap.put( "userId",  userId);
+      hashMap.put( "text", " has left your event called " +  eventTitle);
+      hashMap.put( "eventId", eventId);
+      hashMap.put( "isEvent", true);
+
+      reference.push().setValue( hashMap);
    }
 
 }

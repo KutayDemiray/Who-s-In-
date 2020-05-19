@@ -27,9 +27,9 @@
 
     <array name="privacySettings">
         <item>Public</item>
-        <!-- TODO: Implement other settings later --> <!--<item>Invite Only</item>
+        <item>Invite Only</item>
         <item>Request Only</item>
-        <item>Private</item> -->
+        <item>Private</item>
     </array>
     <string name="title_activity_maps">Map</string>
     <string name="notifications">Notifications</string>
