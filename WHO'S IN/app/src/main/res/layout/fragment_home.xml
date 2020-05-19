@@ -95,28 +95,7 @@
                 app:srcCompat="@drawable/gather" />
 
         </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginTop="14dp"
-    android:orientation="horizontal"
-    android:paddingLeft="20dp"
-    android:paddingRight="4dp">
 
-        <ImageButton
-            android:id="@+id/buttonAllTypes"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="25dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/tabletopt"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
-            app:layout_constraintStart_toStartOf="@+id/buttonTabletop" />
-</LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -137,9 +116,32 @@
                 android:tint="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
                 app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
-                app:srcCompat="@drawable/tabletopt" />
+                app:srcCompat="@drawable/others" />
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="4dp">
+
+            <ImageButton
+                android:id="@+id/buttonAllTypes"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="25dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/tabletopt"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+                app:layout_constraintStart_toStartOf="@+id/buttonTabletop" />
         </LinearLayout>
 
 
