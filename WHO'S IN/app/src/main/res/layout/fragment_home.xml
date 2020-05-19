@@ -1,140 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkBlue">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <!-- TOP -->
+    <!-- Upper Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/logoBar"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/eyes2" />
-
-    <TextView
-        android:id="@+id/textSports"
-        android:layout_width="117dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/regular"
-        android:text="Sports"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonSports"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textOther"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/regular"
-        android:text="All"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
-        app:layout_constraintStart_toStartOf="@+id/textView3" />
+        android:background="@color/darkBlue">
 
-    <TextView
-        android:id="@+id/textGatherings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/regular"
-        android:text="Gatherings"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonGatherings"
-        app:layout_constraintStart_toStartOf="@+id/textSports" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profileBarToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkBlue">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/regular"
-        android:text="Tabletop"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonTabletop"
-        app:layout_constraintStart_toStartOf="@+id/textGatherings" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/buttonAllTypes"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="92dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="25dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_add"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
-        app:layout_constraintStart_toStartOf="@+id/buttonTabletop" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/eyes2" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
 
-    <ImageButton
-        android:id="@+id/buttonTabletop"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="92dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="45dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
-        app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
-        app:srcCompat="@drawable/tabletop" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageButton
-        android:id="@+id/buttonGatherings"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="92dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="45dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/buttonTabletop"
-        app:layout_constraintStart_toStartOf="@+id/buttonSports"
-        app:srcCompat="@drawable/forma1" />
+    <LinearLayout
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/logoBar"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <!-- 1. Sports -->
 
-    <ImageButton
-        android:id="@+id/buttonSports"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="92dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginBottom="45dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerInside"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGatherings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/sports" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="4dp">
 
-    <Button
-        android:id="@+id/buttonCreateEvent"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="75dp"
 
-        android:background="@drawable/mybutton"
-        android:fontFamily="@font/bold"
-        android:gravity="center"
-        android:text="Create an Event"
-        android:textColor="#fff"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/buttonSports"
+                android:layout_marginTop="6dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/buttonGatherings"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/sportss" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="4dp">
+
+
+            <ImageButton
+                android:id="@+id/buttonGatherings"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="6dp"
+                android:layout_height="66dp"
+                android:layout_marginBottom="45dp"
+                android:adjustViewBounds="true"
+                android:layout_marginStart="2dp"
+                android:scaleType="fitStart"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/buttonTabletop"
+                app:layout_constraintStart_toStartOf="@+id/buttonSports"
+                app:srcCompat="@drawable/gather" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="4dp">
+
+            <ImageButton
+                android:id="@+id/buttonTabletop"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_marginBottom="45dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
+                app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
+                app:srcCompat="@drawable/tabletopt" />
+
+
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="14dp"
+    android:orientation="horizontal"
+    android:paddingLeft="20dp"
+    android:paddingRight="4dp">
+
+        <ImageButton
+            android:id="@+id/buttonAllTypes"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="25dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:src="@drawable/others"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+            app:layout_constraintStart_toStartOf="@+id/buttonTabletop" />
+</LinearLayout>
+
+        <Button
+            android:id="@+id/buttonCreateEvent"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="75dp"
+
+            android:adjustViewBounds="true"
+            android:background="@drawable/mybutton"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="Create an Event"
+            android:textColor="#fff"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.647"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+    </RelativeLayout>
