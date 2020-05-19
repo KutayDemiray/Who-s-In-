@@ -77,7 +77,7 @@ public class FeedEvents extends AppCompatActivity {
 
         DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("Events" );
 
-        eventsRef.addValueEventListener( new ValueEventListener() {
+        eventsRef.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
