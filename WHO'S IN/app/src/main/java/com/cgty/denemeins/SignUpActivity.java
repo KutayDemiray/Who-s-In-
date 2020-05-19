@@ -28,8 +28,8 @@ import java.util.HashMap;
  * @author Cagatay Safak
  * @version 1.0
  */
-public class SignUpActivity extends AppCompatActivity
-{
+public class SignUpActivity extends AppCompatActivity {
+
     //variables
     EditText edittextUsername, edittextAge, edittextEmail, edittextPassword;
     Button buttonSignUp;
@@ -39,39 +39,35 @@ public class SignUpActivity extends AppCompatActivity
     ProgressDialog pd;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_sign_up );
 
         //declaration
-        edittextUsername = findViewById( R.id.editTextSignUpUserName);
-        edittextAge = findViewById( R.id.editTextSignUpAge);
-        edittextEmail = findViewById( R.id.editTextSignUpEMail);
-        edittextPassword = findViewById( R.id.editTextSignUpPassword);
-        buttonSignUp = findViewById( R.id.buttonSignUpActivity);
-        textviewGoLogin = findViewById( R.id.textViewGoLogin);
+        edittextUsername = findViewById( R.id.editTextSignUpUserName );
+        edittextAge = findViewById( R.id.editTextSignUpAge );
+        edittextEmail = findViewById( R.id.editTextSignUpEMail );
+        edittextPassword = findViewById( R.id.editTextSignUpPassword );
+        buttonSignUp = findViewById( R.id.buttonSignUpActivity );
+        textviewGoLogin = findViewById( R.id.textViewGoLogin );
         auth = FirebaseAuth.getInstance();
 
 
         // go login text
-        textviewGoLogin.setOnClickListener( new View.OnClickListener()
-        {
+        textviewGoLogin.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                startActivity( new Intent(SignUpActivity.this, LoginActivity.class));
+            public void onClick( View v ) {
+                startActivity( new Intent(SignUpActivity.this, LoginActivity.class ) );
             }
         });
 
         //sign up
-        buttonSignUp.setOnClickListener(new View.OnClickListener()
-        {
+        buttonSignUp.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
+
                 pd = new ProgressDialog( SignUpActivity.this);
-                pd.setMessage("Wait...");
+                pd.setMessage( "Wait..." );
                 pd.show();
 
                 String strUsername = edittextUsername.getText().toString();
@@ -79,62 +75,57 @@ public class SignUpActivity extends AppCompatActivity
                 String strEmail = edittextEmail.getText().toString();
                 String strPassword = edittextPassword.getText().toString();
 
-                if( TextUtils.isEmpty(strUsername) || TextUtils.isEmpty(strAge) || TextUtils.isEmpty(strEmail) || TextUtils.isEmpty(strPassword))
-                    Toast.makeText(SignUpActivity.this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show();
+                if( TextUtils.isEmpty( strUsername ) || TextUtils.isEmpty( strAge ) || TextUtils.isEmpty( strEmail ) || TextUtils.isEmpty( strPassword ) )
+                    Toast.makeText(SignUpActivity.this, "Please fill out all the fields.", Toast.LENGTH_SHORT ).show();
 
                 else if( strPassword.length() < 5)
-                    Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Password must be at least 6 characters long.", Toast.LENGTH_SHORT ).show();
 
                 else
-                    signUp( strUsername, strAge, strEmail, strPassword);
+                    signUp( strUsername, strAge, strEmail, strPassword );
             }
         });
     }
 
-    private void signUp(final String un, final String age, String mail, String pw)
-    {
+    private void signUp(final String un, final String age, String mail, String pw) {
         //code to register new user...
-        auth.createUserWithEmailAndPassword( mail, pw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>()
-                {
+        auth.createUserWithEmailAndPassword( mail, pw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if(task.isSuccessful())
-                        {
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if ( task.isSuccessful() ) {
                             FirebaseUser firebaseUser = auth.getCurrentUser();
                             String userID = firebaseUser.getUid();
-                            path = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+                            path = FirebaseDatabase.getInstance().getReference().child( "Users" ).child( userID );
 
                             HashMap<String, Object> hashmap = new HashMap<>();
 
-                            hashmap.put("id", userID);
-                            hashmap.put("username", un.toLowerCase());
-                            hashmap.put("age", age);
-                            hashmap.put("bio", "");
-                            hashmap.put("picurl", "https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082");
+                            hashmap.put( "id", userID );
+                            hashmap.put( "username", un.toLowerCase() );
+                            hashmap.put( "age", age );
+                            hashmap.put( "bio", "" );
+                            hashmap.put( "picurl", "https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082" );
 
-                            path.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>()
-                            {
+                            path.setValue(hashmap).addOnCompleteListener(new OnCompleteListener<Void>() {
+
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task)
-                                {
-                                    if(task.isSuccessful())
-                                    {
+                                public void onComplete( @NonNull Task<Void> task ) {
+
+                                    if( task.isSuccessful() ) {
                                         pd.dismiss();
 
-                                        Intent intentFromSignUpToMain = new Intent( SignUpActivity.this, MainActivity.class);
-                                        intentFromSignUpToMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);     //makes SignUpActivity unreachable after profile created
-                                        startActivity(intentFromSignUpToMain);
+                                        Intent intentFromSignUpToMain = new Intent( SignUpActivity.this, MainActivity.class );
+                                        intentFromSignUpToMain.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK );     //makes SignUpActivity unreachable after profile created
+                                        startActivity( intentFromSignUpToMain );
                                     }
                                 }
                             });
                         }
 
-                        else
-                        {
+                        else {
                             pd.dismiss();
 
-                            Toast.makeText(SignUpActivity.this, "Invalid e-mail or password.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this, "Invalid e-mail or password.", Toast.LENGTH_LONG ).show();
                         }
                     }
                 });
