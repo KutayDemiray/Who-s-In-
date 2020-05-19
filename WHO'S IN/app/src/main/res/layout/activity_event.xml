@@ -84,7 +84,7 @@
     <TextView
         android:id="@+id/eventDescription"
         android:layout_width="390dp"
-        android:layout_height="152dp"
+        android:layout_height="94dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="40dp"

@@ -61,18 +61,18 @@
         android:fontFamily="@font/bold"
         android:inputType="number"
         android:textSize="18sp"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/editTextLocation"
         tools:layout_editor_absoluteX="0dp" />
 
     <Spinner
         android:id="@+id/spinnerMainType"
-        android:spinnerMode="dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:entries="@array/mainTypes"
-
         android:fontFamily="@font/bold"
+        android:spinnerMode="dialog"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -130,6 +130,7 @@
         android:fontFamily="@font/bold"
         android:hint="Date"
         android:textSize="18sp"
+        android:textColor="@color/white"
         android:theme="@style/MyEditTextTheme"
         app:layout_constraintTop_toBottomOf="@+id/editTextCapacity"
         tools:layout_editor_absoluteX="0dp" />
@@ -145,6 +146,7 @@
         android:inputType="textPersonName"
         android:textSize="18sp"
         android:theme="@style/MyEditTextTheme"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/editTextTime"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -157,6 +159,8 @@
         android:hint="Time"
         android:focusable="false"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:theme="@style/MyEditTextTheme"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate"
         tools:layout_editor_absoluteX="0dp" />
 
