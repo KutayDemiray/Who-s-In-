@@ -80,7 +80,8 @@ public class EventActivity extends AppCompatActivity {
       eventJoinButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-            addOrRemoveParticipant( eventId, firebaseUser.getUid());
+            addOrRemoveParticipant(eventId, firebaseUser.getUid());
+         }
       });
 
    }
