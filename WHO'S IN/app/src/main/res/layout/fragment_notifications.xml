@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
@@ -8,20 +9,43 @@
     android:background="@color/darkBlue"
     tools:context=".fragment.NotificationsFragment">
 
-    <TextView
-        android:id="@+id/textNotifications"
-        android:layout_width="wrap_content"
+    <!-- Upper Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/notificationsUpperBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/notifications"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"/>
+        android:background="@color/darkBlue">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/profileBarToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkBlue"
+            app:titleMargin="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:scrollbarSize="0dp"
+                    android:src="@drawable/eyes2" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notificationsRecyclerView"
+        android:layout_below="@+id/notificationsUpperBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textNotifications" />
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
 
