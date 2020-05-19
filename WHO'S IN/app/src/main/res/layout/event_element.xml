@@ -116,7 +116,7 @@
                 android:id="@+id/imageViewJoinEventElement"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="140dp"
                 android:src="@drawable/ic_hand_black" />
 
             <TextView
@@ -125,22 +125,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/imageViewJoinEventElement"
-                android:text="Join" />
-
-            <ImageView
-                android:id="@+id/imageViewDiscussEventElement"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="90dp"
-                android:src="@drawable/ic_discuss_black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/imageViewJoinEventElement"
-                android:text="Discuss" />
+                android:text="View Event" />
 
         </LinearLayout>
 

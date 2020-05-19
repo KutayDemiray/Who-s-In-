@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a45dd5df-123c-4483-a49e-2576cabaf7a8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/GitHub.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GitHub.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Text Based Model/FriendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Text Based Model/FriendRequest.java" afterDir="false" />
+    </list>
+    <list default="true" id="20e0a2da-95a4-42fe-ba16-601a305bd75d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/20200429_WhosIn_v.1.0/app/src/main/java/com/example/whosin/data/model/User.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_28" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bTdoc7ytvarbdHOkmuQ79zzwEH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/20200429_WhosIn_v.1.0" />
+  </component>
+  <component name="RunManager">
+    <configuration name="C:/Users/pc/Documents/GitHub/20200429_WhosIn_v.1.0/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_27" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Kutay\Documents\GitHub\Who-s-In-\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bTdKJB2fglr1rd2phX84t8HmZi" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="C:/Users/Kutay/Documents/GitHub/Who-s-In-/20200429_WhosIn_v.1.0/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/20200429_WhosIn_v.1.0/build.gradle" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.C:/Users/pc/Documents/GitHub/20200429_WhosIn_v.1.0/build.gradle" />
+        <item itemvalue="Gradle.C:/Users/Kutay/Documents/GitHub/Who-s-In-/20200429_WhosIn_v.1.0/build.gradle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a45dd5df-123c-4483-a49e-2576cabaf7a8" name="Default Changelist" comment="" />
+      <created>1588660192049</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588660192049</updated>
+    </task>
+    <servers />
+  </component>
+      <changelist id="20e0a2da-95a4-42fe-ba16-601a305bd75d" name="Default Changelist" comment="" />
+      <created>1588659951723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588659951723</updated>
+      <workItem from="1588659953252" duration="1815000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="808" y="413" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588842134187">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="808" y="413" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.7.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1588842134187" />
+    <state x="656" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1588841791707">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="656" y="348" key="com.intellij.ide.util.TipDialog/1920.7.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1588841791707" />
+  </component>
+</project>

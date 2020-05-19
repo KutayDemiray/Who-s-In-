@@ -3,15 +3,11 @@ package com.cgty.denemeins;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.constraintlayout.solver.widgets.Snapshot;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.cgty.denemeins.model.Event;
@@ -32,18 +28,17 @@ public class EventActivity extends AppCompatActivity {
 
    AppCompatButton eventJoinButton;
    Intent intent;
-   //String eventId;
 
    @Override
-   protected void onCreate(Bundle savedInstanceState) {
+   protected void onCreate( Bundle savedInstanceState ) {
 
-      DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events");
+      DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events" );
       final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
       intent = getIntent();
       final String eventId = intent.getStringExtra( "eventId" );
       
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_event);
+      setContentView( R.layout.activity_event );
 
       eventTitle = findViewById( R.id.eventTitle );
       eventType = findViewById( R.id.eventType );
@@ -51,76 +46,86 @@ public class EventActivity extends AppCompatActivity {
       eventDescription = findViewById( R.id.eventDescription );
       eventCapacity = findViewById( R.id.eventCapacity );
       eventParticipants = findViewById( R.id.eventCapacity );
-      eventJoinButton = findViewById( R.id.eventJoinButton);
+      eventJoinButton = findViewById( R.id.eventJoinButton );
 
       ref.addValueEventListener( new ValueEventListener() {
          @Override
-         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+         public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
             Event event;
             event = dataSnapshot.child( eventId ).getValue( Event.class ); // uses the eventId from intent
+
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
             eventDescription.setText( event.getDescription() );
-            if ( event.getParticipants().indexOf( firebaseUser.getUid()) == -1 ) {
+
+            if ( event.getParticipants().indexOf( firebaseUser.getUid() ) == -1 ) {
+               eventJoinButton.setText( "JOIN" );
+
+            if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
+               eventJoinButton.setVisibility(View.GONE);
+            } else if ( event.getParticipants().indexOf( firebaseUser.getUid()) == -1 ) {
                eventJoinButton.setText("JOIN");
             } else {
-               eventJoinButton.setText("LEAVE");
+               eventJoinButton.setText( "LEAVE" );
             }
             eventCapacity.setText( "Capacity: "  + event.getNumberOfParticipants() + "/" + event.getCapacity() );
-           //eventParticipants.setText( "sasd" );
+
          }
 
          @Override
          public void onCancelled( @NonNull DatabaseError databaseError ) {
 
          }
+
       });
 
       eventJoinButton.setOnClickListener(new View.OnClickListener() {
          @Override
-         public void onClick(View v) {
-            addOrRemoveParticipant(eventId, firebaseUser.getUid());
+         public void onClick( View v ) {
+            addOrRemoveParticipant( eventId, firebaseUser.getUid() );
          }
       });
 
    }
 
-   private void addOrRemoveParticipant( final String eventId, final String userId) {
+   private void addOrRemoveParticipant( final String eventId, final String userId ) {
 
-      final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events").child( eventId);
+      final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Events" ).child( eventId );
       final ArrayList<String> participants = new ArrayList<>();
 
-      reference.addListenerForSingleValueEvent(new ValueEventListener() {
-         @SuppressLint("SetTextI18n")
+      reference.addListenerForSingleValueEvent( new ValueEventListener() {
+         @SuppressLint( "SetTextI18n" )
          @Override
-         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+         public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
             participants.clear();
             for ( DataSnapshot snapshot : dataSnapshot.child( "participants").getChildren() ) {
-               participants.add(snapshot.getValue(String.class));
+               participants.add( snapshot.getValue( String.class ) );
             }
 
             Event event = dataSnapshot.getValue( Event.class );
 
-            event.setParticipants( participants);
+            event.setParticipants( participants );
             eventCapacity.setText( "Capacity: "  + event.getNumberOfParticipants() + "/" + event.getCapacity() );
             event.printParticipants();
 
 
-            if ( event.getParticipants().indexOf( userId) == -1 ) {
+            if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
+               eventJoinButton.setVisibility( View.GONE );
+            } else if ( event.getParticipants().indexOf( userId ) == -1 ) {
                eventJoinButton.setText("JOIN");
                event.getParticipants().add(userId);
             } else {
-               eventJoinButton.setText("LEAVE");
-               event.getParticipants().remove(userId);
+               eventJoinButton.setText( "LEAVE" );
+               event.getParticipants().remove( userId );
             }
 
-            reference.child("participants").setValue( event.getParticipants());
+            reference.child( "participants" ).setValue( event.getParticipants() );
          }
 
          @Override
-         public void onCancelled(@NonNull DatabaseError databaseError) {
+         public void onCancelled( @NonNull DatabaseError databaseError ) {
 
          }
       });
