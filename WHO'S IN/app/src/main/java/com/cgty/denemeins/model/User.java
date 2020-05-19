@@ -24,7 +24,7 @@ public class User
     private String id;
     private String username;
     private String age;
-    private String imageURL;
+    private String picurl;
     private String bio;
 
     public User()
@@ -37,7 +37,7 @@ public class User
         this.id = id;
         this.username = username;
         this.age = age;
-        this.imageURL = imageURL;
+        this.picurl = picurl;
         this.bio = bio;
 
     }
@@ -121,13 +121,13 @@ public class User
         this.age = age;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getPicurl() {
+        return picurl;
     }
 
-    public void setImageURL(String ImageURL)
+    public void setPicurl(String picurl)
     {
-        this.imageURL = imageURL;
+        this.picurl = picurl;
     }
 
     public String getBio()

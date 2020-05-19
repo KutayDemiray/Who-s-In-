@@ -38,7 +38,7 @@
         android:textColor="@color/white"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
-        app:layout_constraintStart_toStartOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/textViewTabletop" />
 
     <TextView
         android:id="@+id/textGatherings"
@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="@+id/textSports" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewTabletop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
