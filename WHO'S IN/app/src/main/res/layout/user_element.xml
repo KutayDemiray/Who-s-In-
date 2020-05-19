@@ -7,7 +7,7 @@
     android:background="@color/darkBlue"
     android:padding="8dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilePictureElement"
         android:layout_width="50dp"
         android:layout_height="50dp"
