@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cgty.denemeins.model.Event;
+import com.cgty.denemeins.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
  */
 public class EventActivity extends AppCompatActivity {
 
-   TextView eventTitle, eventType, eventDateAndLocation, eventDescription, eventCapacity,
+   TextView eventTitle, eventOrganizerName, eventType, eventDateAndLocation, eventDescription, eventCapacity,
             eventParticipants;
 
    AppCompatButton eventJoinButton;
@@ -48,6 +49,7 @@ public class EventActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView( R.layout.activity_event );
 
+      eventOrganizerName = findViewById( R.id.eventOrganizerName);
       eventTitle = findViewById( R.id.eventTitle );
       eventType = findViewById( R.id.eventType );
       eventDateAndLocation = findViewById( R.id.eventDateAndLocation );
@@ -79,6 +81,8 @@ public class EventActivity extends AppCompatActivity {
                         participantsUsername.add( userSnapshot.child( "username" ).getValue( String.class ) );
                      }
                   }
+                  String organizerUsername = dataSnapshot.child( event.getOrganizerId() ).child("username").getValue( String.class );
+                  eventOrganizerName.setText( organizerUsername);
                }
 
                @Override
