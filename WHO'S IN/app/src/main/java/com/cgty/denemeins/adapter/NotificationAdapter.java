@@ -1,7 +1,6 @@
 package com.cgty.denemeins.adapter;
 
 import com.bumptech.glide.Glide;
-import com.cgty.denemeins.CreateEvent;
 import com.cgty.denemeins.EventActivity;
 import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.fragment.ProfileFragment;
@@ -13,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.cgty.denemeins.model.Notification;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -82,7 +80,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
             @Override
               public void onClick( View view) {
-               if ( notification.isEvent() ) {
+               if (  notification.getEventId().equals("") ) {
+                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
+                  editor.putString( "userId", notification.getUserId());
+                  editor.apply();
+
+                  ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                          new ProfileFragment() ).commit();
+               } else {
                   SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
                   editor.putString( "eventId", notification.getEventId() );
                   editor.apply();
@@ -90,15 +95,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                   Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class);
                   fromNotificationToEvent.putExtra( "eventId", notification.getEventId());
                   mContext.startActivity( fromNotificationToEvent);
-
-
-               } else {
-               SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
-               editor.putString( "userId", notification.getUserId());
-               editor.apply();
-
-                  ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                          new ProfileFragment() ).commit();
              }
             }
          });
