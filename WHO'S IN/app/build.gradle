@@ -32,7 +32,6 @@ dependencies {
     //glide firebase'e pic atiyor.
 
 
-    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
 
     /**
      * image libraries
