@@ -15,14 +15,14 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/sportsEventElementPP"
+                android:id="@+id/eventElementPP"
                 android:layout_margin="10dp"
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="40dp"
                 android:layout_height="40dp"/>
 
             <TextView
-                android:id="@+id/textViewTitleSportsEventElement"
+                android:id="@+id/textViewTitleEventElement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Event Title."
@@ -34,7 +34,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textViewUsernameSportsEventElement"
+            android:id="@+id/textViewUsernameEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Organizer username"
@@ -45,7 +45,7 @@
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
-            android:id="@+id/textViewLocationSportsEventElement"
+            android:id="@+id/textViewLocationEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Location"
@@ -56,7 +56,7 @@
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
-            android:id="@+id/textViewDateSportsEventElement"
+            android:id="@+id/textViewDateEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date"
@@ -67,7 +67,7 @@
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
-            android:id="@+id/textViewNoOfParticipantsSportsEventElement"
+            android:id="@+id/textViewNoOfParticipantsEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Current number of participants"
@@ -78,7 +78,7 @@
             android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
-            android:id="@+id/textViewDescriptionSportsEventElement"
+            android:id="@+id/textViewDescriptionEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="3"
@@ -94,7 +94,7 @@
             android:padding="8dp">
 
             <ImageView
-                android:id="@+id/imageViewJoinSportsEventElement"
+                android:id="@+id/imageViewJoinEventElement"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="80dp"
@@ -105,11 +105,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/imageViewJoinSportsEventElement"
+                android:layout_toEndOf="@+id/imageViewJoinEventElement"
                 android:text="Join" />
 
             <ImageView
-                android:id="@+id/imageViewDiscussSportsEventElement"
+                android:id="@+id/imageViewDiscussEventElement"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="90dp"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/imageViewJoinSportsEventElement"
+                android:layout_toEndOf="@+id/imageViewJoinEventElement"
                 android:text="Discuss" />
 
         </LinearLayout>

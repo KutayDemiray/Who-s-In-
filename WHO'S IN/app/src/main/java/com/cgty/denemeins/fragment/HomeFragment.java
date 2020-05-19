@@ -3,6 +3,7 @@ package com.cgty.denemeins.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
 import com.cgty.denemeins.CreateEvent;
-import com.cgty.denemeins.FeedGatherings;
-import com.cgty.denemeins.FeedSports;
+import com.cgty.denemeins.FeedEvents;
 import com.cgty.denemeins.R;
 
 /**
@@ -25,14 +25,14 @@ import com.cgty.denemeins.R;
 public class HomeFragment extends Fragment {
 
     // properties
-    final int FEED_SPORTS = 0;
-    final int FEED_GATHERINGS = 1;
-    final int FEED_TABLETOP = 2;
-    final int FEED_ALL = 3;
+    final String FEED_SPORTS = "Sports";
+    final String FEED_MEETINGS = "Meeting";
+    final String FEED_TABLETOP = "Tabletop Games";
+    final String FEED_ALL = "";
 
     AppCompatButton buttonCreateEvent;
     AppCompatImageButton buttonToSports;
-    AppCompatImageButton buttonToGatherings;
+    AppCompatImageButton buttonToMeetings;
     AppCompatImageButton buttonToTabletop;
     AppCompatImageButton buttonToAllTypes;
 
@@ -45,20 +45,20 @@ public class HomeFragment extends Fragment {
     @SuppressLint("WrongViewCast")
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView( @NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
 
         View view = inflater.inflate( R.layout.fragment_home, container, false );
         buttonCreateEvent = view.findViewById( R.id.buttonCreateEvent );
         buttonToSports = view.findViewById( R.id.buttonSports );
-        buttonToGatherings = view.findViewById( R.id.buttonGatherings );
+        buttonToMeetings = view.findViewById( R.id.buttonMeetings );
         buttonToTabletop = view.findViewById( R.id.buttonTabletop );
         buttonToAllTypes = view.findViewById( R.id.buttonAllTypes );
 
         buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fromHomeToCreateEvent = new Intent( getActivity(), CreateEvent.class);
-                startActivity( fromHomeToCreateEvent);
+                Intent fromHomeToCreateEvent = new Intent( getActivity(), CreateEvent.class );
+                startActivity( fromHomeToCreateEvent );
             }
         });
 
@@ -67,20 +67,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class);
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_SPORTS );
-                startActivity( fromHomeToFeed);
+                startActivity( fromHomeToFeed );
             }
         });
 
-        buttonToGatherings.setOnClickListener(new View.OnClickListener() {
+        buttonToMeetings.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v)
             {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class);
-                fromHomeToFeed.putExtra( "feedEventType", FEED_GATHERINGS );
-                startActivity( fromHomeToFeed);
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
+                fromHomeToFeed.putExtra( "feedEventType", FEED_MEETINGS );
+                startActivity( fromHomeToFeed );
             }
         });
 
@@ -88,9 +88,9 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class);
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_TABLETOP );
-                startActivity( fromHomeToFeed);
+                startActivity( fromHomeToFeed );
             }
         });
 
@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class );
+                Intent fromHomeToFeed = new Intent( getActivity(), com.cgty.denemeins.FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_ALL );
                 startActivity( fromHomeToFeed );
             }

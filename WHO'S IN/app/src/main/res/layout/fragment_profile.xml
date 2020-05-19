@@ -246,15 +246,26 @@
                     android:text="FOLLOWING"
                     android:textColor="@color/white" />
 
+                <!-- It is visible only for the current User. -->
                 <Button
-                    android:visibility="gone"
-                    android:id="@+id/buttonPastActivities_profile"
+                    android:id="@+id/buttonPastEvents_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/button_background"
                     android:fontFamily="@font/bold"
-                    android:text="PAST ACTIVITIES"
+                    android:text="PAST EVENTS"
+                    android:textColor="@color/white"/>
+
+                <!-- It is visible only for the current User. -->
+                <Button
+                    android:id="@+id/buttonScheduledEvents_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/bold"
+                    android:text="SCHEDULED EVENTS"
                     android:textColor="@color/white"/>
 
             </LinearLayout>

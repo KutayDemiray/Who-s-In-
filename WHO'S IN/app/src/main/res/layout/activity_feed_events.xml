@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkBlue"
-    tools:context=".FeedSports">
+    tools:context=".FeedEvents">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/feedSportsBar"
+        android:id="@+id/feedEventsBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/darkBlue">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarFeedEvents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -23,11 +24,12 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:src="@drawable/eyes2"
+                    android:id="@+id/imageViewLogo"
                     android:layout_width="90dp"
                     android:layout_height="35dp"
+                    android:layout_alignParentStart="true"
                     android:layout_marginLeft="144dp"
-                    android:layout_alignParentStart="true"/>
+                    android:src="@drawable/eyes2" />
 
             </RelativeLayout>
 
@@ -36,9 +38,9 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/feedSportsRecyclerView"
+        android:id="@+id/feedEventsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/feedSportsBar"/>
+        android:layout_below="@+id/feedEventsBar"/>
 
 </RelativeLayout>

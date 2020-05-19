@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,18 +17,23 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cgty.denemeins.model.Event;
 import com.cgty.denemeins.model.EventDate;
+import com.cgty.denemeins.model.Notification;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,7 +53,6 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextTime, editTextDescription;
     Spinner spinnerMainType, spinnerSportsType, spinnerTabletopType, spinnerPrivacy;
     Button buttonAddEvent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -208,6 +213,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! THE BEST COMBINATION :) ", Toast.LENGTH_LONG).show();
+                    finish();
                 }
 
                 else if ( strCapacity.equals( "42") ) {
@@ -281,7 +287,8 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
         ref.child("Events").child( eventId ).setValue( event );
 
-        addNotifications( getFollowers());
+        addNotifications( eventId, organizerId);
+
     }
 
     /**
@@ -314,38 +321,23 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    /**
-     * Adding notification feature to follow
-     * @author Yağız Yaşar
-     * @param followers
-     */
-    private void addNotifications( ArrayList<String> followers) {
+    private void addNotifications(final String eventId, String organizerId) {
 
-        for ( int i = 0; i < followers.size(); i++) {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(followers.get(i));
-
-            HashMap<String, Object> hashMap = new HashMap();
-            hashMap.put("userId", followers.get(i) );
-            hashMap.put("text", " created an event called " + editTextTitle.getText().toString() + "." );
-            hashMap.put("eventId", "");
-            hashMap.put("isEvent", false);
-
-            reference.push().setValue(hashMap);
-        }
-
-    }
-
-    public ArrayList<String> getFollowers() {
-        final ArrayList<String> followersIdList = new ArrayList<String>();
-        String organizerId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child(organizerId).child("followers");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child( organizerId).child("followers");
+        reference.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                followersIdList.clear();
                 for ( DataSnapshot snapshot : dataSnapshot.getChildren() ) {
-                    followersIdList.add( snapshot.getKey());
+                    DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference("Notifications").child( snapshot.getKey());
+
+                    HashMap<String, Object> hashMap = new HashMap();
+                    hashMap.put("userId", firebaseUser.getUid());
+                    hashMap.put("text", " created an event called " + editTextTitle.getText().toString() + ".");
+                    hashMap.put("eventId", eventId);
+                    hashMap.put("isEvent", true);
+
+                    reference2.push().setValue(hashMap);
                 }
             }
             @Override
@@ -353,6 +345,5 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
             }
         });
-        return followersIdList;
     }
 }

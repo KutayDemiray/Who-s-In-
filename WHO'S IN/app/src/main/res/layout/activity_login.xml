@@ -54,14 +54,14 @@
     <Button
         android:id="@+id/buttonLoginActivity"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/button_background"
-        android:gravity="center"
+        android:fontFamily="@font/bold"
         android:text="LOG IN"
-        android:textColor="#fff" />
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/textViewGoSignUp"
@@ -70,7 +70,7 @@
         android:layout_marginTop="20dp"
         android:text="You still don't know Who's In?\nSign up now!"
         android:fontFamily="@font/regular"
-        android:textColor="@color/white"
+        android:src="@color/white"
         android:textSize="18sp"
         android:gravity="center"/>
 

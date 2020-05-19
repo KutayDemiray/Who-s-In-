@@ -168,3 +168,112 @@
 
     </LinearLayout>
     </RelativeLayout>
+=======
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/regular"
+        android:text="All"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintStart_toStartOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textGatherings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/regular"
+        android:text="Gatherings"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonMeetings"
+        app:layout_constraintStart_toStartOf="@+id/textSports" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/regular"
+        android:text="Tabletop"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonTabletop"
+        app:layout_constraintStart_toStartOf="@+id/textGatherings" />
+
+    <ImageButton
+        android:id="@+id/buttonAllTypes"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="25dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
+        app:layout_constraintStart_toStartOf="@+id/buttonTabletop" />
+
+    <ImageButton
+        android:id="@+id/buttonTabletop"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="45dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
+        app:layout_constraintStart_toStartOf="@+id/buttonMeetings"
+        app:srcCompat="@drawable/tabletop" />
+
+    <ImageButton
+        android:id="@+id/buttonMeetings"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="45dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTabletop"
+        app:layout_constraintStart_toStartOf="@+id/buttonSports"
+        app:srcCompat="@drawable/forma1" />
+
+    <ImageButton
+        android:id="@+id/buttonSports"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="45dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMeetings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/sports" />
+
+    <Button
+        android:id="@+id/buttonCreateEvent"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="75dp"
+
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:text="Create an Event"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 1d2984954840b6ff5cbc4303e2bf819e4cd6af8a
