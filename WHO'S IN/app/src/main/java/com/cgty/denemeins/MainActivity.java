@@ -1,5 +1,7 @@
 /**
+ * Main activity
  * @author Gökberk Keskinkılıç
+ * @version 1.0
  */
 package com.cgty.denemeins;
 
@@ -7,9 +9,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 
 import com.cgty.denemeins.fragment.HomeFragment;
@@ -20,38 +22,34 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * Main Activity class which has Home, Nearby, Notifications and Profile Fragments.
- * @author Cagatay Safak
+ * @author Çağatay Safak
  * @version 1.0
  */
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 
     private Button settingsButton;
     //    private BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnNavigationItemSelectedListener( navListener);
+        BottomNavigationView bottomNav = findViewById( R.id.bottom_navigation );
+        bottomNav.setOnNavigationItemSelectedListener( navListener );
         getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new HomeFragment() ).commit();
 
 //        bottomNavigationView = findViewById(R.id.bottomNav);
 //        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener()
-    {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
-        {
+        public boolean onNavigationItemSelected( @NonNull MenuItem menuItem ) {
             Fragment selectedFragment = null;
 
-            switch ( menuItem.getItemId())
-            {
+            switch ( menuItem.getItemId()) {
                 case R.id.nav_home:
                     selectedFragment = new HomeFragment();
                     break;
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity
                     break;
             }
 
-            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, selectedFragment ).commit();
 
             return true;
         }
