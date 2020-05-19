@@ -14,8 +14,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
 import com.cgty.denemeins.CreateEvent;
-import com.cgty.denemeins.FeedGatherings;
-import com.cgty.denemeins.FeedSports;
+import com.cgty.denemeins.FeedEvents;
 import com.cgty.denemeins.R;
 
 /**
@@ -67,7 +66,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class);
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class);
                 fromHomeToFeed.putExtra( "feedEventType", FEED_SPORTS );
                 startActivity( fromHomeToFeed);
             }
@@ -78,7 +77,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class);
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class);
                 fromHomeToFeed.putExtra( "feedEventType", FEED_GATHERINGS );
                 startActivity( fromHomeToFeed);
             }
@@ -88,7 +87,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class);
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class);
                 fromHomeToFeed.putExtra( "feedEventType", FEED_TABLETOP );
                 startActivity( fromHomeToFeed);
             }
@@ -98,7 +97,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent fromHomeToFeed = new Intent( getActivity(), FeedSports.class );
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_ALL );
                 startActivity( fromHomeToFeed );
             }

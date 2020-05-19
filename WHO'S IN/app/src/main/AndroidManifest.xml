@@ -21,7 +21,7 @@
         <activity android:name=".FeedTabletop"></activity>
         <activity android:name=".EventActivity" />
         <activity android:name=".FeedGatherings" />
-        <activity android:name=".FeedSports" />
+        <activity android:name=".FeedEvents" />
         <activity android:name=".PhotoActivity" />
         <activity android:name=".CreateEvent" />
         <!--
