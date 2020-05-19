@@ -54,26 +54,30 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder( @NonNull ViewHolder holder, int position ) {
 
         final Event event = mEvents.get( position );
-        final TextView organizerName = holder.textViewUsernameEventElement;
+
+        final String uId = event.getOrganizerId();
+        final TextView username = holder.textViewUsernameEventElement;
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
-        ref.addValueEventListener(new ValueEventListener() {
-            // gets the organiser's username from the database
+        ref.addListenerForSingleValueEvent( new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                organizerName.setText( dataSnapshot.child( event.getOrganizerId() ).getValue( User.class ).getUsername() );
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                User u = dataSnapshot.child( uId ).getValue( User.class );
+                username.setText( u.getUsername() );
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
+
 
         holder.textViewTitleEventElement.setText( event.getTitle() );
         holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
         holder.textViewLocationEventElement.setText( event.getLocation() );
         holder.textViewDateEventElement.setText( event.getDate().toString() );
-        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + event.getNumberOfParticipants() + " / " + event.getCapacity() );
+        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + " / " + event.getCapacity() );
         holder.textViewDescriptionEventElement.setText( event.getDescription() );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 

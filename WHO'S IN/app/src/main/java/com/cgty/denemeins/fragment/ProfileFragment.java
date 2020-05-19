@@ -132,7 +132,9 @@ public class ProfileFragment extends Fragment
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
         reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
 
-        //göko
+        /**
+         * @author Gökberk
+         */
         reference.addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -441,11 +443,11 @@ public class ProfileFragment extends Fragment
                 int i;
                 i = 0;
 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                for ( DataSnapshot snapshot : dataSnapshot.getChildren() )
                 {
                     Event event = snapshot.getValue(Event.class);
 
-                    if (event.getOrganizerId().equals(profileID))
+                    if ( event.getOrganizerId().equals( profileID ) )
                         i++;
                 }
 

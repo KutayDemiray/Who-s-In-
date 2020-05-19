@@ -53,11 +53,11 @@ public class EventActivity extends AppCompatActivity {
       eventParticipants = findViewById( R.id.eventCapacity );
       eventJoinButton = findViewById( R.id.eventJoinButton);
 
-      ref.addValueEventListener(new ValueEventListener() {
+      ref.addValueEventListener( new ValueEventListener() {
          @Override
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             Event event;
-            event = dataSnapshot.child( eventId).getValue( Event.class ); // uses the eventId from intent
+            event = dataSnapshot.child( eventId ).getValue( Event.class ); // uses the eventId from intent
             eventTitle.setText( event.getTitle() );
             eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
@@ -72,7 +72,7 @@ public class EventActivity extends AppCompatActivity {
          }
 
          @Override
-         public void onCancelled(@NonNull DatabaseError databaseError) {
+         public void onCancelled( @NonNull DatabaseError databaseError ) {
 
          }
       });
@@ -81,8 +81,8 @@ public class EventActivity extends AppCompatActivity {
          @Override
          public void onClick(View v) {
             addOrRemoveParticipant( eventId, firebaseUser.getUid());
-         }
       });
+
    }
 
    private void addOrRemoveParticipant( final String eventId, final String userId) {
