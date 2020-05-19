@@ -177,13 +177,13 @@ public class EventActivity extends AppCompatActivity {
       });
 
    }
-   
+
    private void addJoinNotification( final String organizerId, final String eventId, final String userId, final String eventTitle) {
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId);
 
       HashMap<String, Object> hashMap = new HashMap();
       hashMap.put( "userId",  userId);
-      hashMap.put( "text", " has joined your event called " +  eventTitle + ".");
+      hashMap.put( "text", " has joined your event called " +  eventTitle );
       hashMap.put( "eventId", eventId);
       hashMap.put( "isEvent", true);
 
@@ -195,7 +195,7 @@ public class EventActivity extends AppCompatActivity {
 
       HashMap<String, Object> hashMap = new HashMap();
       hashMap.put( "userId",  userId);
-      hashMap.put( "text", " has left your event called " +  eventTitle + ".");
+      hashMap.put( "text", " has left your event called " +  eventTitle);
       hashMap.put( "eventId", eventId);
       hashMap.put( "isEvent", true);
 
