@@ -67,7 +67,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
         holder.addFriend.setVisibility(View.VISIBLE);
         holder.username.setText(user.getUsername());
         holder.age.setText(user.getAge());
-        Glide.with(mContext).load(user.getImageURL()).into(holder.pp);
+        Glide.with(mContext).load(user.getPicurl()).into(holder.pp);
         follows(user.getId(), holder.addFriend);
 
         if (user.getId().equals(firebaseUser.getUid()))

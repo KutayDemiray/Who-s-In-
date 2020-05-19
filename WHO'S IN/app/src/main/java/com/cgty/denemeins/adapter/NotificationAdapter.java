@@ -120,7 +120,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             User user = dataSnapshot.getValue( User.class);
             username.setText( user.getUsername() );
-            Glide.with(mContext).load( user.getImageURL() ).into( imageView);
+            Glide.with(mContext).load( user.getPicurl() ).into( imageView);
          }
 
          @Override
