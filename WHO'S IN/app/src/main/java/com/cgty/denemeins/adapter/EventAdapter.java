@@ -15,12 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cgty.denemeins.EventActivity;
 import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.Event;
+import com.cgty.denemeins.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 /**
  * Event adapter class
- * @author Kutay Demiray
+ * @author Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan
  * @version 1.0
  */
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
@@ -48,13 +54,26 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder( @NonNull ViewHolder holder, int position ) {
 
         final Event event = mEvents.get( position );
+        final TextView organizerName = holder.textViewUsernameEventElement;
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference( "Users" );
+        ref.addValueEventListener(new ValueEventListener() {
+            // gets the organiser's username from the database
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                organizerName.setText( dataSnapshot.child( event.getOrganizerId() ).getValue( User.class ).getUsername() );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         holder.textViewTitleEventElement.setText( event.getTitle() );
         holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
-        holder.textViewUsernameEventElement.setText( event.getOrganizerId() ); // TODO change this to username instead of id
         holder.textViewLocationEventElement.setText( event.getLocation() );
         holder.textViewDateEventElement.setText( event.getDate().toString() );
-        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + event.getCapacity() ); // TODO fix to show current/max
+        holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + event.getNumberOfParticipants() + " / " + event.getCapacity() );
         holder.textViewDescriptionEventElement.setText( event.getDescription() );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 
