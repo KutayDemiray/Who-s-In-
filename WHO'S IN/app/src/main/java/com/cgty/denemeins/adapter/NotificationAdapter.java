@@ -88,6 +88,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                   editor.apply();
 
                   Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class);
+                  fromNotificationToEvent.putExtra( "eventId", notification.getEventId());
                   mContext.startActivity( fromNotificationToEvent);
 
 

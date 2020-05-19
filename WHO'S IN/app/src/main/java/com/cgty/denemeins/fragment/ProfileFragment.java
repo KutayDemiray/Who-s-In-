@@ -443,11 +443,11 @@ public class ProfileFragment extends Fragment
                 int i;
                 i = 0;
 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                for ( DataSnapshot snapshot : dataSnapshot.getChildren() )
                 {
                     Event event = snapshot.getValue(Event.class);
 
-                    if (event.getOrganizerId().equals(profileID))
+                    if ( event.getOrganizerId().equals( profileID ) )
                         i++;
                 }
 

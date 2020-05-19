@@ -14,6 +14,8 @@
         android:layout_height="46dp"
         android:layout_marginTop="28dp"
         android:text="@string/event_title"
+        android:textSize="24sp"
+        android:fontFamily="@font/bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,12 +28,16 @@
         android:layout_height="140dp"
         android:layout_marginTop="24dp"
         android:text="@string/textview"
+        android:textSize="18sp"
+        android:fontFamily="@font/bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventDateAndLocation"
         android:textColor="@color/blue"/>
     <TextView
         android:id="@+id/eventParticipants"
+        android:textSize="14sp"
+        android:fontFamily="@font/bold"
         android:layout_width="211dp"
         android:layout_height="155dp"
         android:layout_marginStart="100dp"
@@ -42,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/eventCapacity"
         android:textColor="@color/blue"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventJoinButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
