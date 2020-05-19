@@ -34,7 +34,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/regular"
-        android:text="Other"
+        android:text="All"
         android:textColor="@color/white"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateEvent"
@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="@+id/textGatherings" />
 
     <ImageButton
-        android:id="@+id/buttonOther"
+        android:id="@+id/buttonAllTypes"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="92dp"
         android:layout_height="66dp"
@@ -85,7 +85,7 @@
         android:layout_marginBottom="45dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOther"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAllTypes"
         app:layout_constraintStart_toStartOf="@+id/buttonGatherings"
         app:srcCompat="@drawable/tabletop" />
 
