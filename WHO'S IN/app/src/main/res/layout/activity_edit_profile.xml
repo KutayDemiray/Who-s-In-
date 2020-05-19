@@ -75,6 +75,49 @@
             android:src="@drawable/female"
             android:layout_gravity="center"/>
 
+        <TextView
+            android:id="@+id/textViewChangePhotoEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Photo"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlue"
+            android:layout_gravity="center"/>
+
+        <!-- normal / highlight / none -->
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextChangeUsernameEditProfile"
+            android:layout_marginTop="20dp"
+            app:met_floatingLabel="normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your username"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextChangeAgeEditProfile"
+            android:layout_marginTop="20dp"
+            app:met_floatingLabel="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your age"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/materialEditTextChangeBioEditProfile"
+            android:layout_marginTop="20dp"
+            app:met_floatingLabel="highlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your bio"/>
+
+        <TextView
+            android:background="softborder"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Photo"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlue"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
