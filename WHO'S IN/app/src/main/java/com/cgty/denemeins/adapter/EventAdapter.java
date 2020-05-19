@@ -84,7 +84,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             textViewDateEventElement = itemView.findViewById( R.id.textViewDateEventElement );
             textViewNoOfParticipantsEventElement = itemView.findViewById( R.id.textViewNoOfParticipantsEventElement );
             textViewDescriptionEventElement = itemView.findViewById( R.id.textViewDescriptionEventElement );
-            textViewPrivacySettingEventElement = itemView.findViewById( R.id.textViewDescriptionEventElement );
+            textViewPrivacySettingEventElement = itemView.findViewById( R.id.textViewPrivacySettingEventElement );
 
         }
 
