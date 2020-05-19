@@ -7,6 +7,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Text Based Model/FriendRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Text Based Model/FriendRequest.java" afterDir="false" />
     </list>
+    <list default="true" id="20e0a2da-95a4-42fe-ba16-601a305bd75d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/20200429_WhosIn_v.1.0/app/src/main/java/com/example/whosin/data/model/User.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +33,38 @@
   </component>
   <component name="RunManager">
     <configuration name="C:/Users/pc/Documents/GitHub/20200429_WhosIn_v.1.0/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_27" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Kutay\Documents\GitHub\Who-s-In-\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bTdKJB2fglr1rd2phX84t8HmZi" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="C:/Users/Kutay/Documents/GitHub/Who-s-In-/20200429_WhosIn_v.1.0/build.gradle" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/20200429_WhosIn_v.1.0/build.gradle" />
@@ -48,6 +84,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.C:/Users/pc/Documents/GitHub/20200429_WhosIn_v.1.0/build.gradle" />
+        <item itemvalue="Gradle.C:/Users/Kutay/Documents/GitHub/Who-s-In-/20200429_WhosIn_v.1.0/build.gradle" />
       </list>
     </recent_temporary>
   </component>
@@ -63,6 +100,18 @@
       <updated>1588660192049</updated>
     </task>
     <servers />
+  </component>
+      <changelist id="20e0a2da-95a4-42fe-ba16-601a305bd75d" name="Default Changelist" comment="" />
+      <created>1588659951723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588659951723</updated>
+      <workItem from="1588659953252" duration="1815000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
