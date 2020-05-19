@@ -11,13 +11,7 @@
     <TextView
         android:id="@+id/eventTitle"
         android:layout_width="match_parent"
-
-        android:layout_height="46dp"
-
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/event_title"
-
         android:layout_marginStart="10dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/bold"
