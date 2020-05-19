@@ -57,6 +57,7 @@
             android:layout_height="75dp"
             android:adjustViewBounds="true"
             android:scaleType="fitStart"
+            android:layout_marginTop="10dp"
             android:tint="@color/white"
             app:srcCompat="@drawable/sportss" />
 
@@ -65,7 +66,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
             android:scaleType="fitStart"
             android:tint="@color/white"
@@ -76,7 +77,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
             android:scaleType="fitStart"
             android:tint="@color/white"
@@ -87,7 +88,7 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
             android:scaleType="fitStart"
             android:tint="@color/white"
@@ -98,9 +99,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="75dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+
+
         android:layout_toEndOf="@+id/mainVerticalLayout">
 
         <Button
@@ -109,6 +111,7 @@
             android:layout_height="100dp"
             android:background="@drawable/mybutton"
             android:fontFamily="@font/bold"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Create Event"
             android:textColor="@color/white"
