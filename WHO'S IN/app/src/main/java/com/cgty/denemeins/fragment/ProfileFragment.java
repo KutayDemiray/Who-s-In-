@@ -486,7 +486,7 @@ public class ProfileFragment extends Fragment
         DatabaseReference eventPath;
         eventPath = FirebaseDatabase.getInstance().getReference().child("Events");
 
-        eventPath.addValueEventListener(new ValueEventListener()
+        eventPath.addListenerForSingleValueEvent( new ValueEventListener()
         {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot )
