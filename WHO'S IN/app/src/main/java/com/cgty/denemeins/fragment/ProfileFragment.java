@@ -192,17 +192,20 @@ public class ProfileFragment extends Fragment
                 String buttonText;
                 buttonText = button_EditProfile.getText().toString();
 
-                if ( buttonText.equals( "EDIT PROFILE")) {
+                if ( buttonText.equals( "EDIT PROFILE"))
+                {
                     //go to edit profile screen
 					Intent intentFromProfileToEditProfile;
                     intentFromProfileToEditProfile = new Intent( getContext(), EditProfileActivity.class);
                     startActivity( intentFromProfileToEditProfile);
                 }
-                else if ( buttonText.equals( "FOLLOW")) {
+                else if ( buttonText.equals( "FOLLOW"))
+                {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).setValue(true);
                 }
-                else if ( buttonText.equals( "FOLLOWING")) {
+                else if ( buttonText.equals( "FOLLOWING"))
+                {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).removeValue();
                 }
@@ -216,7 +219,8 @@ public class ProfileFragment extends Fragment
         mSignOut.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Log.d( TAG, "onClick: attempting to sign out the use.");
                 FirebaseAuth.getInstance().signOut();
             }
