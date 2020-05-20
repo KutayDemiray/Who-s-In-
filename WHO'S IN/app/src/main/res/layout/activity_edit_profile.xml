@@ -98,6 +98,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/darkBlue"
             android:inputType="textNoSuggestions"
+            android:maxLines="1"
             android:hint="Your username"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -109,6 +110,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/darkBlue"
             android:inputType="number"
+            android:maxLines="1"
             android:hint="Your age"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -120,6 +122,7 @@
             android:fontFamily="@font/regular"
             android:textColor="@color/darkBlue"
             android:inputType="textNoSuggestions"
+            android:maxLines="2"
             android:hint="Your bio"/>
 
     </LinearLayout>

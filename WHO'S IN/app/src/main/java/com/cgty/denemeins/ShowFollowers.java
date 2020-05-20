@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.cgty.denemeins.R;
@@ -55,12 +56,188 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ShowFollowers extends AppCompatActivity
 {
-
+    String id;
+    String title;
+    List<String> idList;
+    RecyclerView recyclerView;
+    UserAdapter userAdapter;
+    List<User> userList;
+    
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.show_followers);
-
+        
+        Intent intent;  //intentFromProfileToFollowers
+        intent = getIntent();
+        
+        id = intent.getStringExtra("id");
+        title = intent.getStringExtra("title");
+        
+        //Toolbar settings
+        Toolbar toolbar;
+        toolbar = findViewById(R.id.toolbarShowFollowers);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+            }
+        });
+        
+        //Recycler settings
+        recyclerView = findViewById(R.id.recyclerViewShowFollowers);
+        recyclerView.setHasFixedSize(true);
+        
+        LinearLayoutManager linearLayoutManager;
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        
+        userList = new ArrayList<>();
+        
+        userAdapter = new UserAdapter(this, userList);
+        
+        recyclerView.setAdapter(userAdapter);
+        
+        idList = new ArrayList<>();
+        
+        switch (title)
+        {
+            case "participants":
+                getParticipants();
+                break;
+            case "followers":
+                getFollowers();
+                break;
+            case "following":
+                getFollowing();
+                break;
+        }
+    }
+    
+    private void getParticipants()
+    {
+        DatabaseReference participatePath;
+        participatePath = FirebaseDatabase.getInstance().getReference("Events").child(id).child("participants");
+    
+        participatePath.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                idList.clear();
+                
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    idList.add(snapshot.getKey());
+                }
+    
+                showUsers();
+            }
+            
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+            
+            }
+        });
+    }
+    
+    private void getFollowing()
+    {
+        DatabaseReference followingPath;
+        followingPath = FirebaseDatabase.getInstance().getReference("Follow").child(id).child("following");
+    
+        followingPath.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                idList.clear();
+                
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    idList.add(snapshot.getKey());
+                }
+                
+                showUsers();
+            }
+            
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+            
+            }
+        });
+    }
+    
+    private void getFollowers()
+    {
+        DatabaseReference followerPath;
+        followerPath = FirebaseDatabase.getInstance().getReference("Follow").child(id).child("followers");
+        
+        followerPath.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                idList.clear();
+                
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    idList.add(snapshot.getKey());
+                }
+                
+                showUsers();
+            }
+    
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+        
+            }
+        });
+    }
+    
+    private void showUsers()
+    {
+        DatabaseReference userPath;
+        userPath = FirebaseDatabase.getInstance().getReference("Users");
+    
+        userPath.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                userList.clear();
+                
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    User user;
+                    user = snapshot.getValue(User.class);
+                    
+                    for ( String id: idList)
+                    {
+                        if (user.getId().equals(id))
+                        {
+                            userList.add(user);
+                        }
+                    }
+                }
+                
+                userAdapter.notifyDataSetChanged();  // refreshes for every change in database
+            }
+            
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+            
+            }
+        });
     }
 }
