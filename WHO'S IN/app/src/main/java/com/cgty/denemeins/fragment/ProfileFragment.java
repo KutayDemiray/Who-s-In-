@@ -481,16 +481,16 @@ public class ProfileFragment extends Fragment
         eventPath.addValueEventListener(new ValueEventListener()
         {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot )
             {
                 int i;
                 i = 0;
 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() )
                 {
-                    Event event = snapshot.getValue(Event.class);
+                    Event event = snapshot.getValue( Event.class );
 
-                    if (event.getOrganizerId().equals(profileID))
+                    if ( event != null && event.getOrganizerId().equals( profileID ) )
                     {
                         i++;
                     }

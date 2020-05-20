@@ -52,12 +52,14 @@ public class FeedEvents extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_feed_events );
 
+        // initialize views
         feedEventsBar = findViewById( R.id.feedEventsBar );
         imageViewLogo = findViewById( R.id.imageViewLogo );
         feedEventsRecyclerView = findViewById( R.id.feedEventsRecyclerView );
         feedEventsRecyclerView.setHasFixedSize( true );
         feedEventsRecyclerView.setLayoutManager( new LinearLayoutManager( this ) );
 
+        // initialize adapter
         mEvents = new ArrayList<>();
         eventAdapter = new EventAdapter( this, mEvents );
 
@@ -73,6 +75,10 @@ public class FeedEvents extends AppCompatActivity {
 
     }
 
+    /**
+     * Fetches events with given type from database and displays them on screen
+     * @param DISPLAY_EVENTS_TYPE Event type
+     */
     private void readEvents( final String DISPLAY_EVENTS_TYPE ) {
 
         DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("Events" );

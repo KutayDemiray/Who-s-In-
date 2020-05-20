@@ -131,7 +131,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                editTextDate.setText( String.format( "%02d/%02d/%04d", dayOfMonth, month, year ) );
+                                editTextDate.setText( String.format( "%02d/%02d/%04d", dayOfMonth, month + 1, year ) );
                             }
                         }, year, month, day );
                 datePickerDialog.show();
