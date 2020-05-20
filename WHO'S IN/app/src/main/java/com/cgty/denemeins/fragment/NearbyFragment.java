@@ -111,7 +111,7 @@ public class NearbyFragment extends Fragment {
                 mUsers.clear();
                 
                 for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
-                    com.cgty.denemeins.model.User user = snapshot.getValue( com.cgty.denemeins.model.User.class );
+                    User user = snapshot.getValue( User.class );
                     mUsers.add( user );
                 }
 
@@ -141,7 +141,7 @@ public class NearbyFragment extends Fragment {
                     mUsers.clear();
                     
                     for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
-                        com.cgty.denemeins.model.User user = snapshot.getValue( com.cgty.denemeins.model.User.class );
+                        User user = snapshot.getValue( User.class );
                         mUsers.add( user );
 
                         userAdapter.notifyDataSetChanged();
