@@ -357,15 +357,20 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void userInfo() {
+    private void userInfo()
+    {
         DatabaseReference userPath;
         userPath = FirebaseDatabase.getInstance().getReference("Users").child(profileID);
 
-        userPath.addValueEventListener(new ValueEventListener() {
+        userPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (getContext() == null)
+                {
                     return;
+                }
 
                 User user;
                 user = dataSnapshot.getValue(User.class);
@@ -388,17 +393,24 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void followControl() {
+    private void followControl()
+    {
         DatabaseReference followPath;
         followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
 
-        followPath.addValueEventListener(new ValueEventListener() {
+        followPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (dataSnapshot.child(profileID).exists())
-                    button_EditProfile.setText( "FOLLOWING");
+                {
+                    button_EditProfile.setText("FOLLOWING");
+                }
                 else
-                    button_EditProfile.setText( "FOLLOW");
+                {
+                    button_EditProfile.setText("FOLLOW");
+                }
             }
 
             @Override
@@ -412,16 +424,18 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getFollowInfo() {
+    private void getFollowInfo()
+    {
         //gets number of followers
         DatabaseReference followerPath;
         followerPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers");
 
-        followerPath.addValueEventListener(new ValueEventListener() {
+        followerPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers");
+                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers ");
             }
 
             @Override
@@ -435,11 +449,12 @@ public class ProfileFragment extends Fragment
         DatabaseReference followingPath;
         followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("following");
 
-        followingPath.addValueEventListener(new ValueEventListener() {
+        followingPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following");
+                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following ");
             }
 
             @Override
@@ -453,13 +468,16 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getNoOfEventsCreated() {
+    private void getNoOfEventsCreated()
+    {
         DatabaseReference eventPath;
         eventPath = FirebaseDatabase.getInstance().getReference().child("Events");
 
-        eventPath.addValueEventListener(new ValueEventListener() {
+        eventPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 int i;
                 i = 0;
 
@@ -468,10 +486,12 @@ public class ProfileFragment extends Fragment
                     Event event = snapshot.getValue(Event.class);
 
                     if (event.getOrganizerId().equals(profileID))
+                    {
                         i++;
+                    }
                 }
 
-                textView_CreatedEvents.setText( i + " Events Created");
+                textView_CreatedEvents.setText( i + " Events Created ");
             }
 
             @Override
@@ -527,7 +547,9 @@ public class ProfileFragment extends Fragment
         super.onStop();
 
         if( mAuthStateListener != null)
+        {
             FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        }
     }
 
 

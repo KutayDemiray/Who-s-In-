@@ -15,6 +15,7 @@
         android:background="@color/darkBlue">
 
         <androidx.appcompat.widget.Toolbar
+            android:layout_marginStart="-15dp"
             android:id="@+id/profileBarToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -185,7 +186,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="31 followers "
+                        android:text="3 followers "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -198,7 +199,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="31 following "
+                        android:text="3 following "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -211,7 +212,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="31 events created "
+                        android:text="3 events created "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />

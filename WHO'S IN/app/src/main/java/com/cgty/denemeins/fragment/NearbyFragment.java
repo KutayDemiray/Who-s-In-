@@ -54,7 +54,7 @@ public class NearbyFragment extends Fragment
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mUsers = new ArrayList<>();
-        userAdapter = new UserAdapter( getContext(), mUsers);
+        userAdapter = new UserAdapter( getContext(), mUsers, true);
         searchBar = view.findViewById(R.id.nearbySearchEditText);
 
         recyclerView.setAdapter(userAdapter);
