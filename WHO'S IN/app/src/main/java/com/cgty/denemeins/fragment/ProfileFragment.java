@@ -142,7 +142,8 @@ public class ProfileFragment extends Fragment
                 if( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082"))
                     image_profile.setImageResource(R.mipmap.ic_launcher);
                 else
-                    Glide.with(getContext()).load(user.getPicurl()).into(image_profile);
+                    if ( getContext() != null )
+                        Glide.with(getContext()).load(user.getPicurl()).into(image_profile);
             }
 
             @Override
