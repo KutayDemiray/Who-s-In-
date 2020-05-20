@@ -242,7 +242,6 @@ public class EditProfileActivity extends AppCompatActivity
 					else
 					{
 						Toast.makeText(EditProfileActivity.this, "Upload was unsuccessful!", Toast.LENGTH_LONG).show();
-						pd.dismiss();
 					}
 				}
 			}).addOnFailureListener(new OnFailureListener()
@@ -251,7 +250,6 @@ public class EditProfileActivity extends AppCompatActivity
 				public void onFailure(@NonNull Exception e)
 				{
 					Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-					pd.dismiss();
 				}
 			});
 		}
