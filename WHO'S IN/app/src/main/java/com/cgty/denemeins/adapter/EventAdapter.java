@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 /**
- * Event adapter class
+ * Event adapter for listing events
  * @author Kutay Demiray, Yağız Yaşar, Cemhan Kaan Özaltan
  * @version 1.0
  */
@@ -44,7 +44,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     }
 
     // methods
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType ) {
@@ -97,11 +96,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
-
 
         holder.textViewTitleEventElement.setText( event.getTitle() );
         holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
@@ -111,37 +109,34 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.textViewDescriptionEventElement.setText( "\"" + event.getDescription() + "\" " );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick( View view ) {
                 SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
                 editor.putString( "eventId", event.getEventId() );
                 editor.apply();
 
-                Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class);
-                fromNotificationToEvent.putExtra( "eventId", event.getEventId());
-                mContext.startActivity( fromNotificationToEvent);
+                Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class );
+                fromNotificationToEvent.putExtra( "eventId", event.getEventId() );
+                mContext.startActivity( fromNotificationToEvent );
             }
         });
-    
+
         /**
-         * Follower ve Following listesi gosterirken aklima Participant'lari da ayni sekilde gostermek geldi.
-         *
-         *
-         * @author Cagatay Safak
-         * @version 20 MAY 20
+         * Used a similar method to list the participants
+         * @author Çağatay Şafak
+         * @version 20.05.2020
          */
-        holder.textViewNoOfParticipantsEventElement.setOnClickListener(new View.OnClickListener()
-        {
+        holder.textViewNoOfParticipantsEventElement.setOnClickListener( new View.OnClickListener() {
+
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
                 Intent intent;
-                intent = new Intent(mContext, ShowFollowers.class);
+                intent = new Intent( mContext, ShowFollowers.class );
                 
-                intent.putExtra("id", event.getEventId());
-                intent.putExtra("title", "participants");
-                mContext.startActivity( intent);
+                intent.putExtra("id", event.getEventId() );
+                intent.putExtra("title", "participants" );
+                mContext.startActivity( intent );
             }
         });
     }

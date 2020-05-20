@@ -38,7 +38,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
    private Context mContext;
    private List<Notification> mNotification;
 
-   public NotificationAdapter(Context mContext, List<Notification> mNotification) {
+   public NotificationAdapter( Context mContext, List<Notification> mNotification ) {
       this.mContext = mContext;
       this.mNotification = mNotification;
    }
@@ -57,9 +57,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     * @param i - type of view
     * @return view of notification
     */
-   public ViewHolder onCreateViewHolder( @NonNull ViewGroup viewGroup, int i) {
-      View view = LayoutInflater.from(mContext).inflate(R.layout.notification_element,viewGroup, false);
-      return new NotificationAdapter.ViewHolder( view);
+   public ViewHolder onCreateViewHolder( @NonNull ViewGroup viewGroup, int i ) {
+      View view = LayoutInflater.from( mContext ).inflate( R.layout.notification_element,viewGroup, false );
+      return new NotificationAdapter.ViewHolder( view );
    }
 
    /**
@@ -67,11 +67,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     * @param viewHolder
     * @param i
     */
-   public void onBindViewHolder( @NonNull ViewHolder viewHolder, int i) {
+   public void onBindViewHolder( @NonNull ViewHolder viewHolder, int i ) {
 
-      final Notification notification = mNotification.get(i);
+      final Notification notification = mNotification.get( i );
 
-      viewHolder.text.setVisibility(View.VISIBLE);
+      viewHolder.text.setVisibility( View.VISIBLE );
 
       viewHolder.text.setText( notification.getText() );
       getUserInfo( viewHolder.profilePicture, viewHolder.username, notification.getUserId() );
@@ -79,22 +79,22 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
       viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
 
             @Override
-              public void onClick( View view) {
-               if (  notification.getEventId().equals("") ) {
-                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
-                  editor.putString( "userId", notification.getUserId());
+              public void onClick( View view ) {
+               if (  notification.getEventId().equals( "" ) ) {
+                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
+                  editor.putString( "userId", notification.getUserId() );
                   editor.apply();
 
-                  ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                  ( (FragmentActivity) mContext ).getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container,
                           new ProfileFragment() ).commit();
                } else {
-                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE).edit();
+                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
                   editor.putString( "eventId", notification.getEventId() );
                   editor.apply();
 
-                  Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class);
-                  fromNotificationToEvent.putExtra( "eventId", notification.getEventId());
-                  mContext.startActivity( fromNotificationToEvent);
+                  Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class );
+                  fromNotificationToEvent.putExtra( "eventId", notification.getEventId() );
+                  mContext.startActivity( fromNotificationToEvent );
              }
             }
          });
@@ -109,19 +109,19 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     * @param username
     * @param userId
     */
-   private void getUserInfo(final ImageView imageView, final TextView username, String userId) {
-      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-      reference.addValueEventListener(new ValueEventListener() {
+   private void getUserInfo( final ImageView imageView, final TextView username, String userId ) {
+      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users" ).child( userId );
+      reference.addValueEventListener( new ValueEventListener() {
 
          @Override
-         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            User user = dataSnapshot.getValue( User.class);
+         public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+            User user = dataSnapshot.getValue( User.class );
             username.setText( user.getUsername() );
-            Glide.with(mContext).load( user.getPicurl() ).into( imageView);
+            Glide.with( mContext ).load( user.getPicurl() ).into( imageView );
          }
 
          @Override
-         public void onCancelled(@NonNull DatabaseError databaseError) {
+         public void onCancelled( @NonNull DatabaseError databaseError ) {
 
          }
       });
@@ -154,12 +154,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
       public ImageView profilePicture;
       public TextView username, text;
 
-      public ViewHolder(@NonNull View itemView) {
-         super(itemView);
+      public ViewHolder( @NonNull View itemView ) {
+         super( itemView );
 
-         profilePicture = itemView.findViewById(R.id.profilePictureElement);
-         username = itemView.findViewById(R.id.notificationUsername);
-         text = itemView.findViewById(notificationText);
+         profilePicture = itemView.findViewById( R.id.profilePictureElement );
+         username = itemView.findViewById( R.id.notificationUsername );
+         text = itemView.findViewById( notificationText );
       }
    }
 }
