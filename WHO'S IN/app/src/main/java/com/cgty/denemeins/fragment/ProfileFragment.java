@@ -26,6 +26,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,6 +80,7 @@ public class ProfileFragment extends Fragment
     TextView textView_CreatedEvents;
     FirebaseUser currentUser;
     String profileID;
+    ProgressBar progressBar;
 
     //goko's properties
     TextView username;
@@ -175,12 +177,16 @@ public class ProfileFragment extends Fragment
         getFollowInfo();
         getNoOfEventsCreated();
 
-        if (profileID.equals(currentUser.getUid())) {
+        if (profileID.equals(currentUser.getUid()))
+        {
             button_EditProfile.setText("EDIT PROFILE");
+            button_PastActivities.setVisibility(View.VISIBLE);
+            button_ScheduledActivities.setVisibility(View.VISIBLE);
         }
-        else{
+        else
+        {
             followControl();
-            button_PastActivities.setVisibility(View.GONE);
+            //button_PastActivities.setVisibility(View.GONE);
         }
 
 
@@ -257,6 +263,8 @@ public class ProfileFragment extends Fragment
                 startActivity(intent);
             }
         });
+        
+        progressBar = view.findViewById(R.id.progressProfileFragment);
 
         return view;
     }
@@ -497,6 +505,8 @@ public class ProfileFragment extends Fragment
                 }
 
                 textView_CreatedEvents.setText( i + " Events Created ");
+	
+				progressBar.setVisibility(View.GONE);
             }
 
             @Override
