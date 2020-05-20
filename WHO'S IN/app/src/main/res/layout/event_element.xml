@@ -21,7 +21,7 @@
                 android:layout_gravity="center"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/fashion"
+                android:src="@drawable/gozlerim"
                 android:tint="@color/white"/>
             <LinearLayout
                 android:layout_width="match_parent"
