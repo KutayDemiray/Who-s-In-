@@ -32,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -175,22 +176,22 @@ public class EditProfileActivity extends AppCompatActivity
 		if ( mImageUri != null)  //trying to avoid NullPointer...
 		{
 			final StorageReference filePath;
-			filePath = storagePath.child(System.currentTimeMillis() + "." + getFilenameExtension(mImageUri));
+			filePath = storagePath.child( System.currentTimeMillis() + "-" + getFilenameExtension( mImageUri) );
 			
-			uploadTask = filePath.putFile(mImageUri);
-			uploadTask.continueWithTask( new Continuation()
+			uploadTask = filePath.putFile( mImageUri);
+			uploadTask.continueWithTask( new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
 			{
 				@Override
-				public Object then(@NonNull Task task) throws Exception
+				public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
 				{
-					if (!task.isSuccessful())
+					if ( !task.isSuccessful() )
 					{
 						throw task.getException();
 					}
 					
 					return filePath.getDownloadUrl();
 				}
-			}).addOnCompleteListener(new OnCompleteListener<Uri>()
+			}).addOnCompleteListener( new OnCompleteListener<Uri>()
 			{
 				@Override
 				public void onComplete(@NonNull Task<Uri> task)
@@ -208,16 +209,18 @@ public class EditProfileActivity extends AppCompatActivity
 						
 						userPath = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
 						
-						imageHashMap = new HashMap<>();
-						imageHashMap.put("picurl", "" + myUri);
-						
-						userPath.updateChildren(imageHashMap);
+						HashMap<String, Object> map;
+						map = new HashMap<>();
+
+						map.put("picurl", myUri);
+						userPath.updateChildren(map);
 						
 						pd.dismiss();
 					}
 					else
 					{
 						Toast.makeText(EditProfileActivity.this, "Upload was unsuccessful!", Toast.LENGTH_LONG).show();
+						pd.dismiss();
 					}
 				}
 			}).addOnFailureListener(new OnFailureListener()
@@ -226,6 +229,7 @@ public class EditProfileActivity extends AppCompatActivity
 				public void onFailure(@NonNull Exception e)
 				{
 					Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+					pd.dismiss();
 				}
 			});
 		}
