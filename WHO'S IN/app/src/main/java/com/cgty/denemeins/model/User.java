@@ -1,6 +1,5 @@
 package com.cgty.denemeins.model;
 
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -67,7 +66,6 @@ public class User {
                 user.setAge( value.getAge() );
             }
         }, id );
-        Log.wtf( "DENEME123", user.toString() );
         return user;
     }
 
