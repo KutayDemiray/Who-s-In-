@@ -58,14 +58,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         Log.d( "DENEME123", event.getEventId() );
 
         // get organizer's username from database
-        final String uId = event.getOrganizerId();
-        final TextView username = holder.textViewUsernameEventElement;
+        final String uId = event.getOrganizerId(); // variables are final so that they can be used in database listener
+        final TextView username = holder.textViewUsernameEventElement; // similarly, final reference for text view
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference( "Users" );
+
         userRef.addListenerForSingleValueEvent( new ValueEventListener() {
 
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                // get user value at node with the key uid and set text view's text to that user's username
                 User u = dataSnapshot.child( uId ).getValue( User.class );
                 username.setText( u.getUsername() );
             }
@@ -74,16 +76,20 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
+
         });
 
-        // get current and max participants from database
+        // get current and max participants from database similar to how we retrieved username
         final TextView participants = holder.textViewNoOfParticipantsEventElement;
         final ArrayList<String> participantList = new ArrayList<>();
+
         DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference( "Events" ).child( event.getEventId() );
+
         eventRef.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
+                // clear then fill participantList from scratch with updated data, and update the textview
                 participantList.clear();
 
                 for ( DataSnapshot participantSnapshot : dataSnapshot.child( "participants" ).getChildren() ) {
@@ -93,14 +99,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
                 event.setParticipants( participantList );
                 participants.setText( "Capacity: " + event.getParticipants().size() + "/" + event.getCapacity() );
+
             }
 
             @Override
             public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
+
         });
 
+        // initialize text view texts
         holder.textViewTitleEventElement.setText( event.getTitle() );
         holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
         holder.textViewLocationEventElement.setText( event.getLocation() );
@@ -109,6 +118,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.textViewDescriptionEventElement.setText( "\"" + event.getDescription() + "\" " );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 
+        // add listener to the event as a whole so that when user clicks they go to event page
         holder.itemView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
@@ -131,14 +141,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
             @Override
             public void onClick( View v ) {
+
                 Intent intent;
                 intent = new Intent( mContext, ShowFollowers.class );
                 
                 intent.putExtra("id", event.getEventId() );
                 intent.putExtra("title", "participants" );
                 mContext.startActivity( intent );
+
             }
+
         });
+
     }
 
     @Override

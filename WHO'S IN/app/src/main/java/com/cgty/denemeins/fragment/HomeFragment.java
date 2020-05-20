@@ -19,7 +19,7 @@ import com.cgty.denemeins.FeedEvents;
 import com.cgty.denemeins.R;
 
 /**
- * @authors Gökberk Keskinkılıç, Cagatay Safak, Cemhan Kaan Özaltan
+ * @author Gökberk Keskinkılıç, Cagatay Safak, Cemhan Kaan Özaltan
  * @version 19.05.2020
  */
 public class HomeFragment extends Fragment {

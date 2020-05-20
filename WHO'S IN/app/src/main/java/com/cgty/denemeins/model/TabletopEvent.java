@@ -2,7 +2,7 @@ package com.cgty.denemeins.model;
 
 /**
  * Board game event
- * @authors Cemhan Kaan Özaltan
+ * @author Cemhan Kaan Özaltan
  * @version 6.5.2020
  */
 public class TabletopEvent extends Event {
