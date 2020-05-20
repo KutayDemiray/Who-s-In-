@@ -175,7 +175,7 @@ public class EditProfileActivity extends AppCompatActivity
 			filePath = storagePath.child(System.currentTimeMillis() + "." + getFilenameExtension(mImageUri));
 			
 			uploadTask = filePath.putFile(mImageUri);
-			uploadTask.continueWithTask(new Continuation()
+			uploadTask.continueWithTask( new Continuation()
 			{
 				@Override
 				public Object then(@NonNull Task task) throws Exception
