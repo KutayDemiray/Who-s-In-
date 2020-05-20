@@ -54,60 +54,62 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ShowFollowers extends AppCompatActivity
-{
-    String id;
-    String title;
-    List<String> idList;
-    RecyclerView recyclerView;
-    UserAdapter userAdapter;
-    List<User> userList;
+/**
+ * Show followers
+ * @author Çağatay Şafak
+ * @version 1.0
+ */
+public class ShowFollowers extends AppCompatActivity {
+
+    private String id;
+    private String title;
+    private List<String> idList;
+    private RecyclerView recyclerView;
+    private UserAdapter userAdapter;
+    private List<User> userList;
     
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.show_followers);
+    protected void onCreate( @Nullable Bundle savedInstanceState ) {
+
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.show_followers );
         
         Intent intent;  //intentFromProfileToFollowers
         intent = getIntent();
         
-        id = intent.getStringExtra("id");
-        title = intent.getStringExtra("title");
+        id = intent.getStringExtra("id" );
+        title = intent.getStringExtra("title" );
         
         //Toolbar settings
         Toolbar toolbar;
-        toolbar = findViewById(R.id.toolbarShowFollowers);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener()
-        {
+        toolbar = findViewById( R.id.toolbarShowFollowers );
+        setSupportActionBar( toolbar );
+        getSupportActionBar().setTitle( title );
+        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        toolbar.setNavigationOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
                 finish();
             }
         });
         
         //Recycler settings
-        recyclerView = findViewById(R.id.recyclerViewShowFollowers);
-        recyclerView.setHasFixedSize(true);
+        recyclerView = findViewById( R.id.recyclerViewShowFollowers );
+        recyclerView.setHasFixedSize( true );
         
         LinearLayoutManager linearLayoutManager;
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        linearLayoutManager = new LinearLayoutManager(this );
+        recyclerView.setLayoutManager( linearLayoutManager );
         
         userList = new ArrayList<>();
         
-        userAdapter = new UserAdapter(this, userList, false);
+        userAdapter = new UserAdapter(this, userList, false );
         
-        recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter( userAdapter );
         
         idList = new ArrayList<>();
         
-        switch (title)
-        {
+        switch (title) {
             case "participants":
                 getParticipants();
                 break;
@@ -120,112 +122,98 @@ public class ShowFollowers extends AppCompatActivity
         }
     }
     
-    private void getParticipants()
-    {
+    private void getParticipants() {
+
         DatabaseReference participatePath;
-        participatePath = FirebaseDatabase.getInstance().getReference("Events").child(id).child("participants");
+        participatePath = FirebaseDatabase.getInstance().getReference("Events" ).child(id).child( "participants" );
     
-        participatePath.addListenerForSingleValueEvent(new ValueEventListener()
-        {
+        participatePath.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 idList.clear();
                 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
-                {
-                    idList.add(snapshot.getKey());
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
+                    idList.add( snapshot.getKey() );
                 }
     
                 showUsers();
             }
             
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
             
             }
         });
     }
     
-    private void getFollowing()
-    {
+    private void getFollowing() {
+
         DatabaseReference followingPath;
-        followingPath = FirebaseDatabase.getInstance().getReference("Follow").child(id).child("following");
+        followingPath = FirebaseDatabase.getInstance().getReference("Follow" ).child(id).child( "following" );
     
-        followingPath.addListenerForSingleValueEvent(new ValueEventListener()
-        {
+        followingPath.addListenerForSingleValueEvent( new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+
                 idList.clear();
                 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
-                {
-                    idList.add(snapshot.getKey());
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
+                    idList.add( snapshot.getKey() );
                 }
                 
                 showUsers();
             }
             
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
             
             }
         });
     }
     
-    private void getFollowers()
-    {
+    private void getFollowers() {
+
         DatabaseReference followerPath;
-        followerPath = FirebaseDatabase.getInstance().getReference("Follow").child(id).child("followers");
+        followerPath = FirebaseDatabase.getInstance().getReference("Follow" ).child(id).child( "followers" );
         
-        followerPath.addListenerForSingleValueEvent(new ValueEventListener()
-        {
+        followerPath.addListenerForSingleValueEvent( new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 idList.clear();
                 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
-                {
-                    idList.add(snapshot.getKey());
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
+                    idList.add( snapshot.getKey() );
                 }
                 
                 showUsers();
             }
     
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
         
             }
         });
     }
     
-    private void showUsers()
-    {
+    private void showUsers() {
+
         DatabaseReference userPath;
-        userPath = FirebaseDatabase.getInstance().getReference("Users");
+        userPath = FirebaseDatabase.getInstance().getReference("Users" );
     
-        userPath.addListenerForSingleValueEvent(new ValueEventListener()
-        {
+        userPath.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 userList.clear();
                 
-                for ( DataSnapshot snapshot: dataSnapshot.getChildren())
-                {
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
                     User user;
-                    user = snapshot.getValue(User.class);
+                    user = snapshot.getValue( User.class );
                     
-                    for ( String id: idList)
-                    {
-                        if (user.getId().equals(id))
-                        {
-                            userList.add(user);
+                    for ( String id: idList ) {
+                        if ( user.getId().equals( id ) ) {
+                            userList.add( user );
                         }
                     }
                 }
@@ -234,8 +222,7 @@ public class ShowFollowers extends AppCompatActivity
             }
             
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
             
             }
         });

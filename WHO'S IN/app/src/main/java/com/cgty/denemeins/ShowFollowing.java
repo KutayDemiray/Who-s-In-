@@ -7,9 +7,9 @@ import androidx.annotation.Nullable;
 
 public class ShowFollowing extends Activity {
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate( @Nullable Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
 
-        setContentView(R.layout.show_following);
+        setContentView( R.layout.show_following );
     }
 }
