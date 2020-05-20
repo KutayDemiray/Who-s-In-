@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cgty.denemeins.EventActivity;
 import com.cgty.denemeins.R;
+import com.cgty.denemeins.ShowFollowers;
 import com.cgty.denemeins.model.Event;
 import com.cgty.denemeins.model.User;
 import com.google.firebase.database.DataSnapshot;
@@ -122,6 +123,29 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
                 mContext.startActivity( fromNotificationToEvent);
             }
         });
+    
+        /**
+         * Follower ve Following listesi gosterirken aklima Participant'lari da ayni sekilde gostermek geldi.
+         *
+         * @author Cagatay Safak
+         * @version 20 MAY 20
+         */
+        
+        /**
+        holder.textViewNoOfParticipantsEventElement.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent;
+                intent = new Intent(mContext, ShowFollowers.class);
+                
+                intent.putExtra("id", event.getEventId());
+                intent.putExtra("title", "participants");
+                mContext.startActivity( intent);
+            }
+        });
+         */
     }
 
     @Override

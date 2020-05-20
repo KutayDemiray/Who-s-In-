@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.cgty.denemeins.EditProfileActivity;
 import com.cgty.denemeins.LoginActivity;
 import com.cgty.denemeins.R;
+import com.cgty.denemeins.ShowFollowers;
 import com.cgty.denemeins.model.Event;
 import com.cgty.denemeins.model.User;
 
@@ -120,9 +121,8 @@ public class ProfileFragment extends Fragment
         textView_CreatedEvents = view.findViewById(R.id.textViewProfileEventsCreatedInfo);
 
         button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
-        button_Followers = view.findViewById(R.id.buttonFollowers_profile);
-        button_Following = view.findViewById(R.id.buttonFollowing_profile);
-
+        //button_Followers = view.findViewById(R.id.buttonFollowers_profile);
+        //button_Following = view.findViewById(R.id.buttonFollowing_profile);
         button_PastActivities = view.findViewById(R.id.buttonPastEvents_profile);
         button_ScheduledActivities = view.findViewById(R.id.buttonScheduledEvents_profile);
 
@@ -218,6 +218,38 @@ public class ProfileFragment extends Fragment
             public void onClick(View v) {
                 Log.d( TAG, "onClick: attempting to sign out the use.");
                 FirebaseAuth.getInstance().signOut();
+            }
+        });
+        
+        //what followers TextView does.
+        textView_Followers.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent;
+                intent = new Intent(getContext(), ShowFollowers.class);
+                
+                intent.putExtra("id", profileID);
+                intent.putExtra("title", "followers");
+                
+                startActivity(intent);
+            }
+        });
+    
+        //what followers TextView does.
+        textView_Following.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent;
+                intent = new Intent(getContext(), ShowFollowers.class);
+            
+                intent.putExtra("id", profileID);
+                intent.putExtra("title", "following");
+            
+                startActivity(intent);
             }
         });
 

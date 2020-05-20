@@ -97,6 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventDateAndLocation" />
+
     <TextView
         android:id="@+id/eventParticipants"
         android:textSize="20sp"

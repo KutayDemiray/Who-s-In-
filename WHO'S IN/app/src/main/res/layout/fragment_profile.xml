@@ -185,31 +185,33 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text=""
+                        android:text="31 followers "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
 
                     <TextView
+                        android:layout_marginTop="20dp"
                         android:id="@+id/textViewProfileFollowingInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text=""
+                        android:text="31 following "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
 
                     <TextView
+                        android:layout_marginTop="20dp"
                         android:id="@+id/textViewProfileEventsCreatedInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text=""
+                        android:text="31 events created "
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -227,26 +229,6 @@
                 android:paddingEnd="55dp"
                 android:paddingTop="10dp"
                 android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/buttonFollowers_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/button_background"
-                    android:fontFamily="@font/bold"
-                    android:text="FOLLOWERS"
-                    android:textColor="@color/white" />
-
-                <Button
-                    android:id="@+id/buttonFollowing_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/button_background"
-                    android:fontFamily="@font/bold"
-                    android:text="FOLLOWING"
-                    android:textColor="@color/white" />
 
                 <!-- It is visible only for the current User. -->
                 <Button
