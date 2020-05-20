@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.bumptech.glide.Glide;
 import com.cgty.denemeins.fragment.ProfileFragment;
@@ -44,32 +46,41 @@ public class EditProfileActivity extends AppCompatActivity
 	// properties
 	ImageView imageViewClose;
 	ImageView imageViewProfile;
-	TextView textViewChangePhoto;
 	TextView textViewChangeSave;
+	TextView textViewChangePhoto;
 	MaterialEditText materialEditTextUsername;
 	MaterialEditText materialEditTextAge;
 	MaterialEditText materialEditTextBio;
 	
+	//firebase
 	FirebaseUser currentUser;
-	private StorageTask uploadTask;
+	private StorageTask uploadTask;  //try public
 	private Uri mImageUri;
 	StorageReference storagePath;
 	
+	// methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
 		
-		//instead view.findViewById since this is an activity, not a fragment.
+		/** instead view.findViewById since this is an activity, not a fragment.*/
+		
+		//ImageViews
 		imageViewClose = findViewById(R.id.imageViewCloseEditProfile);
 		imageViewProfile = findViewById(R.id.ppEditProfile);
+		
+		//TextViews
 		textViewChangePhoto = findViewById(R.id.textViewChangePhotoEditProfile);
 		textViewChangeSave = findViewById(R.id.textViewSaveEditProfile);
+		
+		//MaterialEditTexts
 		materialEditTextUsername = findViewById(R.id.materialEditTextChangeUsernameEditProfile);
 		materialEditTextAge = findViewById(R.id.materialEditTextChangeAgeEditProfile);
 		materialEditTextBio = findViewById(R.id.materialEditTextChangeBioEditProfile);
 		
+		//Firebase
 		currentUser = FirebaseAuth.getInstance().getCurrentUser();
 		storagePath = FirebaseStorage.getInstance().getReference("uploads");
 		
@@ -80,13 +91,14 @@ public class EditProfileActivity extends AppCompatActivity
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot)
 			{
-				User user = dataSnapshot.getValue( User.class);
+				User user;
+				user = dataSnapshot.getValue( User.class);
 				
 				materialEditTextAge.setText(user.getAge());
 				materialEditTextUsername.setText(user.getUsername());
 				materialEditTextBio.setText(user.getBio());
 				
-				Glide.with(getApplicationContext()).load(user.getPicurl()).into(imageViewProfile);
+				Glide.with(getApplicationContext()).load(user.getPicurl()).into(imageViewProfile);/////////////////////////////////////////////////////////////////////////////////
 			}
 			
 			@Override
@@ -118,7 +130,7 @@ public class EditProfileActivity extends AppCompatActivity
 			}
 		});
 		
-			//through the 'Profile Picture' ImageView
+			//through the 'Profile Picture' CircleImageView
 		imageViewProfile.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -134,10 +146,21 @@ public class EditProfileActivity extends AppCompatActivity
 		{
 			@Override
 			public void onClick(View v)
-			{   //            un, age, bio
-				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString() );
-				Toast.makeText(EditProfileActivity.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nUPDATED SUCCESSFULLY :) ", Toast.LENGTH_SHORT ).show();
+			{
+				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString());   // un, age, bio
+				
+				//go to edit profile screen
+				
+				Toast.makeText(EditProfileActivity.this, "PARABÉNS! CONGRATS! TEBRIKLER! \nUPDATED SUCCESSFULLY :) ", Toast.LENGTH_SHORT ).show();
 				finish();
+				
+				/**
+				 * It also works but it is too slow.
+				 *
+				 * Fragment fragment = new ProfileFragment();
+				 * FragmentManager fragmentManager = getSupportFragmentManager();
+				 * fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+				 */
 			}
 		});
 	}
@@ -155,23 +178,23 @@ public class EditProfileActivity extends AppCompatActivity
 		updateUserHashMap.put( "age", theAge);
 		updateUserHashMap.put( "bio", theBio);
 		
-		updatePath.updateChildren(updateUserHashMap);
+		updatePath.updateChildren( updateUserHashMap);
 	}
 	
-	private String getFilenameExtension( Uri uri)
+	private String getFilenameExtension( Uri theUri)
 	{
 		ContentResolver contentResolver = getContentResolver();
 		MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-		return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType( uri));
+		
+		return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType( theUri));
 	}
 	
 	private void uploadPhoto()
 	{
-		final ProgressDialog pd;
-		pd = new ProgressDialog(this);
-		
-		pd.setMessage("Uploading...");
-		pd.show();
+		final ProgressDialog pdEditProfile;
+		pdEditProfile= new ProgressDialog( EditProfileActivity.this );
+		pdEditProfile.setMessage("Uploading...");
+		pdEditProfile.show();
 	
 		if ( mImageUri != null)  //trying to avoid NullPointer...
 		{
@@ -198,24 +221,23 @@ public class EditProfileActivity extends AppCompatActivity
 				{
 					if (task.isSuccessful())
 					{
-						//variables
-						Uri uriDownload;
+						Uri downloadUri;
+						downloadUri = task.getResult();
+						
 						String myUri;
+						myUri = downloadUri.toString();
+						
 						DatabaseReference userPath;
-						HashMap<String,Object> imageHashMap;
-						
-						uriDownload = task.getResult();
-						myUri = uriDownload.toString();
-						
 						userPath = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
 						
-						HashMap<String, Object> map;
-						map = new HashMap<>();
-
-						map.put("picurl", myUri);
-						userPath.updateChildren(map);
+						HashMap<String,Object> imageHashMap;
+						imageHashMap = new HashMap<>();
 						
-						pd.dismiss();
+						imageHashMap.put("picurl", "" + myUri);
+						
+						userPath.updateChildren(imageHashMap);
+						
+						pdEditProfile.dismiss();
 					}
 					else
 					{
@@ -235,7 +257,7 @@ public class EditProfileActivity extends AppCompatActivity
 		}
 		else
 		{
-			Toast.makeText(EditProfileActivity.this, "No image is selected!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "No image is selected!", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -246,8 +268,7 @@ public class EditProfileActivity extends AppCompatActivity
 		
 		if ( requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK)
 		{
-			CropImage.ActivityResult result;
-			result = CropImage.getActivityResult(data);
+			CropImage.ActivityResult result = CropImage.getActivityResult(data);
 			
 			mImageUri = result.getUri();
 			
@@ -255,7 +276,7 @@ public class EditProfileActivity extends AppCompatActivity
 		}
 		else
 		{
-			Toast.makeText(EditProfileActivity.this, "Something went wrong...", Toast.LENGTH_LONG).show();
+			Toast.makeText(EditProfileActivity.this, "weirdo error!!!", Toast.LENGTH_LONG).show();
 		}
 	}
 }

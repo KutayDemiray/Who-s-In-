@@ -29,18 +29,37 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity
 {
     private Button settingsButton;
+    BottomNavigationView bottomNav;
+    Fragment selectedFragment = null;
     //    private BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState )
+    protected void onCreate( Bundle savedInstanceState)
     {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-        BottomNavigationView bottomNav = findViewById( R.id.bottom_navigation );
-        bottomNav.setOnNavigationItemSelectedListener( navListener );
+        bottomNav = findViewById( R.id.bottom_navigation );
+        bottomNav.setOnNavigationItemSelectedListener( navListener);
         
-        getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new HomeFragment() ).commit();
+        Bundle intent = getIntent().getExtras();
+        
+        if (intent != null)
+        {
+            String publisher;
+            publisher = intent.getString("publisherId");
+            
+            SharedPreferences.Editor editor;
+            editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+            editor.putString("profileid", publisher);
+            editor.apply();
+            
+            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new ProfileFragment()).commit();
+        }
+        else
+        {
+            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new HomeFragment()).commit();
+        }
 
 //        bottomNavigationView = findViewById(R.id.bottomNav);
 //        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
@@ -51,8 +70,6 @@ public class MainActivity extends AppCompatActivity
         @Override
         public boolean onNavigationItemSelected( @NonNull MenuItem menuItem )
         {
-            Fragment selectedFragment = null;
-
             switch ( menuItem.getItemId())
             {
                 case R.id.nav_home:
@@ -68,7 +85,8 @@ public class MainActivity extends AppCompatActivity
                     selectedFragment = new NotificationsFragment();
                     break;
                 case R.id.nav_profile:
-                    SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor;
+                    editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
                     editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                     editor.apply();
                     
@@ -77,7 +95,7 @@ public class MainActivity extends AppCompatActivity
                     break;
             }
 
-            if ( selectedFragment != null)
+            if ( selectedFragment != null)  //trying to avoid NullPointer...
             {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
             }

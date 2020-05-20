@@ -1,6 +1,7 @@
 package com.cgty.denemeins.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.MainActivity;
 import com.cgty.denemeins.fragment.ProfileFragment;
 import com.cgty.denemeins.model.User;
 import com.cgty.denemeins.R;
@@ -39,12 +41,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
     private Context mContext;
     private List<User> mUsers;
     private FirebaseUser firebaseUser;
+    private boolean isFragment;
 
     //constructors
-    public UserAdapter(Context mContext, List<User> mUsers)
+    public UserAdapter(Context mContext, List<User> mUsers, boolean isFragment)
     {
         this.mContext = mContext;
         this.mUsers = mUsers;
+        this.isFragment = isFragment;
     }
 
     //methods
@@ -78,13 +82,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>
             @Override
             public void onClick(View v)
             {
-                SharedPreferences.Editor editor;
-                editor = mContext.getSharedPreferences( "PREFS" , Context.MODE_PRIVATE).edit();
-
-                editor.putString("profileid", user.getId());
-                editor.apply();
-
-                ( (FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();   //fragment to fragment (cagatay)
+                if (isFragment)
+                {
+                    SharedPreferences.Editor editor;
+                    editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+    
+                    editor.putString("profileid", user.getId());
+                    editor.apply();
+    
+                    ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();   //fragment to fragment (cagatay)
+                }
+                else
+                {
+                    Intent intent;
+                    intent = new Intent(mContext, MainActivity.class);
+                    intent.putExtra("publisherId", user.getId());
+                    mContext.startActivity( intent);
+                }
             }
         });
 

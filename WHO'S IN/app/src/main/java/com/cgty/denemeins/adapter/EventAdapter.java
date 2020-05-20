@@ -127,11 +127,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         /**
          * Follower ve Following listesi gosterirken aklima Participant'lari da ayni sekilde gostermek geldi.
          *
+         *
          * @author Cagatay Safak
          * @version 20 MAY 20
          */
-        
-        /**
         holder.textViewNoOfParticipantsEventElement.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -145,7 +144,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
                 mContext.startActivity( intent);
             }
         });
-         */
     }
 
     @Override

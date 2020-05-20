@@ -100,7 +100,7 @@ public class ShowFollowers extends AppCompatActivity
         
         userList = new ArrayList<>();
         
-        userAdapter = new UserAdapter(this, userList);
+        userAdapter = new UserAdapter(this, userList, false);
         
         recyclerView.setAdapter(userAdapter);
         

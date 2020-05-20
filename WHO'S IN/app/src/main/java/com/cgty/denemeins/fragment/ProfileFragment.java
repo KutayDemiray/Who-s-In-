@@ -26,6 +26,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,6 +80,7 @@ public class ProfileFragment extends Fragment
     TextView textView_CreatedEvents;
     FirebaseUser currentUser;
     String profileID;
+    ProgressBar progressBar;
 
     //goko's properties
     TextView username;
@@ -175,12 +177,16 @@ public class ProfileFragment extends Fragment
         getFollowInfo();
         getNoOfEventsCreated();
 
-        if (profileID.equals(currentUser.getUid())) {
+        if (profileID.equals(currentUser.getUid()))
+        {
             button_EditProfile.setText("EDIT PROFILE");
+            button_PastActivities.setVisibility(View.VISIBLE);
+            button_ScheduledActivities.setVisibility(View.VISIBLE);
         }
-        else{
+        else
+        {
             followControl();
-            button_PastActivities.setVisibility(View.GONE);
+            //button_PastActivities.setVisibility(View.GONE);
         }
 
 
@@ -192,17 +198,20 @@ public class ProfileFragment extends Fragment
                 String buttonText;
                 buttonText = button_EditProfile.getText().toString();
 
-                if ( buttonText.equals( "EDIT PROFILE")) {
+                if ( buttonText.equals( "EDIT PROFILE"))
+                {
                     //go to edit profile screen
 					Intent intentFromProfileToEditProfile;
                     intentFromProfileToEditProfile = new Intent( getContext(), EditProfileActivity.class);
                     startActivity( intentFromProfileToEditProfile);
                 }
-                else if ( buttonText.equals( "FOLLOW")) {
+                else if ( buttonText.equals( "FOLLOW"))
+                {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).setValue(true);
                 }
-                else if ( buttonText.equals( "FOLLOWING")) {
+                else if ( buttonText.equals( "FOLLOWING"))
+                {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).removeValue();
                 }
@@ -216,7 +225,8 @@ public class ProfileFragment extends Fragment
         mSignOut.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Log.d( TAG, "onClick: attempting to sign out the use.");
                 FirebaseAuth.getInstance().signOut();
             }
@@ -253,6 +263,8 @@ public class ProfileFragment extends Fragment
                 startActivity(intent);
             }
         });
+        
+        progressBar = view.findViewById(R.id.progressProfileFragment);
 
         return view;
     }
@@ -358,15 +370,20 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void userInfo() {
+    private void userInfo()
+    {
         DatabaseReference userPath;
         userPath = FirebaseDatabase.getInstance().getReference("Users").child(profileID);
 
-        userPath.addValueEventListener(new ValueEventListener() {
+        userPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (getContext() == null)
+                {
                     return;
+                }
 
                 User user;
                 user = dataSnapshot.getValue(User.class);
@@ -389,17 +406,24 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void followControl() {
+    private void followControl()
+    {
         DatabaseReference followPath;
         followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
 
-        followPath.addValueEventListener(new ValueEventListener() {
+        followPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (dataSnapshot.child(profileID).exists())
-                    button_EditProfile.setText( "FOLLOWING");
+                {
+                    button_EditProfile.setText("FOLLOWING");
+                }
                 else
-                    button_EditProfile.setText( "FOLLOW");
+                {
+                    button_EditProfile.setText("FOLLOW");
+                }
             }
 
             @Override
@@ -413,16 +437,18 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getFollowInfo() {
+    private void getFollowInfo()
+    {
         //gets number of followers
         DatabaseReference followerPath;
         followerPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers");
 
-        followerPath.addValueEventListener(new ValueEventListener() {
+        followerPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers");
+                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers ");
             }
 
             @Override
@@ -436,11 +462,12 @@ public class ProfileFragment extends Fragment
         DatabaseReference followingPath;
         followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("following");
 
-        followingPath.addValueEventListener(new ValueEventListener() {
+        followingPath.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following");
+                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following ");
             }
 
             @Override
@@ -454,25 +481,32 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getNoOfEventsCreated() {
+    private void getNoOfEventsCreated()
+    {
         DatabaseReference eventPath;
         eventPath = FirebaseDatabase.getInstance().getReference().child("Events");
 
-        eventPath.addValueEventListener(new ValueEventListener() {
+        eventPath.addListenerForSingleValueEvent( new ValueEventListener()
+        {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot )
+            {
                 int i;
                 i = 0;
 
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() )
                 {
-                    Event event = snapshot.getValue(Event.class);
+                    Event event = snapshot.getValue( Event.class );
 
-                    if (event.getOrganizerId().equals(profileID))
+                    if ( event != null && event.getOrganizerId().equals( profileID ) )
+                    {
                         i++;
+                    }
                 }
 
-                textView_CreatedEvents.setText( i + " Events Created");
+                textView_CreatedEvents.setText( i + " Events Created ");
+	
+				progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -528,7 +562,9 @@ public class ProfileFragment extends Fragment
         super.onStop();
 
         if( mAuthStateListener != null)
+        {
             FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        }
     }
 
 

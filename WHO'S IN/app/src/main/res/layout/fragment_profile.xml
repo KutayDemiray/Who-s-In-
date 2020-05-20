@@ -15,6 +15,7 @@
         android:background="@color/darkBlue">
 
         <androidx.appcompat.widget.Toolbar
+            android:layout_marginStart="-15dp"
             android:id="@+id/profileBarToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +75,6 @@
                     android:id="@+id/profilePicture"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/female"
                     app:civ_border_width="2dp"
                     app:civ_border_color="@color/white"
                     android:onClick="handleImageClick"/>
@@ -132,7 +132,7 @@
 
                 <TextView
                     android:id="@+id/textViewProfileBio"
-                    android:text=" "
+                    android:text=""
                     android:fontFamily="@font/regular"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -185,7 +185,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="31 followers "
+                        android:text=""
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -198,7 +198,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="31 following "
+                        android:text=""
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -211,7 +211,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="31 events created "
+                        android:text=""
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -232,6 +232,7 @@
 
                 <!-- It is visible only for the current User. -->
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/buttonPastEvents_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -243,6 +244,7 @@
 
                 <!-- It is visible only for the current User. -->
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/buttonScheduledEvents_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -264,5 +266,16 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:background="@color/darkBlue"/>
+
+    <!-- This progress bar hides the default values of the variables
+         on this page, Profile Fragment seems so ugly while calling
+         its methods without this bar. -->
+
+    <ProgressBar
+        android:id="@+id/progressProfileFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progress" />
 
 </RelativeLayout>
