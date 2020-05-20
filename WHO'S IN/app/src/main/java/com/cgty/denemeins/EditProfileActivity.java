@@ -252,6 +252,7 @@ public class EditProfileActivity extends AppCompatActivity
 				{
 					Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
 					pdEditProfile.dismiss();
+
 				}
 			});
 		}
