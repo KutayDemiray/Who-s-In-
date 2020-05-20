@@ -302,11 +302,11 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         editTextDate.setText( date.getCalendarDate() );
         editTextTime.setText( date.getTimeOfDay() );
 
-        editTextDescription.setText("");
-        spinnerMainType.setSelection(0);
-        spinnerSportsType.setSelection(0);
-        spinnerTabletopType.setSelection(0);
-        spinnerPrivacy.setSelection(0);
+        editTextDescription.setText( "" );
+        spinnerMainType.setSelection( 0 );
+        spinnerSportsType.setSelection( 0 );
+        spinnerTabletopType.setSelection( 0 );
+        spinnerPrivacy.setSelection( 0 );
     }
 
     @Override

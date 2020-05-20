@@ -75,20 +75,16 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     //code to Login the user.
 
-                    auth.signInWithEmailAndPassword( stringEmailLogin, stringPasswordLogin).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>()
-                    {
+                    auth.signInWithEmailAndPassword( stringEmailLogin, stringPasswordLogin).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete( @NonNull Task<AuthResult> task )
-                        {
-                            if( task.isSuccessful())
-                            {
+                        public void onComplete( @NonNull Task<AuthResult> task ) {
+
+                            if( task.isSuccessful()) {
                                 DatabaseReference pathLogin = FirebaseDatabase.getInstance().getReference().child( "Users" ).child( auth.getCurrentUser().getUid() );
 
-                                pathLogin.addValueEventListener( new ValueEventListener()
-                                {
+                                pathLogin.addValueEventListener( new ValueEventListener() {
                                     @Override
-                                    public void onDataChange( @NonNull DataSnapshot dataSnapshot )
-                                    {
+                                    public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                                         pdLogin.dismiss();
 
                                         Intent intentFromLoginToMain = new Intent( LoginActivity.this, MainActivity.class );
@@ -101,9 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                         pdLogin.dismiss();
                                     }
                                 });
-                            }
-                            else
-                            {
+                            } else {
                                 pdLogin.dismiss();
                                 Toast.makeText(LoginActivity.this, "Error! Wrong username or password.", Toast.LENGTH_LONG ).show();
                             }

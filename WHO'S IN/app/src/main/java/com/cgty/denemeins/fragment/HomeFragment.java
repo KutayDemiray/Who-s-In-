@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     }
 
     // methods
-    @SuppressLint("WrongViewCast")
+    @SuppressLint( "WrongViewCast" )
     @Nullable
     @Override
     public View onCreateView( @NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
@@ -54,37 +54,35 @@ public class HomeFragment extends Fragment {
         buttonToTabletop = view.findViewById( R.id.buttonTabletop );
         buttonToAllTypes = view.findViewById( R.id.buttonAllTypes );
 
-        buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
+        buttonCreateEvent.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 Intent fromHomeToCreateEvent = new Intent( getActivity(), CreateEvent.class );
                 startActivity( fromHomeToCreateEvent );
             }
         });
 
-        buttonToSports.setOnClickListener(new View.OnClickListener() {
+        buttonToSports.setOnClickListener( new View.OnClickListener() {
 
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
                 Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_SPORTS );
                 startActivity( fromHomeToFeed );
             }
         });
 
-        buttonToMeetings.setOnClickListener(new View.OnClickListener() {
+        buttonToMeetings.setOnClickListener( new View.OnClickListener() {
 
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_MEETINGS );
                 startActivity( fromHomeToFeed );
             }
         });
 
-        buttonToTabletop.setOnClickListener(new View.OnClickListener() {
+        buttonToTabletop.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -94,11 +92,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        buttonToAllTypes.setOnClickListener(new View.OnClickListener() {
+        buttonToAllTypes.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent fromHomeToFeed = new Intent( getActivity(), com.cgty.denemeins.FeedEvents.class );
+                Intent fromHomeToFeed = new Intent( getActivity(), FeedEvents.class );
                 fromHomeToFeed.putExtra( "feedEventType", FEED_ALL );
                 startActivity( fromHomeToFeed );
             }

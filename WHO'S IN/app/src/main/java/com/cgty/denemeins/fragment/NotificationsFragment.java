@@ -44,17 +44,18 @@ public class NotificationsFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_notifications, container, false);
+    public View onCreateView( @NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
 
-        recyclerView = view.findViewById(R.id.notificationsRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
-        recyclerView.setLayoutManager( linearLayoutManager);
+        View view = inflater.inflate( R.layout.fragment_notifications, container, false );
+
+        recyclerView = view.findViewById( R.id.notificationsRecyclerView );
+        recyclerView.setHasFixedSize( true );
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext() );
+        recyclerView.setLayoutManager( linearLayoutManager );
 
         notificationList = new ArrayList<>();
-        notificationAdapter = new NotificationAdapter( getContext(), notificationList);
-        recyclerView.setAdapter( notificationAdapter);
+        notificationAdapter = new NotificationAdapter( getContext(), notificationList );
+        recyclerView.setAdapter( notificationAdapter );
 
         readNotifications();
 
@@ -67,7 +68,7 @@ public class NotificationsFragment extends Fragment {
     private void readNotifications() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( firebaseUser.getUid());
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications" ).child( firebaseUser.getUid() );
 
         reference.addValueEventListener(new ValueEventListener() {
 
@@ -76,20 +77,20 @@ public class NotificationsFragment extends Fragment {
              * @param dataSnapshot
              */
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
                 notificationList.clear();
 
                 for ( DataSnapshot snapshot : dataSnapshot.getChildren() ) {
-                    Notification notification = snapshot.getValue( Notification.class);
+                    Notification notification = snapshot.getValue( Notification.class );
                     notificationList.add( notification);
                 }
-                Collections.reverse( notificationList);
+                Collections.reverse( notificationList );
                 notificationAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });

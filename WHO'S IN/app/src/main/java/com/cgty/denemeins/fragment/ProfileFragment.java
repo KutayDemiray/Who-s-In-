@@ -61,8 +61,8 @@ import static android.app.Activity.RESULT_OK;
  * @author Gökberk Keskinkılıç, Cagatay Safak
  * @version 2.0
  */
-public class ProfileFragment extends Fragment
-{
+public class ProfileFragment extends Fragment {
+
     //properties
     ImageView image_profile;
     ImageView image_signOut;
@@ -95,69 +95,67 @@ public class ProfileFragment extends Fragment
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     //constructor
-    public ProfileFragment()
-    {
+    public ProfileFragment() {
         //required empty public constructor.
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView( @NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
         View view;
-        view = inflater.inflate(R.layout.fragment_profile, container, false);
+        view = inflater.inflate( R.layout.fragment_profile, container, false );
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
-        profileID = prefs.getString("profileid", "none");
+        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE );
+        profileID = prefs.getString("profileid", "none" );
 
-        mSignOut = (ImageButton) view.findViewById(R.id.buttonSignOut);
-        image_profile = view.findViewById(R.id.profilePicture);
+        mSignOut = (ImageButton) view.findViewById( R.id.buttonSignOut );
+        image_profile = view.findViewById( R.id.profilePicture );
 
-        textView_Age = view.findViewById(R.id.textViewProfileAge);
-        textView_Username = view.findViewById(R.id.textViewProfileUsername);                                          //id gonna be changed
-        textView_Bio = view.findViewById(R.id.textViewProfileBio);
-        textView_Followers = view.findViewById(R.id.textViewProfileFollowersInfo);
-        textView_Following = view.findViewById(R.id.textViewProfileFollowingInfo);
-        textView_CreatedEvents = view.findViewById(R.id.textViewProfileEventsCreatedInfo);
+        textView_Age = view.findViewById( R.id.textViewProfileAge );
+        textView_Username = view.findViewById( R.id.textViewProfileUsername );                                          //id gonna be changed
+        textView_Bio = view.findViewById( R.id.textViewProfileBio );
+        textView_Followers = view.findViewById( R.id.textViewProfileFollowersInfo );
+        textView_Following = view.findViewById( R.id.textViewProfileFollowingInfo );
+        textView_CreatedEvents = view.findViewById( R.id.textViewProfileEventsCreatedInfo );
 
-        button_EditProfile = view.findViewById(R.id.buttonEditProfile_profile);
-        //button_Followers = view.findViewById(R.id.buttonFollowers_profile);
-        //button_Following = view.findViewById(R.id.buttonFollowing_profile);
-        button_PastActivities = view.findViewById(R.id.buttonPastEvents_profile);
-        button_ScheduledActivities = view.findViewById(R.id.buttonScheduledEvents_profile);
+        button_EditProfile = view.findViewById( R.id.buttonEditProfile_profile );
+        //button_Followers = view.findViewById( R.id.buttonFollowers_profile );
+        //button_Following = view.findViewById( R.id.buttonFollowing_profile );
+        button_PastActivities = view.findViewById( R.id.buttonPastEvents_profile );
+        button_ScheduledActivities = view.findViewById( R.id.buttonScheduledEvents_profile );
 
-
-        //göko
-        image_profile = view.findViewById(R.id.profilePicture);
-        username = view.findViewById(R.id.textViewProfileUsername);
-        storageReference = FirebaseStorage.getInstance().getReference("Uploads");
-        reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
 
         //göko
-        reference.addValueEventListener(new ValueEventListener() {
+        image_profile = view.findViewById( R.id.profilePicture );
+        username = view.findViewById( R.id.textViewProfileUsername );
+        storageReference = FirebaseStorage.getInstance().getReference("Uploads" );
+        reference = FirebaseDatabase.getInstance().getReference( "Users" ).child( currentUser.getUid() );
+
+        //göko
+        reference.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                username.setText(user.getUsername());
-                if( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082"))
-                    image_profile.setImageResource(R.mipmap.ic_launcher);
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                User user = dataSnapshot.getValue( User.class );
+                username.setText( user.getUsername() );
+                if( user.getPicurl().equals( "https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082" ) )
+                    image_profile.setImageResource( R.mipmap.ic_launcher );
                 else
                     if ( getContext() != null )
-                        Glide.with(getContext()).load(user.getPicurl()).into(image_profile);
+                        Glide.with( getContext() ).load( user.getPicurl() ).into( image_profile );
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
 
         // göko
-        image_profile.setOnClickListener(new View.OnClickListener() {
+        image_profile.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick( View view ) {
                 openImage();
             }
         });
@@ -165,10 +163,10 @@ public class ProfileFragment extends Fragment
         setupFireBaseListener();
 
         // göko
-        mSignOut.setOnClickListener(new View.OnClickListener() {
+        mSignOut.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Log.d( TAG, "onClick: attempting to sign out the use.");
+            public void onClick( View v ) {
+                Log.d( TAG, "onClick: attempting to sign out the use." );
                 FirebaseAuth.getInstance().signOut();
             }
         });
@@ -179,43 +177,36 @@ public class ProfileFragment extends Fragment
         getFollowInfo();
         getNoOfEventsCreated();
 
-        if (profileID.equals(currentUser.getUid()))
-        {
-            button_EditProfile.setText("EDIT PROFILE");
-            button_PastActivities.setVisibility(View.VISIBLE);
-            button_ScheduledActivities.setVisibility(View.VISIBLE);
-        }
-        else
-        {
+        if ( profileID.equals( currentUser.getUid() ) ) {
+            button_EditProfile.setText( "EDIT PROFILE" );
+            button_PastActivities.setVisibility( View.VISIBLE );
+            button_ScheduledActivities.setVisibility( View.VISIBLE );
+        } else {
             followControl();
             //button_PastActivities.setVisibility(View.GONE);
         }
 
 
-        button_EditProfile.setOnClickListener( new View.OnClickListener()
-        {
+        button_EditProfile.setOnClickListener( new View.OnClickListener() {
+
             @Override
-            public void onClick( View v)
-            {
+            public void onClick( View v ) {
                 String buttonText;
                 buttonText = button_EditProfile.getText().toString();
 
-                if ( buttonText.equals( "EDIT PROFILE"))
-                {
+                if ( buttonText.equals( "EDIT PROFILE" ) ) {
                     //go to edit profile screen
 					Intent intentFromProfileToEditProfile;
-                    intentFromProfileToEditProfile = new Intent( getContext(), EditProfileActivity.class);
-                    startActivity( intentFromProfileToEditProfile);
+                    intentFromProfileToEditProfile = new Intent( getContext(), EditProfileActivity.class );
+                    startActivity( intentFromProfileToEditProfile );
                 }
-                else if ( buttonText.equals( "FOLLOW"))
-                {
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).setValue(true);
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).setValue(true);
+                else if ( buttonText.equals( "FOLLOW" ) ) {
+                    FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( currentUser.getUid() ).child( "following" ).child( profileID ).setValue( true );
+                    FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( profileID ).child( "followers" ).child( currentUser.getUid() ).setValue( true );
                 }
-                else if ( buttonText.equals( "FOLLOWING"))
-                {
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following").child(profileID).removeValue();
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers").child(currentUser.getUid()).removeValue();
+                else if ( buttonText.equals( "FOLLOWING" ) ) {
+                    FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( currentUser.getUid() ).child( "following" ).child( profileID ).removeValue();
+                    FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( profileID ).child( "followers" ).child( currentUser.getUid() ).removeValue();
                 }
             }
         });
@@ -224,49 +215,43 @@ public class ProfileFragment extends Fragment
 
         setupFireBaseListener();
 
-        mSignOut.setOnClickListener(new View.OnClickListener()
-        {
+        mSignOut.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Log.d( TAG, "onClick: attempting to sign out the use.");
+            public void onClick(View v) {
+                Log.d( TAG, "onClick: attempting to sign out the use." );
                 FirebaseAuth.getInstance().signOut();
             }
         });
         
         //what followers TextView does.
-        textView_Followers.setOnClickListener(new View.OnClickListener()
-        {
+        textView_Followers.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
                 Intent intent;
-                intent = new Intent(getContext(), ShowFollowers.class);
+                intent = new Intent( getContext(), ShowFollowers.class );
                 
-                intent.putExtra("id", profileID);
-                intent.putExtra("title", "followers");
+                intent.putExtra("id", profileID );
+                intent.putExtra("title", "followers" );
                 
-                startActivity(intent);
+                startActivity( intent );
             }
         });
     
         //what followers TextView does.
-        textView_Following.setOnClickListener(new View.OnClickListener()
-        {
+        textView_Following.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick( View v ) {
                 Intent intent;
-                intent = new Intent(getContext(), ShowFollowers.class);
+                intent = new Intent( getContext(), ShowFollowers.class );
             
-                intent.putExtra("id", profileID);
-                intent.putExtra("title", "following");
+                intent.putExtra("id", profileID );
+                intent.putExtra("title", "following" );
             
-                startActivity(intent);
+                startActivity( intent );
             }
         });
         
-        progressBar = view.findViewById(R.id.progressProfileFragment);
+        progressBar = view.findViewById( R.id.progressProfileFragment );
 
         return view;
     }
@@ -277,9 +262,9 @@ public class ProfileFragment extends Fragment
      */
     private void openImage() {
         Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult( intent, IMAGE_REQUEST);
+        intent.setType( "image/*" );
+        intent.setAction( Intent.ACTION_GET_CONTENT );
+        startActivityForResult( intent, IMAGE_REQUEST );
     }
 
     /**
@@ -288,10 +273,10 @@ public class ProfileFragment extends Fragment
      * @return String
      * @author Gökberk
      */
-    private String getFileExtension(Uri uri){
+    private String getFileExtension( Uri uri ) {
         ContentResolver contentResolver = getContext().getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+        return mimeTypeMap.getExtensionFromMimeType( contentResolver.getType(uri) );
     }
 
     /**
@@ -299,51 +284,50 @@ public class ProfileFragment extends Fragment
      * @author Gökberk
      */
     private void uploadImage() {
-        final ProgressDialog pd = new ProgressDialog(getContext());
-        pd.setMessage("Uploading...");
+        final ProgressDialog pd = new ProgressDialog( getContext() );
+        pd.setMessage( "Uploading..." );
         pd.show();
 
-        if ( imageUri != null){
-            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                    +"-"+getFileExtension(imageUri));
+        if ( imageUri != null ) {
+            final StorageReference fileReference = storageReference.child( System.currentTimeMillis()
+                    + "-" + getFileExtension( imageUri ) );
 
-            uploadTask = fileReference.getFile(imageUri);
-            uploadTask.continueWith(new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
+            uploadTask = fileReference.getFile( imageUri );
+            uploadTask.continueWith( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if( !task.isSuccessful())
+                public Task<Uri> then( @NonNull Task<UploadTask.TaskSnapshot> task ) throws Exception {
+                    if( !task.isSuccessful() )
                         throw task.getException();
                     return fileReference.getDownloadUrl();
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            }).addOnCompleteListener( new OnCompleteListener<Uri>() {
                 @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if( task.isSuccessful()){
+                public void onComplete( @NonNull Task<Uri> task ) {
+                    if( task.isSuccessful() ) {
                         Uri downloadUri = task.getResult();
                         String mUri = downloadUri.toString();
 
-                        reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+                        reference = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
                         HashMap<String, Object> map = new HashMap<>();
-                        map.put("picurl", mUri);
-                        reference.updateChildren(map);
+                        map.put( "picurl", mUri );
+                        reference.updateChildren( map );
 
                         pd.dismiss();
-                    }
-                    else{
-                        Toast.makeText( getContext(), "Failed!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText( getContext(), "Failed!", Toast.LENGTH_SHORT ).show();
                         pd.dismiss();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                public void onFailure( @NonNull Exception e ) {
+                    Toast.makeText( getContext(), e.getMessage(), Toast.LENGTH_SHORT ).show();
                     pd.dismiss();
                 }
             });
         }
         else{
-            Toast.makeText(getContext(), "No image selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText( getContext(), "No image selected", Toast.LENGTH_SHORT ).show();
         }
     }
 
@@ -355,15 +339,15 @@ public class ProfileFragment extends Fragment
      * @author Gökberk
      */
     @Override
-    public void onActivityResult( int requestCode, int resultCode, Intent data){
+    public void onActivityResult( int requestCode, int resultCode, Intent data ){
         super.onActivityResult( requestCode, resultCode, data );
 
-        if( requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
+        if ( requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null ) {
             imageUri = data.getData();
 
-            if ( uploadTask != null && uploadTask.isInProgress())
-                Toast.makeText(getContext(), "Upload is in progress", Toast.LENGTH_SHORT).show();
-            else{
+            if ( uploadTask != null && uploadTask.isInProgress() )
+                Toast.makeText( getContext(), "Upload is in progress", Toast.LENGTH_SHORT ).show();
+            else {
                 uploadImage();
             }
         }
@@ -372,34 +356,30 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void userInfo()
-    {
-        DatabaseReference userPath;
-        userPath = FirebaseDatabase.getInstance().getReference("Users").child(profileID);
+    private void userInfo() {
 
-        userPath.addValueEventListener(new ValueEventListener()
-        {
+        DatabaseReference userPath;
+        userPath = FirebaseDatabase.getInstance().getReference("Users" ).child( profileID );
+
+        userPath.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (getContext() == null)
-                {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                if ( getContext() == null ) {
                     return;
                 }
 
                 User user;
-                user = dataSnapshot.getValue(User.class);
+                user = dataSnapshot.getValue( User.class );
 
-                Glide.with(getContext()).load(user.getPicurl()).into(image_profile);
+                Glide.with( getContext() ).load( user.getPicurl() ).into( image_profile );
 
-                textView_Username.setText("@" + user.getUsername());
-                textView_Age.setText("Age: " + user.getAge());
-                textView_Bio.setText(user.getBio());
+                textView_Username.setText( "@" + user.getUsername() );
+                textView_Age.setText( "Age: " + user.getAge() );
+                textView_Bio.setText( user.getBio() );
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
@@ -408,29 +388,24 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void followControl()
-    {
+    private void followControl() {
+
         DatabaseReference followPath;
-        followPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(currentUser.getUid()).child("following");
+        followPath = FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( currentUser.getUid() ).child( "following" );
 
-        followPath.addValueEventListener(new ValueEventListener()
-        {
+        followPath.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.child(profileID).exists())
-                {
-                    button_EditProfile.setText("FOLLOWING");
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                if ( dataSnapshot.child( profileID ).exists() ) {
+                    button_EditProfile.setText( "FOLLOWING" );
                 }
-                else
-                {
-                    button_EditProfile.setText("FOLLOW");
+                else {
+                    button_EditProfile.setText( "FOLLOW" );
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -439,42 +414,36 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getFollowInfo()
-    {
+    private void getFollowInfo() {
+
         //gets number of followers
         DatabaseReference followerPath;
-        followerPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("followers");
+        followerPath = FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( profileID ).child( "followers" );
 
-        followerPath.addValueEventListener(new ValueEventListener()
-        {
+        followerPath.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers ");
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                textView_Followers.setText( dataSnapshot.getChildrenCount() + " Followers " );
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
 
         //gets number of following
         DatabaseReference followingPath;
-        followingPath = FirebaseDatabase.getInstance().getReference().child("Follow").child(profileID).child("following");
+        followingPath = FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( profileID ).child( "following" );
 
-        followingPath.addValueEventListener(new ValueEventListener()
-        {
+        followingPath.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following ");
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                textView_Following.setText( dataSnapshot.getChildrenCount() + " Following " );
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
@@ -483,37 +452,31 @@ public class ProfileFragment extends Fragment
     /**
      * Çağatay
      */
-    private void getNoOfEventsCreated()
-    {
-        DatabaseReference eventPath;
-        eventPath = FirebaseDatabase.getInstance().getReference().child("Events");
+    private void getNoOfEventsCreated() {
 
-        eventPath.addListenerForSingleValueEvent( new ValueEventListener()
-        {
+        DatabaseReference eventPath;
+        eventPath = FirebaseDatabase.getInstance().getReference().child( "Events" );
+
+        eventPath.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
-            public void onDataChange( @NonNull DataSnapshot dataSnapshot )
-            {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 int i;
                 i = 0;
 
-                for ( DataSnapshot snapshot: dataSnapshot.getChildren() )
-                {
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
                     Event event = snapshot.getValue( Event.class );
 
                     if ( event != null && event.getOrganizerId().equals( profileID ) )
-                    {
                         i++;
-                    }
                 }
 
-                textView_CreatedEvents.setText( i + " Events Created ");
+                textView_CreatedEvents.setText( i + " Events Created " );
 	
-				progressBar.setVisibility(View.GONE);
+				progressBar.setVisibility( View.GONE );
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
@@ -523,49 +486,44 @@ public class ProfileFragment extends Fragment
      * Gökberk
      */
     private void setupFireBaseListener() {
-        Log.d( TAG, "setupFirebaseListener: setting up the auth state listener.");
+        Log.d( TAG, "setupFirebaseListener: setting up the auth state listener." );
 
-        mAuthStateListener = new FirebaseAuth.AuthStateListener()
-        {
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth)
-            {
+            public void onAuthStateChanged( @NonNull FirebaseAuth firebaseAuth ) {
                 FirebaseUser user;
                 user = firebaseAuth.getCurrentUser();
 
-                if ( user != null) {
-                    Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid());
-                }
-                else {
+                if ( user != null ) {
+                    Log.d( TAG, "onAuthStateChanged: signed_in: " + user.getUid() );
+                } else {
                     Log.d( TAG, "onAuthStateChanged: signed_out");
-                    Toast.makeText( getActivity(), "Signed out!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( getActivity(), "Signed out!", Toast.LENGTH_SHORT ).show();
 
                     Intent intent;
-                    intent = new Intent( getActivity(), LoginActivity.class);
-                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent = new Intent( getActivity(), LoginActivity.class );
+                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
 
-                    startActivity( intent);
+                    startActivity( intent );
                 }
             }
         };
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
 
-        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
+        FirebaseAuth.getInstance().addAuthStateListener( mAuthStateListener );
     }
 
     @Override
-    public void onStop()
-    {
+    public void onStop() {
         super.onStop();
 
-        if( mAuthStateListener != null)
-        {
-            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        if( mAuthStateListener != null ) {
+            FirebaseAuth.getInstance().removeAuthStateListener( mAuthStateListener );
         }
     }
 
