@@ -41,6 +41,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
 
+/**
+ * Edit profile screen
+ * @author Çağatay Şafak
+ */
 public class EditProfileActivity extends AppCompatActivity
 {
 	// properties
@@ -52,7 +56,7 @@ public class EditProfileActivity extends AppCompatActivity
 	MaterialEditText materialEditTextAge;
 	MaterialEditText materialEditTextBio;
     private static final int IMAGE_REQUEST = 1;
-	
+
 	//firebase
 	FirebaseUser currentUser;
 	private StorageTask uploadTask;  //try public
@@ -61,83 +65,83 @@ public class EditProfileActivity extends AppCompatActivity
 	private Uri imageUri;
 	StorageReference storageReference;
 	DatabaseReference reference;
-	
+
 	// methods
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	protected void onCreate( Bundle savedInstanceState )
 	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_profile);
-		
+		super.onCreate( savedInstanceState );
+		setContentView( R.layout.activity_edit_profile );
+
 		/** instead view.findViewById since this is an activity, not a fragment.*/
-		
+
 		//ImageViews
-		imageViewClose = findViewById(R.id.imageViewCloseEditProfile);
-		imageViewProfile = findViewById(R.id.ppEditProfile);
-		
+		imageViewClose = findViewById( R.id.imageViewCloseEditProfile );
+		imageViewProfile = findViewById( R.id.ppEditProfile );
+
 		//TextViews
-		textViewChangePhoto = findViewById(R.id.textViewChangePhotoEditProfile);
-		textViewChangeSave = findViewById(R.id.textViewSaveEditProfile);
-		
+		textViewChangePhoto = findViewById( R.id.textViewChangePhotoEditProfile );
+		textViewChangeSave = findViewById( R.id.textViewSaveEditProfile );
+
 		//MaterialEditTexts
-		materialEditTextUsername = findViewById(R.id.materialEditTextChangeUsernameEditProfile);
-		materialEditTextAge = findViewById(R.id.materialEditTextChangeAgeEditProfile);
-		materialEditTextBio = findViewById(R.id.materialEditTextChangeBioEditProfile);
-		
+		materialEditTextUsername = findViewById( R.id.materialEditTextChangeUsernameEditProfile );
+		materialEditTextAge = findViewById( R.id.materialEditTextChangeAgeEditProfile );
+		materialEditTextBio = findViewById( R.id.materialEditTextChangeBioEditProfile );
+
 		//Firebase
 		currentUser = FirebaseAuth.getInstance().getCurrentUser();
 		// storagePath = FirebaseStorage.getInstance().getReference("uploads");
-		
+
 		DatabaseReference userPath;
-		userPath = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
-        reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
-		userPath.addValueEventListener(new ValueEventListener()
+		userPath = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
+        reference = FirebaseDatabase.getInstance().getReference( "Users" ).child( currentUser.getUid() );
+		userPath.addValueEventListener( new ValueEventListener()
 		{
 			@Override
-			public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+			public void onDataChange( @NonNull DataSnapshot dataSnapshot )
 			{
 				User user;
-				user = dataSnapshot.getValue( User.class);
-				
-				materialEditTextAge.setText(user.getAge());
-				materialEditTextUsername.setText(user.getUsername());
-				materialEditTextBio.setText(user.getBio());
-				
-				Glide.with(getApplicationContext()).load(user.getPicurl()).into(imageViewProfile);/////////////////////////////////////////////////////////////////////////////////
+				user = dataSnapshot.getValue( User.class );
+
+				materialEditTextAge.setText( user.getAge() );
+				materialEditTextUsername.setText( user.getUsername() );
+				materialEditTextBio.setText( user.getBio() );
+
+				Glide.with( getApplicationContext() ).load( user.getPicurl() ).into( imageViewProfile ); //////////////////////////////////////////
 			}
-			
+
 			@Override
-			public void onCancelled(@NonNull DatabaseError databaseError)
+			public void onCancelled( @NonNull DatabaseError databaseError )
 			{
-			
+
 			}
 		});
-		
+
 		//closing the activity
-		imageViewClose.setOnClickListener(new View.OnClickListener()
+		imageViewClose.setOnClickListener( new View.OnClickListener()
 		{
 			@Override
-			public void onClick(View v)
+			public void onClick( View v )
 			{
 				finish();
 			}
 		});
 
 
-		
+
 		//save
-		textViewChangeSave.setOnClickListener(new View.OnClickListener()
+		textViewChangeSave.setOnClickListener( new View.OnClickListener()
 		{
 			@Override
-			public void onClick(View v)
+			public void onClick( View v )
 			{
-				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString());   // un, age, bio
-				
+				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString() );   // un, age, bio
+
 				//go to edit profile screen
-				
+
 				Toast.makeText(EditProfileActivity.this, "PARABÉNS! CONGRATS! TEBRIKLER! \nUPDATED SUCCESSFULLY :) ", Toast.LENGTH_SHORT ).show();
 				finish();
-				
+
 				/**
 				 * It also works but it is too slow.
 				 *
@@ -148,19 +152,19 @@ public class EditProfileActivity extends AppCompatActivity
 			}
 		});
 
-        textViewChangePhoto.setOnClickListener(new View.OnClickListener() {
+        textViewChangePhoto.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick( View view ) {
                 openImage();
             }
         });
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                materialEditTextUsername.setText(user.getUsername());
-                if( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082"))
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
+                User user = dataSnapshot.getValue( User.class );
+                materialEditTextUsername.setText( user.getUsername() );
+                if ( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082") )
                     imageViewProfile.setImageResource(R.mipmap.ic_launcher);
                 else
                 if ( EditProfileActivity.this != null )
@@ -168,26 +172,26 @@ public class EditProfileActivity extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
 	}
-	
-	private void updateProfile(String theUsername, String theAge, String theBio)
+
+	private void updateProfile( String theUsername, String theAge, String theBio )
 	{
 		DatabaseReference updatePath;
-		updatePath = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
-		
+		updatePath = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
+
 		//using Hashmap in order to send data from Studio to Firebase.
 		HashMap<String,Object> updateUserHashMap;
 		updateUserHashMap = new HashMap<>();
-		
+
 		updateUserHashMap.put( "username", theUsername);
 		updateUserHashMap.put( "age", theAge);
 		updateUserHashMap.put( "bio", theBio);
-		
-		updatePath.updateChildren( updateUserHashMap);
+
+		updatePath.updateChildren( updateUserHashMap );
 	}
 
 
@@ -197,51 +201,51 @@ public class EditProfileActivity extends AppCompatActivity
      * @author Gökberk
      */
     private void uploadImage() {
-        final ProgressDialog pd = new ProgressDialog( EditProfileActivity.this);
-        pd.setMessage("Uploading...");
+        final ProgressDialog pd = new ProgressDialog( EditProfileActivity.this );
+        pd.setMessage( "Uploading..." );
         pd.show();
 
-        if ( imageUri != null){
-            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                    + "-" +getFileExtension( imageUri));
+        if ( imageUri != null ) {
+            final StorageReference fileReference = storageReference.child( System.currentTimeMillis()
+                    + "-" +getFileExtension( imageUri ) );
 
-            uploadTask = fileReference.getFile( imageUri);
-            uploadTask.continueWith(new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
+            uploadTask = fileReference.getFile( imageUri );
+            uploadTask.continueWith( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if( !task.isSuccessful())
+                public Task<Uri> then( @NonNull Task<UploadTask.TaskSnapshot> task ) throws Exception {
+                    if( !task.isSuccessful() )
                         throw task.getException();
                     return fileReference.getDownloadUrl();
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            }).addOnCompleteListener( new OnCompleteListener<Uri>() {
                 @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if( task.isSuccessful()){
+                public void onComplete( @NonNull Task<Uri> task ) {
+                    if ( task.isSuccessful() ){
                         Uri downloadUri = task.getResult();
                         String mUri = downloadUri.toString();
 
-                        reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+                        reference = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
                         HashMap<String, Object> map = new HashMap<>();
-                        map.put("picurl", mUri);
-                        reference.updateChildren(map);
+                        map.put( "picurl", mUri );
+                        reference.updateChildren( map );
 
                         pd.dismiss();
                     }
-                    else{
-                        Toast.makeText( EditProfileActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText( EditProfileActivity.this, "Failed!", Toast.LENGTH_SHORT ).show();
                         pd.dismiss();
                     }
                 }
-            }).addOnFailureListener(new OnFailureListener() {
+            }).addOnFailureListener( new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText( EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                public void onFailure( @NonNull Exception e ) {
+                    Toast.makeText( EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT ).show();
                     pd.dismiss();
                 }
             });
         }
         else{
-            Toast.makeText( EditProfileActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText( EditProfileActivity.this, "No image selected", Toast.LENGTH_SHORT ).show();
         }
     }
 
@@ -253,14 +257,14 @@ public class EditProfileActivity extends AppCompatActivity
      * @author Gökberk
      */
     @Override
-    public void onActivityResult( int requestCode, int resultCode, Intent data){
+    public void onActivityResult( int requestCode, int resultCode, Intent data ){
         super.onActivityResult( requestCode, resultCode, data );
 
-        if( requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
+        if( requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null ) {
             imageUri = data.getData();
 
-            if ( uploadTask != null && uploadTask.isInProgress())
-                Toast.makeText(EditProfileActivity.this, "Upload is in progress", Toast.LENGTH_SHORT).show();
+            if ( uploadTask != null && uploadTask.isInProgress() )
+                Toast.makeText(EditProfileActivity.this, "Upload is in progress", Toast.LENGTH_SHORT ).show();
             else{
                 uploadImage();
             }
@@ -273,9 +277,9 @@ public class EditProfileActivity extends AppCompatActivity
      */
     private void openImage() {
         Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult( intent, IMAGE_REQUEST);
+        intent.setType( "image/*" );
+        intent.setAction( Intent.ACTION_GET_CONTENT );
+        startActivityForResult( intent, IMAGE_REQUEST );
     }
 
     /**
@@ -284,10 +288,10 @@ public class EditProfileActivity extends AppCompatActivity
      * @return String
      * @author Gökberk
      */
-    private String getFileExtension(Uri uri){
+    private String getFileExtension( Uri uri ){
         ContentResolver contentResolver = EditProfileActivity.this.getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+        return mimeTypeMap.getExtensionFromMimeType( contentResolver.getType( uri ) );
     }
 
     /*

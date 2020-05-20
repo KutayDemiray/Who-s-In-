@@ -42,7 +42,6 @@ import com.google.firebase.database.ValueEventListener;
 
 /**
  * Create event page
- * TODO create event under SportsEvent, MeetingEvent or TabletopEvent node depending on spinner output
  * @author Kutay Demiray
  * @version 1.0
  */
@@ -54,9 +53,9 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     Spinner spinnerMainType, spinnerSportsType, spinnerTabletopType, spinnerPrivacy;
     Button buttonAddEvent;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_create_event );
 
         // initialize views
         textViewPageTitle = findViewById( R.id.textViewPageTitle );
@@ -130,7 +129,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 datePickerDialog = new DatePickerDialog(CreateEvent.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            public void onDateSet( DatePicker view, int year, int month, int dayOfMonth ) {
                                 editTextDate.setText( String.format( "%02d/%02d/%04d", dayOfMonth, month + 1, year ) );
                             }
                         }, year, month, day );
@@ -157,7 +156,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 timePickerDialog = new TimePickerDialog(CreateEvent.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        editTextTime.setText( String.format( "%02d:%02d", hourOfDay, minute) );
+                        editTextTime.setText( String.format( "%02d:%02d", hourOfDay, minute ) );
                     }
                 }, hour, minute, true );
                 timePickerDialog.show();
