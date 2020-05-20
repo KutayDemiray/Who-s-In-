@@ -17,6 +17,7 @@
         android:hint="Title"
         android:textSize="18sp"
         android:fontFamily="@font/bold"
+        android:textColor="@color/white"
         android:theme="@style/MyEditTextTheme"
         android:inputType="textPersonName"
         app:layout_constraintTop_toBottomOf="@+id/textViewPageTitle"
