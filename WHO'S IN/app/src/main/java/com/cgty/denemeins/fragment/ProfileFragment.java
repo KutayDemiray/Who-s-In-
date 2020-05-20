@@ -154,6 +154,7 @@ public class ProfileFragment extends Fragment
             }
         });
 
+        // göko
         image_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,6 +164,7 @@ public class ProfileFragment extends Fragment
 
         setupFireBaseListener();
 
+        // göko
         mSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
