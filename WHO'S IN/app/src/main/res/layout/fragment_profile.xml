@@ -98,7 +98,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/regular"
                             android:maxLines="1"
-                            android:text="\@username"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="24sp"
                             android:textStyle="bold|italic" />
@@ -109,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/regular"
                             android:maxLines="1"
-                            android:text="Age: 19"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="16sp"
                             android:textStyle="bold|italic" />
@@ -130,7 +130,7 @@
 
                 <TextView
                     android:id="@+id/textViewProfileBio"
-                    android:text="cê tem uma cara de quem vai fuder minha vida..."
+                    android:text=" "
                     android:fontFamily="@font/regular"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -183,7 +183,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="781 Followers"
+                        android:text=""
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -195,7 +195,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="450 Following"
+                        android:text=""
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
@@ -207,7 +207,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
                         android:maxLines="1"
-                        android:text="86 Events Created   "
+                        android:text=""
                         android:textColor="@color/blue"
                         android:textSize="18sp"
                         android:textStyle="bold|italic" />
