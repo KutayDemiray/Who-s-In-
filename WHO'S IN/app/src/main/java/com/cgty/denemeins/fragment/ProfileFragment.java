@@ -1,8 +1,14 @@
 package com.cgty.denemeins.fragment;
 
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.CreateEvent;
 import com.cgty.denemeins.LoginActivity;
+import com.cgty.denemeins.MainActivity;
 import com.cgty.denemeins.R;
+import com.cgty.denemeins.ShowFollowers;
+import com.cgty.denemeins.ShowFollowing;
+import com.cgty.denemeins.ShowPastEvents;
+import com.cgty.denemeins.ShowScheduledEvents;
 import com.cgty.denemeins.model.Event;
 import com.cgty.denemeins.model.User;
 
@@ -86,6 +92,10 @@ public class ProfileFragment extends Fragment
     private Uri imageUri;
     private StorageTask uploadTask;
     private static final String TAG = "SETTINGS";
+    Button buttonFollowers;
+    Button buttonFollowing;
+    Button buttonPastEvents;
+    Button buttonScheduledEvents;
 
     //firebase
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -132,6 +142,42 @@ public class ProfileFragment extends Fragment
         username = view.findViewById(R.id.textViewProfileUsername);
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
         reference = FirebaseDatabase.getInstance().getReference( "Users").child(currentUser.getUid());
+        buttonFollowers = (Button) view.findViewById(R.id.buttonFollowers_profile);
+        buttonFollowing = (Button) view.findViewById(R.id.buttonFollowing_profile);
+        buttonPastEvents = (Button) view.findViewById(R.id.buttonPastEvents_profile);
+        buttonScheduledEvents = (Button) view.findViewById(R.id.buttonScheduledEvents_profile);
+
+        buttonFollowers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View view) {
+                Intent fromProfileToShowFollowers = new Intent( getActivity(), ShowFollowers.class );
+                startActivity( fromProfileToShowFollowers );
+            }
+        });
+
+        buttonFollowing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View view) {
+                Intent fromProfileToShowFollowing = new Intent( getActivity(), ShowFollowing.class );
+                startActivity( fromProfileToShowFollowing );
+            }
+        });
+
+        buttonPastEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fromProfileToShowPastEvents = new Intent( getActivity(), ShowPastEvents.class );
+                startActivity( fromProfileToShowPastEvents );
+            }
+        });
+
+        buttonScheduledEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fromProfileToShowScheduledEvents = new Intent( getActivity(), ShowScheduledEvents.class );
+                startActivity( fromProfileToShowScheduledEvents );
+            }
+        });
 
         /**
          * @author Gökberk
@@ -141,12 +187,25 @@ public class ProfileFragment extends Fragment
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
+                /**
                 User user = dataSnapshot.getValue(User.class);
                 username.setText(user.getUsername());
                 if( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082"))
                     image_profile.setImageResource(R.mipmap.ic_launcher);
                 else
                     Glide.with(getContext()).load(user.getPicurl()).into(image_profile);
+                 */https://twitter.com/Commercial_Crew/status/1262831047034667014?s=20
+                if( isAdded() ) {
+                    //Load image if the fragment is currently added to its activity.
+                    User user = dataSnapshot.getValue(User.class);
+                    username.setText(user.getUsername());
+                    if (user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082")){
+                        image_profile.setImageResource(R.mipmap.ic_launcher);
+                    } else {
+                        Glide.with(getContext()).load(user.getPicurl()).into(image_profile);
+                    }
+                }
+
             }
 
             @Override
