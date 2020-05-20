@@ -50,7 +50,7 @@ public class EventActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView( R.layout.activity_event );
 
-      eventOrganizerName = findViewById( R.id.eventOrganizerName);
+      eventOrganizerName = findViewById( R.id.eventOrganizerName );
       eventTitle = findViewById( R.id.eventTitle );
       eventType = findViewById( R.id.eventType );
       eventDateAndLocation = findViewById( R.id.eventDateAndLocation );
@@ -70,7 +70,7 @@ public class EventActivity extends AppCompatActivity {
             }
             Log.d("DENEME123", "onDataChange: " + participantsId.toString() );
 
-            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Users");
+            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Users" );
             final ArrayList<String> participantsUsername = new ArrayList<>();
             String usernameString = "";
 
@@ -82,7 +82,7 @@ public class EventActivity extends AppCompatActivity {
                         participantsUsername.add( userSnapshot.child( "username" ).getValue( String.class ) );
                      }
                   }
-                  String organizerUsername = dataSnapshot.child( event.getOrganizerId() ).child("username").getValue( String.class );
+                  String organizerUsername = dataSnapshot.child( event.getOrganizerId() ).child( "username" ).getValue( String.class );
                   eventOrganizerName.setText( organizerUsername);
                }
 
@@ -178,28 +178,28 @@ public class EventActivity extends AppCompatActivity {
 
    }
 
-   private void addJoinNotification( final String organizerId, final String eventId, final String userId, final String eventTitle) {
-      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId);
+   private void addJoinNotification( final String organizerId, final String eventId, final String userId, final String eventTitle ) {
+      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications" ).child( organizerId );
 
       HashMap<String, Object> hashMap = new HashMap();
-      hashMap.put( "userId",  userId);
+      hashMap.put( "userId",  userId );
       hashMap.put( "text", " has joined your event called " +  eventTitle );
-      hashMap.put( "eventId", eventId);
-      hashMap.put( "isEvent", true);
+      hashMap.put( "eventId", eventId );
+      hashMap.put( "isEvent", true );
 
-      reference.push().setValue( hashMap);
+      reference.push().setValue( hashMap );
    }
 
-   private void addLeaveNotification( final String organizerId, final String eventId, final String userId, final String eventTitle) {
-      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId);
+   private void addLeaveNotification( final String organizerId, final String eventId, final String userId, final String eventTitle ) {
+      DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId );
 
       HashMap<String, Object> hashMap = new HashMap();
-      hashMap.put( "userId",  userId);
-      hashMap.put( "text", " has left your event called " +  eventTitle);
-      hashMap.put( "eventId", eventId);
-      hashMap.put( "isEvent", true);
+      hashMap.put( "userId",  userId );
+      hashMap.put( "text", " has left your event called " +  eventTitle );
+      hashMap.put( "eventId", eventId );
+      hashMap.put( "isEvent", true );
 
-      reference.push().setValue( hashMap);
+      reference.push().setValue( hashMap );
    }
 
 }

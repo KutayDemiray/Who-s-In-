@@ -10,6 +10,6 @@ public class ShowScheduledEvents extends Activity {
     protected void onCreate( @Nullable Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
 
-        setContentView( R.layout.show_scheduled_events);
+        setContentView( R.layout.show_scheduled_events );
     }
 }

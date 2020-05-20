@@ -45,8 +45,8 @@ import java.util.HashMap;
  * Edit profile screen
  * @author Çağatay Şafak
  */
-public class EditProfileActivity extends AppCompatActivity
-{
+public class EditProfileActivity extends AppCompatActivity {
+
 	// properties
 	ImageView imageViewClose;
 	ImageView imageViewProfile;
@@ -68,12 +68,11 @@ public class EditProfileActivity extends AppCompatActivity
 
 	// methods
 	@Override
-	protected void onCreate( Bundle savedInstanceState )
-	{
+	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.activity_edit_profile );
 
-		/** instead view.findViewById since this is an activity, not a fragment.*/
+		// instead view.findViewById since this is an activity, not a fragment.
 
 		//ImageViews
 		imageViewClose = findViewById( R.id.imageViewCloseEditProfile );
@@ -95,11 +94,10 @@ public class EditProfileActivity extends AppCompatActivity
 		DatabaseReference userPath;
 		userPath = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
         reference = FirebaseDatabase.getInstance().getReference( "Users" ).child( currentUser.getUid() );
-		userPath.addValueEventListener( new ValueEventListener()
-		{
+		userPath.addValueEventListener( new ValueEventListener() {
+
 			@Override
-			public void onDataChange( @NonNull DataSnapshot dataSnapshot )
-			{
+			public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 				User user;
 				user = dataSnapshot.getValue( User.class );
 
@@ -107,22 +105,19 @@ public class EditProfileActivity extends AppCompatActivity
 				materialEditTextUsername.setText( user.getUsername() );
 				materialEditTextBio.setText( user.getBio() );
 
-				Glide.with( getApplicationContext() ).load( user.getPicurl() ).into( imageViewProfile ); //////////////////////////////////////////
+				Glide.with( getApplicationContext() ).load( user.getPicurl() ).into( imageViewProfile );
 			}
 
 			@Override
-			public void onCancelled( @NonNull DatabaseError databaseError )
-			{
+			public void onCancelled( @NonNull DatabaseError databaseError ) {
 
 			}
 		});
 
 		//closing the activity
-		imageViewClose.setOnClickListener( new View.OnClickListener()
-		{
+		imageViewClose.setOnClickListener( new View.OnClickListener() {
 			@Override
-			public void onClick( View v )
-			{
+			public void onClick( View v ) {
 				finish();
 			}
 		});
@@ -130,11 +125,9 @@ public class EditProfileActivity extends AppCompatActivity
 
 
 		//save
-		textViewChangeSave.setOnClickListener( new View.OnClickListener()
-		{
+		textViewChangeSave.setOnClickListener( new View.OnClickListener() {
 			@Override
-			public void onClick( View v )
-			{
+			public void onClick( View v ) {
 				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString() );   // un, age, bio
 
 				//go to edit profile screen
@@ -178,8 +171,8 @@ public class EditProfileActivity extends AppCompatActivity
         });
 	}
 
-	private void updateProfile( String theUsername, String theAge, String theBio )
-	{
+	private void updateProfile( String theUsername, String theAge, String theBio ) {
+
 		DatabaseReference updatePath;
 		updatePath = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
 
@@ -187,9 +180,9 @@ public class EditProfileActivity extends AppCompatActivity
 		HashMap<String,Object> updateUserHashMap;
 		updateUserHashMap = new HashMap<>();
 
-		updateUserHashMap.put( "username", theUsername);
-		updateUserHashMap.put( "age", theAge);
-		updateUserHashMap.put( "bio", theBio);
+		updateUserHashMap.put( "username", theUsername );
+		updateUserHashMap.put( "age", theAge );
+		updateUserHashMap.put( "bio", theBio );
 
 		updatePath.updateChildren( updateUserHashMap );
 	}
@@ -257,7 +250,7 @@ public class EditProfileActivity extends AppCompatActivity
      * @author Gökberk
      */
     @Override
-    public void onActivityResult( int requestCode, int resultCode, Intent data ){
+    public void onActivityResult( int requestCode, int resultCode, Intent data ) {
         super.onActivityResult( requestCode, resultCode, data );
 
         if( requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null ) {
@@ -265,7 +258,7 @@ public class EditProfileActivity extends AppCompatActivity
 
             if ( uploadTask != null && uploadTask.isInProgress() )
                 Toast.makeText(EditProfileActivity.this, "Upload is in progress", Toast.LENGTH_SHORT ).show();
-            else{
+            else {
                 uploadImage();
             }
         }
@@ -288,7 +281,7 @@ public class EditProfileActivity extends AppCompatActivity
      * @return String
      * @author Gökberk
      */
-    private String getFileExtension( Uri uri ){
+    private String getFileExtension( Uri uri ) {
         ContentResolver contentResolver = EditProfileActivity.this.getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType( contentResolver.getType( uri ) );
@@ -297,11 +290,9 @@ public class EditProfileActivity extends AppCompatActivity
     /*
 		//open gallery
 			//through the 'Change Photo' TextView
-		textViewChangePhoto.setOnClickListener(new View.OnClickListener()
-		{
+		textViewChangePhoto.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v)	{
 				//                   cropping ratio                              cropping shape                             context
 				CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(EditProfileActivity.this);
 			}
@@ -311,11 +302,9 @@ public class EditProfileActivity extends AppCompatActivity
 
     //through the 'Profile Picture' CircleImageView
         /*
-		imageViewProfile.setOnClickListener(new View.OnClickListener()
-		{
+		imageViewProfile.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v)	{
 				//                   cropping ratio                              cropping shape                             context
 				CropImage.activity().setAspectRatio(1,1).setCropShape(CropImageView.CropShape.OVAL).start(EditProfileActivity.this);
 			}
@@ -324,8 +313,7 @@ public class EditProfileActivity extends AppCompatActivity
          */
 
         /*
-	private String getFilenameExtension( Uri theUri)
-	{
+	private String getFilenameExtension( Uri theUri) {
 		ContentResolver contentResolver = getContentResolver();
 		MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
 
@@ -335,38 +323,32 @@ public class EditProfileActivity extends AppCompatActivity
 	 */
 
 	/*
-	private void uploadPhoto()
-	{
+	private void uploadPhoto() {
 		final ProgressDialog pdEditProfile;
 		pdEditProfile= new ProgressDialog( EditProfileActivity.this );
 		pdEditProfile.setMessage("Uploading...");
 		pdEditProfile.show();
 
-		if ( mImageUri != null)  //trying to avoid NullPointer...
-		{
+		if ( mImageUri != null) {  //trying to avoid NullPointer...
+
 			final StorageReference filePath;
 			filePath = storagePath.child( System.currentTimeMillis() + "-" + getFilenameExtension( mImageUri) );
 
 			uploadTask = filePath.putFile( mImageUri);
-			uploadTask.continueWithTask( new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
-			{
+			uploadTask.continueWithTask( new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
 				@Override
-				public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
-				{
-					if ( !task.isSuccessful() )
-					{
+				public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+					if ( !task.isSuccessful() ) {
 						throw task.getException();
 					}
 
 					return filePath.getDownloadUrl();
 				}
-			}).addOnCompleteListener( new OnCompleteListener<Uri>()
-			{
+			}).addOnCompleteListener( new OnCompleteListener<Uri>()	{
+
 				@Override
-				public void onComplete(@NonNull Task<Uri> task)
-				{
-					if (task.isSuccessful())
-					{
+				public void onComplete(@NonNull Task<Uri> task)	{
+					if (task.isSuccessful()) {
 						Uri downloadUri;
 						downloadUri = task.getResult();
 
@@ -384,26 +366,20 @@ public class EditProfileActivity extends AppCompatActivity
 						userPath.updateChildren(imageHashMap);
 
 						pdEditProfile.dismiss();
-					}
-					else
-					{
+					} else {
 						Toast.makeText(EditProfileActivity.this, "Upload was unsuccessful!", Toast.LENGTH_LONG).show();
 						pdEditProfile.dismiss();
 					}
 				}
-			}).addOnFailureListener(new OnFailureListener()
-			{
+			}).addOnFailureListener(new OnFailureListener()	{
 				@Override
-				public void onFailure(@NonNull Exception e)
-				{
+				public void onFailure(@NonNull Exception e)	{
 					Toast.makeText(EditProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
 					pdEditProfile.dismiss();
 
 				}
 			});
-		}
-		else
-		{
+		} else {
 			Toast.makeText(this, "No image is selected!", Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -412,20 +388,17 @@ public class EditProfileActivity extends AppCompatActivity
 
 	/*
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-	{
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 
-		if ( requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK)
-		{
+		if ( requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
 			CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
 			mImageUri = result.getUri();
 
 			uploadPhoto();
 		}
-		else
-		{
+		else {
 			Toast.makeText(EditProfileActivity.this, "weirdo error!!!", Toast.LENGTH_LONG).show();
 		}
 	}

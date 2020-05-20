@@ -30,18 +30,16 @@ import java.util.List;
 /**
  * @author Gökberk Keskinkılıç, Çağatay Şafak
  */
-public class NearbyFragment extends Fragment
-{
+public class NearbyFragment extends Fragment {
 
     //properties
     private RecyclerView recyclerView;
-    private List<com.cgty.denemeins.model.User> mUsers;
+    private List<User> mUsers;
     private UserAdapter userAdapter;
     EditText searchBar;
 
     //constructor
-    public NearbyFragment()
-    {
+    public NearbyFragment() {
         //required empty public constructor.
     }
 
@@ -56,40 +54,37 @@ public class NearbyFragment extends Fragment
      */
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view;
         view = inflater.inflate(R.layout.fragment_nearby, container, false);
 
-        recyclerView = view.findViewById(R.id.nearbyRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        View view = inflater.inflate( R.layout.fragment_nearby, container, false );
+
+        recyclerView = view.findViewById( R.id.nearbyRecyclerView );
+        recyclerView.setHasFixedSize( true );
+        recyclerView.setLayoutManager( new LinearLayoutManager( getContext() ) );
 
         mUsers = new ArrayList<>();
-        userAdapter = new UserAdapter( getContext(), mUsers, true);
-        searchBar = view.findViewById(R.id.nearbySearchEditText);
+        userAdapter = new UserAdapter( getContext(), mUsers, true );
+        searchBar = view.findViewById( R.id.nearbySearchEditText );
 
-        recyclerView.setAdapter(userAdapter);
+        recyclerView.setAdapter( userAdapter );
 
         readUsers();
 
-        searchBar.addTextChangedListener(new TextWatcher()
-        {
+        searchBar.addTextChangedListener( new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
+            public void beforeTextChanged( CharSequence s, int start, int count, int after ) {
 
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-                searchUser(s.toString().toLowerCase());
+            public void onTextChanged( CharSequence s, int start, int before, int count ) {
+                searchUser( s.toString().toLowerCase() );
             }
 
             @Override
-            public void afterTextChanged(Editable s)
-            {
+            public void afterTextChanged( Editable s ) {
 
             }
         });
@@ -109,24 +104,22 @@ public class NearbyFragment extends Fragment
         Query query;
         query= FirebaseDatabase.getInstance().getReference("Users").orderByChild("username").startAt(str).endAt(str+"\uf8ff");
 
-        query.addValueEventListener(new ValueEventListener()
-        {
+        query.addValueEventListener( new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 mUsers.clear();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren())
-                {
-                    User user = snapshot.getValue(com.cgty.denemeins.model.User.class);
-                    mUsers.add(user);
+                
+                for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
+                    com.cgty.denemeins.model.User user = snapshot.getValue( com.cgty.denemeins.model.User.class );
+                    mUsers.add( user );
                 }
 
                 userAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
@@ -137,22 +130,19 @@ public class NearbyFragment extends Fragment
      *
      * @author Cagatay Safak
      */
-    private void readUsers()
-    {
-        DatabaseReference userPath = FirebaseDatabase.getInstance().getReference("Users");
+    private void readUsers() {
+        DatabaseReference userPath;
+        userPath = FirebaseDatabase.getInstance().getReference("Users" );
 
-        userPath.addValueEventListener(new ValueEventListener()
-        {
+        userPath.addValueEventListener( new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (searchBar.getText().toString().equals(""))
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if ( searchBar.getText().toString().equals( "" ) ) {
                     mUsers.clear();
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren())
-                    {
-                        User user = snapshot.getValue( User.class);
-                        mUsers.add(user);
+                    
+                    for ( DataSnapshot snapshot: dataSnapshot.getChildren() ) {
+                        com.cgty.denemeins.model.User user = snapshot.getValue( com.cgty.denemeins.model.User.class );
+                        mUsers.add( user );
 
                         userAdapter.notifyDataSetChanged();
                     }
@@ -160,8 +150,7 @@ public class NearbyFragment extends Fragment
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
+            public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
         });
