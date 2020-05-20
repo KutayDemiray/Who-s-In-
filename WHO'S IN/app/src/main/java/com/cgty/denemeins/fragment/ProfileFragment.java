@@ -1,6 +1,7 @@
 package com.cgty.denemeins.fragment;
 
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.EditProfileActivity;
 import com.cgty.denemeins.LoginActivity;
 import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.Event;
