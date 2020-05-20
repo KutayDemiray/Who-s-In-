@@ -26,52 +26,46 @@ import com.google.firebase.auth.FirebaseAuth;
  * @author Çağatay Safak
  * @version 1.0
  */
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
+
     private Button settingsButton;
     BottomNavigationView bottomNav;
     Fragment selectedFragment = null;
     //    private BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState)
-    {
+    protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
         bottomNav = findViewById( R.id.bottom_navigation );
-        bottomNav.setOnNavigationItemSelectedListener( navListener);
+        bottomNav.setOnNavigationItemSelectedListener( navListener );
         
         Bundle intent = getIntent().getExtras();
         
-        if (intent != null)
-        {
+        if ( intent != null ) {
             String publisher;
-            publisher = intent.getString("publisherId");
+            publisher = intent.getString("publisherId" );
             
             SharedPreferences.Editor editor;
-            editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-            editor.putString("profileid", publisher);
+            editor = getSharedPreferences("PREFS", MODE_PRIVATE ).edit();
+            editor.putString("profileid", publisher );
             editor.apply();
             
-            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new ProfileFragment()).commit();
-        }
-        else
-        {
-            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new ProfileFragment() ).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, new HomeFragment() ).commit();
         }
 
 //        bottomNavigationView = findViewById(R.id.bottomNav);
 //        bottomNavigationView.setOnNavigationItemSelectedListener( bottomNavMethod);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener()
-    {
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
         @Override
-        public boolean onNavigationItemSelected( @NonNull MenuItem menuItem )
-        {
-            switch ( menuItem.getItemId())
-            {
+        public boolean onNavigationItemSelected( @NonNull MenuItem menuItem ) {
+            switch ( menuItem.getItemId() ) {
                 case R.id.nav_home:
                     //call home fragment
                     selectedFragment = new HomeFragment();
@@ -86,8 +80,8 @@ public class MainActivity extends AppCompatActivity
                     break;
                 case R.id.nav_profile:
                     SharedPreferences.Editor editor;
-                    editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    editor = getSharedPreferences( "PREFS", MODE_PRIVATE ).edit();
+                    editor.putString( "profileid", FirebaseAuth.getInstance().getCurrentUser().getUid() );
                     editor.apply();
                     
                     //call profile fragment
@@ -95,9 +89,8 @@ public class MainActivity extends AppCompatActivity
                     break;
             }
 
-            if ( selectedFragment != null)  //trying to avoid NullPointer...
-            {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            if ( selectedFragment != null ) {  //trying to avoid NullPointer...
+                getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container, selectedFragment ).commit();
             }
             
             return true;

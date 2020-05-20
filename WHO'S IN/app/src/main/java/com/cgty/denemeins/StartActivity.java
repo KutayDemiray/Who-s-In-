@@ -40,7 +40,7 @@ public class StartActivity extends AppCompatActivity
         buttonStartLogin = findViewById( R.id.buttonLoginStart );
         buttonStartSignUp = findViewById( R.id.buttonSignUpStart );
 
-        buttonStartLogin.setOnClickListener(new View.OnClickListener() {
+        buttonStartLogin.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity( new Intent ( StartActivity.this, LoginActivity.class ) );
