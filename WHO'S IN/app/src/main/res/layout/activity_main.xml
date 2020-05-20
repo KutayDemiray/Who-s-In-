@@ -15,7 +15,7 @@
     app:menu="@menu/bottom_navigation"
     app:labelVisibilityMode="unlabeled"
     app:itemIconTint="@color/darkBlue"
-    app:itemIconSize="53dp"
+    app:itemIconSize="50dp"
     android:background="@color/white"/>
 
     <FrameLayout
