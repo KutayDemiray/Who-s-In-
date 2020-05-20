@@ -31,7 +31,10 @@ import java.util.HashMap;
 public class SignUpActivity extends AppCompatActivity {
 
     //variables
-    EditText edittextUsername, edittextAge, edittextEmail, edittextPassword;
+    EditText edittextUsername;
+    EditText edittextAge;
+    EditText edittextEmail;
+    EditText edittextPassword;
     Button buttonSignUp;
     TextView textviewGoLogin;
     FirebaseAuth auth;
@@ -86,7 +89,17 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-
+    
+    /**
+     * Signs up the user if all conditions are met.
+     *
+     * @param un Username.
+     * @param age Age.
+     * @param mail Mail.
+     * @param pw Password.
+     *
+     * @author Cagatay Safak
+     */
     private void signUp( final String un, final String age, String mail, String pw ) {
         //code to register new user...
         auth.createUserWithEmailAndPassword( mail, pw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {

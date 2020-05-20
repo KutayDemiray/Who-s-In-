@@ -129,8 +129,10 @@ public class User {
     public void setBio( String bio ) {
         this.bio = bio;
     }
-
-
+    
+    /**
+     * Turns User object into String.
+     */
     public String toString() {
         return "Title: " + getUsername() + " Age: " + getAge() + " Bio: " + getBio();
     }
