@@ -31,6 +31,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tint="@color/white"
                     android:src="@drawable/ic_close_white"/>
 
                 <TextView
@@ -38,6 +39,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/bold"
                     android:textColor="@color/white"
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
@@ -48,6 +50,7 @@
                     android:id="@+id/textViewSaveEditProfile"
                     android:textSize="18sp"
                     android:text="SAVE"
+                    android:fontFamily="@font/bold"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="15dp"
@@ -80,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Change Photo"
+            android:fontFamily="@font/regular"
             android:textSize="18sp"
             android:textColor="@color/darkBlue"
             android:layout_gravity="center"/>
@@ -90,7 +94,9 @@
             android:layout_marginTop="20dp"
             app:met_floatingLabel="normal"
             android:layout_width="match_parent"
+            android:fontFamily="@font/regular"
             android:layout_height="wrap_content"
+            android:textColor="@color/darkBlue"
             android:hint="Your username"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -98,7 +104,9 @@
             android:layout_marginTop="20dp"
             app:met_floatingLabel="none"
             android:layout_width="match_parent"
+            android:fontFamily="@font/regular"
             android:layout_height="wrap_content"
+            android:textColor="@color/darkBlue"
             android:hint="Your age"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -107,6 +115,8 @@
             app:met_floatingLabel="highlight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:textColor="@color/darkBlue"
             android:hint="Your bio"/>
 
     </LinearLayout>
