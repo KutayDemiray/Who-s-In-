@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.fragment.ProfileFragment;
 import com.cgty.denemeins.model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -133,7 +134,9 @@ public class EditProfileActivity extends AppCompatActivity
 			@Override
 			public void onClick(View v)
 			{   //            un, age, bio
-				updateProfile(materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString());
+				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString() );
+				Toast.makeText(EditProfileActivity.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nUPDATED SUCCESSFULLY :) ", Toast.LENGTH_SHORT ).show();
+				finish();
 			}
 		});
 	}
