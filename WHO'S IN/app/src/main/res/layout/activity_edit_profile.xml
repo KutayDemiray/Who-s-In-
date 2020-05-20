@@ -82,7 +82,7 @@
             android:id="@+id/textViewChangePhotoEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change Photo"
+            android:text=""
             android:fontFamily="@font/regular"
             android:textSize="18sp"
             android:textColor="@color/darkBlue"
