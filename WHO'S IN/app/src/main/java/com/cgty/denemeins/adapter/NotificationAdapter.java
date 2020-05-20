@@ -29,14 +29,15 @@ import java.util.List;
 import static com.cgty.denemeins.R.id.notificationText;
 
 /**
- * A class for notification adapter
+ * A class for notification adapter so that the notifications can be regulated according to the data
+ * in database
  * @author Yağız Yaşar
  * @version 17.5.20
  */
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
    private Context mContext;
-   private List<Notification> mNotification;
+   private List<Notification> mNotification; //List of notifications
 
    public NotificationAdapter( Context mContext, List<Notification> mNotification ) {
       this.mContext = mContext;
@@ -44,7 +45,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
    }
 
    /**
-    * Returns the number of notifications
+    * Returns the number of notifications that user have
     */
    @Override
    public int getItemCount() {
@@ -52,7 +53,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
    }
 
    /**
-    * Creates the notification element which will be held in the notification fragment
+    * Creates notification adapters in the fragment at first
     * @param viewGroup - group of the view
     * @param i - type of view
     * @return view of notification
@@ -63,13 +64,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
    }
 
    /**
-    * Sets texts and images for notification, and click listeners
+    * Creates and changes notification adapters in the fragment live
     * @param viewHolder
     * @param i
     */
    public void onBindViewHolder( @NonNull ViewHolder viewHolder, int i ) {
 
-      final Notification notification = mNotification.get( i );
+      final Notification notification = mNotification.get( i ); //getting the notification in the position of i
 
       viewHolder.text.setVisibility( View.VISIBLE );
 
@@ -81,6 +82,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
               public void onClick( View view ) {
                if (  notification.getEventId().equals( "" ) ) {
+                  // if eventId is empty, it is a notification related to follow so that if
+                  // they click on notification they go to an user fragment
                   SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
                   editor.putString( "userId", notification.getUserId() );
                   editor.apply();
@@ -88,6 +91,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                   ( (FragmentActivity) mContext ).getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container,
                           new ProfileFragment() ).commit();
                } else {
+                  // if eventId is empty, it is a notification related to follow so that if
+                  // they click on notification they go to an user fragment
                   SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
                   editor.putString( "eventId", notification.getEventId() );
                   editor.apply();
@@ -95,11 +100,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                   Intent fromNotificationToEvent = new Intent( mContext, EventActivity.class );
                   fromNotificationToEvent.putExtra( "eventId", notification.getEventId() );
                   mContext.startActivity( fromNotificationToEvent );
-             }
+               }
             }
          });
-
-
       }
 
    /**
@@ -126,23 +129,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
          }
       });
    }
-
-   /*private void getEventInfo(final TextView textView, String eventId) {
-      DatabaseReference reference = FirebaseDatabase.getInstance().getReference( "Events").child( eventId);
-      reference.addValueEventListener(new ValueEventListener() {
-         @Override
-         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            Event event = dataSnapshot.getValue( Event.class);
-            Glide.with(mContext).load( event.getTitle()).into(textView);
-         }
-
-         @Override
-         public void onCancelled(@NonNull DatabaseError databaseError) {
-
-         }
-      });
-   } */
-
 
    /**
     * inner class for view holder

@@ -42,7 +42,7 @@ public class EventActivity extends AppCompatActivity {
    @Override
    protected void onCreate( Bundle savedInstanceState ) {
 
-      DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events" );
+      DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Events" ); //reference to events to get the current Event
       final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
       intent = getIntent();
       final String eventId = intent.getStringExtra( "eventId" );
@@ -63,14 +63,14 @@ public class EventActivity extends AppCompatActivity {
          @Override
          public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
             final Event event = dataSnapshot.child( eventId ).getValue( Event.class ); // uses the eventId from intent
-            final ArrayList<String> participantsId = new ArrayList<>();
+            final ArrayList<String> participantsId = new ArrayList<>(); //opening an empty ArrayList for participants
 
             for ( DataSnapshot idSnapshot : dataSnapshot.child("participants").getChildren() ) {
                participantsId.add( idSnapshot.getValue( String.class ) );
             }
             Log.d("DENEME123", "onDataChange: " + participantsId.toString() );
 
-            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Users" );
+            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Users" ); //reference to events to get the current participants and organizers
             final ArrayList<String> participantsUsername = new ArrayList<>();
             String usernameString = "";
 
@@ -131,7 +131,8 @@ public class EventActivity extends AppCompatActivity {
    }
 
    /**
-    * A private helper void method for buttons on click
+    * A private void method to add participants and remove participants in order to regulate event's
+    * remaining capacity and status according to the demand.
     * @param eventId - ID of the specific event
     * @param userId - current user
     */
@@ -156,12 +157,15 @@ public class EventActivity extends AppCompatActivity {
             eventCapacity.setText( "Capacity: "  + event.getNumberOfParticipants() + "/" + event.getCapacity() );
             event.printParticipants();
 
+            // if the current user is organizer, join button will disappear
             if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
                eventJoinButton.setVisibility( View.GONE );
+            // if the current user is not participant, join button will appear
             } else if ( event.getParticipants().indexOf( userId ) == -1 ) {
                eventJoinButton.setText("JOIN");
                event.getParticipants().add( userId );
                addJoinNotification( event.getOrganizerId(), event.getEventId(), userId, event.getTitle() );
+            // if the current user is participant, leave button will appear
             } else {
                eventJoinButton.setText( "LEAVE" );
                event.getParticipants().remove( userId );
@@ -178,6 +182,14 @@ public class EventActivity extends AppCompatActivity {
 
    }
 
+   /**
+    * Adding a notification to organizer if someone join to their events and setting notification
+    * text according to this
+    * @param organizerId
+    * @param eventId
+    * @param userId
+    * @param eventTitle
+    */
    private void addJoinNotification( final String organizerId, final String eventId, final String userId, final String eventTitle ) {
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications" ).child( organizerId );
 
@@ -190,6 +202,14 @@ public class EventActivity extends AppCompatActivity {
       reference.push().setValue( hashMap );
    }
 
+   /**
+    * Adding a notification to organizer if someone leave to their events and setting notification
+    * text according to this
+    * @param organizerId
+    * @param eventId
+    * @param userId
+    * @param eventTitle
+    */
    private void addLeaveNotification( final String organizerId, final String eventId, final String userId, final String eventTitle ) {
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child( organizerId );
 

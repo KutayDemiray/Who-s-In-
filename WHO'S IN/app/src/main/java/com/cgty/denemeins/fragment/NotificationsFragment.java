@@ -39,7 +39,7 @@ public class NotificationsFragment extends Fragment {
     private List<Notification> notificationList;
 
     public NotificationsFragment() {
-
+       // required empty constructor
     }
 
     @Nullable
@@ -57,13 +57,14 @@ public class NotificationsFragment extends Fragment {
         notificationAdapter = new NotificationAdapter( getContext(), notificationList );
         recyclerView.setAdapter( notificationAdapter );
 
-        readNotifications();
+        readNotifications(); //retracting notifications from database
 
         return view;
     }
 
     /**
-     * Reading the values and getting the references of notifications from the realtime database
+     * Reading the notifications and retracting them from the database so that they can be
+     * seen in the notifications fragment
      */
     private void readNotifications() {
 
@@ -79,14 +80,14 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
 
-                notificationList.clear();
+                notificationList.clear(); //clearing the whole notifications
 
                 for ( DataSnapshot snapshot : dataSnapshot.getChildren() ) {
                     Notification notification = snapshot.getValue( Notification.class );
                     notificationList.add( notification);
                 }
-                Collections.reverse( notificationList );
-                notificationAdapter.notifyDataSetChanged();
+                Collections.reverse( notificationList ); //reversing the notifications so that the newest will appear at top
+                notificationAdapter.notifyDataSetChanged(); //notifying the adapter when the data has changed
             }
 
             @Override

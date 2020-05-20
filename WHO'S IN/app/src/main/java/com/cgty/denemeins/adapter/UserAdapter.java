@@ -184,7 +184,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
     /**
-     * Adding notification feature to follow
+     * Adding notification to follow button so that if someone is followed, he or she will be notified
+     * that they are being started to follow, and setting the notification according to this
      * @author Yağız Yaşar
      * @param userId
      */
