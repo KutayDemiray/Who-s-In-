@@ -55,7 +55,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Show followers
+ * Show followers and followings, not only followers.
  * @author Çağatay Şafak
  * @version 1.0
  */
@@ -122,6 +122,11 @@ public class ShowFollowers extends AppCompatActivity {
         }
     }
     
+    /**
+     * Gets participants of a desired meeting.
+     *
+     * @author Cagatay Safak
+     */
     private void getParticipants() {
 
         DatabaseReference participatePath;
@@ -146,6 +151,11 @@ public class ShowFollowers extends AppCompatActivity {
         });
     }
     
+    /**
+     * Gets users who are followed by current user.
+     *
+     * @author Cagatay Safak
+     */
     private void getFollowing() {
 
         DatabaseReference followingPath;
@@ -172,6 +182,11 @@ public class ShowFollowers extends AppCompatActivity {
         });
     }
     
+    /**
+     * Gets users who follow current user.
+     *
+     * @author Cagatay Safak
+     */
     private void getFollowers() {
 
         DatabaseReference followerPath;
@@ -197,6 +212,11 @@ public class ShowFollowers extends AppCompatActivity {
         });
     }
     
+    /**
+     * Displays the list of users by using user_element, getFollowers() and getFollowing().
+     *
+     * @author Cagatay Safak
+     */
     private void showUsers() {
 
         DatabaseReference userPath;

@@ -51,6 +51,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     //methods
+    /**
+     * Creates the user_element. Locates the user_element into NearbyFragment's RecyclerView and ProfileFragment's Follower and Following Lists.
+     *
+     * @param parent Group of view.
+     * @param viewType Type of view.
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType ) {
@@ -59,7 +65,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         return new UserAdapter.ViewHolder( view );
     }
-
+    
+    /**
+     * Creates the user_element. Locates the user_element into NearbyFragment's RecyclerView and ProfileFragment's Follower and Following Lists.
+     *
+     * @param holder The ViewHolder instance in which we implement the changes of user_element.
+     * @param position Index.
+     */
     @Override
     public void onBindViewHolder( @NonNull final ViewHolder holder, int position ) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -110,12 +122,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             }
         });
     }
-
+    
+    /**
+     * gets the mUsers size.
+     *
+     * @return number of elements in List mUsers.
+     */
     @Override
     public int getItemCount() {
         return mUsers.size();
     }
-
+    
+    /**
+     * inner class
+     * @author Cagatay Safak
+     * @version 12 MAY 20
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView pp;
@@ -134,7 +156,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     /**
-     * @param userID for a final String which declares ID of the user, button for a final Button which declares the Follow / Unfollow button.
+     * Checks if the current user follows the other user with parameter userID.
+     * Makes some changes in design and database.
+     *
+     * @param userID for a final String which declares ID of the user
+     * @param button for a final Button which declares the Follow / Unfollow button.
      */
     private void follows( final String userID, final Button button ) {
         DatabaseReference followPath;
@@ -144,9 +170,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 if (dataSnapshot.child(userID).exists())
-                    button.setText("   Followed   ");                  //3 bosluk koymayinca button cirkin gozukuyor (cagatay) (bunu degistirmeyin!!!!!!!!)
+                    button.setText("   Followed   ");
                 else
-                    button.setText("   Follow   ");                    //3 bosluk koymayinca button cirkin gozukuyor (cagatay) (bunu degistirmeyin!!!!!!!!)
+                    button.setText("   Follow   ");
             }
 
             @Override
