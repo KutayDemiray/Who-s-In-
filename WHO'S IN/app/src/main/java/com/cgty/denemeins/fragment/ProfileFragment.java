@@ -1,6 +1,7 @@
 package com.cgty.denemeins.fragment;
 
 import com.bumptech.glide.Glide;
+import com.cgty.denemeins.EditProfileActivity;
 import com.cgty.denemeins.LoginActivity;
 import com.cgty.denemeins.R;
 import com.cgty.denemeins.model.Event;
@@ -199,6 +200,9 @@ public class ProfileFragment extends Fragment
                 if ( buttonText.equals( "EDIT PROFILE"))
                 {
                     //go to edit profile screen
+                    Intent intentFromProfileToEditProfile;
+                    intentFromProfileToEditProfile = new Intent( getContext(), EditProfileActivity.class);
+                    startActivity( intentFromProfileToEditProfile);
                 }
                 else if ( buttonText.equals( "FOLLOW"))
                 {
