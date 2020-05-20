@@ -21,11 +21,14 @@
                 android:layout_gravity="center"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/fashion"
+                android:tint="@color/white"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+
             <TextView
                 android:id="@+id/textViewTitleEventElement"
                 android:layout_width="wrap_content"
@@ -35,8 +38,21 @@
                 android:text="Event Title."
                 android:fontFamily="@font/regular"
                 android:textColor="@color/blue"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/textViewUsernameEventElement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Organizer username"
+                    android:paddingStart="7dp"
+                    android:fontFamily="@font/light"
+                    android:maxLines="1"
+
+                    android:textSize="14sp"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/blue"/>
 
             <TextView
                 android:id="@+id/textViewTypeEventElement"
@@ -46,60 +62,47 @@
                 android:paddingStart="7dp"
                 android:layout_marginTop="2dp"
                 android:textColor="@color/white"
+                android:textStyle="normal|italic"
                 android:fontFamily="@font/regular"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                />
+
             </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewUsernameEventElement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Organizer username"
-            android:paddingTop="5dp"
-            android:fontFamily="@font/regular"
-            android:maxLines="1"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold|italic"
-            android:textColor="@color/blue"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/soft_border"
+    android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/textViewLocationEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/regular"
+            android:fontFamily="@font/light"
             android:maxLines="2"
+            android:layout_marginTop="7dp"
             android:text="Location"
             android:textColor="@color/blue"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textViewDateEventElement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date"
-            android:fontFamily="@font/regular"
+            android:fontFamily="@font/light"
             android:maxLines="1"
             android:layout_gravity="center"
             android:textColor="@color/blue"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
+            android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textViewNoOfParticipantsEventElement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current number of participants"
-            android:fontFamily="@font/regular"
-            android:maxLines="1"
-            android:layout_gravity="center"
-            android:textColor="@color/blue"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
+
 
         <TextView
             android:id="@+id/textViewDescriptionEventElement"
@@ -107,11 +110,23 @@
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:text="Description..."
-            android:fontFamily="@font/regular"
+            android:fontFamily="@font/light"
             android:layout_gravity="center"
             android:textColor="@color/blue"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
+            android:textSize="16sp"
+             />
+
+        <TextView
+            android:id="@+id/textViewNoOfParticipantsEventElement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current number of participants"
+            android:fontFamily="@font/light"
+            android:maxLines="1"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
 
         <TextView
             android:id="@+id/textViewPrivacySettingEventElement"
@@ -119,13 +134,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Privacy Setting"
-            android:fontFamily="@font/regular"
-            android:textColor="@color/blue"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
+            android:fontFamily="@font/light"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+             />
+
+
+
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:layout_marginTop="8dp"
@@ -136,7 +156,6 @@
                 android:id="@+id/imageViewJoinEventElement"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="140dp"
 
                 android:tint="@color/white"
                 android:src="@drawable/hands" />
@@ -150,7 +169,6 @@
                 android:text="View Event"
                 android:textColor="@color/white"
                 android:fontFamily="@font/regular"/>
-
         </LinearLayout>
 
     </LinearLayout>

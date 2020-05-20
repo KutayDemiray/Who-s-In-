@@ -107,7 +107,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         holder.textViewLocationEventElement.setText( event.getLocation() );
         holder.textViewDateEventElement.setText( event.getDate().toString() );
         holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + " / " + event.getCapacity() );
-        holder.textViewDescriptionEventElement.setText( event.getDescription() );
+        holder.textViewDescriptionEventElement.setText( "\"" + event.getDescription() + "\" " );
         holder.textViewPrivacySettingEventElement.setText( event.getPrivacySetting() );
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
