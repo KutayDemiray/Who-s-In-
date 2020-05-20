@@ -40,7 +40,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/logout"
-                    android:tint="@color/white" />
+                    android:tint="@color/orange" />
 
             </RelativeLayout>
 
@@ -50,6 +50,7 @@
 
     <!-- Contains everything but upper bar, also has marginTop -->
     <ScrollView
+        android:id="@+id/scrollViewProfileFragment"
         android:layout_marginTop="14dp"
         android:layout_below="@+id/profileBar"
         android:layout_width="match_parent"
@@ -274,5 +275,12 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- Added this to display the button at the bottom of the screen. -->
+    <Button
+        android:layout_below="@+id/scrollViewProfileFragment"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="@color/darkBlue"/>
 
 </RelativeLayout>
