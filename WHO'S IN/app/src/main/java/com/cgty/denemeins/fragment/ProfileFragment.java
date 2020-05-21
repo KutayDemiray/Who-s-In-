@@ -122,7 +122,7 @@ public class ProfileFragment extends Fragment {
         image_profile = view.findViewById( R.id.profilePicture );
 
         textView_Age = view.findViewById( R.id.textViewProfileAge );
-        textView_Username = view.findViewById( R.id.textViewProfileUsername );                                          //id gonna be changed
+        textView_Username = view.findViewById( R.id.textViewProfileUsername );
         textView_Bio = view.findViewById( R.id.textViewProfileBio );
         textView_Followers = view.findViewById( R.id.textViewProfileFollowersInfo );
         textView_Following = view.findViewById( R.id.textViewProfileFollowingInfo );
@@ -136,8 +136,6 @@ public class ProfileFragment extends Fragment {
 
 
         //göko
-        image_profile = view.findViewById( R.id.profilePicture );
-        username = view.findViewById( R.id.textViewProfileUsername );
         storageReference = FirebaseStorage.getInstance().getReference("Uploads" );
         reference = FirebaseDatabase.getInstance().getReference( "Users" ).child( currentUser.getUid() );
 
@@ -284,6 +282,7 @@ public class ProfileFragment extends Fragment {
     private String getFileExtension( Uri uri ) {
         ContentResolver contentResolver = getContext().getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        
         return mimeTypeMap.getExtensionFromMimeType( contentResolver.getType(uri) );
     }
 
@@ -500,7 +499,7 @@ public class ProfileFragment extends Fragment {
     }
 
     /**
-     * Gökberk
+     * @author Gökberk
      */
     private void setupFireBaseListener() {
         Log.d( TAG, "setupFirebaseListener: setting up the auth state listener." );

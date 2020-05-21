@@ -83,6 +83,7 @@
 
     <TextView
         android:id="@+id/eventDescription"
+        android:padding="10dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -123,7 +124,7 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/button_background_orange"
         android:fontFamily="@font/bold"
-        android:text="JOIN"
+        android:text="@string/join"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
