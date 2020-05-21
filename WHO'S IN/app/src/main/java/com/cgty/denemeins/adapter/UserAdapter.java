@@ -101,6 +101,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 } else {
                     Intent intent;
                     intent = new Intent( mContext, MainActivity.class );
+                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("publisherId", user.getId() );
                     mContext.startActivity( intent );
                 }
@@ -184,7 +185,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
     /**
-     * Adding notification feature to follow
+     * Adding notification to follow button so that if someone is followed, he or she will be notified
+     * that they are being started to follow, and setting the notification according to this
      * @author Yağız Yaşar
      * @param userId
      */

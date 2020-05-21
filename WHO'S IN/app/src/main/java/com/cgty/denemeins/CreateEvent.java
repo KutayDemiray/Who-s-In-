@@ -319,6 +319,14 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
+    /**
+     * Adding notification to the organizer's followers so that they will be notified if one of their following people
+     * has created and event, and setting the notification according to this.
+     * @author Yağız Yaşar
+     * @param eventId
+     * @param organizerId
+     * @param eventTitle
+     */
     private void addNotifications( final String eventId, String organizerId, final String eventTitle ) {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
