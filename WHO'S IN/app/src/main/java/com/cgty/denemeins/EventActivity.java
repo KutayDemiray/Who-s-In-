@@ -80,7 +80,10 @@ public class EventActivity extends AppCompatActivity {
             });
 
             eventTitle.setText( event.getTitle() );
-            eventType.setText( event.getMainType() + " - " + event.getSubType() );
+            if ( event.getMainType().equalsIgnoreCase("meeting") )
+               eventType.setText( event.getMainType() );
+            else
+               eventType.setText( event.getMainType() + " - " + event.getSubType() );
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
             eventDescription.setText( event.getDescription() );
             eventDescription.setMovementMethod(new ScrollingMovementMethod() );

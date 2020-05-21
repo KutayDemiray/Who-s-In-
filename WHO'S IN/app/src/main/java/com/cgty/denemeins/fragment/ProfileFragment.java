@@ -122,7 +122,7 @@ public class ProfileFragment extends Fragment {
         image_profile = view.findViewById( R.id.profilePicture );
 
         textView_Age = view.findViewById( R.id.textViewProfileAge );
-        textView_Username = view.findViewById( R.id.textViewProfileUsername );                                          //id gonna be changed
+        textView_Username = view.findViewById( R.id.textViewProfileUsername );
         textView_Bio = view.findViewById( R.id.textViewProfileBio );
         textView_Followers = view.findViewById( R.id.textViewProfileFollowersInfo );
         textView_Following = view.findViewById( R.id.textViewProfileFollowingInfo );
@@ -192,7 +192,7 @@ public class ProfileFragment extends Fragment {
             //button_PastActivities.setVisibility(View.GONE);
         }
 
-
+        //çağatay
         button_EditProfile.setOnClickListener( new View.OnClickListener() {
 
             @Override
@@ -221,6 +221,7 @@ public class ProfileFragment extends Fragment {
 
         setupFireBaseListener();
 
+        //gökberk
         mSignOut.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -498,7 +499,8 @@ public class ProfileFragment extends Fragment {
     }
 
     /**
-     * Gökberk
+     * for sign out
+     * @author Gökberk
      */
     private void setupFireBaseListener() {
         Log.d( TAG, "setupFirebaseListener: setting up the auth state listener." );
