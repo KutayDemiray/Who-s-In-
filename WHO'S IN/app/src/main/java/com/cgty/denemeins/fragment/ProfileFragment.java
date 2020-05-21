@@ -129,8 +129,6 @@ public class ProfileFragment extends Fragment {
         textView_CreatedEvents = view.findViewById( R.id.textViewProfileEventsCreatedInfo );
 
         button_EditProfile = view.findViewById( R.id.buttonEditProfile_profile );
-        //button_Followers = view.findViewById( R.id.buttonFollowers_profile );
-        //button_Following = view.findViewById( R.id.buttonFollowing_profile );
         button_PastActivities = view.findViewById( R.id.buttonPastEvents_profile );
         button_ScheduledActivities = view.findViewById( R.id.buttonScheduledEvents_profile );
 
