@@ -36,7 +36,8 @@ I barely looked into my part in the project due to upcoming assignments in ENG10
 I looked some examples for notification feature and then added the required classes and controllers -NotificationAdapter, NotificationFragment- to project. I managed the add notification to follow button -UserAdapter- so that if a person is starting be followed by someone else he or she will get a notification. Then I started to think how can I implement notification to more features. Also, I did the styling of the notification fragment and adapter.
 
 ### May 18th - May 24th, 2020
-I have created EventActivity page for each unique event so that users can join events and see the events information, description and etc. Also, I added notifications to create, join and leave event. I implemented the required code into CreateEvent, EventActivity classes. I commented my parts of the code and tried to bug fixes on the general of the code. Then, we recorded a video through Zoom despite the current conditions.
+I have created EventActivity page for each unique event so that users can join events and see the events information, description and etc. Also, I added notifications to create, join and leave event. I implemented the required code into CreateEvent, EventActivity classes. I commented my parts of the code and tried to bug fixes on the general of the code. Then, we recorded a video through Zoom despite the current conditions. 
+I created the required classes for participants by looking my and my friends' codes. I added Show Participant button to Event Activity page so that users can look at the current participants of the events, also did some minor bug fixes in the code and styling.
 
 
 
