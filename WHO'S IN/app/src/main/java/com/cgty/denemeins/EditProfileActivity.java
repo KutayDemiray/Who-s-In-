@@ -161,8 +161,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 if ( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082") )
                     imageViewProfile.setImageResource( R.mipmap.ic_launcher);
                 else
-                if ( EditProfileActivity.this != null )
+                if ( EditProfileActivity.this != null ) {
                     Glide.with( EditProfileActivity.this).load( user.getPicurl()).into( imageViewProfile);
+                }
             }
 
             @Override
@@ -217,8 +218,9 @@ public class EditProfileActivity extends AppCompatActivity {
         pd.show();
 
         if ( imageUri != null ) {
-            final StorageReference fileReference = storageReference.child( System.currentTimeMillis()
-                    + "-" +getFileExtension( imageUri ) );
+            final StorageReference fileReference;
+            fileReference = storageReference.child( System.currentTimeMillis() + "-" + getFileExtension( imageUri ) );
+
 
             uploadTask = fileReference.putFile( imageUri );
             uploadTask.continueWithTask( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -276,9 +278,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
             if ( uploadTask != null && uploadTask.isInProgress() )
                 Toast.makeText(EditProfileActivity.this, "Upload is in progress", Toast.LENGTH_SHORT ).show();
-            else {
+            else
                 uploadImage();
-            }
         }
     }
 
