@@ -19,10 +19,7 @@
         android:text="@string/event_title"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="30sp"/>
 
     <TextView
         android:id="@+id/eventOrganizerName"
@@ -33,10 +30,7 @@
         android:fontFamily="@font/regular"
         android:text="eventOrganizerName"
         android:textColor="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/eventType"
@@ -48,10 +42,8 @@
         android:fontFamily="@font/regular"
         android:text="eventType"
         android:textColor="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventOrganizerName" />
+        android:maxLines="2"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/eventDateAndLocation"
@@ -62,10 +54,7 @@
         android:fontFamily="@font/regular"
         android:text="eventDateAndLocation"
         android:textColor="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventType" />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/eventCapacity"
@@ -76,10 +65,7 @@
         android:fontFamily="@font/regular"
         android:text="eventCapacity"
         android:textColor="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventDescription" />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/eventDescription"
@@ -98,10 +84,7 @@
         android:text="description"
         android:scrollbars = "vertical"
         android:textColor="@color/blue"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventDateAndLocation" />
+        android:textSize="20sp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventShowParticipantsButton"
@@ -113,10 +96,7 @@
         android:fontFamily="@font/bold"
         android:text="SHOW PARTICIPANTS"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventDescription" />
+        android:textSize="15sp"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -129,9 +109,6 @@
         android:fontFamily="@font/bold"
         android:text="@string/join"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventShowParticipantsButton" />
+        android:textSize="30sp"/>
 
 </LinearLayout>
