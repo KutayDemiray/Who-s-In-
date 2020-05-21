@@ -58,8 +58,6 @@ public class NearbyFragment extends Fragment {
         View view;
         view = inflater.inflate(R.layout.fragment_nearby, container, false);
 
-        View view = inflater.inflate( R.layout.fragment_nearby, container, false );
-
         recyclerView = view.findViewById( R.id.nearbyRecyclerView );
         recyclerView.setHasFixedSize( true );
         recyclerView.setLayoutManager( new LinearLayoutManager( getContext() ) );
