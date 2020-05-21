@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    tools:context=".ShowParticipants">
+
+    <androidx.appcompat.widget.Toolbar
+        app:title="Participants"
+        android:id="@+id/toolbarShowParticipants"
+        android:background="@color/darkBlue"
+        android:layout_width="match_parent"
+        app:titleTextColor="@color/blue"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewShowParticipants"
+        android:layout_below="@+id/toolbarShowParticipants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

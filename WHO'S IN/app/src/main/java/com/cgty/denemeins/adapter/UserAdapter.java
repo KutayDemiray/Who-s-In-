@@ -101,6 +101,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 } else {
                     Intent intent;
                     intent = new Intent( mContext, MainActivity.class );
+                    intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("publisherId", user.getId() );
                     mContext.startActivity( intent );
                 }

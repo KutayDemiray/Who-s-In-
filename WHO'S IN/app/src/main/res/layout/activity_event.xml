@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/regular"
         android:text="eventOrganizerName"
         android:textColor="@color/blue"
@@ -40,43 +40,43 @@
 
     <TextView
         android:id="@+id/eventType"
-        android:text="eventType"
-        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/regular"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="176dp"
+        android:fontFamily="@font/regular"
+        android:text="eventType"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventOrganizerName"
-        android:textColor="@color/blue"/>
+        app:layout_constraintTop_toBottomOf="@+id/eventOrganizerName" />
 
     <TextView
         android:id="@+id/eventDateAndLocation"
-        android:text="eventDateAndLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:textSize="20sp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/regular"
+        android:text="eventDateAndLocation"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventType"
-        android:textColor="@color/blue"/>
+        app:layout_constraintTop_toBottomOf="@+id/eventType" />
 
     <TextView
         android:id="@+id/eventCapacity"
-        android:text="eventCapacity"
-        android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/regular"
+        android:text="eventCapacity"
         android:textColor="@color/blue"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventDescription" />
@@ -87,7 +87,7 @@
         android:layout_height="94dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/soft_border"
         android:fontFamily="@font/bold"
         android:gravity="center"
@@ -98,40 +98,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventDateAndLocation" />
 
-    <TextView
-        android:id="@+id/eventParticipants"
-        android:textSize="20sp"
-        android:fontFamily="@font/bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="eventParticipants"
-        android:layout_marginTop="40dp"
-        android:textColor="@color/blue"/>
-
-
-
-
-
-
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/eventShowParticipantsButton"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_black"
+        android:fontFamily="@font/light"
+        android:text="SHOW PARTICIPANTS"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventDescription" />
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventJoinButton"
         android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="76dp"
         android:layout_gravity="center"
-        android:text="JOIN"
-        android:fontFamily="@font/bold"
-        android:textSize="30sp"
-        android:textColor="@color/darkBlue"
+        android:layout_marginTop="36dp"
         android:background="@drawable/mybutton_white"
+        android:fontFamily="@font/bold"
+        android:text="JOIN"
+        android:textColor="@color/darkBlue"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventParticipants" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/eventShowParticipantsButton" />
 
 </LinearLayout>

@@ -33,10 +33,9 @@ import java.util.HashMap;
  */
 public class EventActivity extends AppCompatActivity {
 
-   TextView eventTitle, eventOrganizerName, eventType, eventDateAndLocation, eventDescription, eventCapacity,
-            eventParticipants;
+   TextView eventTitle, eventOrganizerName, eventType, eventDateAndLocation, eventDescription, eventCapacity;
 
-   AppCompatButton eventJoinButton;
+   AppCompatButton eventJoinButton, eventShowParticipantsButton;
    Intent intent;
 
    @Override
@@ -56,34 +55,21 @@ public class EventActivity extends AppCompatActivity {
       eventDateAndLocation = findViewById( R.id.eventDateAndLocation );
       eventDescription = findViewById( R.id.eventDescription );
       eventCapacity = findViewById( R.id.eventCapacity );
-      eventParticipants = findViewById( R.id.eventParticipants );
+      eventShowParticipantsButton = findViewById( R.id.eventShowParticipantsButton );
       eventJoinButton = findViewById( R.id.eventJoinButton );
       
       ref.addValueEventListener( new ValueEventListener() {
          @Override
          public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
             final Event event = dataSnapshot.child( eventId ).getValue( Event.class ); // uses the eventId from intent
-            final ArrayList<String> participantsId = new ArrayList<>(); //opening an empty ArrayList for participants
-
-            for ( DataSnapshot idSnapshot : dataSnapshot.child("participants").getChildren() ) {
-               participantsId.add( idSnapshot.getValue( String.class ) );
-            }
-            Log.d("DENEME123", "onDataChange: " + participantsId.toString() );
 
             DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Users" ); //reference to events to get the current participants and organizers
-            final ArrayList<String> participantsUsername = new ArrayList<>();
-            String usernameString = "";
 
             ref2.addListenerForSingleValueEvent(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                  for ( DataSnapshot userSnapshot : dataSnapshot.getChildren() ) {
-                     if ( participantsId.contains( userSnapshot.getKey() ) ) {
-                        participantsUsername.add( userSnapshot.child( "username" ).getValue( String.class ) );
-                     }
-                  }
                   String organizerUsername = dataSnapshot.child( event.getOrganizerId() ).child( "username" ).getValue( String.class );
-                  eventOrganizerName.setText( organizerUsername);
+                  eventOrganizerName.setText( "Organizer: " + organizerUsername);
                }
 
                @Override
@@ -106,12 +92,6 @@ public class EventActivity extends AppCompatActivity {
             }
 
             eventCapacity.setText( "Capacity: "  + event.getNumberOfParticipants() + "/" + event.getCapacity() );
-
-            for ( String s : participantsUsername ) {
-               usernameString = usernameString + s + "\n";
-            }
-            eventParticipants.setText( usernameString);
-
          }
 
          @Override
@@ -125,6 +105,15 @@ public class EventActivity extends AppCompatActivity {
          @Override
          public void onClick( View v ) {
             addOrRemoveParticipant( eventId, firebaseUser.getUid() );
+         }
+      });
+
+      eventShowParticipantsButton.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+            Intent fromEventToParticipants = new Intent( getBaseContext(), ShowParticipants.class );
+            fromEventToParticipants.putExtra( "eventId", eventId );
+            startActivity( fromEventToParticipants );
          }
       });
 
