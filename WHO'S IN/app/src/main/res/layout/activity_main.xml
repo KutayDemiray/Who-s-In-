@@ -14,9 +14,9 @@
     android:layout_alignParentBottom="true"
     app:menu="@menu/bottom_navigation"
     app:labelVisibilityMode="unlabeled"
-    app:itemIconTint="@color/darkBlue"
+    app:itemIconTint="@color/bnv_tab_item_foreground"
     app:itemIconSize="50dp"
-    android:background="@color/white"/>
+    android:background="@color/darkBlue"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
