@@ -115,15 +115,15 @@
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/materialEditTextChangeBioEditProfile"
-            android:layout_marginTop="20dp"
-            app:met_floatingLabel="highlight"
-            android:layout_width="match_parent"
+            android:layout_width="394dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/regular"
-            android:textColor="@color/darkBlue"
+            android:hint="Your bio"
             android:inputType="textNoSuggestions"
-            android:maxLines="2"
-            android:hint="Your bio"/>
+            android:maxLines="3"
+            android:textColor="@color/darkBlue"
+            app:met_floatingLabel="highlight" />
 
     </LinearLayout>
 

@@ -59,10 +59,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
 	//firebase
 	FirebaseUser currentUser;
-	private StorageTask uploadTask;  //try public
-	private Uri imageUri;
-    private static final int IMAGE_REQUEST = 1;
-	StorageReference storageReference;
 	DatabaseReference reference;
     // private Uri mImageUri;
     // StorageReference storagePath;
@@ -123,8 +119,6 @@ public class EditProfileActivity extends AppCompatActivity {
 			}
 		});
 
-
-
 		//save
 		textViewSave.setOnClickListener( new View.OnClickListener() {
 			@Override
@@ -145,44 +139,7 @@ public class EditProfileActivity extends AppCompatActivity {
 				 */
 			}
 		});
-
-        imageViewProfile.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick( View view ) {
-                openImage();
-            }
-        });
-
-        reference.addValueEventListener( new ValueEventListener() {
-            @Override
-            public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
-                User user = dataSnapshot.getValue( User.class );
-                //materialEditTextUsername.setText( user.getUsername() );
-                if ( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082") )
-                    imageViewProfile.setImageResource( R.mipmap.ic_launcher);
-                else
-                if ( EditProfileActivity.this != null ) {
-                    Glide.with( EditProfileActivity.this).load( user.getPicurl()).into( imageViewProfile);
-                }
-            }
-
-            @Override
-            public void onCancelled( @NonNull DatabaseError databaseError ) {
-
-            }
-        });
 	}
-
-    /**
-     * for profile image upload
-     * @author Gökberk
-     */
-    private void openImage() {
-        Intent intent = new Intent();
-        intent.setType( "image/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT );
-        startActivityForResult( intent, IMAGE_REQUEST );
-    }
 
     /**
      * @author Çağatay Şafak
@@ -205,85 +162,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
 		updatePath.updateChildren( updateUserHashMap );
 	}
-
-
-
-    /**
-     * for profile image upload
-     * @author Gökberk
-     */
-    private void uploadImage() {
-        final ProgressDialog pd = new ProgressDialog( EditProfileActivity.this );
-        pd.setMessage( "Uploading..." );
-        pd.show();
-
-        if ( imageUri != null ) {
-            final StorageReference fileReference;
-            fileReference = storageReference.child( System.currentTimeMillis() + "-" + getFileExtension( imageUri ) );
-
-
-            uploadTask = fileReference.putFile( imageUri );
-            uploadTask.continueWithTask( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then( @NonNull Task<UploadTask.TaskSnapshot> task ) throws Exception {
-                    if( !task.isSuccessful() )
-                        throw task.getException();
-                    return fileReference.getDownloadUrl();
-                }
-            }).addOnCompleteListener( new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete( @NonNull Task<Uri> task ) {
-                    if ( task.isSuccessful() ){
-                        Uri downloadUri = task.getResult();
-                        String mUri = downloadUri.toString();
-
-                        reference = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );
-                        HashMap<String, Object> map = new HashMap<>();
-                        map.put( "picurl", mUri );
-                        reference.updateChildren( map );
-
-                        pd.dismiss();
-                    }
-                    else {
-                        Toast.makeText( EditProfileActivity.this, "Failed!", Toast.LENGTH_SHORT ).show();
-                        pd.dismiss();
-                    }
-                }
-            }).addOnFailureListener( new OnFailureListener() {
-                @Override
-                public void onFailure( @NonNull Exception e ) {
-                    Toast.makeText( EditProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT ).show();
-                    pd.dismiss();
-                }
-            });
-        }
-        else{
-            Toast.makeText( EditProfileActivity.this, "No image selected", Toast.LENGTH_SHORT ).show();
-        }
-    }
-
-    /**
-     * for profile picture uplaod
-     * @param requestCode
-     * @param resultCode
-     * @param data
-     * @author Gökberk
-     */
-    @Override
-    public void onActivityResult( int requestCode, int resultCode, Intent data ) {
-        super.onActivityResult( requestCode, resultCode, data );
-
-        if( requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null ) {
-            imageUri = data.getData();
-
-            if ( uploadTask != null && uploadTask.isInProgress() )
-                Toast.makeText(EditProfileActivity.this, "Upload is in progress", Toast.LENGTH_SHORT ).show();
-            else
-                uploadImage();
-        }
-    }
-
-
 
     /**
      * for profile image upload

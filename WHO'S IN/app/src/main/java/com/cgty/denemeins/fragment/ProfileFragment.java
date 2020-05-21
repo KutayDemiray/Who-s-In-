@@ -161,7 +161,8 @@ public class ProfileFragment extends Fragment {
         image_profile.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
-                openImage();
+                if ( profileID.equals( currentUser.getUid()) )
+                    openImage();
             }
         });
 
@@ -288,7 +289,7 @@ public class ProfileFragment extends Fragment {
 
     /**
      * for profile image upload
-     * @author Gökberk
+     * @author Gökberk Keskinkılıç
      */
     private void uploadImage() {
         final ProgressDialog pd = new ProgressDialog( getContext() );
