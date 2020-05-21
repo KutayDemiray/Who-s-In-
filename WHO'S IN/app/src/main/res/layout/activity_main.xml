@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<com.google.android.material.bottomnavigation.BottomNavigationView
+    <com.google.android.material.bottomnavigation.BottomNavigationView
     android:id="@+id/bottom_navigation"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,7 +16,14 @@
     app:labelVisibilityMode="unlabeled"
     app:itemIconTint="@color/bnv_tab_item_foreground"
     app:itemIconSize="50dp"
-    android:background="@color/darkBlue"/>
+    android:background="@color/darkBlue">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/white"></View>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <FrameLayout
         android:id="@+id/fragment_container"
