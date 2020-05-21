@@ -61,7 +61,7 @@
         android:background="@drawable/button_background"
         android:fontFamily="@font/bold"
         android:text="LOG IN"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textViewGoSignUp"

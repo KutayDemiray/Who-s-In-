@@ -300,8 +300,8 @@ public class ProfileFragment extends Fragment {
             final StorageReference fileReference = storageReference.child( System.currentTimeMillis()
                     + "-" + getFileExtension( imageUri ) );
 
-            uploadTask = fileReference.getFile( imageUri );
-            uploadTask.continueWith( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
+            uploadTask = fileReference.putFile( imageUri );
+            uploadTask.continueWithTask( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then( @NonNull Task<UploadTask.TaskSnapshot> task ) throws Exception {
                     if( !task.isSuccessful() )

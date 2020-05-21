@@ -50,21 +50,22 @@ public class EditProfileActivity extends AppCompatActivity {
 	// properties
 	ImageView imageViewClose;
 	ImageView imageViewProfile;
-	TextView textViewChangeSave;
+	TextView textViewSave;
 	TextView textViewChangePhoto;
 	MaterialEditText materialEditTextUsername;
 	MaterialEditText materialEditTextAge;
 	MaterialEditText materialEditTextBio;
-    private static final int IMAGE_REQUEST = 1;
+
 
 	//firebase
 	FirebaseUser currentUser;
 	private StorageTask uploadTask;  //try public
-	// private Uri mImageUri;
-	// StorageReference storagePath;
 	private Uri imageUri;
+    private static final int IMAGE_REQUEST = 1;
 	StorageReference storageReference;
 	DatabaseReference reference;
+    // private Uri mImageUri;
+    // StorageReference storagePath;
 
 	// methods
 	@Override
@@ -80,7 +81,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 		//TextViews
 		textViewChangePhoto = findViewById( R.id.textViewChangePhotoEditProfile );
-		textViewChangeSave = findViewById( R.id.textViewSaveEditProfile );
+		textViewSave = findViewById( R.id.textViewSaveEditProfile );
 
 		//MaterialEditTexts
 		materialEditTextUsername = findViewById( R.id.materialEditTextChangeUsernameEditProfile );
@@ -125,7 +126,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
 		//save
-		textViewChangeSave.setOnClickListener( new View.OnClickListener() {
+		textViewSave.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick( View v ) {
 				updateProfile( materialEditTextUsername.getText().toString(), materialEditTextAge.getText().toString(), materialEditTextBio.getText().toString() );   // un, age, bio
@@ -145,7 +146,7 @@ public class EditProfileActivity extends AppCompatActivity {
 			}
 		});
 
-        textViewChangePhoto.setOnClickListener( new View.OnClickListener() {
+        imageViewProfile.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View view ) {
                 openImage();
@@ -156,12 +157,12 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 User user = dataSnapshot.getValue( User.class );
-                materialEditTextUsername.setText( user.getUsername() );
+                //materialEditTextUsername.setText( user.getUsername() );
                 if ( user.getPicurl().equals("https://firebasestorage.googleapis.com/v0/b/deneme-ins.appspot.com/o/femalePP.jpg?alt=media&token=caf1f449-bba5-430f-a738-843873166082") )
-                    imageViewProfile.setImageResource(R.mipmap.ic_launcher);
+                    imageViewProfile.setImageResource( R.mipmap.ic_launcher);
                 else
                 if ( EditProfileActivity.this != null )
-                    Glide.with( EditProfileActivity.this).load(user.getPicurl()).into(imageViewProfile);
+                    Glide.with( EditProfileActivity.this).load( user.getPicurl()).into( imageViewProfile);
             }
 
             @Override
@@ -171,6 +172,23 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 	}
 
+    /**
+     * for profile image upload
+     * @author Gökberk
+     */
+    private void openImage() {
+        Intent intent = new Intent();
+        intent.setType( "image/*" );
+        intent.setAction( Intent.ACTION_GET_CONTENT );
+        startActivityForResult( intent, IMAGE_REQUEST );
+    }
+
+    /**
+     * @author Çağatay Şafak
+     * @param theUsername
+     * @param theAge
+     * @param theBio
+     */
 	private void updateProfile( String theUsername, String theAge, String theBio ) {
 
 		DatabaseReference updatePath;
@@ -202,8 +220,8 @@ public class EditProfileActivity extends AppCompatActivity {
             final StorageReference fileReference = storageReference.child( System.currentTimeMillis()
                     + "-" +getFileExtension( imageUri ) );
 
-            uploadTask = fileReference.getFile( imageUri );
-            uploadTask.continueWith( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
+            uploadTask = fileReference.putFile( imageUri );
+            uploadTask.continueWithTask( new Continuation <UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then( @NonNull Task<UploadTask.TaskSnapshot> task ) throws Exception {
                     if( !task.isSuccessful() )
@@ -264,16 +282,7 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * for profile image upload
-     * @author Gökberk
-     */
-    private void openImage() {
-        Intent intent = new Intent();
-        intent.setType( "image/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT );
-        startActivityForResult( intent, IMAGE_REQUEST );
-    }
+
 
     /**
      * for profile image upload

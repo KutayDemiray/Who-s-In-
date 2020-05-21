@@ -27,7 +27,7 @@
         android:background="@drawable/button_background"
         android:fontFamily="@font/bold"
         android:text="LOG IN"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/buttonSignUpStart"
@@ -39,6 +39,6 @@
         android:background="@drawable/button_background"
         android:text="SIGN UP"
         android:fontFamily="@font/bold"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/white" />
 
     </LinearLayout>

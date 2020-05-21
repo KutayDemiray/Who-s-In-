@@ -109,7 +109,7 @@
             android:id="@+id/buttonCreateEvent"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/mybutton"
+            android:background="@drawable/button_background_orange"
             android:fontFamily="@font/bold"
             android:layout_marginTop="30dp"
             android:gravity="center"

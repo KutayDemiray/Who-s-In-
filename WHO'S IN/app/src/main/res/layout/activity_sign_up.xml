@@ -82,7 +82,7 @@
         android:background="@drawable/button_background"
         android:text="SIGN UP"
         android:fontFamily="@font/bold"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textViewGoLogin"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@color/white"
-        android:text="Already have an account? Login!"
+        android:text="Already have an account? Log in now!"
         android:textSize="18sp"
         android:gravity="center"/>
 

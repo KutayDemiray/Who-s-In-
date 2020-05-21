@@ -102,7 +102,7 @@
         android:layout_width="301dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/mybutton_borders"
+        android:background="@drawable/button_background_orange"
         android:fontFamily="@font/bold"
         android:text="Add Event"
         android:textColor="@color/white"

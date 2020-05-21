@@ -41,7 +41,7 @@
                     android:layout_marginEnd="100dp"
                     android:background="@android:color/transparent"
                     android:hint="Search Users..."
-                    android:textColorHint="@color/darkBlue"/>
+                    android:textColorHint="@color/white"/>
 
             </RelativeLayout>
 
