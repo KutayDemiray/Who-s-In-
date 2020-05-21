@@ -120,6 +120,7 @@ public class ProfileFragment extends Fragment {
 
         mSignOut = (ImageButton) view.findViewById( R.id.buttonSignOut );
         image_profile = view.findViewById( R.id.profilePicture );
+        username = view.findViewById( R.id.textViewProfileUsername );
 
         textView_Age = view.findViewById( R.id.textViewProfileAge );
         textView_Username = view.findViewById( R.id.textViewProfileUsername );
