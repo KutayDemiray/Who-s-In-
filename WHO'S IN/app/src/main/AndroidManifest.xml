@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cgty.denemeins">
+    package="com.cgty.denemeins"
+    android:versionCode="1"
+    android:versionName="1.0" >
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -18,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowParticipants"></activity>
+        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".ShowParticipants" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".EventActivity" />
         <activity android:name=".FeedEvents" />
@@ -49,10 +52,10 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-        <activity android:name=".ShowFollowers"></activity>
-        <activity android:name=".ShowFollowing"></activity>
-        <activity android:name=".ShowPastEvents"></activity>
-        <activity android:name=".ShowScheduledEvents"></activity>
+        <activity android:name=".ShowFollowers" />
+        <activity android:name=".ShowFollowing" />
+        <activity android:name=".ShowPastEvents" />
+        <activity android:name=".ShowScheduledEvents" />
     </application>
 
 </manifest>
