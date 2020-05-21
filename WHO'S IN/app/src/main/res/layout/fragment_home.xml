@@ -101,21 +101,19 @@
         android:layout_height="wrap_content"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-
-
         android:layout_toEndOf="@+id/mainVerticalLayout">
 
         <Button
             android:id="@+id/buttonCreateEvent"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/button_background_orange"
             android:fontFamily="@font/bold"
-            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="Create Event"
             android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textSize="25sp" />
 
     </RelativeLayout>
 
