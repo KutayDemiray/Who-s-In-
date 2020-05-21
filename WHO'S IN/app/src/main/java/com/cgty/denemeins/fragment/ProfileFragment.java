@@ -62,22 +62,22 @@ import static android.app.Activity.RESULT_OK;
  * @version 2.0
  */
 public class ProfileFragment extends Fragment {
-
+    
     //properties
     ImageView image_profile;
     ImageView image_signOut;
     ImageButton mSignOut;
-    Button button_EditProfile;
-    Button button_Followers;
-    Button button_Following;
-    Button button_PastActivities;
-    Button button_ScheduledActivities;
-    TextView textView_Age;
-    TextView textView_Username;
-    TextView textView_Bio;
-    TextView textView_Followers;
-    TextView textView_Following;
-    TextView textView_CreatedEvents;
+    private Button button_EditProfile;
+    private Button button_Followers;
+    private Button button_Following;
+    private Button button_PastActivities;
+    private Button button_ScheduledActivities;
+    private TextView textView_Age;
+    private TextView textView_Username;
+    private TextView textView_Bio;
+    private TextView textView_Followers;
+    private TextView textView_Following;
+    private TextView textView_CreatedEvents;
     FirebaseUser currentUser;
     String profileID;
     ProgressBar progressBar;
