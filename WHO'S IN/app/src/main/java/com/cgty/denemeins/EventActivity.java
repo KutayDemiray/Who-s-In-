@@ -84,8 +84,8 @@ public class EventActivity extends AppCompatActivity {
                eventType.setText(event.getMainType());
             }
             else {
-               eventType.setText(event.getMainType() + event.getSubType());
-               //eventType.setText(event.getMainType() + " - " + event.getSubType());
+               //eventType.setText(event.getMainType() + event.getSubType());
+               eventType.setText(event.getMainType() + " - " + event.getSubType());
             }
             eventDateAndLocation.setText( event.getDate().toString() + " " + event.getLocation() );
             eventDescription.setText( event.getDescription() );

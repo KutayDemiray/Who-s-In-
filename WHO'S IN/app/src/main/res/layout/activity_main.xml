@@ -20,8 +20,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/blue"></View>
+            android:layout_height="0.5dp"
+            android:background="@color/white"></View>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

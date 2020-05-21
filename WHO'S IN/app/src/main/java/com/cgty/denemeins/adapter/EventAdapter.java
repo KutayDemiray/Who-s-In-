@@ -111,7 +111,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         // initialize text view texts
         holder.textViewTitleEventElement.setText( event.getTitle() );
-        holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
+        if ( event.getMainType().equalsIgnoreCase( "meeting")  )
+            holder.textViewTypeEventElement.setText( event.getMainType() );
+        else
+            holder.textViewTypeEventElement.setText( event.getMainType() + " - " + event.getSubType() );
         holder.textViewLocationEventElement.setText( event.getLocation() );
         holder.textViewDateEventElement.setText( event.getDate().toString() );
         holder.textViewNoOfParticipantsEventElement.setText( "Capacity: " + " / " + event.getCapacity() );
