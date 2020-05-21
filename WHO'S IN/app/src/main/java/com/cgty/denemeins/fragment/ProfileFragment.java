@@ -454,6 +454,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 textView_Following.setText( dataSnapshot.getChildrenCount() + " Following " );
+    
+                progressBar.setVisibility( View.GONE );
             }
 
             @Override
@@ -487,8 +489,6 @@ public class ProfileFragment extends Fragment {
                 }
 
                 textView_CreatedEvents.setText( i + " Events Created " );
-	
-				progressBar.setVisibility( View.GONE );
             }
 
             @Override

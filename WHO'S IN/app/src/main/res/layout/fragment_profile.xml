@@ -271,7 +271,6 @@
     <!-- This progress bar hides the default values of the variables
          on this page, Profile Fragment seems so ugly while calling
          its methods without this bar. -->
-
     <ProgressBar
         android:id="@+id/progressProfileFragment"
         android:layout_width="wrap_content"
