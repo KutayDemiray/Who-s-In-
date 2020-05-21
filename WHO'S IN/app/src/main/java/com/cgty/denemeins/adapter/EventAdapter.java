@@ -136,7 +136,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
          * Used the same technique with the follower listing (in ProfileFragment) to list the participants
          * @author Çağatay Şafak
          * @version 19 MAY 20
-         */
+         *
         holder.textViewNoOfParticipantsEventElement.setOnClickListener( new View.OnClickListener() {
 
             @Override
@@ -152,6 +152,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             }
 
         });
+        */
+
 
     }
 
