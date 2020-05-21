@@ -36,7 +36,7 @@ public class NearbyFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<User> mUsers;
     private UserAdapter userAdapter;
-    EditText searchBar;
+    private EditText searchBar;
 
     //constructor
     public NearbyFragment() {
@@ -55,6 +55,8 @@ public class NearbyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view;
+        view = inflater.inflate(R.layout.fragment_nearby, container, false);
 
         recyclerView = view.findViewById( R.id.nearbyRecyclerView );
         recyclerView.setHasFixedSize( true );
