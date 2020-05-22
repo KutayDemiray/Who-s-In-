@@ -14,14 +14,16 @@ public class Notification {
    private String text;
    private String eventId;
    private String userId;
+   private String mentionedUserId;
    private int    notificationType;
 
 
-   public Notification( String id, String text, String eventId, String userId, int notificationType ) {
+   public Notification( String id, String text, String eventId, String userId,  String mentionedUserId, int notificationType ) {
       this.id = id;
       this.text = text;
       this.eventId = eventId;
       this.userId = userId;
+      this.mentionedUserId = mentionedUserId;
       this.notificationType = notificationType;
    }
 
@@ -60,6 +62,15 @@ public class Notification {
    public void setUserId( String userId ) {
       this.userId = userId;
    }
+
+   public String getMentionedUserId() {
+      return mentionedUserId;
+   }
+
+   public void setMentionedUserId( String mentionedUserId) {
+      this.mentionedUserId = mentionedUserId;
+   }
+
 
    public int getNotificationType() {
       return notificationType;

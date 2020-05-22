@@ -17,8 +17,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilePictureElement"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

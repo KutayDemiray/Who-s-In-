@@ -339,6 +339,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
                     HashMap<String, Object> hashMap = new HashMap();
                     hashMap.put( "userId", firebaseUser.getUid() );
+                    hashMap.put( "mentionedUserId", "" );
                     hashMap.put( "text", " created an event called " + eventTitle );
                     hashMap.put( "eventId", eventId );
                     hashMap.put( "isEvent", true );
