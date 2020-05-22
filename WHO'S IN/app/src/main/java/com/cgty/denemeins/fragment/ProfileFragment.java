@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -50,6 +51,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -268,10 +271,13 @@ public class ProfileFragment extends Fragment {
      * @author Gökberk
      */
     private void openImage() {
-        Intent intent = new Intent();
-        intent.setType( "image/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT );
-        startActivityForResult( intent, IMAGE_REQUEST );
+        //Intent intent = new Intent();
+        //intent.setType( "image/*" );
+        //intent.setAction( Intent.ACTION_GET_CONTENT );
+        //startActivityForResult( intent, IMAGE_REQUEST );
+        Intent photoPickerIntent = new Intent( Intent.ACTION_PICK );
+        photoPickerIntent.setType( "image/*" );
+        startActivityForResult( photoPickerIntent, IMAGE_REQUEST );
     }
 
     /**
