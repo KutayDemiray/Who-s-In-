@@ -9,6 +9,7 @@
     android:background="@color/darkBlue"
     tools:context=".fragment.NotificationsFragment">
 
+
     <!-- Upper Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/notificationsUpperBar"

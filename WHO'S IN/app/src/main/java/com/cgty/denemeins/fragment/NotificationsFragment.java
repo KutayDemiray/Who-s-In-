@@ -64,7 +64,7 @@ public class NotificationsFragment extends Fragment {
 
     /**
      * Reading the notifications and retracting them from the database so that they can be
-     * seen in the notifications fragment
+     * seen in the notifications fragment for the current user
      */
     private void readNotifications() {
 
@@ -74,7 +74,7 @@ public class NotificationsFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
 
             /**
-             * Reading every notification with DataSnapshot
+             * Reading every notification of the current user with DataSnapshot
              * @param dataSnapshot
              */
             @Override

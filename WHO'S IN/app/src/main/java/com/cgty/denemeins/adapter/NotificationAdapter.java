@@ -74,9 +74,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
       viewHolder.text.setVisibility( View.VISIBLE );
 
-      viewHolder.text.setText( notification.getText() );
-      getUserInfo( viewHolder.profilePicture, viewHolder.username, notification.getUserId() );
+      getUserInfo( viewHolder.profilePicture, viewHolder.text, notification.getUserId(), i );
 
+      /**
+       * Setting a click on listener so that users can open others' profiles or event pages with one click
+       * from notification tab
+       */
       viewHolder.itemView.setOnClickListener( new View.OnClickListener() {
 
             @Override
@@ -112,14 +115,15 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     * @param username
     * @param userId
     */
-   private void getUserInfo( final ImageView imageView, final TextView username, String userId ) {
+   private void getUserInfo( final ImageView imageView, final TextView notificationText, String userId, int i) {
+      final Notification notification = mNotification.get( i );
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users" ).child( userId );
       reference.addValueEventListener( new ValueEventListener() {
 
          @Override
          public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
             User user = dataSnapshot.getValue( User.class );
-            username.setText( user.getUsername() );
+            notificationText.setText( user.getUsername() + notification.getText() );
             Glide.with( mContext ).load( user.getPicurl() ).into( imageView );
          }
 
@@ -138,13 +142,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
    public class ViewHolder extends RecyclerView.ViewHolder {
 
       public ImageView profilePicture;
-      public TextView username, text;
+      public TextView text;
 
       public ViewHolder( @NonNull View itemView ) {
          super( itemView );
 
          profilePicture = itemView.findViewById( R.id.profilePictureElement );
-         username = itemView.findViewById( R.id.notificationUsername );
          text = itemView.findViewById( notificationText );
       }
    }

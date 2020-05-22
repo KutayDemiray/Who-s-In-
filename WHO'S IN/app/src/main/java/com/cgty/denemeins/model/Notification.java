@@ -26,8 +26,25 @@ public class Notification {
    }
 
    public Notification() {
+      // required empty constructor
    }
 
+   // to classify the notifications
+   public boolean isEvent() {
+      if ( notificationType == 1 )
+         return true;
+      else
+         return false;
+   }
+
+   public boolean isFollow() {
+      if ( notificationType == 0 )
+         return true;
+      else
+         return false;
+   }
+
+   // getters and setters
    public String getEventId() {
       return eventId;
    }
@@ -68,17 +85,4 @@ public class Notification {
       this.text = text;
    }
 
-   public boolean isEvent() {
-      if ( notificationType == 1 )
-         return true;
-      else
-         return false;
-   }
-
-   public boolean isFollow() {
-      if ( notificationType == 0 )
-         return true;
-      else
-         return false;
-   }
 }
