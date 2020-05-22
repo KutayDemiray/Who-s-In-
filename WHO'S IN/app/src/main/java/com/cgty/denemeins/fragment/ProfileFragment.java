@@ -139,7 +139,7 @@ public class ProfileFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference( "Users" ).child( currentUser.getUid() );
 
         //göko
-        reference.addValueEventListener( new ValueEventListener() {
+        reference.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 User user = dataSnapshot.getValue( User.class );
@@ -371,7 +371,7 @@ public class ProfileFragment extends Fragment {
         DatabaseReference userPath;
         userPath = FirebaseDatabase.getInstance().getReference("Users" ).child( profileID );
 
-        userPath.addValueEventListener( new ValueEventListener() {
+        userPath.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
                 if ( getContext() == null ) {
