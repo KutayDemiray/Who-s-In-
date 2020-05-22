@@ -77,11 +77,11 @@ public class FeedEvents extends AppCompatActivity {
 
     /**
      * Fetches events with given type from database and displays them on screen
-     * @param DISPLAY_EVENTS_TYPE Event type
+     * @param DISPLAY_EVENTS_TYPE Event type, supposed to be acquired from previous intent
      */
     private void readEvents( final String DISPLAY_EVENTS_TYPE ) {
 
-        DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("Events" );
+        final DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("Events" );
 
         eventsRef.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
@@ -98,8 +98,8 @@ public class FeedEvents extends AppCompatActivity {
                     boolean conditionDisplaySports = DISPLAY_EVENTS_TYPE.equals( FEED_SPORTS ) && event.getMainType().equals( FEED_SPORTS );
                     boolean conditionDisplayTabletop = DISPLAY_EVENTS_TYPE.equals( FEED_TABLETOP ) && event.getMainType().equals( FEED_TABLETOP );
 
-                    // Display event if it matches one of the criteria (only one of them can be true at the same time)
-                    if ( conditionDisplayAll || conditionDisplayMeetings || conditionDisplaySports || conditionDisplayTabletop ) {
+                    // Display event if it is in the future and matches one of the criteria (only one of them can be true at the same time)
+                    if ( !event.getDate().isPast() && ( conditionDisplayAll || conditionDisplayMeetings || conditionDisplaySports || conditionDisplayTabletop ) ) {
                         Log.d( "DENEME123", event.toString() );
                         mEvents.add(event);
                     }
