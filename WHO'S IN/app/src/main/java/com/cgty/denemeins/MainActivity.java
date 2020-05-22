@@ -5,6 +5,7 @@
  */
 package com.cgty.denemeins;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -28,6 +29,8 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class MainActivity extends AppCompatActivity {
 
+
+
     private Button settingsButton;
     BottomNavigationView bottomNav;
     Fragment selectedFragment = null;
@@ -37,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
+
+        if ( FirebaseAuth.getInstance().getCurrentUser() == null ) {
+            Intent intent = new Intent( MainActivity.this, StartActivity.class);
+            startActivity( intent);
+        }
 
         bottomNav = findViewById( R.id.bottom_navigation );
         bottomNav.setOnNavigationItemSelectedListener( navListener );
