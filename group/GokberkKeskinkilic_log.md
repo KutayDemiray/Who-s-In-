@@ -5,12 +5,19 @@
 
 On this page I will keep a weekly record of what I have done for the CS102 group project. This page will be submitted together with the rest of the repository, in partial fulfillment of the CS102 course requirements.
 
+### ~ [22.02.2020] ~
+Group meet up to work on our project idea. We developed our ideas more and prepared a basic GUI design to demonstrate functions of "Looking For".
 
 ### ~ [25.02.2020] ~ 
-After having completed the slides together with all group members, we made our project's first presentation with Ceyda.
+After having completed the slides together with all group members, we made our project's first presentation with Ceyda.According to first reflections we started thinking about what we could improve and concentrate on more.  
 
 ### ~ [07.03.2020] ~
-During our meeting for detailed project report we have brainstormed together to develop our app. I have written the conclusion part for the report. 
+During our meeting for detailed project report we have brainstormed together to develop our app. I have written the conclusion part for the report. This meeting was the second important meeting. We have changed bunch of stuffs, and clarified our application's funcitons. It is now called "Who's In?".
+
+### ~ [16.03.2020] THANKS CORONA ~
+
+### ~ [25.03.2020] ~
+A brief online meeting to talk about our project. Everyone is now demoralized, these times are definitely not our most productivec period. 
 
 ### ~ [30.03.2020] ~
 During our meeting for GUI presentation, I have written the part for profile tab and homepage for report.
@@ -40,6 +47,16 @@ Stayed awake until first lights of the day with Çağatay to improve profile tab
 Found out that the code that I wrote, user class and database do not match. Tried to fix the problem but I couldn't. Worked with Çağatay to see what can we improve more on profile tab. 
 
 ### ~ [19.05.2020] ~
-Finally managed to get code work. Now user can choose an image from their device, upload it to firebase and use it as their profile picture. 
+Finally managed to get code work. Now user can choose an image from their device, upload it to firebase and use it as their profile picture. Slept at like 8 a.m. :)
+
+### ~ [20.05.2020] ~
+DEMO RECORD DAY... After a short sleep, in the afternoon fixed minor issues with setting a profile picture before video record. This application was neat and tidy. Taught a lot to us.  
+
+### ~ [21.05.2020] ~
+Mr. Davenport's last lecture( was on emotional one ). First steps were taken this year to be professional engineers. After the lecture made some minor improvements for errors that I have realized in demo video. Worked on button designs and setting a profile picture.  
+
+### ~ [22.05.2020] ~
+Last edits on our little project and our GitHub page...
+
 
 ****
