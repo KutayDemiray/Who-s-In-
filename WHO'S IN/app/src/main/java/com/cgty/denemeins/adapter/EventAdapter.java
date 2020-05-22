@@ -55,7 +55,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public void onBindViewHolder( @NonNull ViewHolder holder, int position ) {
 
         final Event event = mEvents.get( position );
-        //Log.d( "event_id_test", event.getEventId() );
+        Log.d( "DENEME123", event.getEventId() );
 
         // get organizer's username from database
         final String uId = event.getOrganizerId(); // variables are final so that they can be used in database listener

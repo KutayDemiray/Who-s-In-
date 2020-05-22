@@ -100,7 +100,7 @@ public class FeedEvents extends AppCompatActivity {
 
                     // Display event if it is in the future and matches one of the criteria (only one of them can be true at the same time)
                     if ( !event.getDate().isPast() && ( conditionDisplayAll || conditionDisplayMeetings || conditionDisplaySports || conditionDisplayTabletop ) ) {
-                        //Log.d( "event_toString_test", event.toString() );
+                        Log.d( "DENEME123", event.toString() );
                         mEvents.add(event);
                     }
 

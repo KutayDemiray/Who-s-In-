@@ -175,7 +175,7 @@ public class ProfileFragment extends Fragment {
         mSignOut.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                //Log.d( "sign_out_test", "onClick: attempting to sign out the use." );
+                Log.d( TAG, "onClick: attempting to sign out the use." );
                 FirebaseAuth.getInstance().signOut();
             }
         });

@@ -152,7 +152,7 @@ public class EventActivity extends AppCompatActivity {
 
             event.setParticipants( participants );
             eventCapacity.setText( "Capacity: "  + event.getNumberOfParticipants() + "/" + event.getCapacity() );
-            //event.printParticipants();
+            event.printParticipants();
 
             // if the current user is organizer, join button will disappear
             if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
