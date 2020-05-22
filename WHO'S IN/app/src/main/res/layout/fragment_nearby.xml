@@ -50,10 +50,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:maxHeight="300dp"
         android:id="@+id/nearbyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxHeight="300dp"
+        android:paddingBottom="55dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nearbySearchBar">
 
