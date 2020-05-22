@@ -52,6 +52,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     EditText editTextTitle, editTextLocation, editTextCapacity, editTextDate, editTextTime, editTextDescription;
     Spinner spinnerMainType, spinnerSportsType, spinnerTabletopType, spinnerPrivacy;
     Button buttonAddEvent;
+
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
@@ -70,7 +71,6 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         spinnerTabletopType = findViewById( R.id.spinnerTabletopType );
         spinnerPrivacy = findViewById( R.id.spinnerPrivacy );
         buttonAddEvent = findViewById( R.id.buttonAddEvent );
-        //ceydas 11.05.20
 
         ArrayAdapter adapter1 = ArrayAdapter.createFromResource(
                 this,
@@ -142,6 +142,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         editTextTime.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
+
                 TimePickerDialog timePickerDialog;
                 int hour, minute;
 
@@ -185,6 +186,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
             @Override
             public void onNothingSelected( AdapterView<?> adapterView ) {}
+
         });
 
         // set button click listener
@@ -192,50 +194,50 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick( View v ) {
 
-                //cagatay
-                @SuppressLint( "SimpleDateFormat" ) SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z" );
-                String currentDate = sdf.format( new Date() );
-
                 String strTitle = editTextTitle.getText().toString();
                 String strLocation = editTextLocation.getText().toString();
                 String strCapacity = editTextCapacity.getText().toString();  //maybe int...? String is easier anyways
                 String strDate = editTextDate.getText().toString();
 
+                EventDate objDate = new EventDate( editTextDate.getText().toString(), editTextTime.getText().toString() );
+
+                // make sure user fills all necessary fields
                 if ( TextUtils.isEmpty( strTitle ) || TextUtils.isEmpty( strLocation ) || TextUtils.isEmpty( strCapacity ) || TextUtils.isEmpty( strDate ) )
                     Toast.makeText(CreateEvent.this, "Please fill out all the fields.", Toast.LENGTH_SHORT ).show();
-
+                // don't let people create 1 person events, as it defeats the purpose of the program
                 else if ( strCapacity.equals( "1" ) ) {
                     Toast.makeText(CreateEvent.this, "Capacity cannot be less than 2.", Toast.LENGTH_SHORT ).show();
                 }
-                // TODO else if selected date is past, raise toast with error message. still?
+                // don't let people create an event with a past date
+                else if ( objDate.isPast() ) {
+                    Toast.makeText( CreateEvent.this, "You can't create an event in the past!", Toast.LENGTH_SHORT );
+                }
+                // some fluff/easter eggs
                 else if ( ( strCapacity.equals( "42" ) ) && ( strLocation.equalsIgnoreCase("çorum" ) || strLocation.equalsIgnoreCase("corum" ) ) ) {
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! THE BEST COMBINATION :) ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
-
                 else if ( strCapacity.equals( "42" ) ) {
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nKONYA IS THE MEANING OF THE LIFE :) ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
-
                 else if ( strLocation.equalsIgnoreCase("çorum") || strLocation.equalsIgnoreCase("corum" ) ) {
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nJourney to the Center of the Earth, HUH? :) ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
-
                 else if ( strLocation.equalsIgnoreCase("quiquendone") ) {
                     addEvent();
                     initializeInputs();
                     Toast.makeText(CreateEvent.this, "PARABÉNS! CONGRATS! TEBRİKLER! \nIS THAT DR. OX? ", Toast.LENGTH_LONG ).show();
                     finish();
                 }
-
+                // only adds the events
                 else {
                     addEvent();
                     initializeInputs();
@@ -244,6 +246,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 }
 
             }
+
         });
 
     }
@@ -331,6 +334,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow" ).child( organizerId ).child( "followers" );
+
         reference.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange( @NonNull DataSnapshot dataSnapshot ) {
@@ -351,6 +355,8 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             public void onCancelled( @NonNull DatabaseError databaseError ) {
 
             }
+
         });
+
     }
 }

@@ -31,7 +31,7 @@ public class FeedEvents extends AppCompatActivity {
 
     // constants
 
-    // event types
+    // event types to compare with what we get from intent extra
     private final String FEED_SPORTS = "Sports";
     private final String FEED_MEETINGS = "Meeting";
     private final String FEED_TABLETOP = "Tabletop Games";
