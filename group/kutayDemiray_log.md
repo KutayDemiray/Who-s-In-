@@ -31,8 +31,13 @@ can learn how it works without watching tons of low quality Youtube tutorials as
 This week was busy in general and I had multiple assignments in other courses, so development was slower.
 
 ### ~ 11.05.2020 - 17.05.2020 ~
-Development is still slow due to other assignments, but at least I've made some progress. I implemented the create event feature I had designed earlier into the actual app, and I'll get around to implementing the event
-list sometime this week as well. 
+Development is still slow due to other assignments, but at least I've made some progress. I implemented the create event feature I had designed earlier into the actual app, and I'll get around to implementing the event list sometime this week as well. 
+
+### ~ 18.05.2020 - 22.05.2020 ~
+I implemented event list and fixed a few bugs on EventDate class and database operations throughout the app. We shot the demo video and uploaded it, although we had to speed it up and
+cut some parts to fit everything we showed in 10 minutes. After we uploaded the video, I changed the FeedEvents class so that past events aren't shown (it was pretty simple actually,
+I should have done it earlier but I suppose I forgot). I also noticed that users were sent to homepage even when they weren't logged in, so I notified Gökberk about the issue and he
+fixed it. I also improved our GitHub README page by adding screenshots to show features.
 
 
 ****
