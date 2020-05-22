@@ -312,7 +312,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     @Override
     //ceydas
     public void onItemSelected( AdapterView<?> adapterView , View view, int i, long l ) {
-        Toast.makeText(this, adapterView.getSelectedItem().toString() , Toast.LENGTH_SHORT ).show();
+        // Toast.makeText(this, adapterView.getSelectedItem().toString() , Toast.LENGTH_SHORT ).show();
     }
 
     public void onNothingSelected( AdapterView<?> parent ) {
