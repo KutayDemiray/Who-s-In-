@@ -15,7 +15,7 @@ The information and code in this repository are submitted in partial fulfillment
  ![Home Screen](screenshots/screenshotHome.png)
 
  ...list events and pick one to join...
- <img src="screenshots/screenshotEventFeed.png" width="50%"" height="50%">
+ <img src="screenshots/screenshotEventFeed.png" width="50%" height="50%" />
 
  ...or create one yourself!
  ![Create Event](screenshots/screenshotCreateEvent.png)
