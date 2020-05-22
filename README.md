@@ -9,25 +9,34 @@ The information and code in this repository are submitted in partial fulfillment
 ## Project Description
  "Who's In?" is a mobile application aiming to provide easy means of finding users for activities such as sports events, tournaments and club meetings.
 
- We know that finding people to play a basketball match, do a movie night or play Monopoly is often difficult, especially for university students like us. To solve this problem, we have developed "Who's In?".
+  We know that finding people to play a basketball match, do a movie night or play Monopoly is often difficult, especially for university students like us. To solve this problem, we have developed "Who's In?".
 
- From the home screen, you can...
- ![Home Screen](screenshots/screenshotHome.png)
+  From the home screen, you can... <br>
 
- ...list events and pick one to join...
- <img src="screenshots/screenshotEventFeed.png" width="50%" height="50%" />
+  <img src="screenshots/screenshotHome.png" width="30%" height="30%" />
 
- ...or create one yourself!
- ![Create Event](screenshots/screenshotCreateEvent.png)
+  ...list events and pick one to join... <br>
 
- Create and customize your profile to introduce yourself to others!
- ![Profile Page](screenshots/screenshotProfile.png)
+  <img src="screenshots/screenshotEventFeed.png" width="30%" height="30%" />
 
- Similarly, find your friends and other like-minded people and follow them!
- ![Search Users](screenshots/screenshotSearch.png) ![Other User](screenshots/screenshotOtherProfile.png)
+  ...or create one yourself! <br>
 
- Check your notifications page regularly to be notified when people follow you and join or leave your event, or someone you follow creates one!
- ![Notifications](screenshots/screenshotNotifications.png)
+  <img src="screenshots/screenshotCreateEvent.png" width="30%" height="30%" />
+
+  Create and customize your profile to introduce yourself to others! <br>
+
+  <img src="screenshots/screenshotProfile.png" width="30%" height="30%" />
+
+  Similarly, find your friends and other like-minded people and follow them! <br>
+
+  <img src="screenshots/screenshotSearch.png" width="30%" height="30%" />
+  <br>
+  <img src="screenshots/screenshotOtherProfile.png" width="30%" height="30%" />
+  <img src="screenshots/screenshotOtherProfile2.png" width="30%" height="30%" /> 
+
+
+  Check your notifications page regularly to be notified when people follow you and join or leave your event, or someone you follow creates one! <br>
+  <img src="screenshots/screenshotNotifications.png" width="30%" height="30%" />
 
 
 _Include a concise description of your project here. Be sure to include the proposed users, the architecture (eg. desktop, web, mobile, embedded, etc.) & screenshots when available._
