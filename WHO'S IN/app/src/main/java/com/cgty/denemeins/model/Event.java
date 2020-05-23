@@ -125,13 +125,6 @@ public class Event {
         return false;
     }
 
-    public void printParticipants() {
-        for ( int i = 0; i < participants.size(); i++ ) {
-            Log.d("DENEME123", "printParticipants: " + participants.get(i) );
-        }
-    }
-
-
     // getters and setters (most should never be used but they are required for adding event objects to database)
 
     public String getEventId() {

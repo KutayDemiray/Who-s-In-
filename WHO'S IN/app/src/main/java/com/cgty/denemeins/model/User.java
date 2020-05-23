@@ -30,10 +30,10 @@ public class User {
 
     // constructors
     public User() {
-
+        // required empty constructor
     }
 
-    public User( String id, String username, String age, String imageURL, String bio) {
+    public User( String id, String username, String age, String picurl, String bio) {
         this.id = id;
         this.username = username;
         this.age = age;
