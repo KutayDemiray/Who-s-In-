@@ -48,6 +48,16 @@ Discord meeting.
 
 ## 10.05.2020 
 Started designing the main page, added xml codes and ConstraintLayout.
-14.05.2020
-Detailed Design scheme by me.
+
+## 12.05.2020 - 14.05.2020
+Bottom navigation change, trial-error in AS.
+Detailed Design scheme.
+
+## 19.05.2020 - 20.05.2020
+Changed the design of some fragments.
+
+## 23.05.2020 
+Updated scheme.
+
+
 
