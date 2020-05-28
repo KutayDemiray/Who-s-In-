@@ -1,7 +1,8 @@
-Reflections
+~Reflections~
 
-While preparing our project Who's In, we developed multiple useful skills. We learned how to develop a full and marketable app and improved our ability to learn new things by ourselves. We had several difficulties While
-preparing our project. Because of the current situation, the group meetings we had on the internet were not as efficient as it would have been in real life. In addition, understanding and using the MVC pattern was quite
-difficult because of how Android development works. We also had a hard time implementing certain methods and classes because the database we used was asynchronized. If we started over again, we would have tried to implement
-MVC more accurately and used a synchronized database to make implementation easier. We spent about a month on the implementation of our project. Even though we could not implement some minor things that we planned to,
-we are proud of what we have created as it is a working and useful tool that can be used in real life.
+While preparing our project "Who's In", we developed multiple useful skills. We learned how to develop a full and marketable app and improved our ability to learn new things 
+by ourselves. We had several difficulties While preparing our project. Because of the current situation, the group meetings we had on the internet were not quite efficient
+and we disliked not being able to properly meet up and brainstorm in real life. In addition, understanding and using the MVC pattern was quite difficult because of how Android 
+development works. We also had a hard time implementing certain methods and classes because the database we used was asynchronized. If we started over again, we would have 
+tried to implement MVC more accurately and used a synchronized database to make implementation easier. We spent about a month on the implementation of our project. Even though 
+we could not implement some minor things that we planned to, we are proud of what we have created as it is a working and useful tool that can be used in real life.
