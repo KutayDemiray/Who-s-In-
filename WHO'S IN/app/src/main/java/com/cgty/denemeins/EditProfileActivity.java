@@ -88,7 +88,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
 		//Firebase
 		currentUser = FirebaseAuth.getInstance().getCurrentUser();
-		// storagePath = FirebaseStorage.getInstance().getReference("uploads");
 
 		DatabaseReference userPath;
 		userPath = FirebaseDatabase.getInstance().getReference("Users" ).child( currentUser.getUid() );

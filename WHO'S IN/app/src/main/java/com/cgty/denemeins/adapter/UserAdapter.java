@@ -73,7 +73,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
      * @param position Index.
      */
     @Override
-    public void onBindViewHolder( @NonNull final ViewHolder holder, int position ) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position ) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final User user = mUsers.get( position );
 
@@ -93,7 +93,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 if ( isFragment ) {
                     SharedPreferences.Editor editor;
                     editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-    
+
                     editor.putString("profileid", user.getId());
                     editor.apply();
     
@@ -115,7 +115,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 if ( holder.addFriend.getText().toString().equals( "   Follow   " ) ) {
                     FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( firebaseUser.getUid() ).child( "following" ).child( user.getId() ).setValue( true );
                     FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( user.getId() ).child( "followers" ).child( firebaseUser.getUid() ).setValue( true );
-                    addNotifications( user.getId() );
+                    addNotifications( user.getId(), position );
                 } else {
                     FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( firebaseUser.getUid() ).child( "following" ).child( user.getId() ).removeValue();
                     FirebaseDatabase.getInstance().getReference().child( "Follow" ).child( user.getId() ).child( "followers" ).child( firebaseUser.getUid() ).removeValue();
@@ -190,14 +190,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
      * @author Yağız Yaşar
      * @param userId
      */
-    private void addNotifications( String userId ) {
+    private void addNotifications( String userId, int i) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications" ).child( userId );
+        final User user = mUsers.get( i );
 
-            HashMap<String, Object> hashMap = new HashMap();
-            hashMap.put( "userId", firebaseUser.getUid() );
-            hashMap.put( "text", " started following you" );
-            hashMap.put( "eventId", "" );
-            hashMap.put( "isEvent", false );
+        HashMap<String, Object> hashMap = new HashMap();
+        hashMap.put( "userId", firebaseUser.getUid() );
+        hashMap.put( "mentionedUserId", user.getId() );
+        hashMap.put( "text", " started following you" );
+        hashMap.put( "eventId", "" );
+        hashMap.put( "isEvent", false );
 
         reference.push().setValue( hashMap );
     }

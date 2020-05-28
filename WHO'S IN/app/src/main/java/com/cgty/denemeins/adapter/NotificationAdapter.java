@@ -85,18 +85,20 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
               public void onClick( View view ) {
                if (  notification.getEventId().equals( "" ) ) {
+                  // TODO: Directs to your own profile. DEBUG!!
                   // if eventId is empty, it is a notification related to follow so that if
                   // they click on notification they go to an user fragment
-                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
+                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREFS", Context.MODE_PRIVATE ).edit();
                   editor.putString( "userId", notification.getUserId() );
                   editor.apply();
 
                   ( (FragmentActivity) mContext ).getSupportFragmentManager().beginTransaction().replace( R.id.fragment_container,
                           new ProfileFragment() ).commit();
+
                } else {
                   // if eventId is empty, it is a notification related to follow so that if
                   // they click on notification they go to an user fragment
-                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREPS", Context.MODE_PRIVATE ).edit();
+                  SharedPreferences.Editor editor = mContext.getSharedPreferences( "PREFS", Context.MODE_PRIVATE ).edit();
                   editor.putString( "eventId", notification.getEventId() );
                   editor.apply();
 

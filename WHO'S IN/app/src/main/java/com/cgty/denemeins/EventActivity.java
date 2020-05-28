@@ -152,7 +152,7 @@ public class EventActivity extends AppCompatActivity {
 
             event.setParticipants( participants );
             eventCapacity.setText( "Capacity: "  + event.getNumberOfParticipants() + "/" + event.getCapacity() );
-            event.printParticipants();
+            //event.printParticipants();
 
             // if the current user is organizer, join button will disappear
             if ( event.isFull() || FirebaseAuth.getInstance().getCurrentUser().getUid().equals( event.getOrganizerId() ) ) {
@@ -192,6 +192,7 @@ public class EventActivity extends AppCompatActivity {
 
       HashMap<String, Object> hashMap = new HashMap();
       hashMap.put( "userId",  userId );
+      hashMap.put( "mentionedUserId", "" );
       hashMap.put( "text", " has joined your event called " +  eventTitle );
       hashMap.put( "eventId", eventId );
       hashMap.put( "isEvent", true );
@@ -212,6 +213,7 @@ public class EventActivity extends AppCompatActivity {
 
       HashMap<String, Object> hashMap = new HashMap();
       hashMap.put( "userId",  userId );
+      hashMap.put( "mentionedUserId", "" );
       hashMap.put( "text", " has left your event called " +  eventTitle );
       hashMap.put( "eventId", eventId );
       hashMap.put( "isEvent", true );

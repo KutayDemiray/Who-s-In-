@@ -39,6 +39,9 @@ I looked some examples for notification feature and then added the required clas
 I have created EventActivity page for each unique event so that users can join events and see the events information, description and etc. Also, I added notifications to create, join and leave event. I implemented the required code into CreateEvent, EventActivity classes. I commented my parts of the code and tried to bug fixes on the general of the code. Then, we recorded a video through Zoom despite the current conditions. 
 I created the required classes for participants by looking my and my friends' codes. I added Show Participant button to Event Activity page so that users can look at the current participants of the events, also did some minor bug fixes in the code and styling.
 
+### May 24th - May 28th, 2020
+Last revisions on the code. This week, I only tried to change the package name to more proper one, but couldn't manage it. Bye bye CS102, hopefully...
+
 
 
 ****
