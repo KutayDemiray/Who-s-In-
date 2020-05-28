@@ -43,7 +43,9 @@ import java.util.HashMap;
 
 /**
  * Edit profile screen
+ *
  * @author Çağatay Şafak
+ * @version 1.0
  */
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -60,8 +62,8 @@ public class EditProfileActivity extends AppCompatActivity {
 	//firebase
 	FirebaseUser currentUser;
 	DatabaseReference reference;
-    // private Uri mImageUri;
-    // StorageReference storagePath;
+    //private Uri mImageUri;
+    //StorageReference storagePath;
 
 	// methods
 	@Override
@@ -142,10 +144,11 @@ public class EditProfileActivity extends AppCompatActivity {
 	}
 
     /**
-     * @author Çağatay Şafak
      * @param theUsername
      * @param theAge
      * @param theBio
+	 *
+	 * @author Çağatay Şafak
      */
 	private void updateProfile( String theUsername, String theAge, String theBio ) {
 

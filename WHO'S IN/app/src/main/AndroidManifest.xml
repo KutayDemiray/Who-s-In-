@@ -59,7 +59,6 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".ShowFollowers" />
-        <activity android:name=".ShowFollowing" />
         <activity android:name=".ShowPastEvents" />
         <activity android:name=".ShowScheduledEvents" />
     </application>
