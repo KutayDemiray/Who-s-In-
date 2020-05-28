@@ -29,10 +29,10 @@ UI design, some of xml codes for AdobeXD projects to use them in the Android Stu
 Connecting project to Firebase, log in and signup system with Firebase Auth, user search and following function, UserAdapter class, activities and fragments.
 
 Software Used: 
-Google Firebase Realtime Database, Android Studio v3.6.3, Android Oreo API 27.
+Google Firebase Realtime Database, Android Studio v3.6.3, Android Oreo API 27. Adobe Photoshop, Adobe XD.
 
 Setup Instructions:
-Open the project "WHO'S IN" from Android Studio and build the project, then run using an emulator.
+Open the project "WHO'S IN" inside the repository folder with Android Studio and build the project, then run using an emulator.
 
 
 
